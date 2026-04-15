@@ -11,7 +11,12 @@
     "lint": "biome check --verbose",
     "lint:fix": "biome check --write --no-errors-on-unmatched",
     "preview": "vite preview",
-    "test": "vitest"
+    "test": "vitest",
+    "prepare": "husky",
+    "knip": "knip"
+  },
+  "lint-staged": {
+    "*": "biome check --write --no-errors-on-unmatched --verbose"
   },
   "dependencies": {
     "react": "^19.2.4",
@@ -22,13 +27,14 @@
     "@biomejs/biome": "2.4.12",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
-    "@testing-library/user-event": "^14.6.1",
     "@types/node": "^24.12.2",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.1",
-    "globals": "^17.4.0",
+    "husky": "^9.1.7",
     "jsdom": "^29.0.2",
+    "knip": "^6.4.1",
+    "lint-staged": "^16.4.0",
     "msw": "^2.13.3",
     "typescript": "~6.0.2",
     "vite": "^8.0.4",
