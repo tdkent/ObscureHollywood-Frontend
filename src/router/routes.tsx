@@ -1,11 +1,11 @@
 import { Route, Routes as RouteGroup } from "react-router";
-import RootLayout from "../layouts/RootLayout";
-import DisclaimerPage from "../pages/Disclaimer.page";
-import FeaturesPage from "../pages/Features.page";
-import FilmsPage from "../pages/Films.page";
-import HomePage from "../pages/Home.page";
-import NotFoundPage from "../pages/NotFound.page";
-import PeoplePage from "../pages/People.page";
+import RootLayout from "@/layouts/RootLayout";
+import DisclaimerPage from "@/pages/Disclaimer.page";
+import FeaturesPage from "@/pages/Features.page";
+import FilmsPage from "@/pages/Films.page";
+import HomePage from "@/pages/Home.page";
+import NotFoundPage from "@/pages/NotFound.page";
+import PeoplePage from "@/pages/People.page";
 
 export default function Routes() {
 	return (
