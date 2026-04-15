@@ -11,8 +11,12 @@
     "lint": "biome check --verbose",
     "lint:fix": "biome check --write --no-errors-on-unmatched",
     "preview": "vite preview",
-    "test": "vitest"
+    "test": "vitest",
+    "prepare": "husky"
   },
+  "lint-staged": {
+		"*": "biome check --write --no-errors-on-unmatched --verbose"
+	},
   "dependencies": {
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
