@@ -1,12 +1,11 @@
-
+import Routes from "./router/routes";
 
 function App() {
-
-  return (
-    <>
-Hello world!
-    </>
-  )
+	return (
+		<>
+			<Routes />
+		</>
+	);
 }
 
-export default App
+export default App;
