@@ -19,14 +19,17 @@
     "*": "biome check --write --no-errors-on-unmatched --verbose"
   },
   "dependencies": {
+    "@tailwindcss/vite": "^4.2.2",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
-    "react-router": "^7.14.1"
+    "react-router": "^7.14.1",
+    "tailwindcss": "^4.2.2"
   },
   "devDependencies": {
     "@biomejs/biome": "2.4.12",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.1",
     "@types/node": "^24.12.2",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",

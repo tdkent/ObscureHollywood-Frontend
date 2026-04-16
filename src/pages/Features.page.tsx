@@ -1,3 +1,3 @@
 export default function FeaturesPage() {
-	return "Features";
+	return <h2>Features</h2>;
 }

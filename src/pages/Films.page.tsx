@@ -1,3 +1,3 @@
 export default function FilmsPage() {
-	return "Films";
+	return <h2>Films</h2>;
 }
