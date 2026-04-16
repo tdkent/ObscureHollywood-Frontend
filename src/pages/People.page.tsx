@@ -1,3 +1,3 @@
 export default function PeoplePage() {
-	return "People Page";
+	return <h2>People</h2>;
 }
