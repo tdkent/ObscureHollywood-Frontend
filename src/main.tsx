@@ -1,12 +1,26 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
+import { ErrorBoundary } from "react-error-boundary";
 import { BrowserRouter } from "react-router";
 import App from "@/App";
+import GlobalErrorBoundary from "@/GlobalError";
 
-createRoot(document.getElementById("root")!).render(
+const root = document.getElementById("root");
+
+if (!root) {
+	throw new Error("Could not find root element");
+}
+
+createRoot(root).render(
 	<StrictMode>
-		<BrowserRouter>
-			<App />
-		</BrowserRouter>
+		<ErrorBoundary
+			fallbackRender={({ error, resetErrorBoundary }) => (
+				<GlobalErrorBoundary error={error} reset={resetErrorBoundary} />
+			)}
+		>
+			<BrowserRouter>
+				<App />
+			</BrowserRouter>
+		</ErrorBoundary>
 	</StrictMode>,
 );
