@@ -7,7 +7,7 @@ export default function Nav() {
 			<ul className="flex gap-4">
 				{navLinks.map((link) => {
 					return (
-						<li key={link.testId}>
+						<li key={link.label}>
 							<NavLink data-testid={link.testId} to={link.href}>
 								{link.label}
 							</NavLink>
