@@ -5,6 +5,8 @@ interface Props {
 }
 
 export default function DisplayError({ error }: Props) {
+	console.error(error);
+
 	let errMsg: string = "";
 	if (error instanceof Error) {
 		if (error.message === "Failed to fetch") {
