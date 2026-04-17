@@ -5,7 +5,11 @@ export default async function httpRequest(path: string) {
 		const response = await fetch(`${BACKEND_URL}${path}`);
 		const data = await response.json();
 
-		if (!response.ok) throw new Error(data as string);
+		if (!response.ok) {
+			if (typeof data === "object" && data.message) {
+				throw new Error(data.message as string);
+			}
+		}
 
 		return data;
 	} catch (error) {
