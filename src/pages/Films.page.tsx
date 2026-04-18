@@ -1,10 +1,10 @@
-import List from "@/components/shared/List";
+import Paginated from "@/components/list/Paginated";
 
 export default function FilmsPage() {
 	return (
 		<div>
 			<h2>Films</h2>
-			<List />
+			<Paginated />
 		</div>
 	);
 }
