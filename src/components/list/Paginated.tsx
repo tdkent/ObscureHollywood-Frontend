@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { useLocation, useSearchParams } from "react-router";
 import httpRequest from "@/api/httpRequest";
 import PaginationLinks from "@/components/list/PaginationLinks";
@@ -17,6 +17,7 @@ export default function PaginatedList() {
 	const { data, error, isPending } = useQuery({
 		queryKey: [pathname, page, limit],
 		queryFn: () => httpRequest(`${pathname}${search}`),
+		placeholderData: keepPreviousData,
 	});
 
 	if (isPending) return <Loading />;
@@ -27,7 +28,11 @@ export default function PaginatedList() {
 	return (
 		<div>
 			<PaginationMetadata metadata={paginatedData.meta} />
-			<PaginationLinks />
+			<PaginationLinks
+				currentPage={page}
+				lastPage={paginatedData.meta.totalPages}
+				links={paginatedData.links}
+			/>
 		</div>
 	);
 }
