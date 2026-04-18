@@ -10,6 +10,10 @@ export default function PaginationMetadata({ metadata }: Props) {
 			<p>
 				Page {metadata.currentPage} of {metadata.totalPages}
 			</p>
+			<p>
+				Showing {metadata.firstItemOnPage} – {metadata.lastItemOnPage} of{" "}
+				{metadata.totalItems} results
+			</p>
 		</section>
 	);
 }

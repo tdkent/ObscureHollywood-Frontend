@@ -1,9 +1,11 @@
 export interface PaginatedResponse {
 	data: unknown[];
 	meta: {
-		itemsPerPage: number;
-		totalItems: number;
 		currentPage: number;
+		firstItemOnPage: number;
+		itemsPerPage: number;
+		lastItemOnPage: number;
+		totalItems: number;
 		totalPages: number;
 	};
 	links: {
