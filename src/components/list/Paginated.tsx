@@ -27,7 +27,10 @@ export default function PaginatedList() {
 
 	return (
 		<div>
-			<PaginationMetadata metadata={paginatedData.meta} />
+			<PaginationMetadata
+				hasData={!!paginatedData.data.length}
+				metadata={paginatedData.meta}
+			/>
 			<PaginationLinks
 				currentPage={page}
 				lastPage={paginatedData.meta.totalPages}
