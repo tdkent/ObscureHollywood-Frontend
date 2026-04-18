@@ -20,14 +20,26 @@ export default function PaginationLinks({
 
 	return (
 		<div>
-			<button type="button" onClick={() => handleClick(links.first)}>
+			<button
+				disabled={currentPage === 1}
+				type="button"
+				onClick={() => handleClick(links.first)}
+			>
 				1
 			</button>
-			<button type="button" onClick={() => handleClick(links.previous)}>
+			<button
+				disabled={currentPage === 1}
+				type="button"
+				onClick={() => handleClick(links.previous)}
+			>
 				Prev
 			</button>
 			<span>{currentPage}</span>
-			<button type="button" onClick={() => handleClick(links.next)}>
+			<button
+				disabled={currentPage >= lastPage}
+				type="button"
+				onClick={() => handleClick(links.next)}
+			>
 				Next
 			</button>
 			<button type="button" onClick={() => handleClick(links.last)}>
