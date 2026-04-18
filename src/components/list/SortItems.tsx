@@ -13,13 +13,15 @@ export default function SortItems({ entity }: Props) {
 	return (
 		<select>
 			{sortOption
-				? sortOption.options.map((option) => {
-						return (
-							<option key={option.label} value={option.value}>
-								{option.label}
-							</option>
-						);
-					})
+				? sortOption.options
+						.sort((a, b) => a.id - b.id)
+						.map((option) => {
+							return (
+								<option key={option.label} value={option.value}>
+									{option.label}
+								</option>
+							);
+						})
 				: null}
 		</select>
 	);
