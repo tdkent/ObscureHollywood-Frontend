@@ -8,7 +8,7 @@ type SortValue =
 	| "yearAsc"
 	| "yearDesc";
 
-type Entity = "features" | "films" | "people" | "studios" | "tags";
+export type Entity = "features" | "films" | "people" | "studios" | "tags";
 
 interface SelectOption {
 	label: string;
