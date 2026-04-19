@@ -1,6 +1,7 @@
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { useLocation, useSearchParams } from "react-router";
 import httpRequest from "@/api/httpRequest";
+import PaginationLimit from "@/components/list/PaginationLimit";
 import PaginationLinks from "@/components/list/PaginationLinks";
 import PaginationMetadata from "@/components/list/PaginationMetadata";
 import SortItems from "@/components/list/SortItems";
@@ -37,6 +38,7 @@ export default function PaginatedList() {
 				metadata={paginatedData.meta}
 			/>
 			<SortItems entity={entity} limit={limit} sort={sort} />
+			<PaginationLimit currLimit={limit} sort={sort} />
 			<PaginationLinks
 				currentPage={page}
 				lastPage={paginatedData.meta.totalPages}
