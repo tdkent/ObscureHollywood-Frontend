@@ -36,7 +36,7 @@ export default function PaginatedList() {
 				hasData={!!paginatedData.data.length}
 				metadata={paginatedData.meta}
 			/>
-			<SortItems entity={entity} />
+			<SortItems entity={entity} limit={limit} sort={sort} />
 			<PaginationLinks
 				currentPage={page}
 				lastPage={paginatedData.meta.totalPages}
