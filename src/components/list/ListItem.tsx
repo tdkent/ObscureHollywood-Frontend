@@ -2,6 +2,7 @@ import type { Entity } from "@/lib/paginatedSortOptions";
 import type { Feature } from "@/types/feature.interface";
 import type { Film } from "@/types/film.interface";
 import type { Person } from "@/types/person.interface";
+import type { Studio } from "@/types/studio.interface";
 
 interface Props {
 	entity: Entity;
@@ -33,5 +34,10 @@ export default function ListItem({ entity, item }: Props) {
 		return <h2>{listItem.name}</h2>;
 	}
 
-	return;
+	if (entity === "studios") {
+		const listItem = item as Studio;
+		return <h2>{listItem.name}</h2>;
+	}
+
+	throw new Error("Unknown entity type");
 }

@@ -15,6 +15,7 @@ export default function Routes() {
 				<Route element={<FeaturesPage />} path="/features" />
 				<Route element={<FilmsPage />} path="/films" />
 				<Route element={<PeoplePage />} path="/people" />
+				<Route element={<PeoplePage />} path="/studios" />
 				<Route element={<DisclaimerPage />} path="/disclaimer" />
 				<Route element={<NotFoundPage />} path="*" />
 			</Route>
