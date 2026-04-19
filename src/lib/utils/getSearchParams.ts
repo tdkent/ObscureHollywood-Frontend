@@ -1,8 +1,13 @@
+import type { Entity, SortValue } from "@/lib/paginatedSortOptions";
+import { paginatedSortOptions } from "@/lib/paginatedSortOptions";
+
 /**
  * Transform and validate received search params.
  */
-export function getSearchParams(searchParams: URLSearchParams) {
-	// Get page
+export function getSearchParams(searchParams: URLSearchParams, entity: Entity) {
+	/**
+	 * Get page param
+	 */
 	const pageParam = searchParams.get("page");
 	const pageParamNum = pageParam ? Number(pageParam) : 1;
 
@@ -10,7 +15,9 @@ export function getSearchParams(searchParams: URLSearchParams) {
 		throw new Error("Invalid request");
 	}
 
-	// Get limit
+	/**
+	 * Get limit param
+	 */
 	const limitParam = searchParams.get("limit");
 	const limitParamNum = limitParam ? Number(limitParam) : 10;
 
@@ -22,5 +29,39 @@ export function getSearchParams(searchParams: URLSearchParams) {
 		throw new Error("Invalid request");
 	}
 
-	return { page: pageParamNum, limit: limitParamNum };
+	/**
+	 * Get sort param
+	 */
+	const sortParam = searchParams.get("orderBy");
+
+	// Validate sort param
+	if (sortParam) {
+		const sortOption = paginatedSortOptions.find(
+			(sortOption) => sortOption.entity === entity,
+		);
+
+		if (!sortOption) {
+			throw new Error("Invalid request");
+		}
+
+		const isValid = sortOption.options.find(
+			(option) => option.value === sortParam,
+		);
+
+		if (!isValid) {
+			throw new Error("Invalid request");
+		}
+	}
+
+	let sort: SortValue;
+
+	// Set default value if no sort param present
+	if (!sortParam) {
+		if (entity === "people") sort = "lastNameAsc";
+		else sort = "nameAsc";
+	} else {
+		sort = sortParam as SortValue;
+	}
+
+	return { page: pageParamNum, limit: limitParamNum, sort };
 }

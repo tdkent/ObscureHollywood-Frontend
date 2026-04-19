@@ -14,10 +14,13 @@ export default function PaginatedList() {
 	const { pathname, search } = useLocation();
 	const [searchParams] = useSearchParams();
 
-	const { limit, page } = getSearchParams(searchParams);
+	const entity = pathname.slice(1) as Entity;
+
+	const { limit, page, sort } = getSearchParams(searchParams, entity);
 
 	const { data, error, isPending } = useQuery({
-		queryKey: [pathname, page, limit],
+		// Use route and search params as query key
+		queryKey: [pathname, page, limit, sort],
 		queryFn: () => httpRequest(`${pathname}${search}`),
 		placeholderData: keepPreviousData,
 	});
@@ -33,7 +36,7 @@ export default function PaginatedList() {
 				hasData={!!paginatedData.data.length}
 				metadata={paginatedData.meta}
 			/>
-			<SortItems entity={pathname.slice(1) as Entity} />
+			<SortItems entity={entity} />
 			<PaginationLinks
 				currentPage={page}
 				lastPage={paginatedData.meta.totalPages}

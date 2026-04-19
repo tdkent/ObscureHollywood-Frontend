@@ -1,4 +1,4 @@
-type SortValue =
+export type SortValue =
 	| "firstNameAsc"
 	| "firstNameDesc"
 	| "lastNameAsc"
@@ -8,7 +8,7 @@ type SortValue =
 	| "yearAsc"
 	| "yearDesc";
 
-export type Entity = "features" | "films" | "people" | "studios" | "tags";
+export type Entity = "features" | "films" | "people" | "studios";
 
 interface SelectOption {
 	id: number;
