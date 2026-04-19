@@ -6,6 +6,7 @@ import FilmsPage from "@/pages/Films.page";
 import HomePage from "@/pages/Home.page";
 import NotFoundPage from "@/pages/NotFound.page";
 import PeoplePage from "@/pages/People.page";
+import StudiosPage from "@/pages/Studios.page";
 
 export default function Routes() {
 	return (
@@ -15,7 +16,7 @@ export default function Routes() {
 				<Route element={<FeaturesPage />} path="/features" />
 				<Route element={<FilmsPage />} path="/films" />
 				<Route element={<PeoplePage />} path="/people" />
-				<Route element={<PeoplePage />} path="/studios" />
+				<Route element={<StudiosPage />} path="/studios" />
 				<Route element={<DisclaimerPage />} path="/disclaimer" />
 				<Route element={<NotFoundPage />} path="*" />
 			</Route>
