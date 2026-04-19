@@ -1,5 +1,6 @@
 import type { Entity } from "@/lib/paginatedSortOptions";
-import type { FilmListItem } from "@/types/film.interface";
+import type { Film } from "@/types/film.interface";
+import type { Person } from "@/types/person.interface";
 
 interface Props {
 	entity: Entity;
@@ -8,14 +9,26 @@ interface Props {
 
 export default function ListItem({ entity, item }: Props) {
 	if (entity === "films") {
-		const listItem = item as FilmListItem;
+		const listItem = item as Film;
 		return (
-			<div>
+			<>
 				<h2>{listItem.name}</h2>
 				<span>{listItem.releaseYear}</span>
-			</div>
+			</>
 		);
 	}
 
-	return <li></li>;
+	if (entity === "people") {
+		const listItem = item as Person;
+		return (
+			<>
+				<h2>
+					{listItem.firstName} {listItem.lastName}
+				</h2>
+				<span></span>
+			</>
+		);
+	}
+
+	return;
 }
