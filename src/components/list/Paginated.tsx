@@ -1,6 +1,7 @@
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { useLocation, useSearchParams } from "react-router";
 import httpRequest from "@/api/httpRequest";
+import ListItem from "@/components/list/ListItem";
 import PaginationLimit from "@/components/list/PaginationLimit";
 import PaginationLinks from "@/components/list/PaginationLinks";
 import PaginationMetadata from "@/components/list/PaginationMetadata";
@@ -11,7 +12,7 @@ import type { Entity } from "@/lib/paginatedSortOptions";
 import { getSearchParams } from "@/lib/utils/getSearchParams";
 import type { PaginatedResponse } from "@/types/paginated-response.interface";
 
-export default function PaginatedList() {
+export default function Paginated() {
 	const { pathname, search } = useLocation();
 	const [searchParams] = useSearchParams();
 
@@ -39,6 +40,15 @@ export default function PaginatedList() {
 			/>
 			<SortItems entity={entity} limit={limit} sort={sort} />
 			<PaginationLimit currLimit={limit} sort={sort} />
+			<ul>
+				{paginatedData.data.map((item) => {
+					return (
+						<li key={item.id}>
+							<ListItem item={item} entity={entity} />
+						</li>
+					);
+				})}
+			</ul>
 			<PaginationLinks
 				currentPage={page}
 				lastPage={paginatedData.meta.totalPages}

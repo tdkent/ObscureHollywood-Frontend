@@ -1,9 +1,9 @@
 import Paginated from "@/components/list/Paginated";
 
-export default function FeaturesPage() {
+export default function StudiosPage() {
 	return (
 		<div>
-			<h2>Features</h2>
+			<h2>Studios</h2>
 			<Paginated />
 		</div>
 	);

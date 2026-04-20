@@ -1,5 +1,5 @@
 export interface PaginatedResponse {
-	data: unknown[];
+	data: { id: number }[];
 	meta: {
 		currentPage: number;
 		firstItemOnPage: number;

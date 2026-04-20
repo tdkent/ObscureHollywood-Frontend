@@ -1,3 +1,10 @@
+import Paginated from "@/components/list/Paginated";
+
 export default function PeoplePage() {
-	return <h2>People</h2>;
+	return (
+		<div>
+			<h2>People</h2>
+			<Paginated />
+		</div>
+	);
 }
