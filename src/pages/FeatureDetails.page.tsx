@@ -1,10 +1,10 @@
-import { useParams } from "react-router";
+import DetailsPage from "@/components/detail/Details";
 
 export default function FeatureDetailsPage() {
-	const params = useParams();
 	return (
 		<div>
-			<h1>{params.slug}</h1>
+			<span>Feature Article</span>
+			<DetailsPage />
 		</div>
 	);
 }
