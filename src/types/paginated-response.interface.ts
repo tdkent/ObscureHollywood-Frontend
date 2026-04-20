@@ -1,5 +1,10 @@
+export interface PartialListItem {
+	id: number;
+	slug: string;
+}
+
 export interface PaginatedResponse {
-	data: { id: number }[];
+	data: PartialListItem[];
 	meta: {
 		currentPage: number;
 		firstItemOnPage: number;
