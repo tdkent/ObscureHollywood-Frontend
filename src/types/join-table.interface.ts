@@ -2,9 +2,16 @@ import type { Film } from "@/types/film.interface";
 import type { Person } from "@/types/person.interface";
 import type { Tag } from "@/types/tag.interface";
 
-export interface FilmTag {
+interface FilmTag {
 	id: number;
+}
+
+export interface FilmTagWithTag extends FilmTag {
 	tag: Tag;
+}
+
+export interface FilmTagWithFilm extends FilmTag {
+	film: Film;
 }
 
 interface PersonFilm {

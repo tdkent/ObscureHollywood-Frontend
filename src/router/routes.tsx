@@ -11,6 +11,7 @@ import PeoplePage from "@/pages/People.page";
 import PersonArticlePage from "@/pages/PersonArticle.page";
 import StudioArticlePage from "@/pages/StudioArticle.page";
 import StudiosPage from "@/pages/Studios.page";
+import TagArticlePage from "@/pages/TagArticle.page";
 
 export default function Routes() {
 	return (
@@ -25,6 +26,7 @@ export default function Routes() {
 				<Route element={<PersonArticlePage />} path="/people/:slug" />
 				<Route element={<StudiosPage />} path="/studios" />
 				<Route element={<StudioArticlePage />} path="/studios/:slug" />
+				<Route element={<TagArticlePage />} path="/tags/:slug" />
 				<Route element={<DisclaimerPage />} path="/disclaimer" />
 				<Route element={<NotFoundPage />} path="*" />
 			</Route>
