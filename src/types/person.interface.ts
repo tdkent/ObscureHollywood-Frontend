@@ -8,3 +8,10 @@ export interface Person {
 	birthPlace: string;
 	deathPlace: string;
 }
+
+export interface PersonFilm {
+	id: number;
+	role: "actor" | "director" | "writer";
+	castPosition: 2;
+	person: Person;
+}
