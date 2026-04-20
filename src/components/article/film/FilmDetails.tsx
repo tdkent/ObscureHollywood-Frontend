@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import type { FilmWithRelations } from "@/types/film.interface";
 
 interface Props {
@@ -12,7 +13,9 @@ export default function FilmDetails({ film }: Props) {
 				<dt>Release Year</dt>
 				<dd>{film.releaseYear}</dd>
 				<dt>Studio</dt>
-				<dd>{film.studio.name}</dd>
+				<dd>
+					<Link to={`/studios/${film.studio.slug}`}>{film.studio.name}</Link>
+				</dd>
 			</dl>
 		</section>
 	);

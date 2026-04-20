@@ -1,10 +1,10 @@
-import Article from "@/components/article/Article";
+import StudioArticle from "@/components/article/studio/StudioArticle";
 
-export default function FeatureArticlePage() {
+export default function StudioArticlePage() {
 	return (
 		<div>
 			<span>Studio</span>
-			<Article />
+			<StudioArticle />
 		</div>
 	);
 }
