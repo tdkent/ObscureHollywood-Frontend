@@ -5,7 +5,7 @@ import DisplayError from "@/components/shared/DisplayError";
 import Loading from "@/components/shared/Loading";
 import type { Entity } from "@/lib/paginatedSortOptions";
 
-export default function DetailsPage() {
+export default function Article() {
 	const { pathname } = useLocation();
 	const { slug } = useParams();
 
