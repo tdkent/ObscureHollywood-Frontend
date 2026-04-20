@@ -1,9 +1,9 @@
-import type { Entity } from "@/lib/paginatedSortOptions";
 import type { Feature } from "@/types/feature.interface";
 import type { Film } from "@/types/film.interface";
 import type { PartialListItem } from "@/types/paginated-response.interface";
 import type { Person } from "@/types/person.interface";
 import type { Studio } from "@/types/studio.interface";
+import type { Entity } from "@/types/ui.interface";
 
 interface Props {
 	entity: Entity;

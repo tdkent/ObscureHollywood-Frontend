@@ -4,8 +4,8 @@ import httpRequest from "@/api/httpRequest";
 import FilmDetails from "@/components/article/film/FilmDetails";
 import DisplayError from "@/components/shared/DisplayError";
 import Loading from "@/components/shared/Loading";
-import type { Entity } from "@/lib/paginatedSortOptions";
 import type { FilmWithRelations } from "@/types/film.interface";
+import type { Entity } from "@/types/ui.interface";
 
 export default function FilmArticle() {
 	const { slug } = useParams();

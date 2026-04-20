@@ -1,3 +1,6 @@
+import type { ArticleWithRelations } from "@/types/article.interface";
+import type { PersonFilmWithFilm } from "@/types/join-table.interface";
+
 export interface Person {
 	id: number;
 	slug: string;
@@ -9,9 +12,7 @@ export interface Person {
 	deathPlace: string;
 }
 
-export interface PersonFilm {
-	id: number;
-	role: "actor" | "director" | "writer";
-	castPosition: 2;
-	person: Person;
+export interface PersonWithRelations extends Person {
+	article: ArticleWithRelations;
+	personFilms: PersonFilmWithFilm[];
 }

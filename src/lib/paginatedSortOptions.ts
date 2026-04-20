@@ -1,25 +1,4 @@
-export type SortValue =
-	| "firstNameAsc"
-	| "firstNameDesc"
-	| "lastNameAsc"
-	| "lastNameDesc"
-	| "nameAsc"
-	| "nameDesc"
-	| "yearAsc"
-	| "yearDesc";
-
-export type Entity = "features" | "films" | "people" | "studios";
-
-interface SelectOption {
-	id: number;
-	label: string;
-	value: SortValue;
-}
-
-interface SortOption {
-	entity: Entity;
-	options: SelectOption[];
-}
+import type { SelectOption, SortOption } from "@/types/ui.interface";
 
 const firstNameAsc: SelectOption = {
 	id: 1,

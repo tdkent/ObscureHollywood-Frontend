@@ -4,8 +4,8 @@ import httpRequest from "@/api/httpRequest";
 import FeatureDetails from "@/components/article/features/FeatureDetails";
 import DisplayError from "@/components/shared/DisplayError";
 import Loading from "@/components/shared/Loading";
-import type { Entity } from "@/lib/paginatedSortOptions";
 import type { FeatureWithRelations } from "@/types/feature.interface";
+import type { Entity } from "@/types/ui.interface";
 
 export default function FeatureArticle() {
 	const { slug } = useParams();

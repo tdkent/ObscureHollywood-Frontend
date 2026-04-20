@@ -8,9 +8,9 @@ import PaginationMetadata from "@/components/list/PaginationMetadata";
 import SortItems from "@/components/list/SortItems";
 import DisplayError from "@/components/shared/DisplayError";
 import Loading from "@/components/shared/Loading";
-import type { Entity } from "@/lib/paginatedSortOptions";
 import { getSearchParams } from "@/lib/utils/getSearchParams";
 import type { PaginatedResponse } from "@/types/paginated-response.interface";
+import type { Entity } from "@/types/ui.interface";
 
 export default function Paginated() {
 	const { pathname, search } = useLocation();
