@@ -149,10 +149,7 @@ export const mockedFeatureArticleData: FeatureWithRelations = {
 	},
 };
 
-export const mockedFilmArticleData: Pick<
-	FilmWithRelations,
-	"id" | "slug" | "name" | "releaseYear" | "article"
-> = {
+export const mockedFilmArticleData: FilmWithRelations = {
 	id: 117,
 	slug: "the-americano-1916",
 	name: "The Americano",
@@ -164,6 +161,13 @@ export const mockedFilmArticleData: Pick<
 		htmlContent: "<article></article>",
 		incomingRelations: [],
 	},
+	studio: {
+		id: 31,
+		slug: "triangle-motion-picture-company",
+		name: "Triangle Motion Picture Company",
+	},
+	personFilms: [],
+	filmTags: [],
 };
 
 export const mockedPersonArticleData: Omit<PersonWithRelations, "personFilms"> =

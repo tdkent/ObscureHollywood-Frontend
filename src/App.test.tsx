@@ -16,11 +16,19 @@ describe("App root layer", () => {
 		).toBeInTheDocument();
 	});
 
-	it("renders Films page at /features", () => {
+	it("renders Features page at /features", () => {
 		renderWithClient(<App />, ["/features"]);
 
 		expect(
 			screen.getByRole("heading", { name: "Features" }),
+		).toBeInTheDocument();
+	});
+
+	it("renders correct Feature Article page at /features/corriganville", async () => {
+		renderWithClient(<App />, ["/features/corriganville"]);
+
+		expect(
+			await screen.findByRole("heading", { name: "Corriganville" }),
 		).toBeInTheDocument();
 	});
 
@@ -30,10 +38,50 @@ describe("App root layer", () => {
 		expect(screen.getByRole("heading", { name: "Films" })).toBeInTheDocument();
 	});
 
+	it("renders correct Film Article page at /films/the-americano-1916", async () => {
+		renderWithClient(<App />, ["/films/the-americano-1916"]);
+
+		expect(
+			await screen.findByRole("heading", { name: "The Americano" }),
+		).toBeInTheDocument();
+	});
+
 	it("renders People page at /people", () => {
 		renderWithClient(<App />, ["/people"]);
 
 		expect(screen.getByRole("heading", { name: "People" })).toBeInTheDocument();
+	});
+
+	it("renders correct Person Article page at /people/alma-rubens", async () => {
+		renderWithClient(<App />, ["/people/alma-rubens"]);
+
+		expect(
+			await screen.findByRole("heading", { name: "Alma Rubens" }),
+		).toBeInTheDocument();
+	});
+
+	it("renders Studios page at /studios", () => {
+		renderWithClient(<App />, ["/studios"]);
+
+		expect(
+			screen.getByRole("heading", { name: "Studios" }),
+		).toBeInTheDocument();
+	});
+
+	it("renders correct Studio Article page at /studios/paramount-pictures", async () => {
+		renderWithClient(<App />, ["/studios/paramount-pictures"]);
+
+		expect(
+			await screen.findByRole("heading", { name: "Paramount Pictures" }),
+		).toBeInTheDocument();
+	});
+
+	it("renders correct Tag Article page at /tags/decade-1930s", async () => {
+		renderWithClient(<App />, ["/tags/decade-1930s"]);
+
+		expect(
+			await screen.findByRole("heading", { name: "1930s" }),
+		).toBeInTheDocument();
 	});
 
 	it("renders 404 page at unknown routes", () => {
