@@ -4,7 +4,7 @@ export interface Tag {
 	id: number;
 	name: string;
 	slug: string;
-	type: string;
+	type: "decade" | "genre" | "production" | "theme";
 }
 
 export interface TagWithRelations extends Tag {

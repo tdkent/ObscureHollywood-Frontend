@@ -22,7 +22,7 @@ export default function SortItems({ entity, limit, sort }: Props) {
 	}
 
 	return (
-		<select onChange={handleSelect}>
+		<select id="sort-items" onChange={handleSelect}>
 			{sortOption
 				? sortOption.options
 						.sort((a, b) => a.id - b.id)
