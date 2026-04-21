@@ -99,7 +99,7 @@ describe("App root layer", () => {
 describe("Root nav element", () => {
 	const user = userEvent.setup();
 
-	it("navigates from Home to Features using desktop nav", async () => {
+	it("navigates from /home to /features using desktop nav", async () => {
 		renderWithClient(<App />, ["/"]);
 
 		await user.click(screen.getByTestId("features-link"));
@@ -108,7 +108,7 @@ describe("Root nav element", () => {
 		).toBeInTheDocument();
 	});
 
-	it("navigates from Features to Films using desktop nav", async () => {
+	it("navigates from /features to /films using desktop nav", async () => {
 		renderWithClient(<App />, ["/features"]);
 
 		await user.click(screen.getByTestId("films-link"));
@@ -120,7 +120,7 @@ describe("Root nav element", () => {
 		).toBeInTheDocument();
 	});
 
-	it("navigates from Films to People using desktop nav", async () => {
+	it("navigates from /films to /people using desktop nav", async () => {
 		renderWithClient(<App />, ["/films"]);
 
 		await user.click(screen.getByTestId("people-link"));
@@ -132,7 +132,7 @@ describe("Root nav element", () => {
 		).toBeInTheDocument();
 	});
 
-	it("navigates from People to Home using desktop nav", async () => {
+	it("navigates from /people to home page using desktop nav", async () => {
 		renderWithClient(<App />, ["/people"]);
 
 		await user.click(screen.getByTestId("home-link"));
@@ -144,7 +144,67 @@ describe("Root nav element", () => {
 		).toBeInTheDocument();
 	});
 
-	it("navigates from Not Found to Home using desktop nav", async () => {
+	it("navigates from /features/corriganville to home page using desktop nav", async () => {
+		renderWithClient(<App />, ["/features/corriganville"]);
+
+		await user.click(screen.getByTestId("home-link"));
+
+		expect(
+			screen.getByRole("heading", {
+				name: "Home Page",
+			}),
+		).toBeInTheDocument();
+	});
+
+	it("navigates from /films/the-americano-1916 to home using desktop nav", async () => {
+		renderWithClient(<App />, ["/films/the-americano-1916"]);
+
+		await user.click(screen.getByTestId("home-link"));
+
+		expect(
+			screen.getByRole("heading", {
+				name: "Home Page",
+			}),
+		).toBeInTheDocument();
+	});
+
+	it("navigates from /people/alma-rubens to home using desktop nav", async () => {
+		renderWithClient(<App />, ["/people/alma-rubens"]);
+
+		await user.click(screen.getByTestId("home-link"));
+
+		expect(
+			screen.getByRole("heading", {
+				name: "Home Page",
+			}),
+		).toBeInTheDocument();
+	});
+
+	it("navigates from /studios/paramount-pictures to home using desktop nav", async () => {
+		renderWithClient(<App />, ["/studios/paramount-pictures"]);
+
+		await user.click(screen.getByTestId("home-link"));
+
+		expect(
+			screen.getByRole("heading", {
+				name: "Home Page",
+			}),
+		).toBeInTheDocument();
+	});
+
+	it("navigates from /tags/decade-1930s to home using desktop nav", async () => {
+		renderWithClient(<App />, ["/tags/decade-1930s"]);
+
+		await user.click(screen.getByTestId("home-link"));
+
+		expect(
+			screen.getByRole("heading", {
+				name: "Home Page",
+			}),
+		).toBeInTheDocument();
+	});
+
+	it("navigates from Not Found to home page using desktop nav", async () => {
 		renderWithClient(<App />, ["/bad-route"]);
 
 		await user.click(screen.getByTestId("home-link"));

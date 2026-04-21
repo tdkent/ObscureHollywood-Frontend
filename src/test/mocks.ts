@@ -26,7 +26,7 @@ const mockedPaginationMetadata: Pick<PaginatedResponse, "links" | "meta"> = {
 	},
 };
 
-export const mockedFeaturesData: Feature[] = [
+const mockedFeaturesData: Feature[] = [
 	{
 		id: 1,
 		name: "American Silent Films",
@@ -44,7 +44,7 @@ export const mockedFeaturesData: Feature[] = [
 	},
 ];
 
-export const mockedFilmsData: Film[] = [
+const mockedFilmsData: Film[] = [
 	{
 		id: 116,
 		slug: "the-300-spartans-1962",
@@ -65,7 +65,7 @@ export const mockedFilmsData: Film[] = [
 	},
 ];
 
-export const mockedPeopleData: Person[] = [
+const mockedPeopleData: Person[] = [
 	{
 		id: 210,
 		slug: "dorothy-arzner",
@@ -98,7 +98,7 @@ export const mockedPeopleData: Person[] = [
 	},
 ];
 
-export const mockedStudioData: Studio[] = [
+const mockedStudioData: Studio[] = [
 	{
 		id: 1,
 		slug: "20th-century-fox",
@@ -136,7 +136,7 @@ const mockedPaginatedStudioResponse: PaginatedResponse = {
 	data: mockedStudioData,
 };
 
-export const mockedFeatureArticleData: FeatureWithRelations = {
+const mockedFeatureArticleData: FeatureWithRelations = {
 	id: 4,
 	name: "Corriganville",
 	slug: "corriganville",
@@ -149,7 +149,7 @@ export const mockedFeatureArticleData: FeatureWithRelations = {
 	},
 };
 
-export const mockedFilmArticleData: FilmWithRelations = {
+const mockedFilmArticleData: FilmWithRelations = {
 	id: 117,
 	slug: "the-americano-1916",
 	name: "The Americano",
@@ -170,26 +170,25 @@ export const mockedFilmArticleData: FilmWithRelations = {
 	filmTags: [],
 };
 
-export const mockedPersonArticleData: Omit<PersonWithRelations, "personFilms"> =
-	{
-		id: 36,
+const mockedPersonArticleData: Omit<PersonWithRelations, "personFilms"> = {
+	id: 36,
+	slug: "alma-rubens",
+	firstName: "Alma",
+	lastName: "Rubens",
+	birthDate: null,
+	deathDate: null,
+	birthPlace: null,
+	deathPlace: null,
+	article: {
+		id: 6,
 		slug: "alma-rubens",
-		firstName: "Alma",
-		lastName: "Rubens",
-		birthDate: null,
-		deathDate: null,
-		birthPlace: null,
-		deathPlace: null,
-		article: {
-			id: 6,
-			slug: "alma-rubens",
-			category: "person",
-			htmlContent: "<article></article>",
-			incomingRelations: [],
-		},
-	};
+		category: "person",
+		htmlContent: "<article></article>",
+		incomingRelations: [],
+	},
+};
 
-export const mockedStudioArticleData: StudioWithRelations = {
+const mockedStudioArticleData: StudioWithRelations = {
 	id: 25,
 	slug: "paramount-pictures",
 	name: "Paramount Pictures",
@@ -203,7 +202,7 @@ export const mockedStudioArticleData: StudioWithRelations = {
 	],
 };
 
-export const mockedTagArticleData: TagWithRelations = {
+const mockedTagArticleData: TagWithRelations = {
 	id: 4,
 	slug: "decade-1930s",
 	name: "1930s",
@@ -221,7 +220,7 @@ export const mockedTagArticleData: TagWithRelations = {
 	],
 };
 
-export const handlers = [
+const handlers = [
 	http.get(`${BACKEND_URL}/features`, () => {
 		return HttpResponse.json(mockedPaginatedFeaturesResponse);
 	}),
