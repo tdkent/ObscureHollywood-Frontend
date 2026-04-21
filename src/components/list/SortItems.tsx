@@ -1,6 +1,6 @@
 import { useSearchParams } from "react-router";
-import type { Entity, SortValue } from "@/lib/paginatedSortOptions";
 import { paginatedSortOptions } from "@/lib/paginatedSortOptions";
+import type { Entity, SortValue } from "@/types/ui.interface";
 
 interface Props {
 	entity: Entity;
