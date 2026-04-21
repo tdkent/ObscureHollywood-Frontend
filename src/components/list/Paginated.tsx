@@ -1,6 +1,7 @@
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { Link, useLocation, useSearchParams } from "react-router";
 import httpRequest from "@/api/httpRequest";
+import FilmTags from "@/components/list/FilmTags";
 import ListItem from "@/components/list/ListItem";
 import PaginationLimit from "@/components/list/PaginationLimit";
 import PaginationLinks from "@/components/list/PaginationLinks";
@@ -34,12 +35,13 @@ export default function Paginated() {
 
 	return (
 		<div>
+			{entity === "films" && <FilmTags />}
+			<PaginationLimit currLimit={limit} sort={sort} />
 			<PaginationMetadata
 				hasData={!!paginatedData.data.length}
 				metadata={paginatedData.meta}
 			/>
 			<SortItems entity={entity} limit={limit} sort={sort} />
-			<PaginationLimit currLimit={limit} sort={sort} />
 			<ul>
 				{paginatedData.data.map((item) => {
 					return (
