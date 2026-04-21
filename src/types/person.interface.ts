@@ -6,10 +6,10 @@ export interface Person {
 	slug: string;
 	firstName: string;
 	lastName: string;
-	birthDate: string;
-	deathDate: string;
-	birthPlace: string;
-	deathPlace: string;
+	birthDate: string | null;
+	deathDate: string | null;
+	birthPlace: string | null;
+	deathPlace: string | null;
 }
 
 export interface PersonWithRelations extends Person {
