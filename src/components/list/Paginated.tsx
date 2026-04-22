@@ -19,11 +19,15 @@ export default function Paginated() {
 
 	const entity = pathname.slice(1) as Entity;
 
-	const { limit, page, sort } = getSearchParams(searchParams, entity);
+	const { limit, page, sort, tags } = getSearchParams({
+		entity,
+		searchParams,
+		search,
+	});
 
 	const { data, error, isPending } = useQuery({
 		// Use route and search params as query key
-		queryKey: [pathname, page, limit, sort],
+		queryKey: [pathname, page, limit, sort, ...tags],
 		queryFn: () => httpRequest(`${pathname}${search}`),
 		placeholderData: keepPreviousData,
 	});
@@ -35,7 +39,9 @@ export default function Paginated() {
 
 	return (
 		<div>
-			{entity === "films" && <FilmTags />}
+			{entity === "films" && (
+				<FilmTags limitParam={limit} sortParam={sort} tagParams={tags} />
+			)}
 			<PaginationLimit currLimit={limit} sort={sort} />
 			<PaginationMetadata
 				hasData={!!paginatedData.data.length}

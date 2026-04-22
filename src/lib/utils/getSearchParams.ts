@@ -1,10 +1,20 @@
-import type { Entity, SortValue } from "@/lib/paginatedSortOptions";
 import { paginatedSortOptions } from "@/lib/paginatedSortOptions";
+import type { Entity, SortValue } from "@/types/ui.interface";
+
+interface GetSearchParamsInputs {
+	searchParams: URLSearchParams;
+	entity: Entity;
+	search: string;
+}
 
 /**
  * Transform and validate received search params.
  */
-export function getSearchParams(searchParams: URLSearchParams, entity: Entity) {
+export function getSearchParams({
+	searchParams,
+	entity,
+	search,
+}: GetSearchParamsInputs) {
 	/**
 	 * Get page param
 	 */
@@ -63,5 +73,16 @@ export function getSearchParams(searchParams: URLSearchParams, entity: Entity) {
 		sort = sortParam as SortValue;
 	}
 
-	return { page: pageParamNum, limit: limitParamNum, sort };
+	/**
+	 * Get tags
+	 */
+
+	const tags = search
+		.slice(1)
+		.split("&")
+		.filter((param) => param.slice(0, 3) === "tag")
+		// Remove `tag=`
+		.map((param) => param.slice(4));
+
+	return { page: pageParamNum, limit: limitParamNum, sort, tags };
 }
