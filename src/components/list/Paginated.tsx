@@ -51,7 +51,12 @@ export default function Paginated() {
 				hasData={!!paginatedData.data.length}
 				metadata={paginatedData.meta}
 			/>
-			<SortItems entity={entity} limit={limit} sort={sort} />
+			<SortItems
+				entity={entity}
+				limit={limit}
+				sort={sort}
+				tagsParamString={tagsParamString}
+			/>
 			<ul>
 				{paginatedData.data.map((item) => {
 					return (

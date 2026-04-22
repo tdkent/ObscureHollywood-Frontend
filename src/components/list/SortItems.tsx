@@ -6,9 +6,15 @@ interface Props {
 	entity: Entity;
 	limit: number;
 	sort: SortValue;
+	tagsParamString: string;
 }
 
-export default function SortItems({ entity, limit, sort }: Props) {
+export default function SortItems({
+	entity,
+	limit,
+	sort,
+	tagsParamString,
+}: Props) {
 	const [_, setSearchParams] = useSearchParams();
 
 	const sortOption = paginatedSortOptions.find(
@@ -18,7 +24,8 @@ export default function SortItems({ entity, limit, sort }: Props) {
 	function handleSelect(
 		e: React.ChangeEvent<HTMLSelectElement, HTMLSelectElement>,
 	) {
-		setSearchParams(`?page=1&limit=${limit}&orderBy=${e.currentTarget.value}`);
+		const newSearchString = `?page=1&limit=${limit}&orderBy=${e.currentTarget.value}${tagsParamString}`;
+		setSearchParams(newSearchString);
 	}
 
 	return (
