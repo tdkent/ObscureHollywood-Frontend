@@ -19,7 +19,7 @@ export default function Paginated() {
 
 	const entity = pathname.slice(1) as Entity;
 
-	const { limit, page, sort, tags } = getSearchParams({
+	const { limit, page, sort, tags, tagsParamString } = getSearchParams({
 		entity,
 		searchParams,
 		search,
@@ -42,7 +42,11 @@ export default function Paginated() {
 			{entity === "films" && (
 				<FilmTags limitParam={limit} sortParam={sort} tagParams={tags} />
 			)}
-			<PaginationLimit currLimit={limit} sort={sort} />
+			<PaginationLimit
+				currLimit={limit}
+				sortParam={sort}
+				tagsParamString={tagsParamString}
+			/>
 			<PaginationMetadata
 				hasData={!!paginatedData.data.length}
 				metadata={paginatedData.meta}

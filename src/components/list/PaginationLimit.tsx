@@ -1,12 +1,17 @@
 import { useSearchParams } from "react-router";
-import type { SortValue } from "@/lib/paginatedSortOptions";
+import type { SortValue } from "@/types/ui.interface";
 
 interface Props {
 	currLimit: number;
-	sort: SortValue;
+	sortParam: SortValue;
+	tagsParamString: string;
 }
 
-export default function PaginationLimit({ currLimit, sort }: Props) {
+export default function PaginationLimit({
+	currLimit,
+	sortParam,
+	tagsParamString,
+}: Props) {
 	const [_, setSearchParams] = useSearchParams();
 
 	const limitOptions = [10, 25];
@@ -15,13 +20,14 @@ export default function PaginationLimit({ currLimit, sort }: Props) {
 		<div>
 			Items to show:
 			{limitOptions.map((option) => {
+				const sortAndTagsParams = `&orderBy=${sortParam}${tagsParamString}`;
 				return (
 					<button
 						key={option}
 						type="button"
 						disabled={option === currLimit}
 						onClick={() =>
-							setSearchParams(`?page=1&limit=${option}&orderBy=${sort}`)
+							setSearchParams(`?page=1&limit=${option}${sortAndTagsParams}`)
 						}
 					>
 						{option}

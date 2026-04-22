@@ -77,12 +77,21 @@ export function getSearchParams({
 	 * Get tags
 	 */
 
-	const tags = search
+	const tagsArr = search
 		.slice(1)
 		.split("&")
-		.filter((param) => param.slice(0, 3) === "tag")
-		// Remove `tag=`
-		.map((param) => param.slice(4));
+		.filter((param) => param.slice(0, 3) === "tag");
 
-	return { page: pageParamNum, limit: limitParamNum, sort, tags };
+	// Remove `tag=`
+	const tags = tagsArr.map((param) => param.slice(4));
+
+	const tagsParamString = `&${tagsArr.join("&")}`;
+
+	return {
+		page: pageParamNum,
+		limit: limitParamNum,
+		sort,
+		tags,
+		tagsParamString,
+	};
 }
