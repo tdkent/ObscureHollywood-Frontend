@@ -36,12 +36,32 @@ export default function FilmTagsForm({
 	) {
 		const newTagSlug = e.currentTarget.value;
 
-		// check if new slug is already in the search string
-		// if so, remove it from the search string instead of adding it
+		let newTagParamsStr = "";
 
-		const getCurrTags = tagParams.length ? tagParams.join("&") : "";
+		/**
+		 * Construct new string of tag params
+		 */
+		if (!tagParams.length) {
+			newTagParamsStr += `&tag=${newTagSlug}`;
+		} else {
+			// Check if selected tag param is already in search string
+			const tagExists = tagParams.find((tag) => tag === newTagSlug);
+
+			// Add all tags
+			if (!tagExists) {
+				for (const param of tagParams) newTagParamsStr += `&tag=${param}`;
+				newTagParamsStr += `&tag=${newTagSlug}`;
+				// Else, add all tags except selected tag
+			} else {
+				for (const param of tagParams) {
+					if (param !== newTagSlug) newTagParamsStr += `&tag=${param}`;
+				}
+			}
+		}
+
 		const currSearchParams = `?page=1&limit=${limitParam}&orderBy=${sortParam}`;
-		setSearchParams(`${currSearchParams}&${getCurrTags}&tag=${newTagSlug}`);
+
+		setSearchParams(`${currSearchParams}${newTagParamsStr}`);
 	}
 
 	return (
