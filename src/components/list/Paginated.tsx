@@ -50,6 +50,7 @@ export default function Paginated() {
 			<PaginationMetadata
 				hasData={!!paginatedData.data.length}
 				metadata={paginatedData.meta}
+				tags={tags}
 			/>
 			<SortItems
 				entity={entity}
