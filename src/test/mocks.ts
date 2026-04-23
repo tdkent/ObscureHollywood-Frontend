@@ -6,7 +6,7 @@ import type { Film, FilmWithRelations } from "@/types/film.interface";
 import type { PaginatedResponse } from "@/types/paginated-response.interface";
 import type { Person, PersonWithRelations } from "@/types/person.interface";
 import type { Studio, StudioWithRelations } from "@/types/studio.interface";
-import type { TagWithRelations } from "@/types/tag.interface";
+import type { Tag, TagWithRelations } from "@/types/tag.interface";
 
 const mockedPaginationMetadata: Pick<PaginatedResponse, "links" | "meta"> = {
 	links: {
@@ -113,6 +113,27 @@ const mockedStudioData: Studio[] = [
 		id: 3,
 		slug: "associated-producers",
 		name: "Associated Producers",
+	},
+];
+
+const mockedTagsData: Tag[] = [
+	{
+		id: 1,
+		slug: "decade-1900s",
+		name: "1900s",
+		type: "decade",
+	},
+	{
+		id: 2,
+		slug: "decade-1910s",
+		name: "1910s",
+		type: "decade",
+	},
+	{
+		id: 3,
+		slug: "decade-1920s",
+		name: "1920s",
+		type: "decade",
 	},
 ];
 
@@ -244,6 +265,9 @@ const handlers = [
 	}),
 	http.get(`${BACKEND_URL}/studios/paramount-pictures`, () => {
 		return HttpResponse.json(mockedStudioArticleData);
+	}),
+	http.get(`${BACKEND_URL}/tags`, () => {
+		return HttpResponse.json(mockedTagsData);
 	}),
 	http.get(`${BACKEND_URL}/tags/decade-1930s`, () => {
 		return HttpResponse.json(mockedTagArticleData);

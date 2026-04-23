@@ -43,7 +43,7 @@ export default function PaginationLinks({
 				Next
 			</button>
 			<button type="button" onClick={() => handleClick(links.last)}>
-				{lastPage}
+				{lastPage || 1}
 			</button>
 		</div>
 	);

@@ -1,6 +1,7 @@
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { Link, useLocation, useSearchParams } from "react-router";
 import httpRequest from "@/api/httpRequest";
+import FilmTags from "@/components/list/FilmTags";
 import ListItem from "@/components/list/ListItem";
 import PaginationLimit from "@/components/list/PaginationLimit";
 import PaginationLinks from "@/components/list/PaginationLinks";
@@ -18,11 +19,15 @@ export default function Paginated() {
 
 	const entity = pathname.slice(1) as Entity;
 
-	const { limit, page, sort } = getSearchParams(searchParams, entity);
+	const { limit, page, sort, tags, tagsParamString } = getSearchParams({
+		entity,
+		searchParams,
+		search,
+	});
 
 	const { data, error, isPending } = useQuery({
 		// Use route and search params as query key
-		queryKey: [pathname, page, limit, sort],
+		queryKey: [pathname, page, limit, sort, ...tags],
 		queryFn: () => httpRequest(`${pathname}${search}`),
 		placeholderData: keepPreviousData,
 	});
@@ -34,12 +39,30 @@ export default function Paginated() {
 
 	return (
 		<div>
+			{entity === "films" && (
+				<FilmTags
+					filmsPending={isPending}
+					limitParam={limit}
+					sortParam={sort}
+					tagParams={tags}
+				/>
+			)}
+			<PaginationLimit
+				currLimit={limit}
+				sortParam={sort}
+				tagsParamString={tagsParamString}
+			/>
 			<PaginationMetadata
 				hasData={!!paginatedData.data.length}
 				metadata={paginatedData.meta}
+				tags={tags}
 			/>
-			<SortItems entity={entity} limit={limit} sort={sort} />
-			<PaginationLimit currLimit={limit} sort={sort} />
+			<SortItems
+				entity={entity}
+				limit={limit}
+				sort={sort}
+				tagsParamString={tagsParamString}
+			/>
 			<ul>
 				{paginatedData.data.map((item) => {
 					return (
