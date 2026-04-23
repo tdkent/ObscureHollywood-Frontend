@@ -75,12 +75,14 @@ export default function FilmTagsForm({
 							{tags
 								.filter((tag) => tag.type === type)
 								.map((tag) => {
+									const isChecked = tagParams.includes(tag.slug);
 									return (
 										<div key={tag.id}>
 											<input
 												id={tag.slug}
 												onChange={handleCheckFilter}
 												type="checkbox"
+												checked={isChecked}
 												value={tag.slug}
 											/>
 											<label htmlFor={tag.slug}>{tag.name}</label>
