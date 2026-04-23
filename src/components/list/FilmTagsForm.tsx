@@ -7,12 +7,14 @@ import type { Tag } from "@/types/tag.interface";
 import type { SortValue } from "@/types/ui.interface";
 
 interface Props {
+	filmsPending: boolean;
 	limitParam: number;
 	sortParam: SortValue;
 	tagParams: string[];
 }
 
 export default function FilmTagsForm({
+	filmsPending,
 	limitParam,
 	sortParam,
 	tagParams,
@@ -79,10 +81,11 @@ export default function FilmTagsForm({
 									return (
 										<div key={tag.id}>
 											<input
+												checked={isChecked}
+												disabled={filmsPending}
 												id={tag.slug}
 												onChange={handleCheckFilter}
 												type="checkbox"
-												checked={isChecked}
 												value={tag.slug}
 											/>
 											<label htmlFor={tag.slug}>{tag.name}</label>

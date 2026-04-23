@@ -40,7 +40,12 @@ export default function Paginated() {
 	return (
 		<div>
 			{entity === "films" && (
-				<FilmTags limitParam={limit} sortParam={sort} tagParams={tags} />
+				<FilmTags
+					filmsPending={isPending}
+					limitParam={limit}
+					sortParam={sort}
+					tagParams={tags}
+				/>
 			)}
 			<PaginationLimit
 				currLimit={limit}
