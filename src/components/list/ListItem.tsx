@@ -1,3 +1,4 @@
+import type { Article } from "@/types/article.interface";
 import type { Feature } from "@/types/feature.interface";
 import type { Film } from "@/types/film.interface";
 import type { PartialListItem } from "@/types/paginated-response.interface";
@@ -11,6 +12,11 @@ interface Props {
 }
 
 export default function ListItem({ entity, item }: Props) {
+	if (entity === "articles") {
+		const listItem = item as Article;
+		return <h2>{listItem.name}</h2>;
+	}
+
 	if (entity === "films") {
 		const listItem = item as Film;
 		return (
@@ -23,11 +29,7 @@ export default function ListItem({ entity, item }: Props) {
 
 	if (entity === "people") {
 		const listItem = item as Person;
-		return (
-			<h2>
-				{listItem.firstName} {listItem.lastName}
-			</h2>
-		);
+		return <h2>{listItem.name}</h2>;
 	}
 
 	if (entity === "features") {
