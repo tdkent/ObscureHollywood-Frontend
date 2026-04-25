@@ -5,6 +5,7 @@ import type { Entity, SortValue } from "@/types/ui.interface";
 interface Props {
 	entity: Entity;
 	limit: number;
+	searchParam: string | null;
 	sort: SortValue;
 	tagsParamString: string;
 }
@@ -12,6 +13,7 @@ interface Props {
 export default function SortItems({
 	entity,
 	limit,
+	searchParam,
 	sort,
 	tagsParamString,
 }: Props) {
@@ -21,10 +23,14 @@ export default function SortItems({
 		(sortOption) => sortOption.entity === entity,
 	);
 
+	let params = "";
+	if (searchParam) params += `&searchString=${searchParam}`;
+	if (tagsParamString) params += tagsParamString;
+
 	function handleSelect(
 		e: React.ChangeEvent<HTMLSelectElement, HTMLSelectElement>,
 	) {
-		const newSearchString = `?page=1&limit=${limit}&orderBy=${e.currentTarget.value}${tagsParamString}`;
+		const newSearchString = `?page=1&limit=${limit}&orderBy=${e.currentTarget.value}${params}`;
 		setSearchParams(newSearchString);
 	}
 

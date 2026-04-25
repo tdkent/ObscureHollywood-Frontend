@@ -106,7 +106,7 @@ export function getSearchParams({
 	return {
 		page: pageParamNum,
 		limit: limitParamNum,
-		searchString: searchParam,
+		searchParam,
 		sort,
 		tags,
 		tagsParamString,

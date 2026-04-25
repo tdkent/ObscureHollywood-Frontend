@@ -19,7 +19,7 @@ export default function Paginated() {
 
 	const entity = pathname.slice(1) as Entity;
 
-	const { limit, page, searchString, sort, tags, tagsParamString } =
+	const { limit, page, searchParam, sort, tags, tagsParamString } =
 		getSearchParams({
 			entity,
 			searchParams,
@@ -28,7 +28,7 @@ export default function Paginated() {
 
 	const { data, error, isPending } = useQuery({
 		// Use route and search params as query key
-		queryKey: [pathname, page, limit, sort, searchString, ...tags],
+		queryKey: [pathname, page, limit, sort, searchParam, ...tags],
 		queryFn: () => httpRequest(`${pathname}${search}`),
 		placeholderData: keepPreviousData,
 	});
@@ -50,6 +50,7 @@ export default function Paginated() {
 			)}
 			<PaginationLimit
 				currLimit={limit}
+				searchParam={searchParam}
 				sortParam={sort}
 				tagsParamString={tagsParamString}
 			/>
@@ -61,6 +62,7 @@ export default function Paginated() {
 			<SortItems
 				entity={entity}
 				limit={limit}
+				searchParam={searchParam}
 				sort={sort}
 				tagsParamString={tagsParamString}
 			/>
