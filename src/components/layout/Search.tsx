@@ -1,7 +1,17 @@
+import { useNavigate } from "react-router";
+
 export default function Search() {
+	const navigate = useNavigate();
+
 	function handleSearch(formData: FormData) {
 		const searchString = formData.get("search");
-		console.log(searchString);
+
+		//! Validate
+
+		navigate({
+			pathname: "/articles",
+			search: `?searchString=${searchString}`,
+		});
 	}
 
 	return (
