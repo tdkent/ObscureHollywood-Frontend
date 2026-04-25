@@ -19,15 +19,16 @@ export default function Paginated() {
 
 	const entity = pathname.slice(1) as Entity;
 
-	const { limit, page, sort, tags, tagsParamString } = getSearchParams({
-		entity,
-		searchParams,
-		search,
-	});
+	const { limit, page, searchString, sort, tags, tagsParamString } =
+		getSearchParams({
+			entity,
+			searchParams,
+			search,
+		});
 
 	const { data, error, isPending } = useQuery({
 		// Use route and search params as query key
-		queryKey: [pathname, page, limit, sort, ...tags],
+		queryKey: [pathname, page, limit, sort, searchString, ...tags],
 		queryFn: () => httpRequest(`${pathname}${search}`),
 		placeholderData: keepPreviousData,
 	});
