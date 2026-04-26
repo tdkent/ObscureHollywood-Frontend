@@ -3,12 +3,14 @@ import type { SortValue } from "@/types/ui.interface";
 
 interface Props {
 	currLimit: number;
+	searchParam: string | null;
 	sortParam: SortValue;
 	tagsParamString: string;
 }
 
 export default function PaginationLimit({
 	currLimit,
+	searchParam,
 	sortParam,
 	tagsParamString,
 }: Props) {
@@ -16,19 +18,20 @@ export default function PaginationLimit({
 
 	const limitOptions = [10, 25];
 
+	let params = `&orderBy=${sortParam}`;
+	if (searchParam) params += `&searchString=${searchParam}`;
+	if (tagsParamString) params += tagsParamString;
+
 	return (
 		<div>
 			Items to show:
 			{limitOptions.map((option) => {
-				const sortAndTagsParams = `&orderBy=${sortParam}${tagsParamString}`;
 				return (
 					<button
 						key={option}
 						type="button"
 						disabled={option === currLimit}
-						onClick={() =>
-							setSearchParams(`?page=1&limit=${option}${sortAndTagsParams}`)
-						}
+						onClick={() => setSearchParams(`?page=1&limit=${option}${params}`)}
 					>
 						{option}
 					</button>

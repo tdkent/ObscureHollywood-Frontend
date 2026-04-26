@@ -6,6 +6,7 @@ export interface Person {
 	slug: string;
 	firstName: string;
 	lastName: string;
+	name: string;
 	birthDate: string | null;
 	deathDate: string | null;
 	birthPlace: string | null;

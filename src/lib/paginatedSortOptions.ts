@@ -50,6 +50,10 @@ const yearDesc: SelectOption = {
 
 export const paginatedSortOptions: SortOption[] = [
 	{
+		entity: "articles",
+		options: [nameAsc, nameDesc],
+	},
+	{
 		entity: "features",
 		options: [nameAsc, nameDesc],
 	},

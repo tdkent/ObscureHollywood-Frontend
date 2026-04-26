@@ -11,7 +11,13 @@ export interface NavLink {
  * Data Entities
  */
 
-export type Entity = "features" | "films" | "people" | "studios" | "tags";
+export type Entity =
+	| "articles"
+	| "features"
+	| "films"
+	| "people"
+	| "studios"
+	| "tags";
 
 /**
  * Sort

@@ -74,6 +74,22 @@ export function getSearchParams({
 	}
 
 	/**
+	 * Get search string
+	 */
+
+	const searchParam = searchParams.get("searchString");
+
+	if (searchParam) {
+		if (
+			entity !== "articles" ||
+			searchParam.length < 3 ||
+			searchParam.length > 64
+		) {
+			throw new Error("Invalid request");
+		}
+	}
+
+	/**
 	 * Get tags
 	 */
 
@@ -90,6 +106,7 @@ export function getSearchParams({
 	return {
 		page: pageParamNum,
 		limit: limitParamNum,
+		searchParam,
 		sort,
 		tags,
 		tagsParamString,

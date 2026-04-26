@@ -1,5 +1,6 @@
-interface Article {
+export interface Article {
 	id: number;
+	name: string;
 	slug: string;
 	category: "feature" | "film" | "person";
 	htmlContent: string;
