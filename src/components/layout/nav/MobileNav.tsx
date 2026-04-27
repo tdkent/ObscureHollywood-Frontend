@@ -1,4 +1,4 @@
-import { Menu, Minus } from "lucide-react";
+import { Menu } from "lucide-react";
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import Shelf from "@/components/layout/nav/Shelf";
@@ -22,8 +22,17 @@ export default function MobileNav() {
 	// Body scroll lock
 	useEffect(() => {
 		if (container) {
-			if (showShelf) container.classList.add("fixed");
-			else container.classList.remove("fixed");
+			if (showShelf) {
+				container.classList.add("fixed");
+				container.classList.add("top-0");
+				container.classList.add("left-0");
+				container.classList.add("right-0");
+			} else {
+				container.classList.remove("fixed");
+				container.classList.remove("top-0");
+				container.classList.remove("left-0");
+				container.classList.remove("right-0");
+			}
 		}
 	}, [container, showShelf]);
 
@@ -40,16 +49,7 @@ export default function MobileNav() {
 				onClick={handleClick}
 				type="button"
 			>
-				{/* <Minus
-					className={`absolute stroke-2 ${instantClose ? "" : "transition-all duration-400"} ${showShelf ? "opacity-100 rotate-45" : "opacity-0 rotate-0"}`}
-				/>
-				<Minus
-					className={`absolute stroke-2 ${instantClose ? "" : "transition-all duration-400"} ${showShelf ? "opacity-100 -rotate-45" : "opacity-0 rotate-0"}`}
-				/> */}
-				{/* <Menu
-					className={`absolute stroke-2 ${instantClose ? "" : "transition-all duration-400"} ${showShelf ? "opacity-0" : "opacity-100"}`}
-				/> */}
-				<Menu />
+				<Menu className="scale-125 stroke-2" />
 			</button>
 			{mounted && container
 				? createPortal(
