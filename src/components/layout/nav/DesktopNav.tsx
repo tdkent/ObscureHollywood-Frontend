@@ -11,7 +11,7 @@ export default function DesktopNav() {
 						<li key={link.label}>
 							<NavLink
 								to={link.href}
-								data-testid={`${link.testId}-link`}
+								data-testid={`${link.testId}`}
 								className="text-base xl:text-lg"
 							>
 								{link.label}
