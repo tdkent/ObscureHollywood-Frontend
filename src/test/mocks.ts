@@ -71,6 +71,7 @@ const mockedPeopleData: Person[] = [
 		slug: "dorothy-arzner",
 		firstName: "Dorothy",
 		lastName: "Arzner",
+		name: "Dorothy Arzner",
 		birthDate: null,
 		deathDate: null,
 		birthPlace: null,
@@ -81,6 +82,7 @@ const mockedPeopleData: Person[] = [
 		slug: "lionel-barrymore",
 		firstName: "Lionel",
 		lastName: "Barrymore",
+		name: "Lionel Barrymore",
 		birthDate: null,
 		deathDate: null,
 		birthPlace: null,
@@ -91,6 +93,7 @@ const mockedPeopleData: Person[] = [
 		slug: "madge-bellamy",
 		firstName: "Madge",
 		lastName: "Bellamy",
+		name: "Madge Bellamy",
 		birthDate: null,
 		deathDate: null,
 		birthPlace: null,
@@ -122,18 +125,21 @@ const mockedTagsData: Tag[] = [
 		slug: "decade-1900s",
 		name: "1900s",
 		type: "decade",
+		description: "1900-1909",
 	},
 	{
 		id: 2,
 		slug: "decade-1910s",
 		name: "1910s",
 		type: "decade",
+		description: "1910-1919",
 	},
 	{
 		id: 3,
 		slug: "decade-1920s",
 		name: "1920s",
 		type: "decade",
+		description: "1920-1929",
 	},
 ];
 
@@ -164,6 +170,7 @@ const mockedFeatureArticleData: FeatureWithRelations = {
 	article: {
 		id: 29,
 		slug: "corriganville",
+		name: "Corriganville",
 		category: "feature",
 		htmlContent: "<article></article>",
 		incomingRelations: [],
@@ -178,6 +185,7 @@ const mockedFilmArticleData: FilmWithRelations = {
 	article: {
 		id: 170,
 		slug: "the-americano-1916",
+		name: "The Americano",
 		category: "film",
 		htmlContent: "<article></article>",
 		incomingRelations: [],
@@ -196,6 +204,7 @@ const mockedPersonArticleData: Omit<PersonWithRelations, "personFilms"> = {
 	slug: "alma-rubens",
 	firstName: "Alma",
 	lastName: "Rubens",
+	name: "Alma Rubens",
 	birthDate: null,
 	deathDate: null,
 	birthPlace: null,
@@ -203,6 +212,7 @@ const mockedPersonArticleData: Omit<PersonWithRelations, "personFilms"> = {
 	article: {
 		id: 6,
 		slug: "alma-rubens",
+		name: "Alma Rubens",
 		category: "person",
 		htmlContent: "<article></article>",
 		incomingRelations: [],
@@ -228,6 +238,7 @@ const mockedTagArticleData: TagWithRelations = {
 	slug: "decade-1930s",
 	name: "1930s",
 	type: "decade",
+	description: "1930-1939",
 	filmTags: [
 		{
 			id: 9,
@@ -242,6 +253,9 @@ const mockedTagArticleData: TagWithRelations = {
 };
 
 const handlers = [
+	http.get(`${BACKEND_URL}/articles`, () => {
+		return HttpResponse.json(mockedPaginatedFeaturesResponse);
+	}),
 	http.get(`${BACKEND_URL}/features`, () => {
 		return HttpResponse.json(mockedPaginatedFeaturesResponse);
 	}),
