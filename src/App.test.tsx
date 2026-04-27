@@ -99,6 +99,151 @@ describe("App root layer", () => {
 describe("Root nav element", () => {
 	const user = userEvent.setup();
 
+	/**
+	 * Mobile navigation tests
+	 */
+
+	it("navigates from /home to /articles using mobile nav", async () => {
+		renderWithClient(<App />, ["/"]);
+
+		await user.click(screen.getByTestId("mobile-articles-link"));
+
+		expect(
+			await screen.findByRole("heading", { name: "All Articles" }),
+		).toBeInTheDocument();
+	});
+
+	it("navigates from /home to /features using mobile nav", async () => {
+		renderWithClient(<App />, ["/"]);
+
+		await user.click(screen.getByTestId("mobile-features-link"));
+
+		expect(
+			await screen.findByRole("heading", { name: "Features" }),
+		).toBeInTheDocument();
+	});
+
+	it("navigates from /features to /films using mobile nav", async () => {
+		renderWithClient(<App />, ["/features"]);
+
+		await user.click(screen.getByTestId("mobile-films-link"));
+
+		expect(
+			screen.getByRole("heading", {
+				name: "Films",
+			}),
+		).toBeInTheDocument();
+	});
+
+	it("navigates from /films to /people using mobile nav", async () => {
+		renderWithClient(<App />, ["/films"]);
+
+		await user.click(screen.getByTestId("mobile-people-link"));
+
+		expect(
+			screen.getByRole("heading", {
+				name: "People",
+			}),
+		).toBeInTheDocument();
+	});
+
+	it("navigates from /people to home page using mobile nav", async () => {
+		renderWithClient(<App />, ["/people"]);
+
+		await user.click(screen.getByTestId("mobile-home-link"));
+
+		expect(
+			screen.getByRole("heading", {
+				name: "Home Page",
+			}),
+		).toBeInTheDocument();
+	});
+
+	it("navigates from /features/corriganville to home page using mobile nav", async () => {
+		renderWithClient(<App />, ["/features/corriganville"]);
+
+		await user.click(screen.getByTestId("mobile-home-link"));
+
+		expect(
+			screen.getByRole("heading", {
+				name: "Home Page",
+			}),
+		).toBeInTheDocument();
+	});
+
+	it("navigates from /films/the-americano-1916 to home using mobile nav", async () => {
+		renderWithClient(<App />, ["/films/the-americano-1916"]);
+
+		await user.click(screen.getByTestId("mobile-home-link"));
+
+		expect(
+			screen.getByRole("heading", {
+				name: "Home Page",
+			}),
+		).toBeInTheDocument();
+	});
+
+	it("navigates from /people/alma-rubens to home using mobile nav", async () => {
+		renderWithClient(<App />, ["/people/alma-rubens"]);
+
+		await user.click(screen.getByTestId("mobile-home-link"));
+
+		expect(
+			screen.getByRole("heading", {
+				name: "Home Page",
+			}),
+		).toBeInTheDocument();
+	});
+
+	it("navigates from /studios/paramount-pictures to home using mobile nav", async () => {
+		renderWithClient(<App />, ["/studios/paramount-pictures"]);
+
+		await user.click(screen.getByTestId("mobile-home-link"));
+
+		expect(
+			screen.getByRole("heading", {
+				name: "Home Page",
+			}),
+		).toBeInTheDocument();
+	});
+
+	it("navigates from /tags/decade-1930s to home using mobile nav", async () => {
+		renderWithClient(<App />, ["/tags/decade-1930s"]);
+
+		await user.click(screen.getByTestId("mobile-home-link"));
+
+		expect(
+			screen.getByRole("heading", {
+				name: "Home Page",
+			}),
+		).toBeInTheDocument();
+	});
+
+	it("navigates from Not Found to home page using mobile nav", async () => {
+		renderWithClient(<App />, ["/bad-route"]);
+
+		await user.click(screen.getByTestId("mobile-home-link"));
+
+		expect(
+			screen.getByRole("heading", {
+				name: "Home Page",
+			}),
+		).toBeInTheDocument();
+	});
+
+	/**
+	 * Desktop navigation tests
+	 */
+	it("navigates from /home to /articles using desktop nav", async () => {
+		renderWithClient(<App />, ["/"]);
+
+		await user.click(screen.getByTestId("articles-link"));
+
+		expect(
+			await screen.findByRole("heading", { name: "All Articles" }),
+		).toBeInTheDocument();
+	});
+
 	it("navigates from /home to /features using desktop nav", async () => {
 		renderWithClient(<App />, ["/"]);
 
