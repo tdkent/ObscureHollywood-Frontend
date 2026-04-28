@@ -39,4 +39,8 @@
 	a.active {
 		@apply text-gold-dark;
 	}
+
+	.text-link {
+		@apply border-b-2 border-dotted py-0.5 border-gold-dark hover:text-gold-dark;
+	}
 }

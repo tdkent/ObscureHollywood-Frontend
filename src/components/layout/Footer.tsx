@@ -15,7 +15,9 @@ export default function Footer() {
 			</ul>
 			<span className="">
 				© 2026. All rights reserved.{" "}
-				<Link to="/disclaimer">Privacy & Terms</Link>
+				<Link className="text-link" to="/disclaimer">
+					Privacy & Terms
+				</Link>
 			</span>
 		</footer>
 	);
