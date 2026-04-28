@@ -1,12 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Limelight&display=swap");
 @import "tailwindcss";
 
 @theme {
+	/* Colors */
 	--color-text: #08060d;
 	--color-text-heading: #6b6375;
 	--color-bg: #fff;
 	--color-border: #e5e4e7;
+
+	/* Fonts */
+	--font-limelight: "Limelight", sans-serif;
 }
 
+/* Dark mode */
 @media (prefers-color-scheme: dark) {
 	:root {
 		--color-text: #f3f4f6;
