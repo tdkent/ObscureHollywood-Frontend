@@ -34,4 +34,8 @@
 	* {
 		@apply border-border;
 	}
+
+	a.active {
+		@apply text-gold-dark;
+	}
 }
