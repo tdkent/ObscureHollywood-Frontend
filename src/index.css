@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Limelight&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz@0,6..96;1,6..96&family=Limelight&display=swap");
 @import "tailwindcss";
 
 @theme {
@@ -14,6 +14,7 @@
 
 	/* Fonts */
 	--font-limelight: "Limelight", sans-serif;
+	--font-bodini-moda: "Bodoni Moda", serif;
 }
 
 /* rgb(0 0 0 / 0.05) */
