@@ -1,4 +1,4 @@
-import { Menu } from "lucide-react";
+import { Equal } from "lucide-react";
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import Shelf from "@/components/layout/nav/Shelf";
@@ -49,7 +49,7 @@ export default function MobileNav() {
 				onClick={handleClick}
 				type="button"
 			>
-				<Menu className="scale-125 stroke-2" />
+				<Equal className="scale-175 stroke-1" />
 			</button>
 			{mounted && container
 				? createPortal(

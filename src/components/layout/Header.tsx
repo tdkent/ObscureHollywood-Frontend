@@ -1,3 +1,4 @@
+import Logo from "@/components/layout/Logo";
 import Navigation from "@/components/layout/Navigation";
 import Search from "@/components/layout/Search";
 
@@ -6,7 +7,7 @@ export default function Header() {
 		<header className="border-b">
 			<div className="flex flex-col py-4 px-6 gap-4">
 				<div className="flex justify-between items-center">
-					<span>Obscure Hollywood</span>
+					<Logo />
 					<Navigation />
 				</div>
 				<Search />

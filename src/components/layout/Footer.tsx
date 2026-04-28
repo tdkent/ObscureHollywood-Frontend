@@ -3,8 +3,8 @@ import { navLinks } from "@/lib/navLinks";
 
 export default function Footer() {
 	return (
-		<footer>
-			<ul>
+		<footer className="border-t bg-bg-accent text-center pt-6 pb-12 flex flex-col gap-10 text-sm">
+			<ul className="flex flex-col gap-4">
 				{navLinks.map((link) => {
 					return (
 						<li key={link.label}>
@@ -13,9 +13,11 @@ export default function Footer() {
 					);
 				})}
 			</ul>
-			<span>
+			<span className="">
 				© 2026. All rights reserved.{" "}
-				<Link to="/disclaimer">Privacy & Terms</Link>
+				<Link className="text-link" to="/disclaimer">
+					Privacy & Terms
+				</Link>
 			</span>
 		</footer>
 	);
