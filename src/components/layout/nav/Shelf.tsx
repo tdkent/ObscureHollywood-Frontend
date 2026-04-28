@@ -1,4 +1,4 @@
-import { ChevronRightIcon, X } from "lucide-react";
+import { ChevronRightIcon, Minus } from "lucide-react";
 import type { Dispatch, SetStateAction } from "react";
 import { NavLink } from "react-router";
 import Logo from "@/components/layout/Logo";
@@ -32,11 +32,16 @@ export default function Shelf({
 				<Logo />
 				<button
 					aria-label={`${showShelf ? "Hide" : "Show"} Nav Menu`}
-					className="cursor-pointer"
+					className="cursor-pointer relative place-items-center grid right-3"
 					onClick={handleClick}
 					type="button"
 				>
-					<X className="scale-150 stroke-1" />
+					<Minus
+						className={`absolute size-10 stroke-1 ${instantClose ? "" : "transition-all duration-400"} ${showShelf ? "opacity-100 rotate-45" : "opacity-0 rotate-0"}`}
+					/>
+					<Minus
+						className={`absolute size-10 stroke-1 ${instantClose ? "" : "transition-all duration-400"} ${showShelf ? "opacity-100 -rotate-45" : "opacity-0 rotate-0"}`}
+					/>
 				</button>
 			</div>
 			<div className="w-full h-full flex-1 px-8 pt-8 flex flex-col sm:px-12">
