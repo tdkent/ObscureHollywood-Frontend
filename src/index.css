@@ -6,11 +6,14 @@
 	--color-text: #08060d;
 	--color-text-heading: #6b6375;
 	--color-bg: #fff;
+	--color-bg-accent: oklch(92.8% 0.006 264.531 / 0.4);
 	--color-border: #e5e4e7;
 
 	/* Fonts */
 	--font-limelight: "Limelight", sans-serif;
 }
+
+/* rgb(0 0 0 / 0.05) */
 
 /* Dark mode */
 @media (prefers-color-scheme: dark) {
@@ -18,6 +21,7 @@
 		--color-text: #f3f4f6;
 		--color-text-heading: #9ca3af;
 		--color-bg: #16171d;
+		--color-bg-accent: oklch(37.3% 0.034 259.733 / 0.2);
 		--color-border: #2e303a;
 	}
 }

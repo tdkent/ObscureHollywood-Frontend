@@ -1,3 +1,4 @@
+import { Search as SearchIcon } from "lucide-react";
 import { useNavigate } from "react-router";
 
 export default function Search() {
@@ -16,9 +17,23 @@ export default function Search() {
 
 	return (
 		<search>
-			<form action={handleSearch} className="border" id="search">
-				<input type="search" name="search" />
-				<button type="submit">Search</button>
+			<form
+				action={handleSearch}
+				className="border border-border rounded-lg flex h-10 overflow-hidden"
+				id="search"
+			>
+				<input
+					className="grow h-full outline-none px-3"
+					type="search"
+					name="search"
+				/>
+				<button
+					className="h-full flex items-center border-l bg-bg-accent border-border px-3"
+					type="submit"
+				>
+					<span className="sr-only">Search</span>
+					<SearchIcon className="stroke-1" />
+				</button>
 			</form>
 		</search>
 	);
