@@ -28,3 +28,9 @@
 		--color-border: oklch(0.3113 0.0181 276.38);
 	}
 }
+
+@layer base {
+	* {
+		@apply border-border;
+	}
+}

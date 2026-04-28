@@ -19,7 +19,7 @@ export default function Search() {
 		<search>
 			<form
 				action={handleSearch}
-				className="border border-border rounded-lg flex h-12 overflow-hidden"
+				className="border rounded-lg flex h-12 overflow-hidden"
 				id="search"
 			>
 				<input
@@ -28,7 +28,7 @@ export default function Search() {
 					name="search"
 				/>
 				<button
-					className="h-full flex items-center border-l bg-bg-accent border-border px-3"
+					className="h-full flex items-center border-l bg-bg-accent px-3"
 					type="submit"
 				>
 					<span className="sr-only">Search</span>
