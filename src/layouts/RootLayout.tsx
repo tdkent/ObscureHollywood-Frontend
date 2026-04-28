@@ -4,7 +4,7 @@ import Header from "@/components/layout/Header";
 
 export default function RootLayout() {
 	return (
-		<div className="h-screen flex flex-col" id="container">
+		<div className="h-screen flex flex-col bg-bg text-text" id="container">
 			<Header />
 			<main className="flex-1 lg:flex lg:flex-col lg:items-center">
 				<Outlet />
