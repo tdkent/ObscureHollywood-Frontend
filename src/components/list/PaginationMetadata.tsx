@@ -8,7 +8,7 @@ interface Props {
 
 export default function PaginationMetadata({ hasData, metadata, tags }: Props) {
 	return (
-		<div className="text-sm">
+		<div className="flex flex-col gap-2 text-sm">
 			{hasData ? (
 				<div className="flex gap-4">
 					<span>
@@ -24,7 +24,14 @@ export default function PaginationMetadata({ hasData, metadata, tags }: Props) {
 			)}
 
 			{tags.length ? (
-				<p>Tags: {tags.map((tag) => `#${tag}`).join("")}</p>
+				<div className="flex gap-2">
+					Tags:
+					<ul className="flex flex-col gap-1">
+						{tags.map((tag) => {
+							return <li key={tag}>#{tag}</li>;
+						})}
+					</ul>
+				</div>
 			) : null}
 		</div>
 	);
