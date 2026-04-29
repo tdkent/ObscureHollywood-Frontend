@@ -33,15 +33,17 @@ export default function ListItem({ entity, item }: Props) {
 		}
 	}
 
+	const showListDetails = entity !== "studios";
+
 	return (
-		<li className="min-h-20 py-2">
+		<li className={`${showListDetails ? "min-h-20 py-2" : "py-5"}`}>
 			<Link to={item.slug}>
 				<div className="flex justify-between gap-1">
 					<div className="flex flex-col gap-1 grow">
 						<h2 className="text-base font-semibold">{item.name}</h2>
-						<span className="text-sm">{subtitle}</span>
+						{showListDetails && <span className="text-sm">{subtitle}</span>}
 					</div>
-					<Thumbnail />
+					{showListDetails && <Thumbnail />}
 				</div>
 			</Link>
 		</li>
