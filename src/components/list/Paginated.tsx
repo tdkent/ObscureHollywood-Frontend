@@ -48,24 +48,28 @@ export default function Paginated() {
 					tagParams={tags}
 				/>
 			)}
-			<PaginationLimit
-				currLimit={limit}
-				searchParam={searchParam}
-				sortParam={sort}
-				tagsParamString={tagsParamString}
-			/>
-			<PaginationMetadata
-				hasData={!!paginatedData.data.length}
-				metadata={paginatedData.meta}
-				tags={tags}
-			/>
-			<SortItems
-				entity={entity}
-				limit={limit}
-				searchParam={searchParam}
-				sort={sort}
-				tagsParamString={tagsParamString}
-			/>
+			<div className="flex flex-col gap-4 border-y py-4 font-light">
+				<PaginationMetadata
+					hasData={!!paginatedData.data.length}
+					metadata={paginatedData.meta}
+					tags={tags}
+				/>
+				<div className="flex gap-6">
+					<SortItems
+						entity={entity}
+						limit={limit}
+						searchParam={searchParam}
+						sort={sort}
+						tagsParamString={tagsParamString}
+					/>
+					<PaginationLimit
+						currLimit={limit}
+						searchParam={searchParam}
+						sortParam={sort}
+						tagsParamString={tagsParamString}
+					/>
+				</div>
+			</div>
 			<ul>
 				{paginatedData.data.map((item) => {
 					return (

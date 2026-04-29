@@ -8,17 +8,17 @@ interface Props {
 
 export default function PaginationMetadata({ hasData, metadata, tags }: Props) {
 	return (
-		<div>
+		<div className="text-sm">
 			{hasData ? (
-				<>
-					<p>
-						Page {metadata.currentPage} of {metadata.totalPages}
-					</p>
-					<p>
-						Showing {metadata.firstItemOnPage} – {metadata.lastItemOnPage} of{" "}
-						{metadata.totalItems} results
-					</p>
-				</>
+				<div className="flex gap-4">
+					<span>
+						Page: {metadata.currentPage} of {metadata.totalPages}
+					</span>
+					<span>
+						Results: {metadata.firstItemOnPage} – {metadata.lastItemOnPage} of{" "}
+						{metadata.totalItems}
+					</span>
+				</div>
 			) : (
 				<p>No results to show</p>
 			)}

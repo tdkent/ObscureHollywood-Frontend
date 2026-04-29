@@ -35,7 +35,11 @@ export default function SortItems({
 	}
 
 	return (
-		<select id="sort-items" onChange={handleSelect}>
+		<select
+			className="text-sm border grow rounded-sm px-2 bg-bg-accent"
+			id="sort-items"
+			onChange={handleSelect}
+		>
 			{sortOption
 				? sortOption.options
 						.sort((a, b) => a.id - b.id)

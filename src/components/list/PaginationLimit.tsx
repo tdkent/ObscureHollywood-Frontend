@@ -23,7 +23,7 @@ export default function PaginationLimit({
 	if (tagsParamString) params += tagsParamString;
 
 	return (
-		<div className="flex place-items-center text-sm gap-4">
+		<div className="flex place-items-center text-sm gap-2">
 			Show:
 			<div className="flex gap-3">
 				{limitOptions.map((option) => {
