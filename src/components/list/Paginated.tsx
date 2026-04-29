@@ -72,7 +72,7 @@ export default function Paginated() {
 			</div>
 			<ul className="my-8 divide-y flex flex-col text-sm">
 				{paginatedData.data.map((item) => {
-					return <ListItem key={item.id} item={item} />;
+					return <ListItem key={item.id} entity={entity} item={item} />;
 				})}
 			</ul>
 			<PaginationLinks

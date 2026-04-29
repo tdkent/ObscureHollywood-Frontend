@@ -1,19 +1,45 @@
 import { Link } from "react-router";
 import Thumbnail from "@/components/list/Thumbnail";
+import type { Feature } from "@/types/feature.interface";
+import type { Film } from "@/types/film.interface";
 import type { PartialListItem } from "@/types/paginated-response.interface";
+import type { Person } from "@/types/person.interface";
+import type { Entity } from "@/types/ui.interface";
 
 interface Props {
+	entity: Entity;
 	item: PartialListItem;
 }
 
-export default function ListItem({ item }: Props) {
+export default function ListItem({ entity, item }: Props) {
+	let subtitle = "";
+
+	switch (entity) {
+		case "features": {
+			const feature = item as Feature;
+			subtitle = feature.subtitle;
+			break;
+		}
+
+		case "films": {
+			const film = item as Film;
+			subtitle = `${film.releaseYear}`;
+			break;
+		}
+
+		case "people": {
+			const { birthDate, deathDate } = item as Person;
+			subtitle = deathDate ? `${birthDate} - ${deathDate}` : `${birthDate}`;
+		}
+	}
+
 	return (
 		<li className="min-h-20 py-2">
 			<Link to={item.slug}>
-				<div className="flex justify-between">
-					<div className="flex flex-col w-4/5">
-						<h2 className="text-base font-bold">{item.name}</h2>
-						<h3>Subtext goes here</h3>
+				<div className="flex justify-between gap-1">
+					<div className="flex flex-col gap-1 grow">
+						<h2 className="text-base font-semibold">{item.name}</h2>
+						<span className="text-sm">{subtitle}</span>
 					</div>
 					<Thumbnail />
 				</div>
