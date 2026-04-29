@@ -67,29 +67,32 @@ export default function FilmTagsForm({
 	}
 
 	return (
-		<form>
+		<form method="dialog">
 			{types.map((type) => {
 				const legend = `${type.slice(0, 1).toUpperCase()}${type.slice(1)}`;
 				return (
-					<fieldset key={type}>
-						<legend>{legend}</legend>
-						<div>
+					<fieldset key={type} className="fieldset">
+						<legend className="fieldset-legend text-lg">{legend}</legend>
+						<div className="flex flex-col gap-2.5">
 							{tags
 								.filter((tag) => tag.type === type)
 								.map((tag) => {
 									const isChecked = tagParams.includes(tag.slug);
 									return (
-										<div key={tag.id}>
+										<label
+											className="flex gap-2.5 items-center text-base"
+											key={tag.id}
+										>
 											<input
 												checked={isChecked}
+												className="checkbox"
 												disabled={filmsPending}
-												id={tag.slug}
 												onChange={handleCheckFilter}
 												type="checkbox"
 												value={tag.slug}
 											/>
-											<label htmlFor={tag.slug}>{tag.name}</label>
-										</div>
+											{tag.name}
+										</label>
 									);
 								})}
 						</div>

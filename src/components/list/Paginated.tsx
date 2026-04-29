@@ -41,14 +41,6 @@ export default function Paginated() {
 
 	return (
 		<div className="my-6">
-			{entity === "films" && (
-				<FilmTags
-					filmsPending={isPending}
-					limitParam={limit}
-					sortParam={sort}
-					tagParams={tags}
-				/>
-			)}
 			<div className="flex flex-col gap-4 border-y py-4 font-light">
 				<PaginationMetadata
 					hasData={!!hasResults}
@@ -72,6 +64,14 @@ export default function Paginated() {
 						/>
 					</div>
 				) : null}
+				{entity === "films" && (
+					<FilmTags
+						filmsPending={isPending}
+						limitParam={limit}
+						sortParam={sort}
+						tagParams={tags}
+					/>
+				)}
 			</div>
 			{hasResults ? (
 				<>
