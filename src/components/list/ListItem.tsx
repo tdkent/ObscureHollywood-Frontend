@@ -1,46 +1,23 @@
-import type { Article } from "@/types/article.interface";
-import type { Feature } from "@/types/feature.interface";
-import type { Film } from "@/types/film.interface";
+import { Link } from "react-router";
+import Thumbnail from "@/components/list/Thumbnail";
 import type { PartialListItem } from "@/types/paginated-response.interface";
-import type { Person } from "@/types/person.interface";
-import type { Studio } from "@/types/studio.interface";
-import type { Entity } from "@/types/ui.interface";
 
 interface Props {
-	entity: Entity;
 	item: PartialListItem;
 }
 
-export default function ListItem({ entity, item }: Props) {
-	if (entity === "articles") {
-		const listItem = item as Article;
-		return <h2>{listItem.name}</h2>;
-	}
-
-	if (entity === "films") {
-		const listItem = item as Film;
-		return (
-			<>
-				<h2>{listItem.name}</h2>
-				<span>{listItem.releaseYear}</span>
-			</>
-		);
-	}
-
-	if (entity === "people") {
-		const listItem = item as Person;
-		return <h2>{listItem.name}</h2>;
-	}
-
-	if (entity === "features") {
-		const listItem = item as Feature;
-		return <h2>{listItem.name}</h2>;
-	}
-
-	if (entity === "studios") {
-		const listItem = item as Studio;
-		return <h2>{listItem.name}</h2>;
-	}
-
-	throw new Error("Unknown entity type");
+export default function ListItem({ item }: Props) {
+	return (
+		<li className="min-h-20 py-2">
+			<Link to={item.slug}>
+				<div className="flex justify-between">
+					<div className="flex flex-col w-4/5">
+						<h2 className="text-base font-bold">{item.name}</h2>
+						<h3>Subtext goes here</h3>
+					</div>
+					<Thumbnail />
+				</div>
+			</Link>
+		</li>
+	);
 }

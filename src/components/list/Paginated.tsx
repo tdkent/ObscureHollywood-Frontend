@@ -1,5 +1,5 @@
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
-import { Link, useLocation, useSearchParams } from "react-router";
+import { useLocation, useSearchParams } from "react-router";
 import httpRequest from "@/api/httpRequest";
 import FilmTags from "@/components/list/FilmTags";
 import ListItem from "@/components/list/ListItem";
@@ -70,15 +70,9 @@ export default function Paginated() {
 					/>
 				</div>
 			</div>
-			<ul>
+			<ul className="my-8 divide-y flex flex-col text-sm">
 				{paginatedData.data.map((item) => {
-					return (
-						<li key={item.id}>
-							<Link to={item.slug}>
-								<ListItem item={item} entity={entity} />
-							</Link>
-						</li>
-					);
+					return <ListItem key={item.id} item={item} />;
 				})}
 			</ul>
 			<PaginationLinks
