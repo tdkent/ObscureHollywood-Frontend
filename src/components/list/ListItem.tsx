@@ -38,7 +38,7 @@ export default function ListItem({ entity, item }: Props) {
 			const birthYear = DateTime.fromISO(birthDate).year;
 
 			if (!deathDate) {
-				subtitle = `${birthYear}`;
+				subtitle = `Born ${birthYear}`;
 				break;
 			}
 
