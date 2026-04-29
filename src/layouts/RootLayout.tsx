@@ -10,7 +10,9 @@ export default function RootLayout() {
 		>
 			<Header />
 			<main className="flex-1 lg:flex lg:flex-col lg:items-center">
-				<Outlet />
+				<div className="mx-6 my-8">
+					<Outlet />
+				</div>
 			</main>
 			<Footer />
 		</div>

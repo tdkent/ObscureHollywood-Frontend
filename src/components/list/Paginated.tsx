@@ -39,7 +39,7 @@ export default function Paginated() {
 	const paginatedData = data as PaginatedResponse;
 
 	return (
-		<div>
+		<div className="my-6">
 			{entity === "films" && (
 				<FilmTags
 					filmsPending={isPending}

@@ -3,7 +3,7 @@ import Paginated from "@/components/list/Paginated";
 export default function FeaturesPage() {
 	return (
 		<div>
-			<h2>Features</h2>
+			<h1>Feature Articles</h1>
 			<Paginated />
 		</div>
 	);

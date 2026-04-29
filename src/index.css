@@ -5,6 +5,7 @@
 	/* Colors */
 	--color-text: oklch(0.1297 0.0171 298.93);
 	--color-text-heading: oklch(0.5135 0.0296 305.45);
+	--color-text-disabled: oklch(87.2% 0.01 258.338);
 	--color-bg: oklch(1 0 0);
 	--color-bg-accent: oklch(92.8% 0.006 264.531 / 0.4);
 	--color-border: oklch(0.9205 0.0042 301.42);
@@ -25,6 +26,7 @@
 	:root {
 		--color-text: oklch(0.967 0.0029 264.54);
 		--color-text-heading: oklch(0.7137 0.0192 261.32);
+		--color-text-disabled: oklch(37.3% 0.034 259.733);
 		--color-bg: oklch(0.2063 0.012 277.83);
 		--color-bg-accent: oklch(37.3% 0.034 259.733 / 0.2);
 		--color-border: oklch(0.3113 0.0181 276.38);
@@ -34,6 +36,11 @@
 @layer base {
 	* {
 		@apply border-border;
+	}
+
+	h1,
+	h2 {
+		@apply text-text-heading;
 	}
 
 	a.active {
