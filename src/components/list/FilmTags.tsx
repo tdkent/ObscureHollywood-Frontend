@@ -39,7 +39,7 @@ export default function FilmTags({
 				<Plus className="size-4" />
 			</button>
 			<dialog id={modalName} className="modal">
-				<div className="modal-box">
+				<div className="modal-box rounded-none">
 					<h3 className="font-semibold text-xl">Filter films by tag</h3>
 					<div className="modal-action justify-start">
 						<FilmTagsForm

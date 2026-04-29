@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { X } from "lucide-react";
 import { useSearchParams } from "react-router";
 import httpRequest from "@/api/httpRequest";
 import DisplayError from "@/components/shared/DisplayError";
@@ -68,6 +69,12 @@ export default function FilmTagsForm({
 
 	return (
 		<form method="dialog">
+			<button
+				className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+				type="submit"
+			>
+				<X className="size-6 stroke-1" />
+			</button>
 			{types.map((type) => {
 				const legend = `${type.slice(0, 1).toUpperCase()}${type.slice(1)}`;
 				return (
@@ -85,7 +92,7 @@ export default function FilmTagsForm({
 										>
 											<input
 												checked={isChecked}
-												className="checkbox"
+												className="checkbox bg-bg-accent checked:bg-gold"
 												disabled={filmsPending}
 												onChange={handleCheckFilter}
 												type="checkbox"
@@ -99,6 +106,14 @@ export default function FilmTagsForm({
 					</fieldset>
 				);
 			})}
+			<div className="flex gap-4 my-8">
+				<button className="btn btn-soft" type="reset">
+					Reset
+				</button>
+				<button className="btn btn-neutral" type="submit">
+					Apply
+				</button>
+			</div>
 		</form>
 	);
 }
