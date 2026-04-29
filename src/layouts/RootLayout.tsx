@@ -5,7 +5,7 @@ import Header from "@/components/layout/Header";
 export default function RootLayout() {
 	return (
 		<div
-			className="h-screen flex flex-col bg-bg text-text font-open-sans"
+			className="min-h-screen flex flex-col bg-bg text-text font-open-sans"
 			id="container"
 		>
 			<Header />
