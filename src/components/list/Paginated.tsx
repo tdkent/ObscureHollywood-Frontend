@@ -37,6 +37,7 @@ export default function Paginated() {
 	if (error) return <DisplayError error={error} />;
 
 	const paginatedData = data as PaginatedResponse;
+	const hasResults = paginatedData.data.length;
 
 	return (
 		<div className="my-6">
@@ -50,36 +51,42 @@ export default function Paginated() {
 			)}
 			<div className="flex flex-col gap-4 border-y py-4 font-light">
 				<PaginationMetadata
-					hasData={!!paginatedData.data.length}
+					hasData={!!hasResults}
 					metadata={paginatedData.meta}
 					tags={tags}
 				/>
-				<div className="flex gap-6">
-					<SortItems
-						entity={entity}
-						limit={limit}
-						searchParam={searchParam}
-						sort={sort}
-						tagsParamString={tagsParamString}
-					/>
-					<PaginationLimit
-						currLimit={limit}
-						searchParam={searchParam}
-						sortParam={sort}
-						tagsParamString={tagsParamString}
-					/>
-				</div>
+				{hasResults ? (
+					<div className="flex gap-6">
+						<SortItems
+							entity={entity}
+							limit={limit}
+							searchParam={searchParam}
+							sort={sort}
+							tagsParamString={tagsParamString}
+						/>
+						<PaginationLimit
+							currLimit={limit}
+							searchParam={searchParam}
+							sortParam={sort}
+							tagsParamString={tagsParamString}
+						/>
+					</div>
+				) : null}
 			</div>
-			<ul className="my-8 divide-y flex flex-col text-sm">
-				{paginatedData.data.map((item) => {
-					return <ListItem key={item.id} entity={entity} item={item} />;
-				})}
-			</ul>
-			<PaginationLinks
-				currentPage={page}
-				lastPage={paginatedData.meta.totalPages}
-				links={paginatedData.links}
-			/>
+			{hasResults ? (
+				<>
+					<ul className="my-8 divide-y flex flex-col text-sm">
+						{paginatedData.data.map((item) => {
+							return <ListItem key={item.id} entity={entity} item={item} />;
+						})}
+					</ul>
+					<PaginationLinks
+						currentPage={page}
+						lastPage={paginatedData.meta.totalPages}
+						links={paginatedData.links}
+					/>
+				</>
+			) : null}
 		</div>
 	);
 }
