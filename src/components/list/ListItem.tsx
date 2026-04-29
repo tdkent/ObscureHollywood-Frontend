@@ -1,3 +1,4 @@
+import { DateTime } from "luxon";
 import { Link } from "react-router";
 import Thumbnail from "@/components/list/Thumbnail";
 import type { Feature } from "@/types/feature.interface";
@@ -29,7 +30,21 @@ export default function ListItem({ entity, item }: Props) {
 
 		case "people": {
 			const { birthDate, deathDate } = item as Person;
-			subtitle = deathDate ? `${birthDate} - ${deathDate}` : `${birthDate}`;
+			if (!birthDate) {
+				subtitle = "";
+				break;
+			}
+
+			const birthYear = DateTime.fromISO(birthDate).year;
+
+			if (!deathDate) {
+				subtitle = `${birthYear}`;
+				break;
+			}
+
+			const deathYear = DateTime.fromISO(deathDate).year;
+			subtitle = `${birthYear} - ${deathYear}`;
+			break;
 		}
 	}
 
