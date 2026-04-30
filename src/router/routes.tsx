@@ -1,6 +1,5 @@
 import { Route, Routes as RouteGroup } from "react-router";
 import RootLayout from "@/layouts/RootLayout";
-import ArticlesPage from "@/pages/Articles.page";
 import DisclaimerPage from "@/pages/Disclaimer.page";
 import FeatureArticlePage from "@/pages/FeatureArticle.page";
 import FeaturesPage from "@/pages/Features.page";
@@ -20,7 +19,6 @@ export default function Routes() {
 		<RouteGroup>
 			<Route element={<RootLayout />}>
 				<Route index element={<HomePage />} />
-				<Route element={<ArticlesPage />} path="/articles" />
 				<Route element={<FeaturesPage />} path="/features" />
 				<Route element={<FeatureArticlePage />} path="/features/:slug" />
 				<Route element={<FilmsPage />} path="/films" />
