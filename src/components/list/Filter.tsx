@@ -36,7 +36,13 @@ export default function Filter({
 	return (
 		<div className="drawer">
 			{/* Hidden checkbox control shelf */}
-			<input type="checkbox" checked={isOpen} className="drawer-toggle" />
+			<input
+				type="checkbox"
+				checked={isOpen}
+				className="drawer-toggle"
+				// Suppress 'checked input without onChange' warning
+				onChange={() => {}}
+			/>
 
 			{/* Button opens shelf */}
 			<div className="drawer-content">

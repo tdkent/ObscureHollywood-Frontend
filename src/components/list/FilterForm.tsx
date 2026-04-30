@@ -121,7 +121,11 @@ export default function FilterForm({
 			{/* Form controls */}
 			<div className="flex gap-4 my-8">
 				{/* Reset all inputs */}
-				<button className="btn btn-soft" type="reset">
+				<button
+					className="btn btn-soft"
+					onClick={() => setFilters([])}
+					type="button"
+				>
 					Reset
 				</button>
 
