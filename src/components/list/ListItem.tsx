@@ -5,6 +5,7 @@ import type { Feature } from "@/types/feature.interface";
 import type { Film } from "@/types/film.interface";
 import type { PartialListItem } from "@/types/paginated-response.interface";
 import type { Person } from "@/types/person.interface";
+import type { Search } from "@/types/search.interface";
 import type { Entity } from "@/types/ui.interface";
 
 interface Props {
@@ -46,6 +47,14 @@ export default function ListItem({ entity, item }: Props) {
 			subtitle = `${birthYear} - ${deathYear}`;
 			break;
 		}
+
+		case "search": {
+			const { category } = item as Search;
+			subtitle = `${category.slice(0, 1).toUpperCase()}${category.slice(1)}`;
+			break;
+		}
+
+		default:
 	}
 
 	const showListDetails = entity !== "studios";
