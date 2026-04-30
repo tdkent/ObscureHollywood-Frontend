@@ -46,7 +46,11 @@ export default function Filter({
 
 			{/* Button opens shelf */}
 			<div className="drawer-content">
-				<button type="button" onClick={() => setIsOpen(true)}>
+				<button
+					className="btn w-full"
+					type="button"
+					onClick={() => setIsOpen(true)}
+				>
 					Filter
 					<Plus className="size-4" />
 				</button>
@@ -54,8 +58,13 @@ export default function Filter({
 
 			{/* Shelf container */}
 			<div className="drawer-side">
-				{/* Bg overlay -- make interactive and accessible */}
-				<div className="drawer-overlay" />
+				{/* Bg overlay */}
+				<button
+					aria-label="Close filters without applying"
+					className="drawer-overlay"
+					onClick={() => setIsOpen(false)}
+					type="button"
+				/>
 
 				{/* Shelf */}
 				<div className="menu bg-base-200 min-h-full w-80 p-4">
