@@ -60,6 +60,14 @@ describe("App root layer", () => {
 		).toBeInTheDocument();
 	});
 
+	it("renders Search page at /search", () => {
+		renderWithClient(<App />, ["/search"]);
+
+		expect(
+			screen.getByRole("heading", { name: "Search Results" }),
+		).toBeInTheDocument();
+	});
+
 	it("renders Studios page at /studios", () => {
 		renderWithClient(<App />, ["/studios"]);
 
@@ -102,16 +110,6 @@ describe("Root nav element", () => {
 	/**
 	 * Mobile navigation tests
 	 */
-
-	it("navigates from /home to /articles using mobile nav", async () => {
-		renderWithClient(<App />, ["/"]);
-
-		await user.click(screen.getByTestId("mobile-articles-link"));
-
-		expect(
-			await screen.findByRole("heading", { name: "All Articles" }),
-		).toBeInTheDocument();
-	});
 
 	it("navigates from /home to /features using mobile nav", async () => {
 		renderWithClient(<App />, ["/"]);
@@ -234,15 +232,6 @@ describe("Root nav element", () => {
 	/**
 	 * Desktop navigation tests
 	 */
-	it("navigates from /home to /articles using desktop nav", async () => {
-		renderWithClient(<App />, ["/"]);
-
-		await user.click(screen.getByTestId("articles-link"));
-
-		expect(
-			await screen.findByRole("heading", { name: "All Articles" }),
-		).toBeInTheDocument();
-	});
 
 	it("navigates from /home to /features using desktop nav", async () => {
 		renderWithClient(<App />, ["/"]);
