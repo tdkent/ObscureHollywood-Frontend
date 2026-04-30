@@ -44,7 +44,9 @@ export default function Paginated() {
 			<div className="flex flex-col gap-4 border-y py-4 font-light">
 				<PaginationMetadata
 					hasData={!!hasResults}
+					limitParam={limit}
 					metadata={paginatedData.meta}
+					sortParam={sort}
 					tags={tags}
 				/>
 				{hasResults ? (
