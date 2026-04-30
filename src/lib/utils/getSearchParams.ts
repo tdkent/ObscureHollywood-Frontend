@@ -99,7 +99,7 @@ export function getSearchParams({
 		.filter((param) => param.slice(0, 3) === "tag");
 
 	// Remove `tag=`
-	const tags = tagsArr.map((param) => param.slice(4));
+	const tags = tagsArr.map((param) => param.slice(4)).sort();
 
 	const tagsParamString = `&${tagsArr.join("&")}`;
 
