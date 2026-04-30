@@ -29,10 +29,14 @@ export default function Paginated() {
 
 	const [filters, setFilters] = useState<string[]>(tags);
 
+	// Convert /search to /articles
+	const requestPath = pathname === "/search" ? "/articles" : pathname;
+	const requestUrl = `${requestPath}${search}`;
+
 	const { data, error, isPending } = useQuery({
 		// Use route and search params as query key
 		queryKey: [pathname, page, limit, sort, searchParam, ...tags],
-		queryFn: () => httpRequest(`${pathname}${search}`),
+		queryFn: () => httpRequest(requestUrl),
 		placeholderData: keepPreviousData,
 	});
 

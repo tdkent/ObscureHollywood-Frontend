@@ -22,7 +22,7 @@ export function getSearchParams({
 	const pageParamNum = pageParam ? Number(pageParam) : 1;
 
 	if (pageParam === "0" || !pageParamNum || pageParamNum < 1) {
-		throw new Error("Invalid request");
+		throw new Error("Invalid page URL param");
 	}
 
 	/**
@@ -36,7 +36,7 @@ export function getSearchParams({
 		!limitParamNum ||
 		(limitParamNum !== 10 && limitParamNum !== 25)
 	) {
-		throw new Error("Invalid request");
+		throw new Error("Invalid limit URL param");
 	}
 
 	/**
@@ -51,7 +51,7 @@ export function getSearchParams({
 		);
 
 		if (!sortOption) {
-			throw new Error("Invalid request");
+			throw new Error("Invalid orderBy URL param");
 		}
 
 		const isValid = sortOption.options.find(
@@ -59,7 +59,7 @@ export function getSearchParams({
 		);
 
 		if (!isValid) {
-			throw new Error("Invalid request");
+			throw new Error("Invalid orderBy URL param");
 		}
 	}
 
@@ -81,11 +81,11 @@ export function getSearchParams({
 
 	if (searchParam) {
 		if (
-			entity !== "articles" ||
+			entity !== "search" ||
 			searchParam.length < 3 ||
 			searchParam.length > 64
 		) {
-			throw new Error("Invalid request");
+			throw new Error("Invalid searchString URL param");
 		}
 	}
 
