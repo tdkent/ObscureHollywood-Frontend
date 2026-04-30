@@ -1,5 +1,5 @@
 import { Plus } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import FilmTagsForm from "@/components/list/FilmTagsForm";
 import type { SortValue } from "@/types/ui.interface";
 
@@ -16,41 +16,38 @@ export default function FilmTags({
 	sortParam,
 	tagParams,
 }: Props) {
-	const [modal, setModal] = useState<HTMLDialogElement | null>(null);
-
-	const modalName = "filterModal";
-
-	useEffect(() => {
-		const element = document.getElementById(modalName) as HTMLDialogElement;
-		if (element) {
-			setModal(element);
-		}
-	}, []);
+	const [isOpen, setIsOpen] = useState(false);
 
 	return (
-		<div>
-			<button
-				className="btn"
-				disabled={!modal}
-				onClick={() => modal?.showModal()}
-				type="button"
-			>
-				Filter
-				<Plus className="size-4" />
-			</button>
-			<dialog id={modalName} className="modal">
-				<div className="modal-box rounded-none">
+		<div className="drawer">
+			{/* Hidden checkbox control shelf */}
+			<input type="checkbox" checked={isOpen} className="drawer-toggle" />
+
+			{/* Button opens shelf */}
+			<div className="drawer-content">
+				<button type="button" onClick={() => setIsOpen(true)}>
+					Filter
+					<Plus className="size-4" />
+				</button>
+			</div>
+
+			{/* Shelf container */}
+			<div className="drawer-side">
+				{/* Bg overlay -- make interactive and accessible */}
+				<div className="drawer-overlay" />
+
+				{/* Shelf */}
+				<div className="menu bg-base-200 min-h-full w-80 p-4">
 					<h3 className="font-semibold text-xl">Filter films by tag</h3>
-					<div className="modal-action justify-start">
-						<FilmTagsForm
-							filmsPending={filmsPending}
-							limitParam={limitParam}
-							sortParam={sortParam}
-							tagParams={tagParams}
-						/>
-					</div>
+					<FilmTagsForm
+						filmsPending={filmsPending}
+						limitParam={limitParam}
+						setIsOpen={setIsOpen}
+						sortParam={sortParam}
+						tagParams={tagParams}
+					/>
 				</div>
-			</dialog>
+			</div>
 		</div>
 	);
 }
