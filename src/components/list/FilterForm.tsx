@@ -1,12 +1,14 @@
 import type { Dispatch, SetStateAction } from "react";
-import React, { useState } from "react";
+import React from "react";
 import { useSearchParams } from "react-router";
 import type { Tag } from "@/types/tag.interface";
 import type { SortValue } from "@/types/ui.interface";
 
 interface Props {
 	filmsPending: boolean;
+	filters: string[];
 	limitParam: number;
+	setFilters: Dispatch<SetStateAction<string[]>>;
 	setIsOpen: Dispatch<SetStateAction<boolean>>;
 	sortParam: SortValue;
 	tagParams: string[];
@@ -15,13 +17,14 @@ interface Props {
 
 export default function FilterForm({
 	filmsPending,
+	filters,
 	limitParam,
+	setFilters,
 	setIsOpen,
 	sortParam,
-	tagParams,
 	tags,
 }: Props) {
-	const [filters, setFilters] = useState<string[]>(tagParams);
+	// const [filters, setFilters] = useState<string[]>(tagParams);
 	const [_, setSearchParams] = useSearchParams();
 
 	const types: Tag["type"][] = ["decade", "genre", "production", "theme"];
