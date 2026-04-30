@@ -1,5 +1,5 @@
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
-import { Link, useLocation, useSearchParams } from "react-router";
+import { useLocation, useSearchParams } from "react-router";
 import httpRequest from "@/api/httpRequest";
 import FilmTags from "@/components/list/FilmTags";
 import ListItem from "@/components/list/ListItem";
@@ -37,51 +37,56 @@ export default function Paginated() {
 	if (error) return <DisplayError error={error} />;
 
 	const paginatedData = data as PaginatedResponse;
+	const hasResults = paginatedData.data.length;
 
 	return (
-		<div>
-			{entity === "films" && (
-				<FilmTags
-					filmsPending={isPending}
-					limitParam={limit}
-					sortParam={sort}
-					tagParams={tags}
+		<div className="my-6">
+			<div className="flex flex-col gap-4 border-y py-4 font-light">
+				<PaginationMetadata
+					hasData={!!hasResults}
+					metadata={paginatedData.meta}
+					tags={tags}
 				/>
-			)}
-			<PaginationLimit
-				currLimit={limit}
-				searchParam={searchParam}
-				sortParam={sort}
-				tagsParamString={tagsParamString}
-			/>
-			<PaginationMetadata
-				hasData={!!paginatedData.data.length}
-				metadata={paginatedData.meta}
-				tags={tags}
-			/>
-			<SortItems
-				entity={entity}
-				limit={limit}
-				searchParam={searchParam}
-				sort={sort}
-				tagsParamString={tagsParamString}
-			/>
-			<ul>
-				{paginatedData.data.map((item) => {
-					return (
-						<li key={item.id}>
-							<Link to={item.slug}>
-								<ListItem item={item} entity={entity} />
-							</Link>
-						</li>
-					);
-				})}
-			</ul>
-			<PaginationLinks
-				currentPage={page}
-				lastPage={paginatedData.meta.totalPages}
-				links={paginatedData.links}
-			/>
+				{hasResults ? (
+					<div className="flex gap-6">
+						<SortItems
+							entity={entity}
+							limit={limit}
+							searchParam={searchParam}
+							sort={sort}
+							tagsParamString={tagsParamString}
+						/>
+						<PaginationLimit
+							currLimit={limit}
+							searchParam={searchParam}
+							sortParam={sort}
+							tagsParamString={tagsParamString}
+						/>
+					</div>
+				) : null}
+				{entity === "films" && (
+					<FilmTags
+						filmsPending={isPending}
+						limitParam={limit}
+						sortParam={sort}
+						tagParams={tags}
+					/>
+				)}
+			</div>
+			{hasResults ? (
+				<>
+					<ul className="my-8 divide-y flex flex-col text-sm">
+						{paginatedData.data.map((item) => {
+							return <ListItem key={item.id} entity={entity} item={item} />;
+						})}
+					</ul>
+					<PaginationLinks
+						currentPage={page}
+						lastPage={paginatedData.meta.totalPages}
+						links={paginatedData.links}
+					/>
+				</>
+			) : null}
 		</div>
 	);
 }

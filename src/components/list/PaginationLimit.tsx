@@ -23,20 +23,26 @@ export default function PaginationLimit({
 	if (tagsParamString) params += tagsParamString;
 
 	return (
-		<div>
-			Items to show:
-			{limitOptions.map((option) => {
-				return (
-					<button
-						key={option}
-						type="button"
-						disabled={option === currLimit}
-						onClick={() => setSearchParams(`?page=1&limit=${option}${params}`)}
-					>
-						{option}
-					</button>
-				);
-			})}
+		<div className="flex place-items-center text-sm gap-2">
+			Show:
+			<div className="flex gap-3">
+				{limitOptions.map((option) => {
+					const selected = option === currLimit;
+					return (
+						<button
+							className={`border rounded size-8 bg-bg-accent ${selected ? "text-text-disabled" : "text-text"} transition-colors`}
+							key={option}
+							type="button"
+							disabled={selected}
+							onClick={() =>
+								setSearchParams(`?page=1&limit=${option}${params}`)
+							}
+						>
+							{option}
+						</button>
+					);
+				})}
+			</div>
 		</div>
 	);
 }

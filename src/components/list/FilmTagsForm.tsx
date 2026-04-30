@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { X } from "lucide-react";
 import { useSearchParams } from "react-router";
 import httpRequest from "@/api/httpRequest";
 import DisplayError from "@/components/shared/DisplayError";
@@ -67,35 +68,52 @@ export default function FilmTagsForm({
 	}
 
 	return (
-		<form>
+		<form method="dialog">
+			<button
+				className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+				type="submit"
+			>
+				<X className="size-6 stroke-1" />
+			</button>
 			{types.map((type) => {
 				const legend = `${type.slice(0, 1).toUpperCase()}${type.slice(1)}`;
 				return (
-					<fieldset key={type}>
-						<legend>{legend}</legend>
-						<div>
+					<fieldset key={type} className="fieldset">
+						<legend className="fieldset-legend text-lg">{legend}</legend>
+						<div className="flex flex-col gap-2.5">
 							{tags
 								.filter((tag) => tag.type === type)
 								.map((tag) => {
 									const isChecked = tagParams.includes(tag.slug);
 									return (
-										<div key={tag.id}>
+										<label
+											className="flex gap-2.5 items-center text-base"
+											key={tag.id}
+										>
 											<input
 												checked={isChecked}
+												className="checkbox bg-bg-accent checked:bg-gold"
 												disabled={filmsPending}
-												id={tag.slug}
 												onChange={handleCheckFilter}
 												type="checkbox"
 												value={tag.slug}
 											/>
-											<label htmlFor={tag.slug}>{tag.name}</label>
-										</div>
+											{tag.name}
+										</label>
 									);
 								})}
 						</div>
 					</fieldset>
 				);
 			})}
+			<div className="flex gap-4 my-8">
+				<button className="btn btn-soft" type="reset">
+					Reset
+				</button>
+				<button className="btn btn-neutral" type="submit">
+					Apply
+				</button>
+			</div>
 		</form>
 	);
 }
