@@ -15,15 +15,14 @@ interface Props {
 
 export default function FilterForm({
 	filmsPending,
-	// limitParam,
+	limitParam,
 	setIsOpen,
-	// sortParam,
+	sortParam,
 	tagParams,
 	tags,
 }: Props) {
-	const [filters, setFilters] = useState<string[]>([]);
-	console.log(filters);
-	// const [_, setSearchParams] = useSearchParams();
+	const [filters, setFilters] = useState<string[]>(tagParams);
+	const [_, setSearchParams] = useSearchParams();
 
 	const types: Tag["type"][] = ["decade", "genre", "production", "theme"];
 
@@ -61,6 +60,9 @@ export default function FilterForm({
 
 	function handleApply() {
 		setIsOpen(false);
+		const params = `?page=1&limit=${limitParam}&orderBy=${sortParam}`;
+		const tagParams = filters.length ? `&tag=${filters.join("&tag=")}` : "";
+		setSearchParams(`${params}${tagParams}`);
 	}
 
 	return (
