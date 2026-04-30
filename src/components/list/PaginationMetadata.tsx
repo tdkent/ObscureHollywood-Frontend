@@ -1,4 +1,5 @@
 import { X } from "lucide-react";
+import type { Dispatch, SetStateAction } from "react";
 import { useSearchParams } from "react-router";
 import type { PaginatedResponse } from "@/types/paginated-response.interface";
 import type { SortValue } from "@/types/ui.interface";
@@ -7,6 +8,7 @@ interface Props {
 	hasData: boolean;
 	limitParam: number;
 	metadata: PaginatedResponse["meta"];
+	setFilters: Dispatch<SetStateAction<string[]>>;
 	sortParam: SortValue;
 	tags: string[];
 }
@@ -15,6 +17,7 @@ export default function PaginationMetadata({
 	hasData,
 	limitParam,
 	metadata,
+	setFilters,
 	sortParam,
 	tags,
 }: Props) {
@@ -23,6 +26,7 @@ export default function PaginationMetadata({
 	/** Remove selected tag and reconstruct search url. */
 	function handleClick(selected: string) {
 		const removeSelected = tags.filter((tag) => tag !== selected).sort();
+		setFilters(removeSelected);
 
 		const params = `?page=1&limit=${limitParam}&orderBy=${sortParam}`;
 		const tagParams = removeSelected.length

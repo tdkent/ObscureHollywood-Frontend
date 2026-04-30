@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { Plus, X } from "lucide-react";
-import { useState } from "react";
+import { type Dispatch, type SetStateAction, useState } from "react";
 import httpRequest from "@/api/httpRequest";
 import FilterForm from "@/components/list/FilterForm";
 import DisplayError from "@/components/shared/DisplayError";
@@ -10,14 +10,18 @@ import type { SortValue } from "@/types/ui.interface";
 
 interface Props {
 	filmsPending: boolean;
+	filters: string[];
 	limitParam: number;
+	setFilters: Dispatch<SetStateAction<string[]>>;
 	sortParam: SortValue;
 	tagParams: string[];
 }
 
 export default function Filter({
 	filmsPending,
+	filters,
 	limitParam,
+	setFilters,
 	sortParam,
 	tagParams,
 }: Props) {
@@ -84,7 +88,9 @@ export default function Filter({
 					</header>
 					<FilterForm
 						filmsPending={filmsPending}
+						filters={filters}
 						limitParam={limitParam}
+						setFilters={setFilters}
 						setIsOpen={setIsOpen}
 						sortParam={sortParam}
 						tagParams={tagParams}

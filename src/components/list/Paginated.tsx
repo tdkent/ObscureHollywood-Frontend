@@ -1,4 +1,5 @@
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
+import { useState } from "react";
 import { useLocation, useSearchParams } from "react-router";
 import httpRequest from "@/api/httpRequest";
 import Filter from "@/components/list/Filter";
@@ -26,6 +27,8 @@ export default function Paginated() {
 			search,
 		});
 
+	const [filters, setFilters] = useState<string[]>(tags);
+
 	const { data, error, isPending } = useQuery({
 		// Use route and search params as query key
 		queryKey: [pathname, page, limit, sort, searchParam, ...tags],
@@ -46,6 +49,7 @@ export default function Paginated() {
 					hasData={!!hasResults}
 					limitParam={limit}
 					metadata={paginatedData.meta}
+					setFilters={setFilters}
 					sortParam={sort}
 					tags={tags}
 				/>
@@ -69,7 +73,9 @@ export default function Paginated() {
 				{entity === "films" && (
 					<Filter
 						filmsPending={isPending}
+						filters={filters}
 						limitParam={limit}
+						setFilters={setFilters}
 						sortParam={sort}
 						tagParams={tags}
 					/>
