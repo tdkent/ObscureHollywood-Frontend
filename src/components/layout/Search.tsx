@@ -11,7 +11,7 @@ export default function Search() {
 
 		navigate({
 			pathname: "/search",
-			search: `?searchString=${searchString}`,
+			search: `?q=${searchString}`,
 		});
 	}
 

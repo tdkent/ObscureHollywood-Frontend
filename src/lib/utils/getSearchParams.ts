@@ -77,7 +77,7 @@ export function getSearchParams({
 	 * Get search string
 	 */
 
-	const searchParam = searchParams.get("searchString");
+	const searchParam = searchParams.get("q");
 
 	if (searchParam) {
 		if (
@@ -85,7 +85,7 @@ export function getSearchParams({
 			searchParam.length < 3 ||
 			searchParam.length > 64
 		) {
-			throw new Error("Invalid searchString URL param");
+			throw new Error("Invalid search URL param");
 		}
 	}
 

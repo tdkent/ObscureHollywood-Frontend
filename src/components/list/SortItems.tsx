@@ -24,7 +24,7 @@ export default function SortItems({
 	);
 
 	let params = "";
-	if (searchParam) params += `&searchString=${searchParam}`;
+	if (searchParam) params += `&q=${searchParam}`;
 	if (tagsParamString) params += tagsParamString;
 
 	function handleSelect(

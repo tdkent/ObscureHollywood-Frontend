@@ -4,7 +4,7 @@ import Paginated from "@/components/list/Paginated";
 export default function SearchPage() {
 	const [searchParams] = useSearchParams();
 
-	const searchParam = searchParams.get("searchString");
+	const searchParam = searchParams.get("q");
 
 	return (
 		<div>
