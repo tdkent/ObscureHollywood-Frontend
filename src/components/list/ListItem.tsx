@@ -15,6 +15,7 @@ interface Props {
 
 export default function ListItem({ entity, item }: Props) {
 	let subtitle = "";
+	let link = item.slug;
 
 	switch (entity) {
 		case "features": {
@@ -51,17 +52,19 @@ export default function ListItem({ entity, item }: Props) {
 		case "search": {
 			const { category } = item as Search;
 			subtitle = `${category.slice(0, 1).toUpperCase()}${category.slice(1)}`;
+			link = `/${category === "person" ? "people" : `${category}s`}/${item.slug}`;
 			break;
 		}
 
 		default:
+			break;
 	}
 
 	const showListDetails = entity !== "studios";
 
 	return (
 		<li className={`${showListDetails ? "min-h-20 py-2" : "py-5"}`}>
-			<Link to={item.slug}>
+			<Link to={link}>
 				<div className="flex justify-between gap-1">
 					<div className="flex flex-col gap-1 grow">
 						<h2 className="text-base font-semibold">{item.name}</h2>
