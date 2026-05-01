@@ -19,7 +19,7 @@ export default function PaginationLimit({
 	const limitOptions = [10, 25];
 
 	let params = `&orderBy=${sortParam}`;
-	if (searchParam) params += `&searchString=${searchParam}`;
+	if (searchParam) params += `&q=${searchParam}`;
 	if (tagsParamString) params += tagsParamString;
 
 	return (

@@ -7,11 +7,6 @@ export const navLinks: NavLink[] = [
 		testId: "home-link",
 	},
 	{
-		href: "/articles",
-		label: "All Articles",
-		testId: "articles-link",
-	},
-	{
 		href: "/features",
 		label: "Features",
 		testId: "features-link",

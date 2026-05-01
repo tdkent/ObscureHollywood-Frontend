@@ -50,7 +50,7 @@ const yearDesc: SelectOption = {
 
 export const paginatedSortOptions: SortOption[] = [
 	{
-		entity: "articles",
+		entity: "search",
 		options: [nameAsc, nameDesc],
 	},
 	{

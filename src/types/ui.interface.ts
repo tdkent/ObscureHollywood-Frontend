@@ -12,10 +12,10 @@ export interface NavLink {
  */
 
 export type Entity =
-	| "articles"
 	| "features"
 	| "films"
 	| "people"
+	| "search"
 	| "studios"
 	| "tags";
 

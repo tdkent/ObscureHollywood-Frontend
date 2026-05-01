@@ -10,8 +10,8 @@ export default function Search() {
 		//! Validate
 
 		navigate({
-			pathname: "/articles",
-			search: `?searchString=${searchString}`,
+			pathname: "/search",
+			search: `?q=${searchString}`,
 		});
 	}
 

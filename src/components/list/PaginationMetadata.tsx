@@ -48,7 +48,7 @@ export default function PaginationMetadata({
 					</span>
 				</div>
 			) : (
-				<p>No results to show</p>
+				<p>No results found.</p>
 			)}
 
 			{tags.length ? (
