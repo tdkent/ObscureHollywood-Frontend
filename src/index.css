@@ -44,6 +44,10 @@
 		@apply text-text-heading;
 	}
 
+	h1 {
+		@apply font-light text-2xl;
+	}
+
 	a.active {
 		@apply text-gold-dark;
 	}

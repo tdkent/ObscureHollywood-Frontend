@@ -1,6 +1,6 @@
 import { DateTime } from "luxon";
 import { Link } from "react-router";
-import Thumbnail from "@/components/list/Thumbnail";
+import Image from "@/components/shared/Image";
 import type { Feature } from "@/types/feature.interface";
 import type { Film } from "@/types/film.interface";
 import type { PartialListItem } from "@/types/paginated-response.interface";
@@ -70,7 +70,14 @@ export default function ListItem({ entity, item }: Props) {
 						<h2 className="text-base font-semibold">{item.name}</h2>
 						{showListDetails && <span className="text-sm">{subtitle}</span>}
 					</div>
-					{showListDetails && <Thumbnail />}
+					{showListDetails && (
+						<Image
+							altText={item.name}
+							containerStyles="flex shrink-0 items-center justify-center border rounded-full w-14 h-14"
+							sizes="64px"
+							slug={item.slug}
+						/>
+					)}
 				</div>
 			</Link>
 		</li>
