@@ -9,18 +9,21 @@ interface Props {
 export default function ParsedHtml({ htmlContent }: Props) {
 	const html = DOMPurify.sanitize(htmlContent, {
 		USE_PROFILES: { html: true },
-	});
+	})
+		// Filter out escapes
+		.replaceAll(`\\"`, `"`);
 
 	const options: HTMLReactParserOptions = {
 		replace(domNode) {
-			if (
-				"name" in domNode &&
-				"children" in domNode &&
-				"data" in domNode.children[0] &&
-				domNode.name === "a"
-			) {
-				const href = domNode.attribs.href;
-				const text = domNode.children[0].data;
+			if (domNode.type === "tag" && domNode.name === "a") {
+				const href = domNode.attribs?.href;
+				const children = domNode.children[0];
+
+				let text = "";
+				if (children.type === "text") {
+					text = children.data;
+				}
+
 				return <Link to={href}>{text}</Link>;
 			}
 		},
