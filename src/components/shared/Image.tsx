@@ -1,4 +1,4 @@
-import { ImageOff, LoaderCircle } from "lucide-react";
+import { Image as ImageIcon, ImageOff } from "lucide-react";
 import { useState } from "react";
 import imgSrcSets from "@/lib/imgSrcSets";
 
@@ -31,14 +31,12 @@ export default function Image({
 		<div className={`overflow-hidden bg-bg-accent ${containerStyles}`}>
 			{loading && (
 				<div className="flex items-center justify-center gap-2 text-sm p-4">
-					<LoaderCircle className="size-6 stroke-1 animate-spin" />
-					Loading...
+					<ImageIcon className="stroke-1 stroke-text/50" />
 				</div>
 			)}
 			{error && (
 				<div className="flex items-center justify-center gap-2 text-sm p-4">
-					<ImageOff className="size-6 stroke-1" />
-					The image failed to load.
+					<ImageOff className="stroke-1 stroke-text/50" />
 				</div>
 			)}
 			<picture className={`w-full h-full ${error ? "hidden" : ""}`}>
