@@ -1,3 +1,3 @@
 export default function DisclaimerPage() {
-	return "Disclaimer";
+	return <h1>Disclaimer</h1>;
 }

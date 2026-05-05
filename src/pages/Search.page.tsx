@@ -8,7 +8,7 @@ export default function SearchPage() {
 
 	return (
 		<div>
-			<h1 className="font-light text-2xl">Search Results</h1>
+			<h1>Search Results</h1>
 			<p className="my-4 text-lg">"{searchParam}"</p>
 			<Paginated />
 		</div>

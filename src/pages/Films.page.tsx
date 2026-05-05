@@ -3,7 +3,7 @@ import Paginated from "@/components/list/Paginated";
 export default function FilmsPage() {
 	return (
 		<div>
-			<h2>Films</h2>
+			<h1>Films</h1>
 			<Paginated />
 		</div>
 	);
