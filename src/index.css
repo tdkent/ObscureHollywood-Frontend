@@ -42,12 +42,13 @@
 
 	/* Text */
 	h1,
-	h2 {
-		@apply text-text-heading;
+	h2,
+	h3 {
+		@apply text-text-heading font-light;
 	}
 
 	h1 {
-		@apply font-light text-2xl;
+		@apply text-2xl;
 	}
 
 	/* Layout */
@@ -59,7 +60,7 @@
 		}
 
 		h2 {
-			@apply text-2xl font-light;
+			@apply text-2xl;
 		}
 
 		dl {

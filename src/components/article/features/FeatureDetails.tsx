@@ -1,4 +1,5 @@
 import ParsedHtml from "@/components/article/ParsedHtml";
+import RelatedArticles from "@/components/article/RelatedArticles";
 import Image from "@/components/shared/Image";
 import type { FeatureWithRelations } from "@/types/feature.interface";
 
@@ -8,11 +9,12 @@ interface Props {
 
 export default function FeatureDetails({ feature }: Props) {
 	const {
-		article: { htmlContent },
+		article: { htmlContent, incomingRelations },
 		name,
 		slug,
 		subtitle,
 	} = feature;
+
 	return (
 		<article className="flex flex-col gap-8 my-2">
 			<header className="flex flex-col gap-4">
@@ -28,6 +30,9 @@ export default function FeatureDetails({ feature }: Props) {
 				/>
 			</header>
 			<ParsedHtml htmlContent={htmlContent} />
+			{incomingRelations?.length && (
+				<RelatedArticles relatedArticles={incomingRelations} />
+			)}
 		</article>
 	);
 }
