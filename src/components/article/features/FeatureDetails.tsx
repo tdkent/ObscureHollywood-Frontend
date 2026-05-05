@@ -14,7 +14,7 @@ export default function FeatureDetails({ feature }: Props) {
 		subtitle,
 	} = feature;
 	return (
-		<div className="flex flex-col gap-8 my-2">
+		<article className="flex flex-col gap-8 my-2">
 			<header className="flex flex-col gap-4">
 				<div>
 					<h1 className="text-3xl font-normal">{name}</h1>
@@ -28,6 +28,6 @@ export default function FeatureDetails({ feature }: Props) {
 				/>
 			</header>
 			<ParsedHtml htmlContent={htmlContent} />
-		</div>
+		</article>
 	);
 }

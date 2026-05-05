@@ -28,5 +28,5 @@ export default function ParsedHtml({ htmlContent }: Props) {
 
 	const parsedHtml = parse(html, options);
 
-	return <section>{parsedHtml}</section>;
+	return parsedHtml;
 }

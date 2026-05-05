@@ -35,10 +35,12 @@
 }
 
 @layer base {
+	/* Base */
 	* {
 		@apply border-border outline-text;
 	}
 
+	/* Text */
 	h1,
 	h2 {
 		@apply text-text-heading;
@@ -48,6 +50,19 @@
 		@apply font-light text-2xl;
 	}
 
+	/* Layout */
+	article article {
+		@apply flex flex-col gap-4;
+
+		section {
+			@apply flex flex-col gap-4;
+		}
+		h2 {
+			@apply text-2xl font-light;
+		}
+	}
+
+	/* Links */
 	a.active {
 		@apply text-gold-dark;
 	}
