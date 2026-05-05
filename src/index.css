@@ -57,8 +57,23 @@
 		section {
 			@apply flex flex-col gap-4;
 		}
+
 		h2 {
 			@apply text-2xl font-light;
+		}
+
+		dl {
+			@apply flex flex-col gap-4;
+
+			dt {
+				@apply uppercase font-light text-xs text-text-heading;
+			}
+		}
+
+		section {
+			ul {
+				@apply text-xs list-disc list-inside flex flex-col gap-2;
+			}
 		}
 	}
 
