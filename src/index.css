@@ -62,18 +62,26 @@
 		h2 {
 			@apply text-2xl;
 		}
+	}
 
-		dl {
-			@apply flex flex-col gap-4;
+	.film-details-list {
+		ul {
+			@apply divide-y;
 
-			dt {
-				@apply uppercase font-light text-xs text-text-heading;
-			}
-		}
+			li {
+				@apply py-8;
 
-		section {
-			ul {
-				@apply text-xs list-disc list-inside flex flex-col gap-2;
+				dl {
+					@apply flex flex-col gap-4;
+
+					div {
+						@apply flex flex-col gap-0.5;
+
+						dt {
+							@apply uppercase font-light text-xs text-text-heading;
+						}
+					}
+				}
 			}
 		}
 	}
