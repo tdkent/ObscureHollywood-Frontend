@@ -1,6 +1,7 @@
 import DOMPurify from "dompurify";
 import parse, { type HTMLReactParserOptions } from "html-react-parser";
 import { Link } from "react-router";
+import Image from "@/components/shared/Image";
 
 interface Props {
 	htmlContent: string;
@@ -25,6 +26,12 @@ export default function ParsedHtml({ htmlContent }: Props) {
 				}
 
 				return <Link to={href}>{text}</Link>;
+			}
+
+			if (domNode.type === "tag" && domNode.name === "img") {
+				const slug = domNode.attribs?.src;
+
+				return <Image altText={slug} slug={slug} />;
 			}
 		},
 	};

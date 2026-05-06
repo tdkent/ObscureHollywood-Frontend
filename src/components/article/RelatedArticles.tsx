@@ -12,7 +12,7 @@ export default function RelatedArticles({ relatedArticles }: Props) {
 
 	return (
 		<section className="border-t py-4 flex flex-col gap-6">
-			<h3 className="text-xl">Related Articles</h3>
+			<h3>Related Articles</h3>
 			<ul className="flex flex-col gap-6 font-light text-sm">
 				{relatedArticles.map((relation) => {
 					const {

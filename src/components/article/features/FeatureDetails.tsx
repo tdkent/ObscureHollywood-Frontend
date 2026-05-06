@@ -30,9 +30,9 @@ export default function FeatureDetails({ feature }: Props) {
 				/>
 			</header>
 			<ParsedHtml htmlContent={htmlContent} />
-			{incomingRelations?.length && (
+			{incomingRelations?.length ? (
 				<RelatedArticles relatedArticles={incomingRelations} />
-			)}
+			) : null}
 		</article>
 	);
 }
