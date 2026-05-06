@@ -40,11 +40,15 @@
 		@apply border-border outline-text;
 	}
 
+	body {
+		@apply font-light;
+	}
+
 	/* Text */
 	h1,
 	h2,
 	h3 {
-		@apply text-text-heading font-light;
+		@apply text-text-heading;
 	}
 
 	h1 {
@@ -68,6 +72,7 @@
 		}
 	}
 
+	/* Lists of films with <dl> element  */
 	.film-details-list {
 		ul {
 			@apply divide-y my-4;
@@ -82,7 +87,7 @@
 						@apply flex flex-col gap-0.5;
 
 						dt {
-							@apply uppercase font-light text-xs text-text-heading;
+							@apply uppercase text-xs text-text-heading;
 						}
 					}
 				}
@@ -90,8 +95,18 @@
 		}
 	}
 
+	/* List of simple links */
+	ul.link-list {
+		@apply flex flex-col gap-6;
+
+		li {
+			@apply flex justify-between items-center;
+		}
+	}
+
+	/* End of article reference list */
 	.references {
-		@apply text-sm font-light list-disc;
+		@apply text-sm list-disc;
 
 		ul {
 			@apply divide-none my-0 list-disc list-inside;

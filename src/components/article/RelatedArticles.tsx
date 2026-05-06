@@ -13,14 +13,14 @@ export default function RelatedArticles({ relatedArticles }: Props) {
 	return (
 		<section className="border-t py-4 flex flex-col gap-6">
 			<h3>Related Articles</h3>
-			<ul className="flex flex-col gap-6 font-light text-sm">
+			<ul className="link-list">
 				{relatedArticles.map((relation) => {
 					const {
 						id,
 						article: { name, slug },
 					} = relation;
 					return (
-						<li className="flex justify-between items-center" key={id}>
+						<li key={id}>
 							<Link to={`/${entity}/${slug}`}>{name}</Link>
 							<ChevronRight className="stroke-1 size-4" />
 						</li>

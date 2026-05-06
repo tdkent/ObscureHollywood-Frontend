@@ -1,5 +1,6 @@
 import DOMPurify from "dompurify";
 import parse, { type HTMLReactParserOptions } from "html-react-parser";
+import { ChevronRight } from "lucide-react";
 import { Link } from "react-router";
 import Image from "@/components/shared/Image";
 
@@ -25,7 +26,17 @@ export default function ParsedHtml({ htmlContent }: Props) {
 					text = children.data;
 				}
 
-				return <Link to={href}>{text}</Link>;
+				// Check if link is member of 'link-list' class element
+				const isLinkList =
+					domNode.parent?.parent?.type === "tag" &&
+					domNode.parent?.parent?.attribs.class === "link-list";
+
+				return (
+					<>
+						<Link to={href}>{text}</Link>
+						{isLinkList && <ChevronRight className="stroke-1 size-4" />}
+					</>
+				);
 			}
 
 			if (domNode.type === "tag" && domNode.name === "img") {

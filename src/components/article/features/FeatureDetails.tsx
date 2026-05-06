@@ -20,7 +20,7 @@ export default function FeatureDetails({ feature }: Props) {
 			<header className="flex flex-col gap-4">
 				<div>
 					<h1 className="text-3xl font-normal">{name}</h1>
-					<h2 className="text-xl font-light">{subtitle}</h2>
+					<h2 className="text-xl">{subtitle}</h2>
 				</div>
 				<Image
 					altText={name}
