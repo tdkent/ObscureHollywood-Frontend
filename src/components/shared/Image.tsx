@@ -30,12 +30,12 @@ export default function Image({
 	return (
 		<div className={`overflow-hidden bg-bg-accent ${containerStyles}`}>
 			{loading && (
-				<div className="flex items-center justify-center gap-2 text-sm p-4">
+				<div className="flex items-center justify-center gap-2 text-sm p-4 h-full">
 					<ImageIcon className="stroke-1 stroke-text/50" />
 				</div>
 			)}
 			{error && (
-				<div className="flex items-center justify-center gap-2 text-sm p-4">
+				<div className="flex items-center justify-center gap-2 text-sm p-4 h-full">
 					<ImageOff className="stroke-1 stroke-text/50" />
 				</div>
 			)}

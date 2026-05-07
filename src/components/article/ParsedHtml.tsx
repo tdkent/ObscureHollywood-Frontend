@@ -22,18 +22,34 @@ export default function ParsedHtml({ htmlContent }: Props) {
 				const children = domNode.children[0];
 
 				let text = "";
-				if (children.type === "text") {
+
+				// Check if text is wrapped by <cite> tag, e.g. <a><cite>Text</cite</a>
+				const isFilmTitle = children.type === "tag" && children.name === "cite";
+
+				if (isFilmTitle) {
+					const grandchildren = children.children[0];
+					if (grandchildren.type === "text") {
+						text = grandchildren.data;
+					}
+				}
+
+				// Text is child of <a> tag, e.g. <a>Text</a>
+				else if (children.type === "text") {
 					text = children.data;
 				}
+				// Fallback text
+				else text = "UNKNOWN TEXT";
 
 				// Check if link is member of 'link-list' class element
 				const isLinkList =
-					domNode.parent?.parent?.type === "tag" &&
-					domNode.parent?.parent?.attribs.class === "link-list";
+					(domNode.parent?.parent?.type === "tag" &&
+						domNode.parent?.parent?.attribs.class === "link-list") ||
+					(domNode.parent?.parent?.parent?.type === "tag" &&
+						domNode.parent?.parent?.parent?.attribs.class === "link-list");
 
 				return (
 					<>
-						<Link to={href}>{text}</Link>
+						<Link to={href}>{isFilmTitle ? <cite>{text}</cite> : text}</Link>
 						{isLinkList && <ChevronRight className="stroke-1 size-4" />}
 					</>
 				);

@@ -72,25 +72,26 @@
 		}
 	}
 
-	/* Lists of films with <dl> element  */
+	/* Lists of films  */
 	.film-details-list {
 		ul {
 			@apply divide-y my-4;
 
 			li {
 				@apply py-8 flex flex-col gap-4 first:border-t last:border-b;
+			}
+		}
+	}
 
-				dl {
-					@apply flex flex-col gap-4;
+	/* Film details in <dl> element */
+	dl {
+		@apply flex flex-col gap-4;
 
-					div {
-						@apply flex flex-col gap-0.5;
+		div {
+			@apply flex flex-col gap-0.5;
 
-						dt {
-							@apply uppercase text-xs text-text-heading;
-						}
-					}
-				}
+			dt {
+				@apply uppercase text-xs text-text-heading;
 			}
 		}
 	}
