@@ -1,10 +1,10 @@
 import TagArticle from "@/components/article/tag/TagArticle";
+import DetailPage from "@/components/layout/containers/DetailPage";
 
 export default function TagArticlePage() {
 	return (
-		<div>
-			<span>Tag</span>
+		<DetailPage labelText="Tag">
 			<TagArticle />
-		</div>
+		</DetailPage>
 	);
 }

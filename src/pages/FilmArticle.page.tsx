@@ -1,10 +1,10 @@
 import FilmArticle from "@/components/article/film/FilmArticle";
+import DetailPage from "@/components/layout/containers/DetailPage";
 
 export default function FeatureArticlePage() {
 	return (
-		<div>
-			<span>Film</span>
+		<DetailPage labelText="Film">
 			<FilmArticle />
-		</div>
+		</DetailPage>
 	);
 }

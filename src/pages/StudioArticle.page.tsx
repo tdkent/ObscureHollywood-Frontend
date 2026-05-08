@@ -1,10 +1,10 @@
 import StudioArticle from "@/components/article/studio/StudioArticle";
+import DetailPage from "@/components/layout/containers/DetailPage";
 
 export default function StudioArticlePage() {
 	return (
-		<div>
-			<span>Studio</span>
+		<DetailPage labelText="Studio">
 			<StudioArticle />
-		</div>
+		</DetailPage>
 	);
 }
