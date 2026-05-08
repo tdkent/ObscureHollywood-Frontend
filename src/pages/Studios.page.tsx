@@ -1,10 +1,5 @@
-import Paginated from "@/components/list/Paginated";
+import ListPage from "@/components/layout/containers/ListPage";
 
 export default function StudiosPage() {
-	return (
-		<div>
-			<h2>Studios</h2>
-			<Paginated />
-		</div>
-	);
+	return <ListPage />;
 }

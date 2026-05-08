@@ -1,10 +1,5 @@
-import Paginated from "@/components/list/Paginated";
+import ListPage from "@/components/layout/containers/ListPage";
 
 export default function PeoplePage() {
-	return (
-		<div>
-			<h1>People</h1>
-			<Paginated />
-		</div>
-	);
+	return <ListPage />;
 }
