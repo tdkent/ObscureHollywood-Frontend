@@ -7,5 +7,8 @@ export interface Article {
 }
 
 export interface ArticleWithRelations extends Article {
-	incomingRelations: Article[];
+	incomingRelations: {
+		id: number;
+		article: Article;
+	}[];
 }

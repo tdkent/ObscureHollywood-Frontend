@@ -21,9 +21,5 @@ export default function FeatureArticle() {
 	if (isPending) return <Loading />;
 	if (error) return <DisplayError error={error} />;
 
-	return (
-		<div>
-			<FeatureDetails feature={data as FeatureWithRelations} />
-		</div>
-	);
+	return <FeatureDetails feature={data as FeatureWithRelations} />;
 }

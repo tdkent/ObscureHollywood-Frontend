@@ -35,19 +35,90 @@
 }
 
 @layer base {
+	/* Base */
 	* {
 		@apply border-border outline-text;
 	}
 
+	body {
+		@apply font-light;
+	}
+
+	/* Text */
 	h1,
-	h2 {
+	h2,
+	h3 {
 		@apply text-text-heading;
 	}
 
 	h1 {
-		@apply font-light text-2xl;
+		@apply text-2xl;
 	}
 
+	h3 {
+		@apply text-xl;
+	}
+
+	/* Layout */
+	article article {
+		@apply flex flex-col gap-4;
+
+		section {
+			@apply flex flex-col gap-4;
+		}
+
+		h2 {
+			@apply text-2xl;
+		}
+	}
+
+	/* Lists of films  */
+	.film-details-list {
+		ul {
+			@apply divide-y my-4;
+
+			li {
+				@apply py-8 flex flex-col gap-4 first:border-t last:border-b;
+			}
+		}
+	}
+
+	/* Film details in <dl> element */
+	dl {
+		@apply flex flex-col gap-4;
+
+		div {
+			@apply flex flex-col gap-0.5;
+
+			dt {
+				@apply uppercase text-xs text-text-heading;
+			}
+		}
+	}
+
+	/* List of simple links */
+	ul.link-list {
+		@apply flex flex-col gap-6;
+
+		li {
+			@apply flex justify-between items-center;
+		}
+	}
+
+	/* End of article reference list */
+	.references {
+		@apply text-sm list-disc;
+
+		ul {
+			@apply divide-none my-0 list-disc list-inside;
+
+			li {
+				@apply py-2 border-none list-item;
+			}
+		}
+	}
+
+	/* Links */
 	a.active {
 		@apply text-gold-dark;
 	}
