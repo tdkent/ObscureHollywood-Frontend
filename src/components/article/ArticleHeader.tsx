@@ -1,16 +1,29 @@
 import Image from "@/components/shared/Image";
 
 interface Props {
-	children: React.ReactNode;
+	children?: React.ReactNode;
 	name: string;
 	slug: string;
+	subtitle?: string;
 }
 
 /** Render header element of article page with heading and children. */
-export default function ArticleHeader({ children, name, slug }: Props) {
+export default function ArticleHeader({
+	children,
+	name,
+	slug,
+	subtitle,
+}: Props) {
 	return (
-		<header>
-			<h1>{name}</h1>
+		<header className="flex flex-col gap-4">
+			{subtitle ? (
+				<div>
+					<h1 className="text-3xl font-normal">{name}</h1>
+					<h2 className="text-xl">{subtitle}</h2>
+				</div>
+			) : (
+				<h1>{name}</h1>
+			)}
 			<Image altText={name} slug={slug} />
 			{children}
 		</header>
