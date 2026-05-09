@@ -7,7 +7,7 @@ interface Props {
 
 /** Renders <dl> element of key-value pairs. */
 export default function DescriptionList({ metadata }: Props) {
-	return (
+	return metadata.length ? (
 		<dl>
 			{metadata.map(({ title, description }) => {
 				return (
@@ -18,7 +18,7 @@ export default function DescriptionList({ metadata }: Props) {
 				);
 			})}
 		</dl>
-	);
+	) : null;
 }
 
 /** Render <dd> element from string or array with optional Link */

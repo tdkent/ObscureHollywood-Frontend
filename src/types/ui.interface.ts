@@ -20,12 +20,12 @@ export type Entity =
 	| "tags";
 
 interface DlDescription {
-	label: number | string;
+	label: number | string | null;
 	href?: string;
 }
 
 export interface DlMetadata {
-	title: string;
+	title: string | null;
 	description: DlDescription | DlDescription[];
 }
 
