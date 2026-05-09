@@ -2,6 +2,8 @@ import { useQuery } from "@tanstack/react-query";
 import { useLocation, useParams } from "react-router";
 import httpRequest from "@/api/httpRequest";
 import ArticleHeader from "@/components/article/ArticleHeader";
+import ParsedHtml from "@/components/article/ParsedHtml";
+import RelatedArticles from "@/components/article/RelatedArticles";
 import DescriptionList from "@/components/shared/DescriptionList";
 import DisplayError from "@/components/shared/DisplayError";
 import Loading from "@/components/shared/Loading";
@@ -26,13 +28,21 @@ export default function PersonArticle() {
 
 	const {
 		age,
+		article: { htmlContent, incomingRelations },
 		birthDate,
 		birthPlace,
 		deathDate,
 		deathPlace,
 		name,
+		personFilms,
 		slug: personSlug,
 	} = data as PersonWithRelations;
+
+	const roles = Array.from(new Set(personFilms.map((pf) => pf.role)));
+	const subtitle = roles
+		.sort()
+		.map((role) => `${role.slice(0, 1).toUpperCase()}${role.slice(1)}`)
+		.join(", ");
 
 	const metadata: DlMetadata[] = [
 		{
@@ -68,9 +78,13 @@ export default function PersonArticle() {
 
 	return (
 		<>
-			<ArticleHeader name={name} slug={personSlug}>
+			<ArticleHeader name={name} slug={personSlug} subtitle={subtitle}>
 				<DescriptionList metadata={filteredMetadata} />
 			</ArticleHeader>
+			<ParsedHtml htmlContent={htmlContent} />
+			{incomingRelations?.length ? (
+				<RelatedArticles relatedArticles={incomingRelations} />
+			) : null}
 		</>
 	);
 }
