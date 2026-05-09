@@ -19,6 +19,16 @@ export type Entity =
 	| "studios"
 	| "tags";
 
+interface DlDescription {
+	label: number | string;
+	href?: string;
+}
+
+export interface DlMetadata {
+	title: string;
+	description: DlDescription | DlDescription[];
+}
+
 /**
  * Sort
  */
