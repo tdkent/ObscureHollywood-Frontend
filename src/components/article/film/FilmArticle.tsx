@@ -2,6 +2,8 @@ import { useQuery } from "@tanstack/react-query";
 import { useLocation, useParams } from "react-router";
 import httpRequest from "@/api/httpRequest";
 import ArticleHeader from "@/components/article/ArticleHeader";
+import ParsedHtml from "@/components/article/ParsedHtml";
+import RelatedArticles from "@/components/article/RelatedArticles";
 import DescriptionList from "@/components/shared/DescriptionList";
 import DisplayError from "@/components/shared/DisplayError";
 import Loading from "@/components/shared/Loading";
@@ -23,7 +25,7 @@ export default function FilmArticle() {
 	if (error) return <DisplayError error={error} />;
 
 	const {
-		article,
+		article: { htmlContent, incomingRelations },
 		filmTags,
 		name,
 		personFilms,
@@ -101,8 +103,14 @@ export default function FilmArticle() {
 	];
 
 	return (
-		<ArticleHeader name={name} slug={filmSlug}>
-			<DescriptionList metadata={metadata} />
-		</ArticleHeader>
+		<>
+			<ArticleHeader name={name} slug={filmSlug}>
+				<DescriptionList metadata={metadata} />
+			</ArticleHeader>
+			<ParsedHtml htmlContent={htmlContent} />
+			{incomingRelations?.length ? (
+				<RelatedArticles relatedArticles={incomingRelations} />
+			) : null}
+		</>
 	);
 }
