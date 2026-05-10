@@ -1,7 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { useLocation, useParams } from "react-router";
 import httpRequest from "@/api/httpRequest";
-import TagDetails from "@/components/article/tag/TagDetails";
+import ArticleHeader from "@/components/article/ArticleHeader";
+import Paginated from "@/components/list/Paginated";
 import DisplayError from "@/components/shared/DisplayError";
 import Loading from "@/components/shared/Loading";
 import type { TagWithRelations } from "@/types/tag.interface";
@@ -21,9 +22,14 @@ export default function TagArticle() {
 	if (isPending) return <Loading />;
 	if (error) return <DisplayError error={error} />;
 
+	const { description, name, slug: tagSlug } = data as TagWithRelations;
+
 	return (
-		<div>
-			<TagDetails tag={data as TagWithRelations} />
-		</div>
+		<>
+			<ArticleHeader name={name} slug={tagSlug}>
+				<p>{description}</p>
+			</ArticleHeader>
+			<Paginated reqUrl={`/tags/${slug}/films`} routeEntity="films" />
+		</>
 	);
 }
