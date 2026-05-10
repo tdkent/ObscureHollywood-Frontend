@@ -26,7 +26,7 @@ interface DlDescription {
 
 export interface DlMetadata {
 	title: string | null;
-	description: DlDescription | DlDescription[];
+	description: DlDescription | DlDescription[] | null;
 }
 
 /**

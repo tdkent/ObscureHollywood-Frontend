@@ -48,6 +48,15 @@ export default function PersonArticle() {
 				.join(", ")
 		: null;
 
+	const films = personFilms
+		? personFilms.map(({ film }) => {
+				return {
+					label: film.name,
+					href: `/films/${film.slug}`,
+				};
+			})
+		: null;
+
 	const metadata: DlMetadata[] = [
 		{
 			title: birthDate ? "Born" : null,
@@ -74,6 +83,10 @@ export default function PersonArticle() {
 			description: {
 				label: deathPlace,
 			},
+		},
+		{
+			title: personFilms?.length ? "Partial Filmography" : null,
+			description: films,
 		},
 	];
 

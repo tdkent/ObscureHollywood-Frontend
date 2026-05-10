@@ -35,7 +35,7 @@ export default function FilmArticle() {
 	} = data as FilmWithRelations;
 
 	// Filter and join in case of multiple directors
-	const directors: DlMetadata["description"] = personFilms
+	const directors = personFilms
 		.filter((person) => person.role === "director")
 		.map((person) => {
 			return {
