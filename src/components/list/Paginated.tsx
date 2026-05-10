@@ -15,11 +15,16 @@ import type { PaginatedResponse } from "@/types/paginated-response.interface";
 import type { Entity } from "@/types/ui.interface";
 
 interface Props {
-	routeEntity?: Entity;
+	showFilterControls?: boolean;
 	reqUrl?: string;
+	routeEntity?: Entity;
 }
 
-export default function Paginated({ reqUrl, routeEntity }: Props) {
+export default function Paginated({
+	reqUrl,
+	routeEntity,
+	showFilterControls,
+}: Props) {
 	const { pathname, search } = useLocation();
 	const [searchParams] = useSearchParams();
 
@@ -82,7 +87,7 @@ export default function Paginated({ reqUrl, routeEntity }: Props) {
 						/>
 					</div>
 				) : null}
-				{entity === "films" && (
+				{showFilterControls && (
 					<Filter
 						filmsPending={isPending}
 						filters={filters}
