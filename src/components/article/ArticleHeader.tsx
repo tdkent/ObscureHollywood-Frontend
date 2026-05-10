@@ -4,7 +4,7 @@ interface Props {
 	children?: React.ReactNode;
 	name: string;
 	slug: string;
-	subtitle?: string;
+	subtitle: string | null;
 }
 
 /** Render header element of article page with heading and children. */

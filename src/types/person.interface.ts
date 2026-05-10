@@ -15,6 +15,6 @@ export interface Person {
 }
 
 export interface PersonWithRelations extends Person {
-	article: ArticleWithRelations;
-	personFilms: PersonFilmWithFilm[];
+	article: ArticleWithRelations | null;
+	personFilms: PersonFilmWithFilm[] | null;
 }

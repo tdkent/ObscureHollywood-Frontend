@@ -28,7 +28,7 @@ export default function PersonArticle() {
 
 	const {
 		age,
-		article: { htmlContent, incomingRelations },
+		article,
 		birthDate,
 		birthPlace,
 		deathDate,
@@ -38,11 +38,15 @@ export default function PersonArticle() {
 		slug: personSlug,
 	} = data as PersonWithRelations;
 
-	const roles = Array.from(new Set(personFilms.map((pf) => pf.role)));
+	const roles = personFilms
+		? Array.from(new Set(personFilms.map((pf) => pf.role)))
+		: null;
 	const subtitle = roles
-		.sort()
-		.map((role) => `${role.slice(0, 1).toUpperCase()}${role.slice(1)}`)
-		.join(", ");
+		? roles
+				.sort()
+				.map((role) => `${role.slice(0, 1).toUpperCase()}${role.slice(1)}`)
+				.join(", ")
+		: null;
 
 	const metadata: DlMetadata[] = [
 		{
@@ -81,9 +85,9 @@ export default function PersonArticle() {
 			<ArticleHeader name={name} slug={personSlug} subtitle={subtitle}>
 				<DescriptionList metadata={filteredMetadata} />
 			</ArticleHeader>
-			<ParsedHtml htmlContent={htmlContent} />
-			{incomingRelations?.length ? (
-				<RelatedArticles relatedArticles={incomingRelations} />
+			{article?.htmlContent && <ParsedHtml htmlContent={article.htmlContent} />}
+			{article?.incomingRelations?.length ? (
+				<RelatedArticles relatedArticles={article.incomingRelations} />
 			) : null}
 		</>
 	);
