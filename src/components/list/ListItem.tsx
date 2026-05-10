@@ -15,7 +15,7 @@ interface Props {
 
 export default function ListItem({ entity, item }: Props) {
 	let subtitle = "";
-	let link = item.slug;
+	let link = `/${entity}/${item.slug}`;
 
 	switch (entity) {
 		case "features": {

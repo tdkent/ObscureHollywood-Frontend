@@ -1,4 +1,6 @@
+import { useLocation } from "react-router";
 import Image from "@/components/shared/Image";
+import type { Entity } from "@/types/ui.interface";
 
 interface Props {
 	children?: React.ReactNode;
@@ -14,6 +16,12 @@ export default function ArticleHeader({
 	slug,
 	subtitle,
 }: Props) {
+	const { pathname } = useLocation();
+
+	const entity = pathname.split("/")[1] as Entity;
+	const showsImage: Entity[] = ["features", "films", "people"];
+	const showImage = showsImage.includes(entity);
+
 	return (
 		<header className="flex flex-col gap-4">
 			{subtitle ? (
@@ -24,7 +32,7 @@ export default function ArticleHeader({
 			) : (
 				<h1>{name}</h1>
 			)}
-			<Image altText={name} slug={slug} />
+			{showImage && <Image altText={name} slug={slug} />}
 			{children}
 		</header>
 	);

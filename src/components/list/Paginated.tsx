@@ -14,11 +14,22 @@ import { getSearchParams } from "@/lib/utils/getSearchParams";
 import type { PaginatedResponse } from "@/types/paginated-response.interface";
 import type { Entity } from "@/types/ui.interface";
 
-export default function Paginated() {
+interface Props {
+	showFilterControls?: boolean;
+	reqUrl?: string;
+	routeEntity?: Entity;
+}
+
+export default function Paginated({
+	reqUrl,
+	routeEntity,
+	showFilterControls,
+}: Props) {
 	const { pathname, search } = useLocation();
 	const [searchParams] = useSearchParams();
 
-	const entity = pathname.slice(1) as Entity;
+	// Use entity if provided in props
+	const entity = routeEntity ?? (pathname.slice(1) as Entity);
 
 	const { limit, page, searchParam, sort, tags, tagsParamString } =
 		getSearchParams({
@@ -31,7 +42,9 @@ export default function Paginated() {
 
 	// Convert /search to /articles
 	const requestPath = pathname === "/search" ? "/articles" : pathname;
-	const requestUrl = `${requestPath}${search}`;
+
+	// Use request url from props if provided
+	const requestUrl = `${reqUrl ?? requestPath}${search}`;
 
 	const { data, error, isPending } = useQuery({
 		// Use route and search params as query key
@@ -74,7 +87,7 @@ export default function Paginated() {
 						/>
 					</div>
 				) : null}
-				{entity === "films" && (
+				{showFilterControls && (
 					<Filter
 						filmsPending={isPending}
 						filters={filters}

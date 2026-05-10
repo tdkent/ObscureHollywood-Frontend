@@ -1,7 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { useLocation, useParams } from "react-router";
 import httpRequest from "@/api/httpRequest";
-import StudioDetails from "@/components/article/studio/StudioDetails";
+import ArticleHeader from "@/components/article/ArticleHeader";
+import Paginated from "@/components/list/Paginated";
 import DisplayError from "@/components/shared/DisplayError";
 import Loading from "@/components/shared/Loading";
 import type { StudioWithRelations } from "@/types/studio.interface";
@@ -21,9 +22,12 @@ export default function StudioArticle() {
 	if (isPending) return <Loading />;
 	if (error) return <DisplayError error={error} />;
 
+	const { name, slug: studioSlug } = data as StudioWithRelations;
+
 	return (
-		<div>
-			<StudioDetails studio={data as StudioWithRelations} />
-		</div>
+		<>
+			<ArticleHeader name={name} slug={studioSlug} />
+			<Paginated reqUrl={`/studios/${slug}/films`} routeEntity="films" />
+		</>
 	);
 }
