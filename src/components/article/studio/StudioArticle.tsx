@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useLocation, useParams } from "react-router";
 import httpRequest from "@/api/httpRequest";
 import ArticleHeader from "@/components/article/ArticleHeader";
+import Paginated from "@/components/list/Paginated";
 import DisplayError from "@/components/shared/DisplayError";
 import Loading from "@/components/shared/Loading";
 import type { StudioWithRelations } from "@/types/studio.interface";
@@ -26,6 +27,7 @@ export default function StudioArticle() {
 	return (
 		<>
 			<ArticleHeader name={name} slug={studioSlug} />
+			<Paginated reqUrl={`/studios/${slug}/films`} routeEntity="films" />
 		</>
 	);
 }
