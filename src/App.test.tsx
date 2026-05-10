@@ -20,7 +20,7 @@ describe("App root layer", () => {
 		renderWithClient(<App />, ["/features"]);
 
 		expect(
-			screen.getByRole("heading", { name: "Feature Articles" }),
+			screen.getByRole("heading", { name: "Features" }),
 		).toBeInTheDocument();
 	});
 
@@ -117,7 +117,7 @@ describe("Root nav element", () => {
 		await user.click(screen.getByTestId("mobile-features-link"));
 
 		expect(
-			await screen.findByRole("heading", { name: "Feature Articles" }),
+			await screen.findByRole("heading", { name: "Features" }),
 		).toBeInTheDocument();
 	});
 
@@ -238,7 +238,7 @@ describe("Root nav element", () => {
 
 		await user.click(screen.getByTestId("features-link"));
 		expect(
-			screen.getByRole("heading", { name: "Feature Articles" }),
+			screen.getByRole("heading", { name: "Features" }),
 		).toBeInTheDocument();
 	});
 

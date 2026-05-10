@@ -1,7 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import { useLocation, useParams } from "react-router";
 import httpRequest from "@/api/httpRequest";
-import FeatureDetails from "@/components/article/features/FeatureDetails";
+import ArticleHeader from "@/components/article/ArticleHeader";
+import ParsedHtml from "@/components/article/ParsedHtml";
+import RelatedArticles from "@/components/article/RelatedArticles";
 import DisplayError from "@/components/shared/DisplayError";
 import Loading from "@/components/shared/Loading";
 import type { FeatureWithRelations } from "@/types/feature.interface";
@@ -21,5 +23,20 @@ export default function FeatureArticle() {
 	if (isPending) return <Loading />;
 	if (error) return <DisplayError error={error} />;
 
-	return <FeatureDetails feature={data as FeatureWithRelations} />;
+	const {
+		article: { htmlContent, incomingRelations },
+		name,
+		slug: featureSlug,
+		subtitle,
+	} = data as FeatureWithRelations;
+
+	return (
+		<>
+			<ArticleHeader name={name} slug={featureSlug} subtitle={subtitle} />
+			<ParsedHtml htmlContent={htmlContent} />
+			{incomingRelations?.length ? (
+				<RelatedArticles relatedArticles={incomingRelations} />
+			) : null}
+		</>
+	);
 }

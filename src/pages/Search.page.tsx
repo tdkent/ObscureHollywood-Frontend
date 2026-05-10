@@ -1,16 +1,5 @@
-import { useSearchParams } from "react-router";
-import Paginated from "@/components/list/Paginated";
+import ListPage from "@/components/layout/containers/ListPage";
 
 export default function SearchPage() {
-	const [searchParams] = useSearchParams();
-
-	const searchParam = searchParams.get("q");
-
-	return (
-		<div>
-			<h1>Search Results</h1>
-			<p className="my-4 text-lg">"{searchParam}"</p>
-			<Paginated />
-		</div>
-	);
+	return <ListPage />;
 }

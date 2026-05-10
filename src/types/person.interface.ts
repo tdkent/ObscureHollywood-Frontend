@@ -2,18 +2,19 @@ import type { ArticleWithRelations } from "@/types/article.interface";
 import type { PersonFilmWithFilm } from "@/types/join-table.interface";
 
 export interface Person {
-	id: number;
-	slug: string;
+	age: number | null;
+	birthDate: string | null;
+	birthPlace: string | null;
+	deathDate: string | null;
+	deathPlace: string | null;
 	firstName: string;
+	id: number;
 	lastName: string;
 	name: string;
-	birthDate: string | null;
-	deathDate: string | null;
-	birthPlace: string | null;
-	deathPlace: string | null;
+	slug: string;
 }
 
 export interface PersonWithRelations extends Person {
-	article: ArticleWithRelations;
-	personFilms: PersonFilmWithFilm[];
+	article: ArticleWithRelations | null;
+	personFilms: PersonFilmWithFilm[] | null;
 }

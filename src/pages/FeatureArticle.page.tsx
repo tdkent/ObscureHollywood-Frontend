@@ -1,10 +1,10 @@
 import FeatureArticle from "@/components/article/features/FeatureArticle";
+import DetailPage from "@/components/layout/containers/DetailPage";
 
 export default function FeatureArticlePage() {
 	return (
-		<>
-			<span className="text-sm">Feature</span>
+		<DetailPage labelText="Feature">
 			<FeatureArticle />
-		</>
+		</DetailPage>
 	);
 }

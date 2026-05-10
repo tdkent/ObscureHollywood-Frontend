@@ -1,12 +1,17 @@
 import { useQuery } from "@tanstack/react-query";
 import { useLocation, useParams } from "react-router";
 import httpRequest from "@/api/httpRequest";
-import PersonDetails from "@/components/article/person/PersonDetails";
+import ArticleHeader from "@/components/article/ArticleHeader";
+import ParsedHtml from "@/components/article/ParsedHtml";
+import RelatedArticles from "@/components/article/RelatedArticles";
+import DescriptionList from "@/components/shared/DescriptionList";
 import DisplayError from "@/components/shared/DisplayError";
 import Loading from "@/components/shared/Loading";
+import { getFormattedDateString } from "@/lib/utils/formatPersonDates";
 import type { PersonWithRelations } from "@/types/person.interface";
-import type { Entity } from "@/types/ui.interface";
+import type { DlMetadata, Entity } from "@/types/ui.interface";
 
+/** Render header and parsed HTML of Person article. */
 export default function PersonArticle() {
 	const { slug } = useParams();
 	const { pathname } = useLocation();
@@ -21,9 +26,82 @@ export default function PersonArticle() {
 	if (isPending) return <Loading />;
 	if (error) return <DisplayError error={error} />;
 
+	const {
+		age,
+		article,
+		birthDate,
+		birthPlace,
+		deathDate,
+		deathPlace,
+		name,
+		personFilms,
+		slug: personSlug,
+	} = data as PersonWithRelations;
+
+	const roles = personFilms
+		? Array.from(new Set(personFilms.map((pf) => pf.role)))
+		: null;
+	const subtitle = roles
+		? roles
+				.sort()
+				.map((role) => `${role.slice(0, 1).toUpperCase()}${role.slice(1)}`)
+				.join(", ")
+		: null;
+
+	const films = personFilms
+		? personFilms.map(({ film }) => {
+				return {
+					label: film.name,
+					href: `/films/${film.slug}`,
+				};
+			})
+		: null;
+
+	const metadata: DlMetadata[] = [
+		{
+			title: birthDate ? "Born" : null,
+			description: {
+				label: birthDate ? getFormattedDateString(birthDate) : null,
+			},
+		},
+		{
+			title: birthPlace ? "Born In" : null,
+			description: {
+				label: birthPlace,
+			},
+		},
+		{
+			title: deathDate ? "Died" : null,
+			description: {
+				label: deathDate
+					? `${getFormattedDateString(deathDate)}${age ? ` (aged ${age})` : ""}`
+					: null,
+			},
+		},
+		{
+			title: deathPlace ? "Died In" : null,
+			description: {
+				label: deathPlace,
+			},
+		},
+		{
+			title: personFilms?.length ? "Partial Filmography" : null,
+			description: films,
+		},
+	];
+
+	// Filter out metadata with null entries.
+	const filteredMetadata = metadata.filter((data) => data.title);
+
 	return (
-		<div>
-			<PersonDetails person={data as PersonWithRelations} />
-		</div>
+		<>
+			<ArticleHeader name={name} slug={personSlug} subtitle={subtitle}>
+				<DescriptionList metadata={filteredMetadata} />
+			</ArticleHeader>
+			{article?.htmlContent && <ParsedHtml htmlContent={article.htmlContent} />}
+			{article?.incomingRelations?.length ? (
+				<RelatedArticles relatedArticles={article.incomingRelations} />
+			) : null}
+		</>
 	);
 }

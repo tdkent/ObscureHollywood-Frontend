@@ -60,6 +60,12 @@
 	}
 
 	/* Layout */
+
+	/* Page margins within <main> element */
+	.page-margins {
+		@apply mx-6 my-8;
+	}
+
 	article article {
 		@apply flex flex-col gap-4;
 
