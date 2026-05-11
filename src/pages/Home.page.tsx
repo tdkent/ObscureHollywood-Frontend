@@ -1,3 +1,5 @@
+import Splash from "@/components/home/Splash";
+
 export default function HomePage() {
-	return <h1>Home Page</h1>;
+	return <Splash />;
 }
