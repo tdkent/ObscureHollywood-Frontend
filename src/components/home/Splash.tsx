@@ -1,6 +1,6 @@
 export default function Splash() {
 	return (
-		<header className="w-full lg:drop-shadow-xl lg:drop-shadow-blue-300">
+		<div className="w-full lg:drop-shadow-xl lg:drop-shadow-blue-300">
 			<div
 				className={`w-full h-lvh bg-[url(/img/hollywoodland-sign.jpg)] bg-position-[40%_bottom] bg-no-repeat bg-cover lg:aspect-video lg:h-auto xl:aspect-2/1`}
 			>
@@ -24,6 +24,6 @@ export default function Splash() {
 					</div>
 				</div>
 			</div>
-		</header>
+		</div>
 	);
 }
