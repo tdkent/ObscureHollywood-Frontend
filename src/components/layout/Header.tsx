@@ -4,8 +4,8 @@ import Search from "@/components/layout/Search";
 
 export default function Header() {
 	return (
-		<header className="border-b">
-			<div className="flex flex-col py-4 px-6 gap-4">
+		<header className="absolute top-0 right-0 left-0 z-40 border-b h-30">
+			<div className="flex flex-col justify-center px-6 gap-4 h-full">
 				<div className="flex justify-between items-center">
 					<Logo />
 					<Navigation />

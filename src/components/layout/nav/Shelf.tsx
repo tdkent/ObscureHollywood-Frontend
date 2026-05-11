@@ -2,6 +2,7 @@ import { ChevronRightIcon, Minus } from "lucide-react";
 import type { Dispatch, SetStateAction } from "react";
 import { NavLink } from "react-router";
 import Logo from "@/components/layout/Logo";
+import Search from "@/components/layout/Search";
 import { navLinks } from "@/lib/navLinks";
 
 interface Props {
@@ -26,23 +27,26 @@ export default function Shelf({
 	return (
 		<div
 			inert={!showShelf}
-			className={`fixed top-0 right-0 w-full h-dvh z-40 bg-bg text-text ${instantClose ? "" : "transition-all duration-400"} ${showShelf ? "opacity-100" : "opacity-0"}`}
+			className={`fixed top-0 right-0 w-full h-dvh z-50 bg-bg text-text ${instantClose ? "" : "transition-all duration-400"} ${showShelf ? "opacity-100" : "opacity-0"}`}
 		>
-			<div className="flex justify-between items-center py-4 px-6">
-				<Logo />
-				<button
-					aria-label={`${showShelf ? "Hide" : "Show"} Nav Menu`}
-					className="cursor-pointer relative place-items-center grid right-3"
-					onClick={handleClick}
-					type="button"
-				>
-					<Minus
-						className={`absolute size-10 stroke-1 ${instantClose ? "" : "transition-all duration-400"} ${showShelf ? "opacity-100 rotate-45" : "opacity-0 rotate-0"}`}
-					/>
-					<Minus
-						className={`absolute size-10 stroke-1 ${instantClose ? "" : "transition-all duration-400"} ${showShelf ? "opacity-100 -rotate-45" : "opacity-0 rotate-0"}`}
-					/>
-				</button>
+			<div className="flex flex-col justify-center gap-4 h-30 px-6">
+				<div className="flex items-center justify-between">
+					<Logo />
+					<button
+						aria-label={`${showShelf ? "Hide" : "Show"} Nav Menu`}
+						className="cursor-pointer relative place-items-center grid right-3"
+						onClick={handleClick}
+						type="button"
+					>
+						<Minus
+							className={`absolute size-10 stroke-1 ${instantClose ? "" : "transition-all duration-400"} ${showShelf ? "opacity-100 rotate-45" : "opacity-0 rotate-0"}`}
+						/>
+						<Minus
+							className={`absolute size-10 stroke-1 ${instantClose ? "" : "transition-all duration-400"} ${showShelf ? "opacity-100 -rotate-45" : "opacity-0 rotate-0"}`}
+						/>
+					</button>
+				</div>
+				<Search />
 			</div>
 			<div className="w-full h-full flex-1 px-8 pt-8 flex flex-col sm:px-12">
 				<nav className="flex-1 min-h-0">
