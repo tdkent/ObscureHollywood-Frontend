@@ -48,7 +48,7 @@ export default function Shelf({
 				</div>
 				<Search />
 			</div>
-			<div className="w-full h-full flex-1 px-8 pt-8 flex flex-col sm:px-12">
+			<div className="w-full h-full flex-1 px-8 flex flex-col sm:px-12">
 				<nav className="flex-1 min-h-0">
 					<ul className="flex flex-col h-full min-h-0 divide-y pt-8 sm:pt-16">
 						{navLinks.map((link) => {

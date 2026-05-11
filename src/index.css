@@ -13,6 +13,7 @@
 	--color-gold: oklch(87.9% 0.169 91.605);
 	--color-gold-dark: oklch(82.8% 0.189 84.429);
 	--color-gold-light: oklch(92.4% 0.12 95.746);
+	--color-white: oklch(0.967 0.0029 264.54);
 
 	/* Fonts */
 	--font-limelight: "Limelight", sans-serif;
