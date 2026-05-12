@@ -31,16 +31,19 @@ const mockedFeaturesData: Feature[] = [
 		id: 1,
 		name: "American Silent Films",
 		slug: "american-silent-films",
+		subtitle: "",
 	},
 	{
 		id: 2,
 		name: "American Silent Treasures",
 		slug: "american-silent-treasures",
+		subtitle: "",
 	},
 	{
 		id: 4,
 		name: "Corriganville",
 		slug: "corriganville",
+		subtitle: "",
 	},
 ];
 
@@ -76,6 +79,7 @@ const mockedPeopleData: Person[] = [
 		deathDate: null,
 		birthPlace: null,
 		deathPlace: null,
+		age: null,
 	},
 	{
 		id: 604,
@@ -87,6 +91,7 @@ const mockedPeopleData: Person[] = [
 		deathDate: null,
 		birthPlace: null,
 		deathPlace: null,
+		age: null,
 	},
 	{
 		id: 632,
@@ -98,6 +103,7 @@ const mockedPeopleData: Person[] = [
 		deathDate: null,
 		birthPlace: null,
 		deathPlace: null,
+		age: null,
 	},
 ];
 
@@ -167,6 +173,7 @@ const mockedFeatureArticleData: FeatureWithRelations = {
 	id: 4,
 	name: "Corriganville",
 	slug: "corriganville",
+	subtitle: "",
 	article: {
 		id: 29,
 		slug: "corriganville",
@@ -209,6 +216,7 @@ const mockedPersonArticleData: Omit<PersonWithRelations, "personFilms"> = {
 	deathDate: null,
 	birthPlace: null,
 	deathPlace: null,
+	age: null,
 	article: {
 		id: 6,
 		slug: "alma-rubens",
@@ -259,17 +267,26 @@ const handlers = [
 	http.get(`${BACKEND_URL}/features`, () => {
 		return HttpResponse.json(mockedPaginatedFeaturesResponse);
 	}),
+	http.get(`${BACKEND_URL}/features/recent`, () => {
+		return HttpResponse.json(mockedFeaturesData);
+	}),
 	http.get(`${BACKEND_URL}/features/corriganville`, () => {
 		return HttpResponse.json(mockedFeatureArticleData);
 	}),
 	http.get(`${BACKEND_URL}/films`, () => {
 		return HttpResponse.json(mockedPaginatedFilmsResponse);
 	}),
+	http.get(`${BACKEND_URL}/films/recent`, () => {
+		return HttpResponse.json(mockedFilmsData);
+	}),
 	http.get(`${BACKEND_URL}/films/the-americano-1916`, () => {
 		return HttpResponse.json(mockedFilmArticleData);
 	}),
 	http.get(`${BACKEND_URL}/people`, () => {
 		return HttpResponse.json(mockedPaginatedPeopleResponse);
+	}),
+	http.get(`${BACKEND_URL}/people/recent`, () => {
+		return HttpResponse.json(mockedPeopleData);
 	}),
 	http.get(`${BACKEND_URL}/people/alma-rubens`, () => {
 		return HttpResponse.json(mockedPersonArticleData);
@@ -280,11 +297,17 @@ const handlers = [
 	http.get(`${BACKEND_URL}/studios/paramount-pictures`, () => {
 		return HttpResponse.json(mockedStudioArticleData);
 	}),
+	http.get(`${BACKEND_URL}/studios/paramount-pictures/films`, () => {
+		return HttpResponse.json(mockedPaginatedFilmsResponse);
+	}),
 	http.get(`${BACKEND_URL}/tags`, () => {
 		return HttpResponse.json(mockedTagsData);
 	}),
 	http.get(`${BACKEND_URL}/tags/decade-1930s`, () => {
 		return HttpResponse.json(mockedTagArticleData);
+	}),
+	http.get(`${BACKEND_URL}/tags/decade-1930s/films`, () => {
+		return HttpResponse.json(mockedPaginatedFilmsResponse);
 	}),
 ];
 
