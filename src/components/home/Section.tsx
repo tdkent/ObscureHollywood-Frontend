@@ -36,7 +36,7 @@ export default function Section({ imgs, route, text, title }: Props) {
 				<p>{text}</p>
 				<div className="flex flex-col gap-4">
 					<h3 className="font-bodini-moda italic text-2xl font-bold">
-						Recent features:
+						Recent {route}:
 					</h3>
 					<ul className="flex flex-col gap-6">
 						{recentArticles.map(({ id, name, slug }) => {
