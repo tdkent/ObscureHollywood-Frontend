@@ -3,6 +3,8 @@ import userEvent from "@testing-library/user-event";
 import App from "@/App";
 import { renderWithClient } from "@/test/render";
 
+const homeHeading = "Neglected films.Stars of the past.The obscure revisited.";
+
 /**
  * Test that defined routes render the correct UI
  * Test that undefined routes render 404 UI
@@ -12,7 +14,7 @@ describe("App root layer", () => {
 		renderWithClient(<App />, ["/"]);
 
 		expect(
-			screen.getByRole("heading", { name: "Home Page" }),
+			screen.getByRole("heading", { name: homeHeading }),
 		).toBeInTheDocument();
 	});
 
@@ -152,7 +154,7 @@ describe("Root nav element", () => {
 
 		expect(
 			screen.getByRole("heading", {
-				name: "Home Page",
+				name: homeHeading,
 			}),
 		).toBeInTheDocument();
 	});
@@ -164,7 +166,7 @@ describe("Root nav element", () => {
 
 		expect(
 			screen.getByRole("heading", {
-				name: "Home Page",
+				name: homeHeading,
 			}),
 		).toBeInTheDocument();
 	});
@@ -176,7 +178,7 @@ describe("Root nav element", () => {
 
 		expect(
 			screen.getByRole("heading", {
-				name: "Home Page",
+				name: homeHeading,
 			}),
 		).toBeInTheDocument();
 	});
@@ -188,7 +190,7 @@ describe("Root nav element", () => {
 
 		expect(
 			screen.getByRole("heading", {
-				name: "Home Page",
+				name: homeHeading,
 			}),
 		).toBeInTheDocument();
 	});
@@ -200,7 +202,7 @@ describe("Root nav element", () => {
 
 		expect(
 			screen.getByRole("heading", {
-				name: "Home Page",
+				name: homeHeading,
 			}),
 		).toBeInTheDocument();
 	});
@@ -212,7 +214,7 @@ describe("Root nav element", () => {
 
 		expect(
 			screen.getByRole("heading", {
-				name: "Home Page",
+				name: homeHeading,
 			}),
 		).toBeInTheDocument();
 	});
@@ -224,7 +226,7 @@ describe("Root nav element", () => {
 
 		expect(
 			screen.getByRole("heading", {
-				name: "Home Page",
+				name: homeHeading,
 			}),
 		).toBeInTheDocument();
 	});
@@ -273,7 +275,7 @@ describe("Root nav element", () => {
 
 		expect(
 			screen.getByRole("heading", {
-				name: "Home Page",
+				name: homeHeading,
 			}),
 		).toBeInTheDocument();
 	});
@@ -285,7 +287,7 @@ describe("Root nav element", () => {
 
 		expect(
 			screen.getByRole("heading", {
-				name: "Home Page",
+				name: homeHeading,
 			}),
 		).toBeInTheDocument();
 	});
@@ -297,7 +299,7 @@ describe("Root nav element", () => {
 
 		expect(
 			screen.getByRole("heading", {
-				name: "Home Page",
+				name: homeHeading,
 			}),
 		).toBeInTheDocument();
 	});
@@ -309,7 +311,7 @@ describe("Root nav element", () => {
 
 		expect(
 			screen.getByRole("heading", {
-				name: "Home Page",
+				name: homeHeading,
 			}),
 		).toBeInTheDocument();
 	});
@@ -321,7 +323,7 @@ describe("Root nav element", () => {
 
 		expect(
 			screen.getByRole("heading", {
-				name: "Home Page",
+				name: homeHeading,
 			}),
 		).toBeInTheDocument();
 	});
@@ -333,7 +335,7 @@ describe("Root nav element", () => {
 
 		expect(
 			screen.getByRole("heading", {
-				name: "Home Page",
+				name: homeHeading,
 			}),
 		).toBeInTheDocument();
 	});
@@ -345,7 +347,7 @@ describe("Root nav element", () => {
 
 		expect(
 			screen.getByRole("heading", {
-				name: "Home Page",
+				name: homeHeading,
 			}),
 		).toBeInTheDocument();
 	});
