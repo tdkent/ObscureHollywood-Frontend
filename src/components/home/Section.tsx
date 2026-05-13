@@ -1,9 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
-import { Link } from "react-router";
 import httpRequest from "@/api/httpRequest";
 import SectionHeaderImgs from "@/components/home/SectionHeaderImgs";
+import SectionListItem from "@/components/home/SectionListItem";
 import DisplayError from "@/components/shared/DisplayError";
-import Image from "@/components/shared/Image";
 import Loading from "@/components/shared/Loading";
 import { getPersonLifespanString } from "@/lib/utils/formatPersonDates";
 import type { Feature } from "@/types/feature.interface";
@@ -48,7 +47,7 @@ export default function Section({
 					<h3 className="font-bodini-moda italic text-2xl font-bold">
 						{listHeading}:
 					</h3>
-					<ul className="flex flex-col gap-6 px-4">
+					<ul className={`flex flex-col gap-6 px-4`}>
 						{recentArticles.map((ra) => {
 							let subtitle: string | number;
 
@@ -63,24 +62,13 @@ export default function Section({
 								subtitle = "";
 							}
 
-							const { id, name, slug } = ra;
-
 							return (
-								<li className="rounded-2xl overflow-hidden" key={id}>
-									<Link to={`/${route}/${slug}`}>
-										<div className="p-4 flex items-center flex-nowrap gap-4">
-											<Image
-												altText={name}
-												containerStyles="rounded-2xl w-3/10 aspect-[6/5]"
-												slug={slug}
-											/>
-											<div className="flex flex-col text-left text-sm">
-												<span className=" font-bold">{name}</span>
-												<span>{subtitle}</span>
-											</div>
-										</div>
-									</Link>
-								</li>
+								<SectionListItem
+									key={ra.id}
+									item={ra}
+									route={route}
+									subtitle={subtitle}
+								/>
 							);
 						})}
 					</ul>
