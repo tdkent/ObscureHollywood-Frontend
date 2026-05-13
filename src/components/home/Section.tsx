@@ -4,7 +4,11 @@ import httpRequest from "@/api/httpRequest";
 import DisplayError from "@/components/shared/DisplayError";
 import Image from "@/components/shared/Image";
 import Loading from "@/components/shared/Loading";
+import { getPersonLifespanString } from "@/lib/utils/formatPersonDates";
+import type { Feature } from "@/types/feature.interface";
+import type { Film } from "@/types/film.interface";
 import type { PartialListItem } from "@/types/paginated-response.interface";
+import type { Person } from "@/types/person.interface";
 
 interface Props {
 	imgs: { name: string; slug: string }[];
@@ -48,10 +52,25 @@ export default function Section({
 						{listHeading}:
 					</h3>
 					<ul className="flex flex-col gap-6">
-						{recentArticles.map(({ id, name, slug }) => {
+						{recentArticles.map((ra) => {
+							let subtitle: string | number;
+
+							if (route === "features") {
+								subtitle = (ra as Feature).subtitle;
+							} else if (route === "films") {
+								subtitle = (ra as Film).releaseYear;
+							} else if (route === "people") {
+								const { birthDate, deathDate } = ra as Person;
+								subtitle = getPersonLifespanString({ birthDate, deathDate });
+							} else {
+								subtitle = "";
+							}
+
+							const { id, name, slug } = ra;
+
 							return (
 								<li
-									className="font-bold text-sm rounded-2xl overflow-hidden bg-bg-accent"
+									className="rounded-2xl overflow-hidden bg-bg-accent"
 									key={id}
 								>
 									<Link to={`/${route}/${slug}`}>
@@ -61,7 +80,10 @@ export default function Section({
 												containerStyles="rounded-2xl w-3/10 aspect-[6/5]"
 												slug={slug}
 											/>
-											<span className="text-left">{name}</span>
+											<div className="flex flex-col text-left text-sm">
+												<span className=" font-bold">{name}</span>
+												<span>{subtitle}</span>
+											</div>
 										</div>
 									</Link>
 								</li>
