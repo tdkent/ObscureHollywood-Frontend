@@ -1,6 +1,6 @@
-import { DateTime } from "luxon";
 import { Link } from "react-router";
 import Image from "@/components/shared/Image";
+import { getPersonLifespanString } from "@/lib/utils/formatPersonDates";
 import type { Feature } from "@/types/feature.interface";
 import type { Film } from "@/types/film.interface";
 import type { PartialListItem } from "@/types/paginated-response.interface";
@@ -32,20 +32,7 @@ export default function ListItem({ entity, item }: Props) {
 
 		case "people": {
 			const { birthDate, deathDate } = item as Person;
-			if (!birthDate) {
-				subtitle = "";
-				break;
-			}
-
-			const birthYear = DateTime.fromISO(birthDate).year;
-
-			if (!deathDate) {
-				subtitle = `Born ${birthYear}`;
-				break;
-			}
-
-			const deathYear = DateTime.fromISO(deathDate).year;
-			subtitle = `${birthYear} - ${deathYear}`;
+			subtitle = getPersonLifespanString({ birthDate, deathDate });
 			break;
 		}
 

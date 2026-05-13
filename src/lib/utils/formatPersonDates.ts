@@ -8,3 +8,21 @@ export function getFormattedDateString(date: string): string {
 		year: "numeric",
 	});
 }
+
+export function getPersonLifespanString({
+	birthDate,
+	deathDate,
+}: {
+	birthDate: string | null;
+	deathDate: string | null;
+}): string {
+	if (!birthDate) return "";
+
+	const birthYear = DateTime.fromISO(birthDate).year;
+
+	if (!deathDate) return `Born ${birthYear}`;
+
+	const deathYear = DateTime.fromISO(deathDate).year;
+
+	return `${birthYear} - ${deathYear}`;
+}

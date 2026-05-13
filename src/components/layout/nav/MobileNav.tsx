@@ -1,10 +1,14 @@
 import { Equal } from "lucide-react";
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
+import { useLocation } from "react-router";
 import Shelf from "@/components/layout/nav/Shelf";
 
 /** Render trigger button and drawer with nav. */
 export default function MobileNav() {
+	const { pathname } = useLocation();
+	const isHome = pathname === "/";
+
 	const [showShelf, setShowShelf] = useState(false);
 	const [mounted, setMounted] = useState(false);
 	const [container, setContainer] = useState<Element | null>(null);
@@ -49,7 +53,9 @@ export default function MobileNav() {
 				onClick={handleClick}
 				type="button"
 			>
-				<Equal className="scale-175 stroke-1" />
+				<Equal
+					className={`scale-175 stroke-1 ${isHome ? "text-text-white" : "text-text"}`}
+				/>
 			</button>
 			{mounted && container
 				? createPortal(
