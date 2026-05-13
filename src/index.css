@@ -13,7 +13,8 @@
 	--color-gold: oklch(87.9% 0.169 91.605);
 	--color-gold-dark: oklch(82.8% 0.189 84.429);
 	--color-gold-light: oklch(92.4% 0.12 95.746);
-	--color-white: oklch(0.967 0.0029 264.54);
+	--color-text-white: oklch(0.967 0.0029 264.54);
+	--color-dark-border: oklch(0.3113 0.0181 276.38);
 
 	/* Fonts */
 	--font-limelight: "Limelight", sans-serif;
@@ -21,9 +22,10 @@
 	--font-open-sans: "Open Sans", sans-serif;
 
 	/* Animations */
-	--animate-fade-in: fade-in 0.5s ease-in-out both;
+	--animate-fade-move-up: fade-move-up 0.5s ease-in-out both;
+	--animate-fade: fade 0.5s ease-in-out both;
 
-	@keyframes fade-in {
+	@keyframes fade-move-up {
 		0% {
 			opacity: 0;
 			translate: 0px 12px;
@@ -32,6 +34,16 @@
 		100% {
 			opacity: 100;
 			translate: 0px 0px;
+		}
+	}
+
+	@keyframes fade {
+		0% {
+			opacity: 0;
+		}
+
+		100% {
+			opacity: 100;
 		}
 	}
 }
@@ -43,6 +55,14 @@
 
 @utility animation-delay-600 {
 	animation-delay: 600ms;
+}
+
+@utility animation-delay-900 {
+	animation-delay: 900ms;
+}
+
+@utility animation-delay-1200 {
+	animation-delay: 1200ms;
 }
 
 /* Dark mode */
