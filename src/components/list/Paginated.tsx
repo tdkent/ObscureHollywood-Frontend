@@ -61,7 +61,7 @@ export default function Paginated({
 
 	return (
 		<div className="my-6">
-			<div className="flex flex-col gap-4 border-y py-4">
+			<div className="flex flex-col gap-6 border-y py-4">
 				<PaginationMetadata
 					hasData={!!hasResults}
 					limitParam={limit}
@@ -71,7 +71,7 @@ export default function Paginated({
 					tags={tags}
 				/>
 				{hasResults ? (
-					<div className="flex gap-6">
+					<div className="flex flex-col gap-6">
 						<SortItems
 							entity={entity}
 							limit={limit}

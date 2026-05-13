@@ -36,7 +36,7 @@ export default function PaginationMetadata({
 		setSearchParams(`${params}${tagParams}`);
 	}
 	return (
-		<div className="flex flex-col gap-2 text-sm">
+		<div className="flex flex-col gap-4 text-base">
 			{hasData ? (
 				<div className="flex gap-4">
 					<span>
@@ -57,10 +57,10 @@ export default function PaginationMetadata({
 					<ul className="flex flex-col gap-1">
 						{tags.map((tag) => {
 							return (
-								<li className="flex gap-1.5 items-center" key={tag}>
+								<li className="flex gap-3 items-center" key={tag}>
 									#{tag}
 									<button onClick={() => handleClick(tag)} type="button">
-										<X className="stroke-3 size-3" />
+										<X className="stroke-4 size-4 stroke-gold-dark dark:stroke-gold" />
 									</button>
 								</li>
 							);

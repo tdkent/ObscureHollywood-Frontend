@@ -23,14 +23,14 @@ export default function PaginationLimit({
 	if (tagsParamString) params += tagsParamString;
 
 	return (
-		<div className="flex place-items-center text-sm gap-2">
-			Show:
-			<div className="flex gap-3">
+		<div className="flex place-items-center text-base gap-4">
+			Items per page:
+			<div className="flex gap-4">
 				{limitOptions.map((option) => {
 					const selected = option === currLimit;
 					return (
 						<button
-							className={`border rounded size-8 bg-bg-accent ${selected ? "text-text-disabled" : "text-text"} transition-colors`}
+							className={`border rounded size-10 bg-bg-accent ${selected ? "text-text-disabled" : "text-text"} transition-colors`}
 							key={option}
 							type="button"
 							disabled={selected}

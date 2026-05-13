@@ -35,7 +35,11 @@ export default function SortItems({
 	}
 
 	return (
-		<select className="select" id="sort-items" onChange={handleSelect}>
+		<select
+			className="select text-base w-3/4"
+			id="sort-items"
+			onChange={handleSelect}
+		>
 			{sortOption
 				? sortOption.options
 						.sort((a, b) => a.id - b.id)
