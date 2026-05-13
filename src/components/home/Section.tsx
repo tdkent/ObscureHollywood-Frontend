@@ -8,12 +8,21 @@ import type { PartialListItem } from "@/types/paginated-response.interface";
 
 interface Props {
 	imgs: { name: string; slug: string }[];
+	listHeading: string;
 	route: "features" | "films" | "people";
+	sectionClass: string;
 	text: string;
 	title: string;
 }
 
-export default function Section({ imgs, route, text, title }: Props) {
+export default function Section({
+	imgs,
+	listHeading,
+	route,
+	sectionClass,
+	text,
+	title,
+}: Props) {
 	const { data, error, isPending } = useQuery({
 		queryKey: [route, "recent"],
 		queryFn: () => httpRequest(`/${route}/recent`),
@@ -25,7 +34,7 @@ export default function Section({ imgs, route, text, title }: Props) {
 	const recentArticles = data as PartialListItem[];
 
 	return (
-		<section className="py-4">
+		<section className={`py-8 ${sectionClass}`}>
 			<div className="flex flex-nowrap">
 				{imgs.map(({ name, slug }) => {
 					return <Image key={slug} altText={name} slug={slug} />;
@@ -36,7 +45,7 @@ export default function Section({ imgs, route, text, title }: Props) {
 				<p>{text}</p>
 				<div className="flex flex-col gap-4">
 					<h3 className="font-bodini-moda italic text-2xl font-bold">
-						Recent {route}:
+						{listHeading}:
 					</h3>
 					<ul className="flex flex-col gap-6">
 						{recentArticles.map(({ id, name, slug }) => {
