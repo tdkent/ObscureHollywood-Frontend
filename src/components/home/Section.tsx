@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router";
 import httpRequest from "@/api/httpRequest";
+import SectionHeaderImgs from "@/components/home/SectionHeaderImgs";
 import DisplayError from "@/components/shared/DisplayError";
 import Image from "@/components/shared/Image";
 import Loading from "@/components/shared/Loading";
@@ -39,11 +40,7 @@ export default function Section({
 
 	return (
 		<section className={`py-8 ${sectionClass}`}>
-			<div className="flex flex-nowrap">
-				{imgs.map(({ name, slug }) => {
-					return <Image key={slug} altText={name} slug={slug} />;
-				})}
-			</div>
+			<SectionHeaderImgs imgs={imgs} />
 			<div className="flex flex-col text-center gap-4 py-6">
 				<h2 className="text-3xl font-bold px-6">{title}</h2>
 				<p className="px-6">{text}</p>
