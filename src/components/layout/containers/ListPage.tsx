@@ -16,14 +16,16 @@ export default function ListPage() {
 
 	return (
 		<div className="page-margins">
-			{isSearch ? (
-				<>
-					<h1>Search Results</h1>
-					<p className="my-4 text-lg">"{searchParam}"</p>
-				</>
-			) : (
-				<h1>{headingText}</h1>
-			)}
+			<div className="px-6">
+				{isSearch ? (
+					<>
+						<h1>Search Results</h1>
+						<p className="my-4 text-lg">"{searchParam}"</p>
+					</>
+				) : (
+					<h1>{headingText}</h1>
+				)}
+			</div>
 			<Paginated showFilterControls={showFilterControls} />
 		</div>
 	);

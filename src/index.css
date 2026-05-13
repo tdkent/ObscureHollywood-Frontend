@@ -161,7 +161,7 @@
 
 	/* Page margins within <main> element */
 	.page-margins {
-		@apply mx-6 mt-38 mb-8;
+		@apply mt-38 mb-8;
 	}
 
 	article article {
