@@ -17,7 +17,10 @@
 	--color-text-black: oklch(0.1297 0.0171 298.93);
 	--color-dark-border: oklch(0.3113 0.0181 276.38);
 	--color-charcoal-blue: oklch(0.2 0.02 250);
+	--color-charcoal-blue-item: oklch(0.24 0.02 250);
 	--color-slate-blue: oklch(0.55 0.03 245);
+	--color-slate-blue-item: oklch(0.6 0.025 245);
+	--color-white-item: oklch(0.96 0 250);
 
 	/* Fonts */
 	--font-limelight: "Limelight", sans-serif;
@@ -118,7 +121,7 @@
 		}
 
 		li {
-			@apply border-dark-border;
+			@apply border-dark-border bg-charcoal-blue-item;
 		}
 	}
 
@@ -134,12 +137,12 @@
 		}
 
 		li {
-			@apply border-dark-border;
+			@apply border-dark-border bg-slate-blue-item;
 		}
 	}
 
 	.home-people {
-		@apply bg-text-white text-text-black;
+		@apply bg-white text-text-black;
 
 		h2 {
 			@apply text-gold-dark;
@@ -147,6 +150,10 @@
 
 		h3 {
 			@apply text-text-black;
+		}
+
+		li {
+			@apply bg-white-item;
 		}
 	}
 

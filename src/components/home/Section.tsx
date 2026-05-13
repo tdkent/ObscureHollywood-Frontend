@@ -44,14 +44,14 @@ export default function Section({
 					return <Image key={slug} altText={name} slug={slug} />;
 				})}
 			</div>
-			<div className="flex flex-col text-center gap-4 p-6">
-				<h2 className="text-3xl font-bold">{title}</h2>
-				<p>{text}</p>
+			<div className="flex flex-col text-center gap-4 py-6">
+				<h2 className="text-3xl font-bold px-6">{title}</h2>
+				<p className="px-6">{text}</p>
 				<div className="flex flex-col gap-4">
 					<h3 className="font-bodini-moda italic text-2xl font-bold">
 						{listHeading}:
 					</h3>
-					<ul className="flex flex-col gap-6">
+					<ul className="flex flex-col gap-6 px-4">
 						{recentArticles.map((ra) => {
 							let subtitle: string | number;
 
@@ -69,10 +69,7 @@ export default function Section({
 							const { id, name, slug } = ra;
 
 							return (
-								<li
-									className="rounded-2xl overflow-hidden bg-bg-accent"
-									key={id}
-								>
+								<li className="rounded-2xl overflow-hidden" key={id}>
 									<Link to={`/${route}/${slug}`}>
 										<div className="p-4 flex items-center flex-nowrap gap-4">
 											<Image
