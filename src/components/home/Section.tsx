@@ -51,12 +51,18 @@ export default function Section({
 						{recentArticles.map(({ id, name, slug }) => {
 							return (
 								<li
-									className="font-bold text-lg rounded-t-2xl  border overflow-hidden  max-lg:last:hidden"
+									className="font-bold text-sm rounded-2xl overflow-hidden bg-bg-accent"
 									key={id}
 								>
 									<Link to={`/${route}/${slug}`}>
-										<Image altText={name} slug={slug} />
-										{name}
+										<div className="p-4 flex items-center flex-nowrap gap-4">
+											<Image
+												altText={name}
+												containerStyles="rounded-2xl w-3/10 aspect-[6/5]"
+												slug={slug}
+											/>
+											<span className="text-left">{name}</span>
+										</div>
 									</Link>
 								</li>
 							);
