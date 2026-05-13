@@ -31,7 +31,7 @@ export default function Shelf({
 		>
 			<div className="flex flex-col justify-center gap-4 h-30 px-6">
 				<div className="flex items-center justify-between">
-					<Logo />
+					<Logo isShelf />
 					<button
 						aria-label={`${showShelf ? "Hide" : "Show"} Nav Menu`}
 						className="cursor-pointer relative place-items-center grid right-3"

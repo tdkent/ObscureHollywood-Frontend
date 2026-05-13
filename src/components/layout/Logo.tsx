@@ -1,18 +1,22 @@
 import { useLocation } from "react-router";
 
-export default function Logo() {
+interface Props {
+	isShelf?: boolean;
+}
+
+export default function Logo({ isShelf }: Props) {
 	const { pathname } = useLocation();
 	const isHome = pathname === "/";
 
 	return (
 		<div className="font-limelight text-2xl">
 			<span
-				className={`${isHome ? "text-text-white" : "text-text-heading/50 dark:text-text-heading"}`}
+				className={`${isHome && !isShelf ? "text-text-white" : "text-text-heading/50 dark:text-text-heading"}`}
 			>
 				Obscure
 			</span>{" "}
 			<span
-				className={`${isHome ? "text-text-white" : "bg-linear-to-r from-gold dark:from-gold-light to-gold-dark bg-clip-text text-transparent"}`}
+				className={`${isHome && !isShelf ? "text-text-white" : "bg-linear-to-r from-gold dark:from-gold-light to-gold-dark bg-clip-text text-transparent"}`}
 			>
 				Hollywood
 			</span>
