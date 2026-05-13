@@ -5,6 +5,18 @@ import { renderWithClient } from "@/test/render";
 
 const homeHeading = "Neglected films.Stars of the past.The obscure revisited.";
 
+// Mock intersection observer API: https://vitest.dev/guide/mocking/globals
+const IntersectionObserverMock = vi.fn(
+	class {
+		disconnect = vi.fn();
+		observe = vi.fn();
+		takeRecords = vi.fn();
+		unobserve = vi.fn();
+	},
+);
+
+vi.stubGlobal("IntersectionObserver", IntersectionObserverMock);
+
 /**
  * Test that defined routes render the correct UI
  * Test that undefined routes render 404 UI
