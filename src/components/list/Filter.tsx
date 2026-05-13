@@ -49,13 +49,14 @@ export default function Filter({
 			/>
 
 			{/* Button opens shelf */}
-			<div className="drawer-content">
+			<div className="drawer-content flex items-center justify-between">
+				<span>Filter by:</span>
 				<button
-					className="btn w-full"
+					className="btn btn-soft w-3/5"
 					type="button"
 					onClick={() => setIsOpen(true)}
 				>
-					Filter
+					Add Filters
 					<Plus className="size-4" />
 				</button>
 			</div>

@@ -61,7 +61,7 @@ export default function Paginated({
 
 	return (
 		<div className="my-6">
-			<div className="flex flex-col gap-6 border-y py-4">
+			<div className="flex flex-col gap-6 border-y p-4 text-sm">
 				<PaginationMetadata
 					hasData={!!hasResults}
 					limitParam={limit}
@@ -72,17 +72,17 @@ export default function Paginated({
 				/>
 				{hasResults ? (
 					<div className="flex flex-col gap-6">
+						<PaginationLimit
+							currLimit={limit}
+							searchParam={searchParam}
+							sortParam={sort}
+							tagsParamString={tagsParamString}
+						/>
 						<SortItems
 							entity={entity}
 							limit={limit}
 							searchParam={searchParam}
 							sort={sort}
-							tagsParamString={tagsParamString}
-						/>
-						<PaginationLimit
-							currLimit={limit}
-							searchParam={searchParam}
-							sortParam={sort}
 							tagsParamString={tagsParamString}
 						/>
 					</div>

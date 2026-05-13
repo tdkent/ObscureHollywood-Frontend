@@ -35,26 +35,25 @@ export default function SortItems({
 	}
 
 	return (
-		<select
-			className="select text-base w-3/4"
-			id="sort-items"
-			onChange={handleSelect}
-		>
-			{sortOption
-				? sortOption.options
-						.sort((a, b) => a.id - b.id)
-						.map((option) => {
-							return (
-								<option
-									key={option.label}
-									selected={sort === option.value}
-									value={option.value}
-								>
-									{option.label}
-								</option>
-							);
-						})
-				: null}
-		</select>
+		<div className="flex items-center justify-between">
+			<span className="">Sort by:</span>
+			<select className="select w-3/5" id="sort-items" onChange={handleSelect}>
+				{sortOption
+					? sortOption.options
+							.sort((a, b) => a.id - b.id)
+							.map((option) => {
+								return (
+									<option
+										key={option.label}
+										selected={sort === option.value}
+										value={option.value}
+									>
+										{option.label}
+									</option>
+								);
+							})
+					: null}
+			</select>
+		</div>
 	);
 }
