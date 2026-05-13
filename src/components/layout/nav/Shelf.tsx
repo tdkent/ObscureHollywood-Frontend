@@ -46,7 +46,7 @@ export default function Shelf({
 						/>
 					</button>
 				</div>
-				<Search />
+				<Search isShelf />
 			</div>
 			<div className="w-full h-full flex-1 px-8 flex flex-col sm:px-12">
 				<nav className="flex-1 min-h-0">
