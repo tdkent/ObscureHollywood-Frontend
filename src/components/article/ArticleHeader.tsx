@@ -31,6 +31,7 @@ export default function ArticleHeader({
 			{showImage && (
 				<Image
 					altText={name}
+					isHeader
 					slug={slug}
 					containerStyles="mt-4 w-full aspect-[7/5]"
 				/>
