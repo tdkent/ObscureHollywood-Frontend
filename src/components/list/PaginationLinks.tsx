@@ -1,4 +1,3 @@
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Link } from "react-router";
 import type { PaginatedResponse } from "@/types/paginated-response.interface";
 
@@ -18,46 +17,68 @@ export default function PaginationLinks({
 	return (
 		<nav aria-label="Pagination" className="flex justify-center mt-12">
 			<ul className="join">
-				<li className={`join-item btn ${isFirstPage && "btn-disabled"}`}>
+				<li className={`join-item btn p-0 ${isFirstPage && "btn-disabled"}`}>
 					{isFirstPage ? (
-						<span aria-disabled>1</span>
+						<span aria-disabled className="px-4">
+							Back
+						</span>
 					) : (
-						<Link aria-label="Page 1" to={`?${links.first}`}>
+						<Link
+							aria-label="Previous page"
+							className="w-full h-full px-4 flex items-center"
+							to={`?${links.previous}`}
+						>
+							Back
+						</Link>
+					)}
+				</li>
+				<li className={`join-item btn p-0 ${isFirstPage && "btn-disabled"}`}>
+					{isFirstPage ? (
+						<span aria-disabled className="px-4">
+							1
+						</span>
+					) : (
+						<Link
+							aria-label="Page 1"
+							className="w-full h-full px-4 flex items-center"
+							to={`?${links.first}`}
+						>
 							1
 						</Link>
 					)}
 				</li>
-				<li className={`join-item btn ${isFirstPage && "btn-disabled"}`}>
-					{isFirstPage ? (
-						<span aria-disabled>
-							<ChevronLeft className="size-4" />
-						</span>
-					) : (
-						<Link aria-label="Previous page" to={`?${links.previous}`}>
-							<ChevronLeft className="size-4" />
-						</Link>
-					)}
-				</li>
-				<li className="join-item btn btn-active">
+				<li className="join-item btn btn-active cursor-default">
 					<span aria-current>{currentPage}</span>
 				</li>
-				<li className={`join-item btn ${isLastPage && "btn-disabled"}`}>
+				<li className={`join-item btn p-0 ${isLastPage && "btn-disabled"}`}>
 					{isLastPage ? (
-						<span aria-disabled>
-							<ChevronRight className="size-4" />
+						<span aria-disabled className="px-4">
+							Next
 						</span>
 					) : (
-						<Link aria-label="Next page" to={`?${links.next}`}>
-							<ChevronRight className="size-4" />
+						<Link
+							aria-label="Next page"
+							className="w-full h-full px-4 flex items-center"
+							to={`?${links.next}`}
+						>
+							Next
 						</Link>
 					)}
 				</li>
-				<li className={`join-item btn ${isLastPage && "btn-disabled"}`}>
+				<li className={`join-item btn p-0 ${isLastPage && "btn-disabled"}`}>
 					{isLastPage ? (
-						<span aria-disabled>{lastPage || 1}</span>
+						<span aria-disabled className="px-4">
+							{/* {lastPage || 1} */}
+							Last
+						</span>
 					) : (
-						<Link aria-label={`Page ${lastPage || 1}`} to={`?${links.last}`}>
-							{lastPage || 1}
+						<Link
+							aria-label={`Page ${lastPage || 1}`}
+							className="w-full h-full px-4 flex items-center"
+							to={`?${links.last}`}
+						>
+							{/* {lastPage || 1} */}
+							Last
 						</Link>
 					)}
 				</li>

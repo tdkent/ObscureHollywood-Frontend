@@ -27,7 +27,7 @@ export default function Shelf({
 	return (
 		<div
 			inert={!showShelf}
-			className={`fixed top-0 right-0 w-full h-dvh z-50 bg-bg text-text ${instantClose ? "" : "transition-all duration-400"} ${showShelf ? "opacity-100" : "opacity-0"}`}
+			className={`fixed top-0 right-0 w-full h-dvh z-20 bg-bg text-text ${instantClose ? "" : "transition-all duration-400"} ${showShelf ? "opacity-100" : "opacity-0"}`}
 		>
 			<div className="flex flex-col justify-center gap-4 h-30 px-6">
 				<div className="flex items-center justify-between">
