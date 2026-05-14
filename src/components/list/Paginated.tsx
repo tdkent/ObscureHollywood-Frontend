@@ -53,7 +53,7 @@ export default function Paginated({
 		placeholderData: keepPreviousData,
 	});
 
-	if (isPending) return <Loading />;
+	if (isPending) return <Loading limit={limit} variant="list" />;
 	if (error) return <DisplayError error={error} />;
 
 	const paginatedData = data as PaginatedResponse;
