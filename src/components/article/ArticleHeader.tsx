@@ -24,15 +24,17 @@ export default function ArticleHeader({
 
 	return (
 		<header className="flex flex-col gap-6">
-			{subtitle ? (
-				<div className="px-6 flex flex-col gap-2">
-					<h1 className="text-5xl font-normal text-text">{name}</h1>
-					<h2 className="text-2xl">{subtitle}</h2>
-				</div>
-			) : (
-				<h1>{name}</h1>
+			<div className="px-6 flex flex-col gap-2">
+				<h1 className="text-5xl font-normal text-text">{name}</h1>
+				{subtitle && <h2 className="text-2xl">{subtitle}</h2>}
+			</div>
+			{showImage && (
+				<Image
+					altText={name}
+					slug={slug}
+					containerStyles="mt-4 w-full aspect-[7/5]"
+				/>
 			)}
-			{showImage && <Image altText={name} slug={slug} />}
 			{children}
 		</header>
 	);

@@ -161,7 +161,7 @@
 	}
 
 	article article {
-		@apply flex flex-col gap-4 px-6 my-8;
+		@apply flex flex-col gap-4 px-6 mt-4 mb-8;
 
 		section {
 			@apply flex flex-col gap-4;

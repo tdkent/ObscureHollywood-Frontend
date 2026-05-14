@@ -8,7 +8,7 @@ interface Props {
 /** Renders <dl> element of key-value pairs. */
 export default function DescriptionList({ metadata }: Props) {
 	return (
-		<dl className="px-6 my-4">
+		<dl className="px-6 mt-4">
 			{metadata.map(({ title, description }) => {
 				return (
 					<div key={title}>
@@ -31,14 +31,24 @@ function DescriptionDetails({
 
 	if (!isArray) {
 		const { href, label } = description;
-		return <dd>{href ? <Link to={href}>{label}</Link> : label}</dd>;
+		return (
+			<dd>
+				{href ? (
+					<Link className="text-link" to={href}>
+						{label}
+					</Link>
+				) : (
+					label
+				)}
+			</dd>
+		);
 	}
 
 	return (
-		<dd>
+		<dd className="flex flex-col gap-1">
 			{description.map(({ href, label }) => {
 				return href ? (
-					<Link key={label} to={href}>
+					<Link key={label} className="text-link" to={href}>
 						{label}
 					</Link>
 				) : (
