@@ -1,14 +1,14 @@
 import { Link } from "react-router";
-import type { DlMetadata } from "@/types/ui.interface";
+import type { FilteredDlMetadata } from "@/types/ui.interface";
 
 interface Props {
-	metadata: DlMetadata[];
+	metadata: FilteredDlMetadata[];
 }
 
 /** Renders <dl> element of key-value pairs. */
 export default function DescriptionList({ metadata }: Props) {
-	return metadata.length ? (
-		<dl>
+	return (
+		<dl className="px-6 my-4">
 			{metadata.map(({ title, description }) => {
 				return (
 					<div key={title}>
@@ -18,14 +18,14 @@ export default function DescriptionList({ metadata }: Props) {
 				);
 			})}
 		</dl>
-	) : null;
+	);
 }
 
 /** Render <dd> element from string or array with optional Link */
 function DescriptionDetails({
 	description,
 }: {
-	description: DlMetadata["description"];
+	description: FilteredDlMetadata["description"];
 }) {
 	const isArray = Array.isArray(description);
 

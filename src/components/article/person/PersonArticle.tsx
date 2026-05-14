@@ -9,7 +9,11 @@ import DisplayError from "@/components/shared/DisplayError";
 import Loading from "@/components/shared/Loading";
 import { getFormattedDateString } from "@/lib/utils/formatPersonDates";
 import type { PersonWithRelations } from "@/types/person.interface";
-import type { DlMetadata, Entity } from "@/types/ui.interface";
+import type {
+	Entity,
+	FilteredDlMetadata,
+	UnfilteredDlMetadata,
+} from "@/types/ui.interface";
 
 /** Render header and parsed HTML of Person article. */
 export default function PersonArticle() {
@@ -57,7 +61,8 @@ export default function PersonArticle() {
 			})
 		: null;
 
-	const metadata: DlMetadata[] = [
+	//? Note: some/all person db fields may be null
+	const metadata: UnfilteredDlMetadata[] = [
 		{
 			title: birthDate ? "Born" : null,
 			description: {
@@ -96,7 +101,7 @@ export default function PersonArticle() {
 	return (
 		<>
 			<ArticleHeader name={name} slug={personSlug} subtitle={subtitle}>
-				<DescriptionList metadata={filteredMetadata} />
+				<DescriptionList metadata={filteredMetadata as FilteredDlMetadata[]} />
 			</ArticleHeader>
 			{article?.htmlContent && <ParsedHtml htmlContent={article.htmlContent} />}
 			{article?.incomingRelations?.length ? (
