@@ -161,7 +161,7 @@
 	}
 
 	article article {
-		@apply flex flex-col gap-4;
+		@apply flex flex-col gap-4 px-6 my-8;
 
 		section {
 			@apply flex flex-col gap-4;
@@ -207,10 +207,14 @@
 
 	/* End of article reference list */
 	.references {
-		@apply text-sm list-disc;
+		@apply text-sm list-disc border-t pt-8 mt-8;
+
+		h3 {
+			@apply text-xl;
+		}
 
 		ul {
-			@apply divide-none my-0 list-disc list-inside;
+			@apply divide-none my-0 px-4 list-disc list-outside;
 
 			li {
 				@apply py-2 border-none list-item;
@@ -224,6 +228,6 @@
 	}
 
 	.text-link {
-		@apply border-b-2 border-dotted py-0.5 border-gold-dark hover:text-gold-dark;
+		@apply underline underline-offset-4 decoration-dotted decoration-gold-dark hover:text-gold-dark;
 	}
 }

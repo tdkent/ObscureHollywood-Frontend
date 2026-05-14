@@ -23,11 +23,11 @@ export default function ArticleHeader({
 	const showImage = showsImage.includes(entity);
 
 	return (
-		<header className="flex flex-col gap-4">
+		<header className="flex flex-col gap-6">
 			{subtitle ? (
-				<div>
-					<h1 className="text-3xl font-normal">{name}</h1>
-					<h2 className="text-xl">{subtitle}</h2>
+				<div className="px-6 flex flex-col gap-2">
+					<h1 className="text-5xl font-normal text-text">{name}</h1>
+					<h2 className="text-2xl">{subtitle}</h2>
 				</div>
 			) : (
 				<h1>{name}</h1>
