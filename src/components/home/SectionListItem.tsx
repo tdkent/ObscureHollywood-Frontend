@@ -15,10 +15,14 @@ export default function SectionListItem({ item, route, subtitle }: Props) {
 		triggerOnce: true,
 	});
 
+	// Check if user has motion reduced in OS settings
+	//? Use manual check instead of `motion-safe` query due to `opacity-0` rule
+	const reduceMotion = window.matchMedia("(prefers-reduced-motion)").matches;
+
 	const { id, name, slug } = item;
 	return (
 		<li
-			className={`rounded-2xl overflow-hidden ${inView ? `animate-fade-move-up` : ""}`}
+			className={`rounded-2xl overflow-hidden ${reduceMotion ? "" : `opacity-0 ${inView ? `animate-fade-move-up` : ""}`}`}
 			key={id}
 			ref={ref}
 		>
