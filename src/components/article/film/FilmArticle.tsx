@@ -21,7 +21,7 @@ export default function FilmArticle() {
 		queryFn: () => httpRequest(pathname),
 	});
 
-	if (isPending) return <Loading />;
+	if (isPending) return <Loading hasDescList isFullArticle variant="article" />;
 	if (error) return <DisplayError error={error} />;
 
 	const {
@@ -104,7 +104,7 @@ export default function FilmArticle() {
 
 	return (
 		<>
-			<ArticleHeader name={name} slug={filmSlug}>
+			<ArticleHeader name={name} showImage slug={filmSlug}>
 				{metadata.length ? <DescriptionList metadata={metadata} /> : null}
 			</ArticleHeader>
 			<ParsedHtml htmlContent={htmlContent} />

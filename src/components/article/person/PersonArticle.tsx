@@ -27,7 +27,7 @@ export default function PersonArticle() {
 		queryFn: () => httpRequest(pathname),
 	});
 
-	if (isPending) return <Loading />;
+	if (isPending) return <Loading hasDescList isFullArticle variant="article" />;
 	if (error) return <DisplayError error={error} />;
 
 	const {
@@ -100,7 +100,12 @@ export default function PersonArticle() {
 
 	return (
 		<>
-			<ArticleHeader name={name} slug={personSlug} subtitle={subtitle}>
+			<ArticleHeader
+				name={name}
+				showImage
+				slug={personSlug}
+				subtitle={subtitle}
+			>
 				<DescriptionList metadata={filteredMetadata as FilteredDlMetadata[]} />
 			</ArticleHeader>
 			{article?.htmlContent && <ParsedHtml htmlContent={article.htmlContent} />}

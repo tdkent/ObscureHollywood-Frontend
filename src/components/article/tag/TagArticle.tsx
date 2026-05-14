@@ -19,7 +19,7 @@ export default function TagArticle() {
 		queryFn: () => httpRequest(pathname),
 	});
 
-	if (isPending) return <Loading />;
+	if (isPending) return <Loading variant="article" />;
 	if (error) return <DisplayError error={error} />;
 
 	const { description, name, slug: tagSlug, type } = data as TagWithRelations;
