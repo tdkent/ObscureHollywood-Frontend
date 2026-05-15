@@ -16,6 +16,12 @@ type Props =
 			limit?: never;
 			isFullArticle?: never;
 			variant: "homeSectionItems";
+	  }
+	| {
+			hasDescList?: never;
+			limit?: never;
+			isFullArticle?: never;
+			variant: "filter";
 	  };
 
 export default function Loading({
@@ -125,6 +131,15 @@ export default function Loading({
 						className={`loading loading-spinner loading-xl text-text-heading`}
 					></span>
 				</div>
+			</div>
+		);
+	}
+
+	if (variant === "filter") {
+		return (
+			<div className="flex items-center justify-center gap-2 text-text-heading">
+				<span className="loading loading-spinner loading-sm"></span>
+				Loading filters
 			</div>
 		);
 	}

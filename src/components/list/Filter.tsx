@@ -32,7 +32,7 @@ export default function Filter({
 		queryFn: () => httpRequest("/tags"),
 	});
 
-	if (isPending) return <Loading />;
+	if (isPending) return <Loading variant="filter" />;
 	if (error) return <DisplayError error={error} />;
 
 	const tags = data as Tag[];
