@@ -20,7 +20,7 @@ export default function TagArticle() {
 	});
 
 	if (isPending) return <Loading variant="article" />;
-	if (error) return <DisplayError error={error} />;
+	if (error) return <DisplayError />;
 
 	const { description, name, slug: tagSlug, type } = data as TagWithRelations;
 

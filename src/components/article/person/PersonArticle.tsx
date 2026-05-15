@@ -28,7 +28,7 @@ export default function PersonArticle() {
 	});
 
 	if (isPending) return <Loading hasDescList isFullArticle variant="article" />;
-	if (error) return <DisplayError error={error} />;
+	if (error) return <DisplayError />;
 
 	const {
 		age,

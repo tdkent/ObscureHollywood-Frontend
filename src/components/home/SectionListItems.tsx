@@ -27,7 +27,7 @@ export default function SectionListItems({ route }: Props) {
 	});
 
 	if (isPending) return <Loading variant="homeSectionItems" />;
-	if (error) return <DisplayError error={error} />;
+	if (error) return <DisplayError />;
 
 	const recentArticles = data as PartialListItem[];
 

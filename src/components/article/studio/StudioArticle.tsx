@@ -20,7 +20,7 @@ export default function StudioArticle() {
 	});
 
 	if (isPending) return <Loading variant="article" />;
-	if (error) return <DisplayError error={error} />;
+	if (error) return <DisplayError />;
 
 	const { name, slug: studioSlug } = data as StudioWithRelations;
 

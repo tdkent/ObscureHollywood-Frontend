@@ -3,7 +3,6 @@ import { Plus, X } from "lucide-react";
 import { type Dispatch, type SetStateAction, useState } from "react";
 import httpRequest from "@/api/httpRequest";
 import FilterForm from "@/components/list/FilterForm";
-import DisplayError from "@/components/shared/DisplayError";
 import Loading from "@/components/shared/Loading";
 import type { Tag } from "@/types/tag.interface";
 import type { SortValue } from "@/types/ui.interface";
@@ -33,7 +32,12 @@ export default function Filter({
 	});
 
 	if (isPending) return <Loading variant="filter" />;
-	if (error) return <DisplayError error={error} />;
+	if (error)
+		return (
+			<span className="text-error text-sm text-center">
+				Error loading filters
+			</span>
+		);
 
 	const tags = data as Tag[];
 

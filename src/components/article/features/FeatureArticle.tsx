@@ -21,7 +21,7 @@ export default function FeatureArticle() {
 	});
 
 	if (isPending) return <Loading isFullArticle variant="article" />;
-	if (error) return <DisplayError error={error} />;
+	if (error) return <DisplayError />;
 
 	const {
 		article: { htmlContent, incomingRelations },

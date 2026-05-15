@@ -54,7 +54,7 @@ export default function Paginated({
 	});
 
 	if (isPending) return <Loading limit={limit} variant="list" />;
-	if (error) return <DisplayError error={error} />;
+	if (error) return <DisplayError />;
 
 	const paginatedData = data as PaginatedResponse;
 	const hasResults = paginatedData.data.length;
