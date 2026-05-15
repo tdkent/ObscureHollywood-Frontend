@@ -56,7 +56,7 @@ export default function ParsedHtml({ htmlContent }: Props) {
 			if (domNode.type === "tag" && domNode.name === "img") {
 				const slug = domNode.attribs?.src;
 
-				return <Image altText={slug} slug={slug} />;
+				return <Image altText={slug} containerStyles="sm:my-2" slug={slug} />;
 			}
 		},
 	};

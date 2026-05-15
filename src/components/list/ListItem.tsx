@@ -55,18 +55,18 @@ export default function ListItem({ entity, item }: Props) {
 		>
 			<Link to={link}>
 				<div
-					className={`flex justify-between gap-1 px-8 sm:px-24 ${showListDetails ? "py-2 sm:py-4" : "py-5"}`}
+					className={`flex justify-between gap-1 px-8 sm:px-24 sm:gap-6 ${showListDetails ? "py-2 sm:py-4" : "py-5"}`}
 				>
 					<div className="flex flex-col gap-1 grow">
-						<h2 className="text-base font-semibold sm:text-lg">{item.name}</h2>
+						<h2 className="text-base font-semibold sm:text-xl">{item.name}</h2>
 						{showListDetails && (
-							<span className="text-sm sm:text-base">{subtitle}</span>
+							<span className="text-sm sm:text-lg">{subtitle}</span>
 						)}
 					</div>
 					{showListDetails && (
 						<Image
 							altText={item.name}
-							containerStyles="flex shrink-0 items-center justify-center border rounded-full size-14 sm:size-18"
+							containerStyles="flex shrink-0 items-center justify-center border rounded-full size-14 sm:size-20"
 							sizes="64px"
 							slug={item.slug}
 						/>

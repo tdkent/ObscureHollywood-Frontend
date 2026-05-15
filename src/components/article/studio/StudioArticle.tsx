@@ -27,7 +27,11 @@ export default function StudioArticle() {
 	return (
 		<>
 			<ArticleHeader name={name} slug={studioSlug} />
-			<Paginated reqUrl={`/studios/${slug}/films`} routeEntity="films" />
+			<Paginated
+				heading="Films:"
+				reqUrl={`/studios/${slug}/films`}
+				routeEntity="films"
+			/>
 		</>
 	);
 }

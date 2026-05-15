@@ -163,7 +163,7 @@
 	}
 
 	article article {
-		@apply flex flex-col gap-4 px-6 mt-4 mb-8;
+		@apply flex flex-col gap-4 px-6 mt-4 mb-8 sm:px-12;
 
 		section {
 			@apply flex flex-col gap-4;

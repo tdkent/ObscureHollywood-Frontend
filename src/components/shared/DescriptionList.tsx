@@ -8,11 +8,11 @@ interface Props {
 /** Renders <dl> element of key-value pairs. */
 export default function DescriptionList({ metadata }: Props) {
 	return (
-		<dl className="px-6 mt-4">
+		<dl className="p-6 mt-4 border-y sm:px-12">
 			{metadata.map(({ title, description }) => {
 				return (
-					<div key={title}>
-						<dt>{title}</dt>
+					<div key={title} className="sm:flex-row sm:gap-4">
+						<dt className="sm:mt-1 sm:w-1/3">{title}</dt>
 						<DescriptionDetails description={description} />
 					</div>
 				);
