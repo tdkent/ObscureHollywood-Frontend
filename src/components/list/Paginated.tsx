@@ -53,15 +53,15 @@ export default function Paginated({
 		placeholderData: keepPreviousData,
 	});
 
-	if (isPending) return <Loading />;
-	if (error) return <DisplayError error={error} />;
+	if (isPending) return <Loading limit={limit} variant="list" />;
+	if (error) return <DisplayError />;
 
 	const paginatedData = data as PaginatedResponse;
 	const hasResults = paginatedData.data.length;
 
 	return (
 		<div className="my-6">
-			<div className="flex flex-col gap-4 border-y py-4">
+			<div className="flex flex-col gap-6 border-y py-4 px-6 text-sm">
 				<PaginationMetadata
 					hasData={!!hasResults}
 					limitParam={limit}
@@ -71,18 +71,18 @@ export default function Paginated({
 					tags={tags}
 				/>
 				{hasResults ? (
-					<div className="flex gap-6">
+					<div className="flex flex-col gap-6">
+						<PaginationLimit
+							currLimit={limit}
+							searchParam={searchParam}
+							sortParam={sort}
+							tagsParamString={tagsParamString}
+						/>
 						<SortItems
 							entity={entity}
 							limit={limit}
 							searchParam={searchParam}
 							sort={sort}
-							tagsParamString={tagsParamString}
-						/>
-						<PaginationLimit
-							currLimit={limit}
-							searchParam={searchParam}
-							sortParam={sort}
 							tagsParamString={tagsParamString}
 						/>
 					</div>
@@ -100,7 +100,7 @@ export default function Paginated({
 			</div>
 			{hasResults ? (
 				<>
-					<ul className="my-8 divide-y flex flex-col text-sm">
+					<ul className="my-8 flex flex-col text-sm">
 						{paginatedData.data.map((item) => {
 							return <ListItem key={item.id} entity={entity} item={item} />;
 						})}

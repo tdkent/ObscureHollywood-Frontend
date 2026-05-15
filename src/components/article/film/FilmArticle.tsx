@@ -8,7 +8,7 @@ import DescriptionList from "@/components/shared/DescriptionList";
 import DisplayError from "@/components/shared/DisplayError";
 import Loading from "@/components/shared/Loading";
 import type { FilmWithRelations } from "@/types/film.interface";
-import type { DlMetadata, Entity } from "@/types/ui.interface";
+import type { Entity, FilteredDlMetadata } from "@/types/ui.interface";
 
 export default function FilmArticle() {
 	const { slug } = useParams();
@@ -21,8 +21,8 @@ export default function FilmArticle() {
 		queryFn: () => httpRequest(pathname),
 	});
 
-	if (isPending) return <Loading />;
-	if (error) return <DisplayError error={error} />;
+	if (isPending) return <Loading hasDescList isFullArticle variant="article" />;
+	if (error) return <DisplayError />;
 
 	const {
 		article: { htmlContent, incomingRelations },
@@ -70,7 +70,7 @@ export default function FilmArticle() {
 		};
 	});
 
-	const metadata: DlMetadata[] = [
+	const metadata: FilteredDlMetadata[] = [
 		{
 			title: "Release Year",
 			description: {
@@ -104,8 +104,8 @@ export default function FilmArticle() {
 
 	return (
 		<>
-			<ArticleHeader name={name} slug={filmSlug}>
-				<DescriptionList metadata={metadata} />
+			<ArticleHeader name={name} showImage slug={filmSlug}>
+				{metadata.length ? <DescriptionList metadata={metadata} /> : null}
 			</ArticleHeader>
 			<ParsedHtml htmlContent={htmlContent} />
 			{incomingRelations?.length ? (

@@ -8,7 +8,7 @@ export default function Header() {
 	const isHome = pathname === "/";
 	return (
 		<header
-			className={`absolute top-0 right-0 left-0 z-40 ${!isHome && "border-b"} h-30`}
+			className={`absolute top-0 right-0 left-0 z-10 ${!isHome && "border-b"} h-30`}
 		>
 			<div className="flex flex-col justify-center px-6 gap-4 h-full">
 				<div className="flex justify-between items-center">

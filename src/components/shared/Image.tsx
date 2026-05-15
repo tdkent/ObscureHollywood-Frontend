@@ -1,4 +1,4 @@
-import { Image as ImageIcon, ImageOff } from "lucide-react";
+import { CircleAlert, Image as ImageIcon, ImageOff } from "lucide-react";
 import { useState } from "react";
 import imgSrcSets from "@/lib/imgSrcSets";
 
@@ -7,6 +7,7 @@ interface Props {
 	containerStyles?: string;
 	fetchPriority?: "high" | "low";
 	imgStyles?: string;
+	isHeader?: boolean;
 	lazyLoading?: "eager" | "lazy";
 	sizes?: string;
 	slug: string;
@@ -18,6 +19,7 @@ export default function Image({
 	containerStyles = "w-full aspect-[7/5]",
 	fetchPriority,
 	imgStyles,
+	isHeader,
 	lazyLoading = "lazy",
 	sizes = "100vw",
 	slug,
@@ -36,7 +38,14 @@ export default function Image({
 			)}
 			{error && (
 				<div className="flex items-center justify-center gap-2 text-sm p-4 h-full">
-					<ImageOff className="stroke-1 stroke-text/50" />
+					{isHeader ? (
+						<>
+							<CircleAlert className="stroke-1" />
+							<span>No image available!</span>
+						</>
+					) : (
+						<ImageOff className="stroke-1 stroke-text/50" />
+					)}
 				</div>
 			)}
 			<picture className={`w-full h-full ${error ? "hidden" : ""}`}>

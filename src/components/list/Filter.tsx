@@ -3,7 +3,6 @@ import { Plus, X } from "lucide-react";
 import { type Dispatch, type SetStateAction, useState } from "react";
 import httpRequest from "@/api/httpRequest";
 import FilterForm from "@/components/list/FilterForm";
-import DisplayError from "@/components/shared/DisplayError";
 import Loading from "@/components/shared/Loading";
 import type { Tag } from "@/types/tag.interface";
 import type { SortValue } from "@/types/ui.interface";
@@ -32,8 +31,13 @@ export default function Filter({
 		queryFn: () => httpRequest("/tags"),
 	});
 
-	if (isPending) return <Loading />;
-	if (error) return <DisplayError error={error} />;
+	if (isPending) return <Loading variant="filter" />;
+	if (error)
+		return (
+			<span className="text-error text-sm text-center">
+				Error loading filters
+			</span>
+		);
 
 	const tags = data as Tag[];
 
@@ -49,13 +53,14 @@ export default function Filter({
 			/>
 
 			{/* Button opens shelf */}
-			<div className="drawer-content">
+			<div className="drawer-content flex items-center justify-between">
+				<span>Filter by:</span>
 				<button
-					className="btn w-full"
+					className="btn btn-soft w-3/5"
 					type="button"
 					onClick={() => setIsOpen(true)}
 				>
-					Filter
+					Add Filters
 					<Plus className="size-4" />
 				</button>
 			</div>
@@ -74,7 +79,7 @@ export default function Filter({
 				<div className="menu bg-base-200 min-h-full w-80 p-4">
 					{/* Header */}
 					<header className="flex items-center justify-between">
-						<h3 className="font-semibold">Filter films by tag</h3>
+						<h3 className="font-semibold text-xl">Filter films by tag</h3>
 
 						{/* Close shelf without applying tags */}
 						<button

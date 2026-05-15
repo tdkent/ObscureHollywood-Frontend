@@ -19,8 +19,8 @@ export default function StudioArticle() {
 		queryFn: () => httpRequest(pathname),
 	});
 
-	if (isPending) return <Loading />;
-	if (error) return <DisplayError error={error} />;
+	if (isPending) return <Loading variant="article" />;
+	if (error) return <DisplayError />;
 
 	const { name, slug: studioSlug } = data as StudioWithRelations;
 

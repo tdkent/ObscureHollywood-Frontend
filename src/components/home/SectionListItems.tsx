@@ -1,0 +1,57 @@
+import { useQuery } from "@tanstack/react-query";
+import httpRequest from "@/api/httpRequest";
+import SectionListItem from "@/components/home/SectionListItem";
+import DisplayError from "@/components/shared/DisplayError";
+import Loading from "@/components/shared/Loading";
+import { getPersonLifespanString } from "@/lib/utils/formatPersonDates";
+import type { Feature } from "@/types/feature.interface";
+import type { Film } from "@/types/film.interface";
+import type { PartialListItem } from "@/types/paginated-response.interface";
+import type { Person } from "@/types/person.interface";
+
+interface Props {
+	route: "features" | "films" | "people";
+}
+
+export default function SectionListItems({ route }: Props) {
+	const { data, error, isPending } = useQuery({
+		queryKey: [route, "recent"],
+		queryFn: () => httpRequest(`/${route}/recent`),
+	});
+
+	if (isPending) return <Loading variant="homeSectionItems" />;
+	if (error) return <DisplayError />;
+
+	const recentArticles = data as PartialListItem[];
+
+	return (
+		<ul className={`flex flex-col gap-6 px-4`}>
+			{recentArticles.map((ra) => {
+				const { id, name, slug } = ra;
+
+				let subtitle: string | number;
+
+				if (route === "features") {
+					subtitle = (ra as Feature).subtitle;
+				} else if (route === "films") {
+					subtitle = (ra as Film).releaseYear;
+				} else if (route === "people") {
+					const { birthDate, deathDate } = ra as Person;
+					subtitle = getPersonLifespanString({ birthDate, deathDate });
+				} else {
+					subtitle = "";
+				}
+
+				return (
+					<SectionListItem
+						key={id}
+						name={name}
+						route={route}
+						slug={slug}
+						subtitle={subtitle}
+					/>
+				);
+			})}
+		</ul>
+	);
+}

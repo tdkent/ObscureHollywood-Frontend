@@ -21,6 +21,7 @@
 	--color-slate-blue: oklch(0.55 0.03 245);
 	--color-slate-blue-item: oklch(0.6 0.025 245);
 	--color-white-item: oklch(0.96 0 250);
+	--color-error: oklch(57% 0.22 25);
 
 	/* Fonts */
 	--font-limelight: "Limelight", sans-serif;
@@ -80,6 +81,7 @@
 		--color-bg: oklch(0.2063 0.012 277.83);
 		--color-bg-accent: oklch(37.3% 0.034 259.733 / 0.2);
 		--color-border: oklch(0.3113 0.0181 276.38);
+		--color-error: oklch(68% 0.18 25);
 	}
 }
 
@@ -101,11 +103,7 @@
 	}
 
 	h1 {
-		@apply text-2xl;
-	}
-
-	h3 {
-		@apply text-xl;
+		@apply text-4xl;
 	}
 
 	/* Home page */
@@ -161,11 +159,11 @@
 
 	/* Page margins within <main> element */
 	.page-margins {
-		@apply mx-6 mt-38 mb-8;
+		@apply mt-38 mb-8;
 	}
 
 	article article {
-		@apply flex flex-col gap-4;
+		@apply flex flex-col gap-4 px-6 mt-4 mb-8;
 
 		section {
 			@apply flex flex-col gap-4;
@@ -211,10 +209,14 @@
 
 	/* End of article reference list */
 	.references {
-		@apply text-sm list-disc;
+		@apply text-sm list-disc border-t pt-8 mt-8;
+
+		h3 {
+			@apply text-xl;
+		}
 
 		ul {
-			@apply divide-none my-0 list-disc list-inside;
+			@apply divide-none my-0 px-4 list-disc list-outside;
 
 			li {
 				@apply py-2 border-none list-item;
@@ -228,6 +230,6 @@
 	}
 
 	.text-link {
-		@apply border-b-2 border-dotted py-0.5 border-gold-dark hover:text-gold-dark;
+		@apply underline underline-offset-4 decoration-dotted decoration-gold-dark hover:text-gold-dark;
 	}
 }

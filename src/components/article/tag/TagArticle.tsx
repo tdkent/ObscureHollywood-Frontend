@@ -19,15 +19,17 @@ export default function TagArticle() {
 		queryFn: () => httpRequest(pathname),
 	});
 
-	if (isPending) return <Loading />;
-	if (error) return <DisplayError error={error} />;
+	if (isPending) return <Loading variant="article" />;
+	if (error) return <DisplayError />;
 
-	const { description, name, slug: tagSlug } = data as TagWithRelations;
+	const { description, name, slug: tagSlug, type } = data as TagWithRelations;
+
+	const typeSubtitle = `${type.slice(0, 1).toUpperCase()}${type.slice(1)}`;
 
 	return (
 		<>
-			<ArticleHeader name={name} slug={tagSlug}>
-				<p>{description}</p>
+			<ArticleHeader name={name} slug={tagSlug} subtitle={typeSubtitle}>
+				<p className="px-6">{description}</p>
 			</ArticleHeader>
 			<Paginated reqUrl={`/tags/${slug}/films`} routeEntity="films" />
 		</>

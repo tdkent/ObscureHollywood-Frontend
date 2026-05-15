@@ -1,4 +1,4 @@
-import { ChevronRight } from "lucide-react";
+// import { ChevronRight } from "lucide-react";
 import { Link } from "react-router";
 import type { ArticleWithRelations } from "@/types/article.interface";
 
@@ -8,8 +8,8 @@ interface Props {
 
 export default function RelatedArticles({ relatedArticles }: Props) {
 	return (
-		<section className="border-t py-4 flex flex-col gap-6">
-			<h3>Related Articles</h3>
+		<section className="border-t flex flex-col gap-6 p-6">
+			<h3 className="text-2xl">Related Articles</h3>
 			<ul className="link-list">
 				{relatedArticles.map((relation) => {
 					const {
@@ -19,11 +19,11 @@ export default function RelatedArticles({ relatedArticles }: Props) {
 					return (
 						<li key={id}>
 							<Link
+								className="text-link"
 								to={`/${category === "person" ? "people" : `${category}s`}/${slug}`}
 							>
 								{name}
 							</Link>
-							<ChevronRight className="stroke-1 size-4" />
 						</li>
 					);
 				})}

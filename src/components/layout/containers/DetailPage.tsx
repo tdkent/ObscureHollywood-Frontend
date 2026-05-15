@@ -6,8 +6,8 @@ interface Props {
 export default function DetailPage({ children, labelText }: Props) {
 	return (
 		<div className="page-margins">
-			<span>{labelText}</span>
-			<article className="flex flex-col gap-8 my-2">{children}</article>
+			<span className="px-6 text-text-heading/70">{labelText}</span>
+			<article className="flex flex-col gap-8 my-4">{children}</article>
 		</div>
 	);
 }

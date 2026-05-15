@@ -36,17 +36,12 @@ export default function PaginationMetadata({
 		setSearchParams(`${params}${tagParams}`);
 	}
 	return (
-		<div className="flex flex-col gap-2 text-sm">
+		<div className="flex flex-col gap-6">
 			{hasData ? (
-				<div className="flex gap-4">
-					<span>
-						Page: {metadata.currentPage} of {metadata.totalPages}
-					</span>
-					<span>
-						Results: {metadata.firstItemOnPage} – {metadata.lastItemOnPage} of{" "}
-						{metadata.totalItems}
-					</span>
-				</div>
+				<p>
+					{metadata.firstItemOnPage} – {metadata.lastItemOnPage} of{" "}
+					{metadata.totalItems} results
+				</p>
 			) : (
 				<p>No results found.</p>
 			)}
@@ -54,13 +49,13 @@ export default function PaginationMetadata({
 			{tags.length ? (
 				<div className="flex gap-2">
 					Tags:
-					<ul className="flex flex-col gap-1">
+					<ul className="flex flex-col gap-2">
 						{tags.map((tag) => {
 							return (
-								<li className="flex gap-1.5 items-center" key={tag}>
+								<li className="flex gap-3 items-center" key={tag}>
 									#{tag}
 									<button onClick={() => handleClick(tag)} type="button">
-										<X className="stroke-3 size-3" />
+										<X className="stroke-4 size-4 stroke-gold-dark dark:stroke-gold" />
 									</button>
 								</li>
 							);

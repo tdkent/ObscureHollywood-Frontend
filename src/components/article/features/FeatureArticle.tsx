@@ -20,8 +20,8 @@ export default function FeatureArticle() {
 		queryFn: () => httpRequest(pathname),
 	});
 
-	if (isPending) return <Loading />;
-	if (error) return <DisplayError error={error} />;
+	if (isPending) return <Loading isFullArticle variant="article" />;
+	if (error) return <DisplayError />;
 
 	const {
 		article: { htmlContent, incomingRelations },
@@ -32,7 +32,12 @@ export default function FeatureArticle() {
 
 	return (
 		<>
-			<ArticleHeader name={name} slug={featureSlug} subtitle={subtitle} />
+			<ArticleHeader
+				name={name}
+				showImage
+				slug={featureSlug}
+				subtitle={subtitle}
+			/>
 			<ParsedHtml htmlContent={htmlContent} />
 			{incomingRelations?.length ? (
 				<RelatedArticles relatedArticles={incomingRelations} />

@@ -11,6 +11,10 @@ export default function SectionHeaderImgs({ imgs }: Props) {
 		triggerOnce: true,
 	});
 
+	// Check if user has motion reduced in OS settings
+	//? Use manual check instead of `motion-safe` query due to `opacity-0` rule
+	const reduceMotion = window.matchMedia("(prefers-reduced-motion)").matches;
+
 	return (
 		<div className="flex flex-nowrap" ref={ref}>
 			{imgs.map(({ name, slug }, idx) => {
@@ -19,7 +23,7 @@ export default function SectionHeaderImgs({ imgs }: Props) {
 						key={slug}
 						altText={name}
 						slug={slug}
-						containerStyles={`opacity-0 ${inView ? `animate-fade ${idx ? `animation-delay-${idx * 300}` : ""}` : ""}`}
+						containerStyles={`${reduceMotion ? "" : `opacity-0 ${inView ? `animate-fade ${idx ? `animation-delay-${idx * 300}` : ""}` : ""}`}`}
 					/>
 				);
 			})}
