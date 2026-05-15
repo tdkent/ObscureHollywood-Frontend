@@ -103,7 +103,7 @@
 	}
 
 	h1 {
-		@apply text-4xl;
+		@apply text-4xl sm:text-5xl;
 	}
 
 	/* Home page */
@@ -159,7 +159,7 @@
 
 	/* Page margins within <main> element */
 	.page-margins {
-		@apply mt-38 mb-8;
+		@apply mt-38 mb-8 sm:mt-48 sm:mb-12;
 	}
 
 	article article {

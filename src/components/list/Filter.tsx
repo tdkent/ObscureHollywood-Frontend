@@ -76,7 +76,7 @@ export default function Filter({
 				/>
 
 				{/* Shelf */}
-				<div className="menu bg-base-200 min-h-full w-80 p-4">
+				<div className="menu bg-base-200 min-h-full w-80 p-4 sm:w-100 sm:px-12 sm:py-8">
 					{/* Header */}
 					<header className="flex items-center justify-between">
 						<h3 className="font-semibold text-xl">Filter films by tag</h3>

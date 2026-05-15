@@ -19,13 +19,13 @@ export default function PaginationLinks({
 			<ul className="join">
 				<li className={`join-item btn p-0 ${isFirstPage && "btn-disabled"}`}>
 					{isFirstPage ? (
-						<span aria-disabled className="px-4">
+						<span aria-disabled className="px-4 sm:text-lg sm:px-6">
 							Back
 						</span>
 					) : (
 						<Link
 							aria-label="Previous page"
-							className="w-full h-full px-4 flex items-center"
+							className="w-full h-full px-4 flex items-center sm:text-lg sm:px-6"
 							to={`?${links.previous}`}
 						>
 							Back
@@ -34,31 +34,31 @@ export default function PaginationLinks({
 				</li>
 				<li className={`join-item btn p-0 ${isFirstPage && "btn-disabled"}`}>
 					{isFirstPage ? (
-						<span aria-disabled className="px-4">
+						<span aria-disabled className="px-4 sm:text-lg sm:px-6">
 							1
 						</span>
 					) : (
 						<Link
 							aria-label="Page 1"
-							className="w-full h-full px-4 flex items-center"
+							className="w-full h-full px-4 flex items-center sm:text-lg sm:px-6"
 							to={`?${links.first}`}
 						>
 							1
 						</Link>
 					)}
 				</li>
-				<li className="join-item btn btn-active cursor-default">
+				<li className="join-item btn btn-active cursor-default sm:text-lg sm:px-6">
 					<span aria-current>{currentPage}</span>
 				</li>
 				<li className={`join-item btn p-0 ${isLastPage && "btn-disabled"}`}>
 					{isLastPage ? (
-						<span aria-disabled className="px-4">
+						<span aria-disabled className="px-4 sm:text-lg sm:px-6">
 							Next
 						</span>
 					) : (
 						<Link
 							aria-label="Next page"
-							className="w-full h-full px-4 flex items-center"
+							className="w-full h-full px-4 flex items-center sm:text-lg sm:px-6"
 							to={`?${links.next}`}
 						>
 							Next
@@ -67,17 +67,15 @@ export default function PaginationLinks({
 				</li>
 				<li className={`join-item btn p-0 ${isLastPage && "btn-disabled"}`}>
 					{isLastPage ? (
-						<span aria-disabled className="px-4">
-							{/* {lastPage || 1} */}
+						<span aria-disabled className="px-4 sm:text-lg sm:px-6">
 							Last
 						</span>
 					) : (
 						<Link
 							aria-label={`Page ${lastPage || 1}`}
-							className="w-full h-full px-4 flex items-center"
+							className="w-full h-full px-4 flex items-center sm:text-lg sm:px-6"
 							to={`?${links.last}`}
 						>
-							{/* {lastPage || 1} */}
 							Last
 						</Link>
 					)}

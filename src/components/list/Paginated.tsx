@@ -60,8 +60,8 @@ export default function Paginated({
 	const hasResults = paginatedData.data.length;
 
 	return (
-		<div className="my-6">
-			<div className="flex flex-col gap-6 border-y py-4 px-6 text-sm">
+		<div className="my-6 sm:my-10">
+			<div className="flex flex-col gap-6 border-y py-4 px-6 text-sm sm:px-24 sm:py-8 sm:text-base">
 				<PaginationMetadata
 					hasData={!!hasResults}
 					limitParam={limit}
@@ -100,7 +100,7 @@ export default function Paginated({
 			</div>
 			{hasResults ? (
 				<>
-					<ul className="my-8 flex flex-col text-sm">
+					<ul className="my-8 flex flex-col sm:my-12">
 						{paginatedData.data.map((item) => {
 							return <ListItem key={item.id} entity={entity} item={item} />;
 						})}
