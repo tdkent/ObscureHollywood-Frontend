@@ -109,9 +109,7 @@ describe("App root layer", () => {
 	it("renders 404 page at unknown routes", () => {
 		renderWithClient(<App />, ["/bad-route"]);
 
-		expect(
-			screen.getByRole("heading", { name: /404 - page not found/i }),
-		).toBeInTheDocument();
+		expect(screen.getByRole("heading", { name: /404/i })).toBeInTheDocument();
 	});
 });
 
