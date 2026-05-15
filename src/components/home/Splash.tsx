@@ -5,8 +5,8 @@ export default function Splash() {
 				className={`w-full h-lvh max-h-200 bg-[url(/img/hollywoodland-sign.jpg)] bg-position-[40%_bottom] bg-no-repeat bg-cover sm:min-h-dvw`}
 			>
 				<div className="w-full h-full bg-black/10 backdrop-blur-xs lg:backdrop-blur-xs">
-					<div className="pt-40 relative flex flex-col h-full gap-14 sm:pt-42">
-						<h1 className="flex flex-col gap-4 px-6 text-[40px] font-bodini-moda italic font-bold leading-12 sm:px-8 sm:text-[42px]">
+					<div className="pt-40 relative flex flex-col h-full gap-14 sm:pt-44">
+						<h1 className="flex flex-col gap-4 px-6 text-[40px] font-bodini-moda italic font-bold leading-12 sm:px-12 sm:text-[42px]">
 							<span className="block motion-safe:animate-fade-move-up text-text-white">
 								Neglected films.
 							</span>

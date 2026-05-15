@@ -25,7 +25,7 @@ export default function SectionListItems({ route }: Props) {
 	const recentArticles = data as PartialListItem[];
 
 	return (
-		<ul className={`flex flex-col gap-6 px-4`}>
+		<ul className={`flex flex-col gap-6 px-4 sm:px-36`}>
 			{recentArticles.map((ra) => {
 				const { id, name, slug } = ra;
 
