@@ -10,13 +10,19 @@ type Props =
 			limit?: never;
 			isFullArticle?: boolean;
 			variant: "article";
+	  }
+	| {
+			hasDescList?: never;
+			limit?: never;
+			isFullArticle?: never;
+			variant: "homeSectionItems";
 	  };
 
 export default function Loading({
-	limit,
-	isFullArticle,
-	variant,
 	hasDescList,
+	isFullArticle,
+	limit,
+	variant,
 }: Props) {
 	if (variant === "list") {
 		const list = Array.from({ length: limit ?? 10 }, (_, idx) => idx);
@@ -97,6 +103,28 @@ export default function Loading({
 						</div>
 					</>
 				)}
+			</div>
+		);
+	}
+
+	if (variant === "homeSectionItems") {
+		return (
+			<div className="flex flex-col gap-4 px-4 my-4">
+				<div className="h-24 w-full">
+					<span
+						className={`loading loading-spinner loading-xl text-text-heading`}
+					></span>
+				</div>
+				<div className="h-24 w-full">
+					<span
+						className={`loading loading-spinner loading-xl text-text-heading`}
+					></span>
+				</div>
+				<div className="h-24 w-full">
+					<span
+						className={`loading loading-spinner loading-xl text-text-heading`}
+					></span>
+				</div>
 			</div>
 		);
 	}
