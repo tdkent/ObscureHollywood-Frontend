@@ -9,7 +9,7 @@ export default function Logo({ isShelf }: Props) {
 	const isHome = pathname === "/";
 
 	return (
-		<div className="font-limelight text-2xl sm:text-3xl">
+		<div className="font-limelight text-2xl sm:text-3xl md:text-4xl">
 			<span
 				className={`${isHome && !isShelf ? "text-text-white" : "text-text-heading/50 dark:text-text-heading"}`}
 			>
