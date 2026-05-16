@@ -36,18 +36,21 @@ export default function Loading({
 			<div className="flex flex-col gap-10 my-6 px-6 sm:px-24 sm:my-10 sm:gap-14">
 				<div className="flex flex-col gap-4">
 					<div className="skeleton h-4 w-40 rounded-sm dark:bg-bg-accent sm:h-6"></div>
-					<div className="skeleton h-10 w-full dark:bg-bg-accent sm:h-12"></div>
-					<div className="skeleton h-10 w-full dark:bg-bg-accent sm:h-12"></div>
+					<div className="skeleton h-10 w-full dark:bg-bg-accent sm:h-12 md:w-80"></div>
+					<div className="skeleton h-10 w-full dark:bg-bg-accent sm:h-12 md:w-80"></div>
 				</div>
 				<div className="flex flex-col gap-4">
 					{list.map((item) => {
 						return (
-							<div key={item} className="flex justify-between gap-10">
+							<div
+								key={item}
+								className="flex justify-between gap-10 md:flex-row-reverse"
+							>
 								<div className="flex flex-col gap-2 w-full sm:gap-4">
 									<div className="skeleton h-4 w-full rounded-sm dark:bg-bg-accent sm:h-6"></div>
 									<div className="skeleton h-3 w-1/2 rounded-sm dark:bg-bg-accent sm:h-5"></div>
 								</div>
-								<div className="skeleton size-14 shrink-0 rounded-full dark:bg-bg-accent sm:size-20"></div>
+								<div className="skeleton size-14 shrink-0 rounded-full dark:bg-bg-accent sm:size-20 md:rounded-none md:size-22"></div>
 							</div>
 						);
 					})}
@@ -134,7 +137,7 @@ export default function Loading({
 
 	if (variant === "filter") {
 		return (
-			<div className="flex items-center justify-center gap-2 text-text-heading">
+			<div className="flex items-center gap-2 text-text-heading">
 				<span className="loading loading-spinner loading-sm"></span>
 				Loading filters
 			</div>

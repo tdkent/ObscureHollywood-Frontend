@@ -33,11 +33,7 @@ export default function Filter({
 
 	if (isPending) return <Loading variant="filter" />;
 	if (error)
-		return (
-			<span className="text-error text-sm text-center">
-				Error loading filters
-			</span>
-		);
+		return <span className="text-error text-sm">Error loading filters</span>;
 
 	const tags = data as Tag[];
 
