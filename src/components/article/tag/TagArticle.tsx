@@ -29,7 +29,7 @@ export default function TagArticle() {
 	return (
 		<>
 			<ArticleHeader name={`${typeSubtitle}: ${name}`} slug={tagSlug}>
-				<p className="px-6 sm:px-12">{description}</p>
+				<p className="px-6 sm:px-12 md:text-lg">{description}</p>
 			</ArticleHeader>
 			<Paginated
 				heading="Films:"

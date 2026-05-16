@@ -176,7 +176,7 @@
 			@apply flex flex-col gap-0.5;
 
 			dt {
-				@apply uppercase text-xs text-text-heading;
+				@apply uppercase text-xs text-text-heading sm:text-sm;
 			}
 		}
 	}
