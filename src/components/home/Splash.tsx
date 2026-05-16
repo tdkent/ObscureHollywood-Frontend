@@ -10,15 +10,15 @@ export default function Splash() {
 							<span className="block motion-safe:animate-fade-move-up text-text-white">
 								Neglected films.
 							</span>
-							<span className="block motion-safe:animate-fade-move-up motion-safe:animation-delay-300 text-text-white">
+							<span className="block motion-safe:animate-fade-move-up motion-safe:[animation-delay:300ms] text-text-white">
 								Stars of the past.
 							</span>
-							<span className="block motion-safe:animate-fade-move-up motion-safe:animation-delay-600 bg-linear-to-r from-gold to-gold-light bg-clip-text text-transparent">
+							<span className="block motion-safe:animate-fade-move-up motion-safe:[animation-delay:600ms] bg-linear-to-r from-gold to-gold-light bg-clip-text text-transparent">
 								The obscure revisited.
 							</span>
 						</h1>
-						<div className="bg-black/50 px-6 h-full flex items-center motion-safe:animate-fade-move-up motion-safe:animation-delay-900 sm:px-20">
-							<p className="text-text-white text-xl leading-8 motion-safe:animate-fade motion-safe:animation-delay-1200 sm:text-2xl">
+						<div className="bg-black/50 px-6 h-full flex items-center motion-safe:animate-fade-move-up motion-safe:[animation-delay:900ms] sm:px-20">
+							<p className="text-text-white text-xl leading-8 motion-safe:animate-fade motion-safe:[animation-delay:1200ms] sm:text-2xl">
 								We feature reviews, research and commentary about little-known
 								Hollywood films and artists worth revisiting. We encourage you
 								to discover and enjoy these films as audiences of the past did,

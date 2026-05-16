@@ -15,6 +15,10 @@ export default function HomePage() {
 			name: "Quatermass 2 (1957)",
 			slug: "underrated-sci-fi-films-of-the-1950s",
 		},
+		{
+			name: "John Ford, Harry Carey",
+			slug: "john-ford-and-harry-carey-at-universal-studios",
+		},
 	];
 
 	const filmImgs: { name: string; slug: string }[] = [
@@ -30,6 +34,10 @@ export default function HomePage() {
 			name: "Stormy Weather (1943)",
 			slug: "stormy-weather-1943",
 		},
+		{
+			name: "Rafter Romance (1933)",
+			slug: "rafter-romance-1933",
+		},
 	];
 
 	const peopleImgs: { name: string; slug: string }[] = [
@@ -44,6 +52,10 @@ export default function HomePage() {
 		{
 			name: "Lee Tracy",
 			slug: "lee-tracy",
+		},
+		{
+			name: "Dorothy Arzner",
+			slug: "dorothy-arzner",
 		},
 	];
 

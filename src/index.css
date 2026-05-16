@@ -55,23 +55,6 @@
 	}
 }
 
-/* Animation utilities */
-@utility animation-delay-300 {
-	animation-delay: 300ms;
-}
-
-@utility animation-delay-600 {
-	animation-delay: 600ms;
-}
-
-@utility animation-delay-900 {
-	animation-delay: 900ms;
-}
-
-@utility animation-delay-1200 {
-	animation-delay: 1200ms;
-}
-
 /* Dark mode */
 @media (prefers-color-scheme: dark) {
 	:root {

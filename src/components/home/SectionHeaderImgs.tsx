@@ -24,17 +24,17 @@ export default function SectionHeaderImgs({ imgs }: Props) {
 	];
 
 	return (
-		<div className="flex flex-nowrap" ref={ref}>
+		<ul className="flex flex-nowrap" ref={ref}>
 			{imgs.map(({ name, slug }, idx) => {
 				return (
-					<Image
+					<li
 						key={slug}
-						altText={name}
-						slug={slug}
-						containerStyles={`${reduceMotion ? "" : `opacity-0 ${inView ? `animate-fade ${delays[idx]}` : ""}`}`}
-					/>
+						className={`max-sm:last:hidden ${reduceMotion ? "" : `opacity-0 ${inView ? `animate-fade ${delays[idx]}` : ""}`}`}
+					>
+						<Image altText={name} slug={slug} />
+					</li>
 				);
 			})}
-		</div>
+		</ul>
 	);
 }
