@@ -33,11 +33,7 @@ export default function Filter({
 
 	if (isPending) return <Loading variant="filter" />;
 	if (error)
-		return (
-			<span className="text-error text-sm text-center">
-				Error loading filters
-			</span>
-		);
+		return <span className="text-error text-sm">Error loading filters</span>;
 
 	const tags = data as Tag[];
 
@@ -53,10 +49,10 @@ export default function Filter({
 			/>
 
 			{/* Button opens shelf */}
-			<div className="drawer-content flex items-center justify-between">
-				<span>Filter by:</span>
+			<div className="drawer-content flex items-center justify-between md:justify-start">
+				<span className="md:w-30">Filter by:</span>
 				<button
-					className="btn btn-soft w-3/5"
+					className="btn btn-soft w-3/5 sm:w-2/5 md:w-50"
 					type="button"
 					onClick={() => setIsOpen(true)}
 				>
@@ -76,7 +72,7 @@ export default function Filter({
 				/>
 
 				{/* Shelf */}
-				<div className="menu bg-base-200 min-h-full w-80 p-4">
+				<div className="menu bg-base-200 min-h-full w-80 p-4 sm:w-100 sm:px-12 sm:py-8">
 					{/* Header */}
 					<header className="flex items-center justify-between">
 						<h3 className="font-semibold text-xl">Filter films by tag</h3>

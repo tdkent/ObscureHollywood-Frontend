@@ -25,11 +25,11 @@ export default function Search({ isShelf }: Props) {
 		<search>
 			<form
 				action={handleSearch}
-				className={`border rounded-lg flex h-12 overflow-hidden ${isHome && !isShelf ? "border-dark-border" : ""}`}
+				className={`border rounded-lg flex h-12 overflow-hidden sm:h-14 sm:justify-end ${isHome && !isShelf ? "border-dark-border" : ""}`}
 				id="search"
 			>
 				<input
-					className={`grow h-full outline-none px-3 text-xl ${isHome && !isShelf ? "bg-black/30" : ""}`}
+					className={`grow h-full outline-none px-3 text-xl sm:font-normal sm:text-2xl ${isHome && !isShelf ? "bg-black/30" : ""}`}
 					type="search"
 					name="search"
 				/>

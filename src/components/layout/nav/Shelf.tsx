@@ -27,9 +27,9 @@ export default function Shelf({
 	return (
 		<div
 			inert={!showShelf}
-			className={`fixed top-0 right-0 w-full h-dvh z-20 bg-bg text-text ${instantClose ? "" : "transition-all duration-400"} ${showShelf ? "opacity-100" : "opacity-0"}`}
+			className={`fixed top-0 right-0 w-full h-dvh z-20 bg-bg text-text overflow-auto ${instantClose ? "" : "transition-all duration-400"} ${showShelf ? "opacity-100" : "opacity-0"}`}
 		>
-			<div className="flex flex-col justify-center gap-4 h-30 px-6">
+			<div className="flex flex-col justify-center gap-4 h-30 px-6 sm:gap-6 sm:px-12 sm:h-40">
 				<div className="flex items-center justify-between">
 					<Logo isShelf />
 					<button
@@ -39,21 +39,21 @@ export default function Shelf({
 						type="button"
 					>
 						<Minus
-							className={`absolute size-10 stroke-1 ${instantClose ? "" : "transition-all duration-400"} ${showShelf ? "opacity-100 rotate-45" : "opacity-0 rotate-0"}`}
+							className={`absolute size-10 stroke-1 sm:size-12 ${instantClose ? "" : "transition-all duration-400"} ${showShelf ? "opacity-100 rotate-45" : "opacity-0 rotate-0"}`}
 						/>
 						<Minus
-							className={`absolute size-10 stroke-1 ${instantClose ? "" : "transition-all duration-400"} ${showShelf ? "opacity-100 -rotate-45" : "opacity-0 rotate-0"}`}
+							className={`absolute size-10 stroke-1 sm:size-12 ${instantClose ? "" : "transition-all duration-400"} ${showShelf ? "opacity-100 -rotate-45" : "opacity-0 rotate-0"}`}
 						/>
 					</button>
 				</div>
 				<Search isShelf />
 			</div>
-			<div className="w-full h-full flex-1 px-8 flex flex-col sm:px-12">
+			<div className="w-full h-full flex-1 px-8 flex flex-col sm:px-24">
 				<nav className="flex-1 min-h-0">
 					<ul className="flex flex-col h-full min-h-0 divide-y pt-8 sm:pt-16">
 						{navLinks.map((link) => {
 							return (
-								<li key={link.label} className="px-2 py-4 text-3xl">
+								<li key={link.label} className="px-2 py-4 text-3xl sm:text-4xl">
 									<NavLink
 										to={link.href}
 										className="w-full"
@@ -63,7 +63,7 @@ export default function Shelf({
 									>
 										<div className="flex items-center justify-between font-bodini-moda italic">
 											{link.label.toLowerCase()}
-											<ChevronRightIcon className="size-4 stroke-1 stroke-gold-dark" />
+											<ChevronRightIcon className="size-4 stroke-1 stroke-gold-dark sm:size-6" />
 										</div>
 									</NavLink>
 								</li>

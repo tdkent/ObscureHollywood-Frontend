@@ -23,9 +23,9 @@ export default function PaginationLimit({
 	if (tagsParamString) params += tagsParamString;
 
 	return (
-		<div className="flex justify-between items-center">
-			<span>Per page:</span>
-			<div className="flex gap-4 w-3/5">
+		<div className="flex justify-between items-center md:justify-start">
+			<span className="md:w-30">Per page:</span>
+			<div className="flex gap-4 w-3/5 sm:w-2/5 md:w-50">
 				{limitOptions.map((option) => {
 					const selected = option === currLimit;
 					return (

@@ -35,9 +35,13 @@ export default function SortItems({
 	}
 
 	return (
-		<div className="flex items-center justify-between">
-			<span className="">Sort by:</span>
-			<select className="select w-3/5" id="sort-items" onChange={handleSelect}>
+		<div className="flex items-center justify-between md:justify-start">
+			<span className="md:w-30">Sort by:</span>
+			<select
+				className="select w-3/5 sm:w-2/5 md:w-50"
+				id="sort-items"
+				onChange={handleSelect}
+			>
 				{sortOption
 					? sortOption.options
 							.sort((a, b) => a.id - b.id)

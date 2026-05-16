@@ -16,11 +16,11 @@ export default function ListPage() {
 
 	return (
 		<div className="page-margins">
-			<div className="px-6">
+			<div className="px-6 sm:px-12">
 				{isSearch ? (
 					<>
 						<h1>Search Results</h1>
-						<p className="my-4 text-lg">"{searchParam}"</p>
+						<p className="my-4 text-lg sm:text-xl">"{searchParam}"</p>
 					</>
 				) : (
 					<h1>{headingText}</h1>

@@ -15,12 +15,14 @@ import type { PaginatedResponse } from "@/types/paginated-response.interface";
 import type { Entity } from "@/types/ui.interface";
 
 interface Props {
-	showFilterControls?: boolean;
+	heading?: string;
 	reqUrl?: string;
 	routeEntity?: Entity;
+	showFilterControls?: boolean;
 }
 
 export default function Paginated({
+	heading,
 	reqUrl,
 	routeEntity,
 	showFilterControls,
@@ -60,8 +62,11 @@ export default function Paginated({
 	const hasResults = paginatedData.data.length;
 
 	return (
-		<div className="my-6">
-			<div className="flex flex-col gap-6 border-y py-4 px-6 text-sm">
+		<div className="my-6 sm:my-10">
+			{heading && (
+				<h3 className="px-6 pb-4 text-xl sm:px-24 sm:text-2xl">Films:</h3>
+			)}
+			<div className="flex flex-col gap-6 border-y py-4 px-6 text-sm sm:px-24 sm:py-8 sm:text-base">
 				<PaginationMetadata
 					hasData={!!hasResults}
 					limitParam={limit}
@@ -71,7 +76,7 @@ export default function Paginated({
 					tags={tags}
 				/>
 				{hasResults ? (
-					<div className="flex flex-col gap-6">
+					<div className="flex flex-col gap-6 w-full">
 						<PaginationLimit
 							currLimit={limit}
 							searchParam={searchParam}
@@ -100,7 +105,7 @@ export default function Paginated({
 			</div>
 			{hasResults ? (
 				<>
-					<ul className="my-8 flex flex-col text-sm">
+					<ul className="my-8 flex flex-col sm:my-12">
 						{paginatedData.data.map((item) => {
 							return <ListItem key={item.id} entity={entity} item={item} />;
 						})}

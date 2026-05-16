@@ -55,23 +55,6 @@
 	}
 }
 
-/* Animation utilities */
-@utility animation-delay-300 {
-	animation-delay: 300ms;
-}
-
-@utility animation-delay-600 {
-	animation-delay: 600ms;
-}
-
-@utility animation-delay-900 {
-	animation-delay: 900ms;
-}
-
-@utility animation-delay-1200 {
-	animation-delay: 1200ms;
-}
-
 /* Dark mode */
 @media (prefers-color-scheme: dark) {
 	:root {
@@ -103,7 +86,7 @@
 	}
 
 	h1 {
-		@apply text-4xl;
+		@apply text-4xl sm:text-5xl;
 	}
 
 	/* Home page */
@@ -159,11 +142,11 @@
 
 	/* Page margins within <main> element */
 	.page-margins {
-		@apply mt-38 mb-8;
+		@apply mt-38 mb-8 sm:mt-48 sm:mb-12;
 	}
 
 	article article {
-		@apply flex flex-col gap-4 px-6 mt-4 mb-8;
+		@apply flex flex-col gap-4 px-6 mt-4 mb-8 sm:px-12;
 
 		section {
 			@apply flex flex-col gap-4;
@@ -193,7 +176,7 @@
 			@apply flex flex-col gap-0.5;
 
 			dt {
-				@apply uppercase text-xs text-text-heading;
+				@apply uppercase text-xs text-text-heading sm:text-sm;
 			}
 		}
 	}

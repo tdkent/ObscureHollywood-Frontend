@@ -18,7 +18,7 @@ export default function ArticleHeader({
 }: Props) {
 	return (
 		<header className="flex flex-col gap-6">
-			<div className="px-6 flex flex-col gap-2">
+			<div className="px-6 flex flex-col gap-2 sm:px-12">
 				<h1 className="text-5xl font-normal text-text">{name}</h1>
 				{subtitle && <h2 className="text-2xl">{subtitle}</h2>}
 			</div>

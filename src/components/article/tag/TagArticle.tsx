@@ -28,10 +28,14 @@ export default function TagArticle() {
 
 	return (
 		<>
-			<ArticleHeader name={name} slug={tagSlug} subtitle={typeSubtitle}>
-				<p className="px-6">{description}</p>
+			<ArticleHeader name={`${typeSubtitle}: ${name}`} slug={tagSlug}>
+				<p className="px-6 sm:px-12 md:text-lg">{description}</p>
 			</ArticleHeader>
-			<Paginated reqUrl={`/tags/${slug}/films`} routeEntity="films" />
+			<Paginated
+				heading="Films:"
+				reqUrl={`/tags/${slug}/films`}
+				routeEntity="films"
+			/>
 		</>
 	);
 }

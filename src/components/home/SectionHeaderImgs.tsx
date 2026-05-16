@@ -15,18 +15,26 @@ export default function SectionHeaderImgs({ imgs }: Props) {
 	//? Use manual check instead of `motion-safe` query due to `opacity-0` rule
 	const reduceMotion = window.matchMedia("(prefers-reduced-motion)").matches;
 
+	const delays = [
+		"",
+		"[animation-delay:300ms]",
+		"[animation-delay:600ms]",
+		"[animation-delay:900ms]",
+		"[animation-delay:1200ms]",
+	];
+
 	return (
-		<div className="flex flex-nowrap" ref={ref}>
+		<ul className="flex flex-nowrap" ref={ref}>
 			{imgs.map(({ name, slug }, idx) => {
 				return (
-					<Image
+					<li
 						key={slug}
-						altText={name}
-						slug={slug}
-						containerStyles={`${reduceMotion ? "" : `opacity-0 ${inView ? `animate-fade ${idx ? `animation-delay-${idx * 300}` : ""}` : ""}`}`}
-					/>
+						className={`max-sm:last:hidden ${reduceMotion ? "" : `opacity-0 ${inView ? `animate-fade ${delays[idx]}` : ""}`}`}
+					>
+						<Image altText={name} slug={slug} />
+					</li>
 				);
 			})}
-		</div>
+		</ul>
 	);
 }
