@@ -76,7 +76,7 @@ export default function Paginated({
 					tags={tags}
 				/>
 				{hasResults ? (
-					<div className="flex flex-col gap-6">
+					<div className="flex flex-col gap-6 w-full">
 						<PaginationLimit
 							currLimit={limit}
 							searchParam={searchParam}
