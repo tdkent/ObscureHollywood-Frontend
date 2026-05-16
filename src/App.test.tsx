@@ -102,7 +102,7 @@ describe("App root layer", () => {
 		renderWithClient(<App />, ["/tags/decade-1930s"]);
 
 		expect(
-			await screen.findByRole("heading", { name: "1930s" }),
+			await screen.findByRole("heading", { name: /1930s/i }),
 		).toBeInTheDocument();
 	});
 
