@@ -27,7 +27,7 @@ export default function ArticleHeader({
 					altText={name}
 					isHeader
 					slug={slug}
-					containerStyles="mt-4 w-full aspect-[7/5]"
+					containerStyles="mt-4 w-full aspect-7/5 lg:aspect-video"
 				/>
 			)}
 			{children}

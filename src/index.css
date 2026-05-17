@@ -166,7 +166,7 @@
 		}
 
 		h2 {
-			@apply text-2xl;
+			@apply text-2xl mt-4;
 		}
 	}
 
