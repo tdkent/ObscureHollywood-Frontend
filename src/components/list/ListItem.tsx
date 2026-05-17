@@ -66,7 +66,7 @@ export default function ListItem({ entity, item }: Props) {
 					{showListDetails && (
 						<Image
 							altText={item.name}
-							containerStyles="flex shrink-0 items-center justify-center border rounded-full size-14 sm:size-20 md:size-22 md:rounded-none"
+							containerStyles="flex shrink-0 items-center justify-center border rounded-full size-14 sm:size-20 md:size-22 md:rounded-none lg:size-36"
 							sizes="64px"
 							slug={item.slug}
 						/>

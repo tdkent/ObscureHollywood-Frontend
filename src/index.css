@@ -155,7 +155,7 @@
 
 	/* Page margins within <main> element */
 	.page-margins {
-		@apply mt-38 mb-8 sm:mt-48 sm:mb-12;
+		@apply mt-38 mb-8 sm:mt-48 sm:mb-12 w-full max-w-5xl;
 	}
 
 	article article {
