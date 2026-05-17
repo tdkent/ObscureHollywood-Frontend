@@ -29,7 +29,7 @@ export default function SectionHeaderImgs({ imgs }: Props) {
 				return (
 					<li
 						key={slug}
-						className={`max-sm:last:hidden ${reduceMotion ? "" : `opacity-0 ${inView ? `animate-fade ${delays[idx]}` : ""}`}`}
+						className={`max-sm:even:hidden sm:max-lg:last:hidden ${reduceMotion ? "" : `opacity-0 ${inView ? `animate-fade ${delays[idx]}` : ""}`}`}
 					>
 						<Image altText={name} slug={slug} />
 					</li>

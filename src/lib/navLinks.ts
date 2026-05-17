@@ -21,4 +21,9 @@ export const navLinks: NavLink[] = [
 		label: "People",
 		testId: "people-link",
 	},
+	{
+		href: "/quiz",
+		label: "Quiz",
+		testId: "quiz-link",
+	},
 ];

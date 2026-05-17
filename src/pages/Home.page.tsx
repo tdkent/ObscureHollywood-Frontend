@@ -19,6 +19,10 @@ export default function HomePage() {
 			name: "John Ford, Harry Carey",
 			slug: "john-ford-and-harry-carey-at-universal-studios",
 		},
+		{
+			name: "TCM 2013",
+			slug: "tcm-2013",
+		},
 	];
 
 	const filmImgs: { name: string; slug: string }[] = [
@@ -38,9 +42,17 @@ export default function HomePage() {
 			name: "Rafter Romance (1933)",
 			slug: "rafter-romance-1933",
 		},
+		{
+			name: "When the Clouds Roll By (1919)",
+			slug: "when-the-clouds-roll-by-1919",
+		},
 	];
 
 	const peopleImgs: { name: string; slug: string }[] = [
+		{
+			name: "Dorothy Arzner",
+			slug: "dorothy-arzner",
+		},
 		{
 			name: "King Vidor",
 			slug: "king-vidor",
@@ -50,12 +62,12 @@ export default function HomePage() {
 			slug: "kay-francis",
 		},
 		{
-			name: "Lee Tracy",
-			slug: "lee-tracy",
+			name: "Alma Rubens",
+			slug: "alma-rubens",
 		},
 		{
-			name: "Dorothy Arzner",
-			slug: "dorothy-arzner",
+			name: "Lee Tracy",
+			slug: "lee-tracy",
 		},
 	];
 

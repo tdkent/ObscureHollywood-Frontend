@@ -30,12 +30,25 @@
 
 	/* Animations */
 	--animate-fade-move-up: fade-move-up 0.5s ease-in-out both;
+	--animate-fade-move-up-more: fade-move-up-more 0.5s ease-in-out both;
 	--animate-fade: fade 0.5s ease-in-out both;
 
 	@keyframes fade-move-up {
 		0% {
 			opacity: 0;
 			translate: 0px 12px;
+		}
+
+		100% {
+			opacity: 100;
+			translate: 0px 0px;
+		}
+	}
+
+	@keyframes fade-move-up-more {
+		0% {
+			opacity: 0;
+			translate: 0px 24px;
 		}
 
 		100% {
@@ -142,7 +155,7 @@
 
 	/* Page margins within <main> element */
 	.page-margins {
-		@apply mt-38 mb-8 sm:mt-48 sm:mb-12;
+		@apply mt-38 mb-8 sm:mt-48 sm:mb-12 w-full max-w-5xl;
 	}
 
 	article article {
@@ -153,7 +166,7 @@
 		}
 
 		h2 {
-			@apply text-2xl;
+			@apply text-2xl mt-4;
 		}
 	}
 

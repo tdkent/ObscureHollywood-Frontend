@@ -24,7 +24,7 @@ export default function PaginationLimit({
 
 	return (
 		<div className="flex justify-between items-center md:justify-start">
-			<span className="md:w-30">Per page:</span>
+			<span className="md:w-30 lg:w-24">Per page:</span>
 			<div className="flex gap-4 w-3/5 sm:w-2/5 md:w-50">
 				{limitOptions.map((option) => {
 					const selected = option === currLimit;
