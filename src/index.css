@@ -104,18 +104,18 @@
 
 	/* Home page */
 	.home-features {
-		@apply bg-charcoal-blue text-text-white;
+		@apply dark:bg-charcoal-blue dark:text-text-white;
 
 		h2 {
-			@apply text-gold;
+			@apply text-gold-dark dark:text-gold;
 		}
 
 		h3 {
-			@apply text-text-white;
+			@apply text-text-black dark:text-text-white;
 		}
 
 		li {
-			@apply border-dark-border bg-charcoal-blue-item;
+			@apply bg-white-item dark:border-dark-border dark:bg-charcoal-blue-item;
 		}
 	}
 

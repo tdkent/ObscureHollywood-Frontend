@@ -29,7 +29,7 @@ export default function Search({ isShelf }: Props) {
 				id="search"
 			>
 				<input
-					className={`grow h-full outline-none px-3 text-xl sm:font-normal lg:font-light lg:text-base ${isHome && !isShelf ? "bg-black/30" : ""}`}
+					className={`grow h-full outline-none px-3 text-xl sm:font-normal lg:font-light lg:text-base ${isHome && !isShelf ? "bg-black/30 text-text-white" : ""}`}
 					type="search"
 					name="search"
 				/>
