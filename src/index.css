@@ -7,9 +7,11 @@
 	--color-text: oklch(0.1297 0.0171 298.93);
 	--color-text-heading: oklch(0.5135 0.0296 305.45);
 	--color-text-disabled: oklch(87.2% 0.01 258.338);
-	--color-bg: oklch(1 0 0);
+	/* --color-bg: oklch(1 0 0); */
+	--color-bg: oklch(0.9821 0 0);
 	--color-bg-accent: oklch(92.8% 0.006 264.531 / 0.4);
 	--color-border: oklch(0.9205 0.0042 301.42);
+	--color-white: oklch(1 0 0);
 	--color-gold: oklch(87.9% 0.169 91.605);
 	--color-gold-dark: oklch(82.8% 0.189 84.429);
 	--color-gold-light: oklch(92.4% 0.12 95.746);
@@ -155,7 +157,7 @@
 
 	/* Page margins within <main> element */
 	.page-margins {
-		@apply mt-38 mb-8 sm:mt-48 sm:mb-12 w-full max-w-5xl;
+		@apply pt-38 pb-8 bg-white lg:border-x sm:pt-48 sm:pb-12 w-full max-w-292.5;
 	}
 
 	article article {

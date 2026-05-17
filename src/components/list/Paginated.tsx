@@ -66,7 +66,7 @@ export default function Paginated({
 			{heading && (
 				<h3 className="px-6 pb-4 text-xl sm:px-24 sm:text-2xl">Films:</h3>
 			)}
-			<div className="flex flex-col gap-6 border-y py-4 px-6 text-sm sm:px-24 sm:py-8 sm:text-base">
+			<div className="flex flex-col gap-6 py-4 px-6 text-sm sm:px-24 sm:py-8 sm:text-base">
 				<PaginationMetadata
 					hasData={!!hasResults}
 					limitParam={limit}
