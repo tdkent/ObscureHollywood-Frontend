@@ -8,9 +8,9 @@ export default function Header() {
 	const isHome = pathname === "/";
 	return (
 		<header
-			className={`absolute top-0 right-0 left-0 h-30 z-10 sm:h-40 lg:h-30 ${!isHome && "border-b"}`}
+			className={`absolute top-0 right-0 left-0 h-30 z-10 sm:h-40 lg:h-30 xl:h-32 ${!isHome && "border-b"}`}
 		>
-			<div className="flex flex-col justify-center px-6 gap-4 h-full sm:gap-6 sm:px-12 lg:flex-col-reverse lg:gap-3">
+			<div className="flex flex-col justify-center px-6 gap-4 h-full sm:gap-6 sm:px-12 lg:flex-col-reverse lg:gap-3 xl:px-24">
 				<div className="flex justify-between items-center">
 					<Logo />
 					<Navigation />

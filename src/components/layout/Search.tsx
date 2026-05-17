@@ -25,7 +25,7 @@ export default function Search({ isShelf }: Props) {
 		<search className="lg:flex lg:justify-end">
 			<form
 				action={handleSearch}
-				className={`border rounded-lg flex h-12 overflow-hidden sm:h-14 lg:w-2/5 lg:h-10 ${isHome && !isShelf ? "border-dark-border" : ""}`}
+				className={`border rounded-lg flex h-12 overflow-hidden sm:h-14 lg:w-2/5 lg:h-10 xl:h-12 ${isHome && !isShelf ? "border-dark-border" : ""}`}
 				id="search"
 			>
 				<input

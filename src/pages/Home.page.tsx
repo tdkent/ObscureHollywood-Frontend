@@ -74,7 +74,7 @@ export default function HomePage() {
 	return (
 		<>
 			<Splash />
-			<div className="flex flex-col">
+			<div className="flex flex-col max-w-292.5 min-[1170px]:border-x">
 				<Section
 					imgs={featureImgs}
 					listHeading="Our latest features"

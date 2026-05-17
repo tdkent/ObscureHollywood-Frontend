@@ -6,7 +6,7 @@ export default function Splash() {
 			>
 				<div className="w-full h-full bg-black/10 backdrop-blur-xs lg:backdrop-blur-xs">
 					<div className="pt-40 relative flex flex-col h-full gap-14 sm:pt-44 md:pt-48">
-						<h1 className="flex flex-col gap-4 px-6 text-[40px] font-bodini-moda italic font-bold leading-12 sm:px-12 sm:text-[42px] md:text-[52px] md:leading-16 lg:text-6xl">
+						<h1 className="flex flex-col gap-4 px-6 text-[40px] font-bodini-moda italic font-bold leading-12 sm:px-12 sm:text-[42px] md:text-[52px] md:leading-16 lg:text-6xl xl:text-8xl xl:leading-24 xl:px-24">
 							<span className="block motion-safe:animate-fade-move-up text-text-white">
 								Neglected films.
 							</span>
@@ -17,8 +17,8 @@ export default function Splash() {
 								The obscure revisited.
 							</span>
 						</h1>
-						<div className="bg-black/50 px-6 h-full flex items-center motion-safe:animate-fade-move-up motion-safe:[animation-delay:900ms] sm:px-20 lg:px-12">
-							<p className="text-text-white text-xl leading-8 motion-safe:animate-fade motion-safe:[animation-delay:1200ms] sm:text-xl lg:w-7/10">
+						<div className="bg-black/50 px-6 h-full flex items-center motion-safe:animate-fade-move-up motion-safe:[animation-delay:900ms] sm:px-20 lg:px-12 xl:px-24">
+							<p className="text-text-white text-xl leading-8 motion-safe:animate-fade motion-safe:[animation-delay:1200ms] sm:text-xl lg:w-7/10 xl:w-4/5">
 								We feature reviews, research and commentary about little-known
 								Hollywood films and artists worth revisiting. We encourage you
 								to discover and enjoy these films as audiences of the past did,
