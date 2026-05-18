@@ -29,7 +29,7 @@ export default function Search({ isShelf }: Props) {
 				id="search"
 			>
 				<input
-					className={`grow h-full outline-none px-3 text-xl sm:font-normal lg:font-light lg:text-base ${isHome && !isShelf ? "bg-black/30 text-white-text" : ""}`}
+					className={`grow h-full outline-none px-3 text-xl sm:font-normal lg:font-light lg:text-base ${isHome && !isShelf ? "bg-black/30 text-light-text" : ""}`}
 					type="search"
 					name="search"
 				/>
@@ -39,7 +39,7 @@ export default function Search({ isShelf }: Props) {
 				>
 					<span className="sr-only">Search</span>
 					<SearchIcon
-						className={`stroke-1 size-6 lg:size-5 ${isHome && !isShelf ? "text-white-text" : "dark:text-white-text"}`}
+						className={`stroke-1 size-6 lg:size-5 ${isHome && !isShelf ? "text-light-text" : "dark:text-light-text"}`}
 					/>
 				</button>
 			</form>

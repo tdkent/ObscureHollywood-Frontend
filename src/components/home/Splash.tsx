@@ -7,10 +7,10 @@ export default function Splash() {
 				<div className="w-full h-full bg-black/10 backdrop-blur-xs xl:backdrop-blur-[6px]">
 					<div className="pt-40 relative flex flex-col h-full gap-14 sm:pt-44 md:pt-48">
 						<h1 className="flex flex-col gap-4 px-6 text-[40px] font-bodini-moda italic font-bold leading-12 sm:px-12 sm:text-[42px] md:text-[52px] md:leading-16 lg:text-7xl xl:text-8xl xl:leading-24 xl:px-0 xl:mx-auto xl:w-292.5">
-							<span className="block motion-safe:animate-fade-move-up text-white-text">
+							<span className="block motion-safe:animate-fade-move-up text-light-text">
 								Neglected films.
 							</span>
-							<span className="block motion-safe:animate-fade-move-up motion-safe:[animation-delay:300ms] text-white-text">
+							<span className="block motion-safe:animate-fade-move-up motion-safe:[animation-delay:300ms] text-light-text">
 								Stars of the past.
 							</span>
 							<span className="block motion-safe:animate-fade-move-up motion-safe:[animation-delay:600ms] bg-linear-to-r from-gold-dark via-gold-light to-gold-dark bg-clip-text text-transparent">
@@ -18,7 +18,7 @@ export default function Splash() {
 							</span>
 						</h1>
 						<div className="bg-black/50 px-6 h-full flex items-center justify-center motion-safe:animate-fade-move-up motion-safe:[animation-delay:900ms] sm:px-12">
-							<p className="text-white-text font-thin text-lg leading-8 max-w-292.5 motion-safe:animate-fade motion-safe:[animation-delay:1200ms] sm:text-xl xl:pr-40">
+							<p className="text-light-text font-thin text-lg leading-8 max-w-292.5 motion-safe:animate-fade motion-safe:[animation-delay:1200ms] sm:text-xl xl:pr-40">
 								We feature reviews, research and commentary about little-known
 								Hollywood films and artists worth revisiting. We encourage you
 								to discover and enjoy these films as audiences of the past did,

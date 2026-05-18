@@ -8,7 +8,7 @@ export default function DesktopNav() {
 	return (
 		<nav className="max-lg:hidden">
 			<ul
-				className={`flex items-center gap-8 lg:gap-10 xl:gap-12 ${isHome ? "text-white-text" : ""}`}
+				className={`flex items-center gap-8 lg:gap-10 xl:gap-12 ${isHome ? "text-light-text" : ""}`}
 			>
 				{navLinks.map((link) => {
 					return (
