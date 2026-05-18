@@ -104,7 +104,12 @@ export default function FilmArticle() {
 
 	return (
 		<>
-			<ArticleHeader name={name} showImage slug={filmSlug}>
+			<ArticleHeader
+				name={name}
+				showImage
+				slug={filmSlug}
+				subtitle={releaseYear}
+			>
 				{metadata.length ? <DescriptionList metadata={metadata} /> : null}
 			</ArticleHeader>
 			<ParsedHtml htmlContent={htmlContent} />

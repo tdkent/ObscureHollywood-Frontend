@@ -5,7 +5,7 @@ interface Props {
 	name: string;
 	showImage?: boolean;
 	slug: string;
-	subtitle?: string | null;
+	subtitle?: number | string | null;
 }
 
 /** Render header element of article page with heading and children. */
@@ -19,9 +19,11 @@ export default function ArticleHeader({
 	return (
 		<header className="flex flex-col gap-6">
 			<div className="px-6 flex flex-col gap-2 sm:px-12">
-				<h1 className="text-5xl font-normal">{name}</h1>
+				<h1 className="text-3xl font-normal md:text-4xl">{name}</h1>
 				{subtitle && (
-					<h2 className="text-2xl text-secondary-text">{subtitle}</h2>
+					<h2 className="text-xl text-secondary-text md:text-2xl">
+						{subtitle}
+					</h2>
 				)}
 			</div>
 			{showImage && (

@@ -142,7 +142,11 @@
 		}
 
 		h2 {
-			@apply text-2xl mt-4;
+			@apply text-xl mt-4 md:text-2xl;
+		}
+
+		p {
+			@apply font-light;
 		}
 	}
 

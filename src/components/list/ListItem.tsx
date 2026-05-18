@@ -58,7 +58,7 @@ export default function ListItem({ entity, item }: Props) {
 					className={`flex justify-between gap-1 px-8 sm:px-24 sm:gap-6 md:flex-row-reverse ${showListDetails ? "py-2 sm:py-4" : "py-5"}`}
 				>
 					<div className="flex flex-col gap-1 grow">
-						<h2 className="w-fit text-base font-semibold sm:text-xl xl:text-2xl">
+						<h2 className="w-fit text-base sm:text-xl xl:text-2xl">
 							{item.name}
 						</h2>
 						{showListDetails && (

@@ -19,11 +19,11 @@ export default function ListPage() {
 			<div className="px-6 sm:px-12 lg:px-24">
 				{isSearch ? (
 					<>
-						<h1 className="text-4xl sm:text-5xl">Search Results</h1>
+						<h1 className="text-3xl md:text-4xl">Search Results</h1>
 						<p className="my-4 text-lg sm:text-xl">"{searchParam}"</p>
 					</>
 				) : (
-					<h1 className="text-4xl sm:text-5xl">{headingText}</h1>
+					<h1 className="text-3xl md:text-4xl">{headingText}</h1>
 				)}
 			</div>
 			<Paginated showFilterControls={showFilterControls} />

@@ -3,7 +3,7 @@ import DetailPage from "@/components/layout/containers/DetailPage";
 
 export default function StudioArticlePage() {
 	return (
-		<DetailPage labelText="Studio">
+		<DetailPage>
 			<StudioArticle />
 		</DetailPage>
 	);
