@@ -61,7 +61,7 @@ export default function Paginated({
 
 	return (
 		<div className="my-6 sm:my-10">
-			<div className="flex flex-col gap-6 py-4 px-6 text-sm sm:px-24 sm:py-8 sm:text-base">
+			<div className="flex flex-col gap-6 py-4 px-6 text-sm sm:px-12 sm:py-8 sm:text-base">
 				<PaginationMetadata
 					hasData={!!hasResults}
 					limitParam={limit}
