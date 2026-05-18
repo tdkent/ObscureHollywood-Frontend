@@ -25,9 +25,9 @@ export default function Section({
 				<h2 className="text-3xl font-bold px-6 text-gold-dark sm:text-5xl sm:px-20">
 					{title}
 				</h2>
-				<p className="px-6 sm:px-20 sm:text-xl lg:px-60">{text}</p>
+				<p className="font-thin px-6 sm:px-20 sm:text-xl lg:px-60">{text}</p>
 				<div className="flex flex-col gap-4 sm:gap-8">
-					<h3 className="text-2xl sm:text-3xl">{listHeading}:</h3>
+					<h3 className="font-thin text-2xl sm:text-3xl">{listHeading}:</h3>
 					<SectionListItems route={route} />
 				</div>
 			</div>

@@ -122,10 +122,6 @@
 		@apply border-border outline-text;
 	}
 
-	body {
-		@apply font-light;
-	}
-
 	/* Layout */
 
 	/* Page margins within <main> element */
