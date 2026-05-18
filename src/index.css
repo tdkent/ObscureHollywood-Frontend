@@ -4,18 +4,35 @@
 
 @theme {
 	/* Colors */
-	--color-text: oklch(0.1297 0.0171 298.93);
-	--color-text-heading: oklch(0.5135 0.0296 305.45);
-	--color-text-disabled: oklch(87.2% 0.01 258.338);
-	/* --color-bg: oklch(1 0 0); */
-	--color-bg: oklch(0.9821 0 0);
-	--color-bg-accent: oklch(92.8% 0.006 264.531 / 0.4);
+
+	/* Backgrounds */
+	--color-body: oklch(0.9821 0 0);
+	--color-content: oklch(1 0 0);
+	--color-card: oklch(0.975 0.003 95);
+	--color-content-alt: oklch(0.975 0.003 95);
+	--color-card-alt: oklch(1 0 0);
+	--color-footer: oklch(0.955 0 0);
+
+	/* Borders */
 	--color-border: oklch(0.9205 0.0042 301.42);
-	--color-white: oklch(1 0 0);
+
+	/* Text */
+	--color-primary-text: oklch(0.21 0 0);
+	--color-secondary-text: oklch(0.45 0 0);
+	--color-disabled: oklch(87.2% 0.01 258.338);
+	--color-error: oklch(57% 0.22 25);
+
 	--color-gold: oklch(87.9% 0.169 91.605);
 	--color-gold-dark: oklch(82.8% 0.189 84.429);
 	--color-gold-light: oklch(92.4% 0.12 95.746);
-	--color-text-white: oklch(0.967 0.0029 264.54);
+
+	--color-white-text: oklch(0.96 0 0);
+
+	--color-text: oklch(0.1297 0.0171 298.93);
+	--color-text-heading: oklch(0.5135 0.0296 305.45);
+	--color-text-disabled: oklch(87.2% 0.01 258.338);
+	--color-bg: oklch(0.9821 0 0);
+	--color-bg-accent: oklch(92.8% 0.006 264.531 / 0.4);
 	--color-text-black: oklch(0.1297 0.0171 298.93);
 	--color-dark-border: oklch(0.3113 0.0181 276.38);
 	--color-charcoal-blue: oklch(0.2 0.02 250);
@@ -23,7 +40,6 @@
 	--color-slate-blue: oklch(0.55 0.03 245);
 	--color-slate-blue-item: oklch(0.6 0.025 245);
 	--color-white-item: oklch(0.96 0 250);
-	--color-error: oklch(57% 0.22 25);
 
 	/* Fonts */
 	--font-limelight: "Limelight", sans-serif;
@@ -73,13 +89,26 @@
 /* Dark mode */
 @media (prefers-color-scheme: dark) {
 	:root {
-		--color-text: oklch(0.967 0.0029 264.54);
+		/* Backgrounds */
+		--color-body: oklch(0.14 0.01 250);
+		--color-content: oklch(0.2 0.01 250);
+		--color-card: oklch(0.24 0.01 250);
+		--color-content-alt: oklch(0.24 0.01 250);
+		--color-card-alt: oklch(0.2 0.01 250);
+		--color-footer: oklch(0.14 0.01 250);
+
+		/* Text */
+		--color-primary-text: oklch(96% 0 0);
+		--color-secondary-text: oklch(78% 0 0);
+		--color-disabled: oklch(37.3% 0.034 259.733);
+		--color-error: oklch(68% 0.18 25);
+
+		/* Borders */
+		--color-border: oklch(0.28 0.01 250);
+
 		--color-text-heading: oklch(0.7137 0.0192 261.32);
-		--color-text-disabled: oklch(37.3% 0.034 259.733);
 		--color-bg: oklch(0.2063 0.012 277.83);
 		--color-bg-accent: oklch(37.3% 0.034 259.733 / 0.2);
-		--color-border: oklch(0.3113 0.0181 276.38);
-		--color-error: oklch(68% 0.18 25);
 	}
 }
 
@@ -93,71 +122,11 @@
 		@apply font-light;
 	}
 
-	/* Text */
-	h1,
-	h2,
-	h3 {
-		@apply text-text-heading;
-	}
-
-	h1 {
-		@apply text-4xl sm:text-5xl;
-	}
-
-	/* Home page */
-	.home-features {
-		@apply dark:bg-charcoal-blue dark:text-text-white;
-
-		h2 {
-			@apply text-gold-dark dark:text-gold;
-		}
-
-		h3 {
-			@apply text-text-black dark:text-text-white;
-		}
-
-		li {
-			@apply bg-white-item dark:border-dark-border dark:bg-charcoal-blue-item;
-		}
-	}
-
-	.home-films {
-		@apply bg-slate-blue text-text-white;
-
-		h2 {
-			@apply text-gold;
-		}
-
-		h3 {
-			@apply text-text-white;
-		}
-
-		li {
-			@apply border-dark-border bg-slate-blue-item;
-		}
-	}
-
-	.home-people {
-		@apply bg-white text-text-black;
-
-		h2 {
-			@apply text-gold-dark;
-		}
-
-		h3 {
-			@apply text-text-black;
-		}
-
-		li {
-			@apply bg-white-item;
-		}
-	}
-
 	/* Layout */
 
 	/* Page margins within <main> element */
 	.page-margins {
-		@apply pt-38 pb-8 bg-white lg:border-x sm:pt-48 sm:pb-12 w-full max-w-292.5;
+		@apply pt-38 pb-8 lg:border-x sm:pt-48 sm:pb-12 w-full max-w-292.5;
 	}
 
 	article article {
@@ -167,8 +136,29 @@
 			@apply flex flex-col gap-4;
 		}
 
+		h2,
+		h3 {
+			@apply text-secondary-text;
+		}
+
 		h2 {
 			@apply text-2xl mt-4;
+		}
+	}
+
+	.section {
+		@apply bg-content;
+
+		li {
+			@apply bg-card;
+		}
+	}
+
+	.section-alt {
+		@apply border-y bg-content-alt;
+
+		li {
+			@apply bg-card-alt;
 		}
 	}
 

@@ -51,14 +51,14 @@ export default function ListItem({ entity, item }: Props) {
 
 	return (
 		<li
-			className={`${showListDetails ? "min-h-20" : ""} border-b transition-colors duration-500 first:border-t hover:bg-bg-accent min-[1170px]:hover:bg-bg`}
+			className={`border-b transition-colors duration-500 first:border-t ${showListDetails ? "min-h-20" : ""}`}
 		>
 			<Link to={link}>
 				<div
 					className={`flex justify-between gap-1 px-8 sm:px-24 sm:gap-6 md:flex-row-reverse ${showListDetails ? "py-2 sm:py-4" : "py-5"}`}
 				>
 					<div className="flex flex-col gap-1 grow">
-						<h2 className="text-base font-semibold sm:text-xl xl:text-2xl">
+						<h2 className="w-fit text-base text-secondary-text font-semibold hover:text-gold-dark transition-colors duration-300 sm:text-xl xl:text-2xl">
 							{item.name}
 						</h2>
 						{showListDetails && (

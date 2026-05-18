@@ -79,16 +79,15 @@ export default function HomePage() {
 					imgs={featureImgs}
 					listHeading="Our latest features"
 					route="features"
-					sectionClass="home-features"
 					title="Feature articles"
 					text="In-depth articles about a diverse range of topics including early
 						film history, lost silents, and much more."
 				/>
 				<Section
 					imgs={filmImgs}
+					isAlt
 					listHeading="Our newest films"
 					route="films"
-					sectionClass="home-films"
 					title="Film discussions"
 					text="Synopses and discussions of nearly 200 obscure and classic Hollywood
 						films from the silent, pre-Code, and classic eras."
@@ -97,7 +96,6 @@ export default function HomePage() {
 					imgs={peopleImgs}
 					listHeading="Our recent bios"
 					route="people"
-					sectionClass="home-people"
 					title="Actor & director biographies"
 					text="Explore detailed biographies of dozens of actors, directors, and
 						screenwriters."

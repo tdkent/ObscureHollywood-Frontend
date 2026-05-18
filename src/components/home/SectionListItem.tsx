@@ -31,7 +31,7 @@ export default function SectionListItem({
 
 	return (
 		<li
-			className={`rounded-2xl overflow-hidden ${reduceMotion ? "" : `opacity-0 ${inView ? `animate-fade-move-up-more ${delays[idx]}` : ""}`}`}
+			className={`rounded-2xl overflow-hidden border ${reduceMotion ? "" : `opacity-0 ${inView ? `animate-fade-move-up-more ${delays[idx]}` : ""}`}`}
 			ref={ref}
 		>
 			<Link to={`/${route}/${slug}`}>
@@ -46,7 +46,7 @@ export default function SectionListItem({
 							<span className="font-bold">{name}</span>
 							<span>{subtitle}</span>
 						</div>
-						<div className="rounded-full p-1 bg-gold sm:p-2 lg:p-1">
+						<div className="rounded-full p-1 bg-gold-dark sm:p-2 lg:p-1">
 							<ArrowRight className="size-4 stroke-text-black sm:size-5 lg:size-3" />
 						</div>
 					</div>

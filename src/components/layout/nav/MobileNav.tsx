@@ -54,7 +54,7 @@ export default function MobileNav() {
 				type="button"
 			>
 				<Equal
-					className={`scale-175 stroke-1 sm:size-8 ${isHome ? "text-text-white" : "text-text"}`}
+					className={`scale-175 stroke-1 sm:size-8 ${isHome ? "text-white-text" : "text-text"}`}
 				/>
 			</button>
 			{mounted && container

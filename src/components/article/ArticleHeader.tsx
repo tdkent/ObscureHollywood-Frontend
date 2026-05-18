@@ -19,8 +19,10 @@ export default function ArticleHeader({
 	return (
 		<header className="flex flex-col gap-6">
 			<div className="px-6 flex flex-col gap-2 sm:px-12">
-				<h1 className="text-5xl font-normal text-text">{name}</h1>
-				{subtitle && <h2 className="text-2xl">{subtitle}</h2>}
+				<h1 className="text-5xl font-normal text-secondary-text">{name}</h1>
+				{subtitle && (
+					<h2 className="text-2xl text-secondary-text">{subtitle}</h2>
+				)}
 			</div>
 			{showImage && (
 				<Image
