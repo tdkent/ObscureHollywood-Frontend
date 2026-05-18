@@ -8,18 +8,14 @@ export default function Footer() {
 				{navLinks.map((link) => {
 					return (
 						<li key={link.label}>
-							<Link className="hover:text-gold" to={link.href}>
-								{link.label}
-							</Link>
+							<Link to={link.href}>{link.label}</Link>
 						</li>
 					);
 				})}
 			</ul>
 			<span className="text-sm">
 				© 2026. All rights reserved.{" "}
-				<Link className="text-link" to="/disclaimer">
-					Privacy & Terms
-				</Link>
+				<Link to="/disclaimer">Privacy & Terms</Link>
 			</span>
 		</footer>
 	);

@@ -8,7 +8,7 @@ export default function NotFoundPage() {
 				<span className="block">Page Not Found</span>
 			</h1>
 
-			<Link className="text-link w-fit" to="/">
+			<Link className="content-link w-fit" to="/">
 				Go to home page
 			</Link>
 		</div>

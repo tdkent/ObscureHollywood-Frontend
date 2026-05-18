@@ -34,7 +34,7 @@ function DescriptionDetails({
 		return (
 			<dd>
 				{href ? (
-					<Link className="text-link" to={href}>
+					<Link className="content-link" to={href}>
 						{label}
 					</Link>
 				) : (
@@ -48,7 +48,7 @@ function DescriptionDetails({
 		<dd className="flex flex-col gap-1">
 			{description.map(({ href, label }) => {
 				return href ? (
-					<Link key={label} className="text-link" to={href}>
+					<Link key={label} className="content-link" to={href}>
 						{label}
 					</Link>
 				) : (

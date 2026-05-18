@@ -19,7 +19,7 @@ export default function RelatedArticles({ relatedArticles }: Props) {
 					return (
 						<li key={id}>
 							<Link
-								className="text-link"
+								className="content-link"
 								to={`/${category === "person" ? "people" : `${category}s`}/${slug}`}
 							>
 								{name}

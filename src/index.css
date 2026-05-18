@@ -21,6 +21,8 @@
 	--color-secondary-text: oklch(0.45 0 0);
 	--color-disabled: oklch(87.2% 0.01 258.338);
 	--color-error: oklch(57% 0.22 25);
+	--color-link: oklch(0.52 0.14 255);
+	--color-link-hover: oklch(0.45 0.18 255);
 
 	--color-gold: oklch(87.9% 0.169 91.605);
 	--color-gold-dark: oklch(82.8% 0.189 84.429);
@@ -102,6 +104,8 @@
 		--color-secondary-text: oklch(78% 0 0);
 		--color-disabled: oklch(37.3% 0.034 259.733);
 		--color-error: oklch(68% 0.18 25);
+		--color-link: oklch(0.78 0.1 255);
+		--color-link-hover: oklch(0.84 0.12 255);
 
 		/* Borders */
 		--color-border: oklch(0.28 0.01 250);
@@ -217,7 +221,7 @@
 		@apply text-gold-dark;
 	}
 
-	.text-link {
-		@apply underline underline-offset-4 decoration-dotted decoration-gold-dark hover:text-gold-dark;
+	.content-link {
+		@apply text-link font-normal hover:underline hover:underline-offset-4 hover:text-link-hover;
 	}
 }
