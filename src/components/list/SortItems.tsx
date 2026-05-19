@@ -34,11 +34,16 @@ export default function SortItems({
 		setSearchParams(newSearchString);
 	}
 
+	const defaultValue = sortOption?.options.find(
+		(opt) => opt.value === sort,
+	)?.value;
+
 	return (
 		<div className="flex items-center justify-between md:justify-start">
 			<span className="md:w-30 lg:w-24">Sort by:</span>
 			<select
 				className="select w-3/5 sm:w-2/5 md:w-50"
+				defaultValue={defaultValue}
 				id="sort-items"
 				onChange={handleSelect}
 			>
@@ -47,11 +52,7 @@ export default function SortItems({
 							.sort((a, b) => a.id - b.id)
 							.map((option) => {
 								return (
-									<option
-										key={option.label}
-										selected={sort === option.value}
-										value={option.value}
-									>
+									<option key={option.label} value={option.value}>
 										{option.label}
 									</option>
 								);
