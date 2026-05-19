@@ -22,14 +22,14 @@ export default function Search({ isShelf }: Props) {
 	}
 
 	return (
-		<search className="lg:flex lg:justify-end">
+		<search className="w-full flex justify-end">
 			<form
 				action={handleSearch}
-				className={`border rounded-lg flex h-12 overflow-hidden sm:h-14 lg:w-2/5 lg:h-10 xl:h-12 ${isHome && !isShelf ? "border-dark-border" : ""}`}
+				className={`border rounded-lg flex h-10 overflow-hidden w-full sm:h-11 lg:w-105 xl:w-120 ${isHome && !isShelf ? "border-dark-border" : ""}`}
 				id="search"
 			>
 				<input
-					className={`grow h-full outline-none px-3 text-xl sm:font-normal lg:font-light lg:text-base ${isHome && !isShelf ? "bg-black/30 text-light-text" : ""}`}
+					className={`grow h-full outline-none px-3 sm:font-normal lg:font-light lg:text-base ${isHome && !isShelf ? "bg-black/30 text-light-text" : ""}`}
 					type="search"
 					name="search"
 				/>

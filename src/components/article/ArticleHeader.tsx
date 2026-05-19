@@ -21,7 +21,7 @@ export default function ArticleHeader({
 			<div className="px-6 sm:px-12 lg:mt-4">
 				<h1 className="text-3xl font-normal md:text-4xl">{name}</h1>
 				{subtitle && (
-					<h2 className="text-xl text-secondary-text md:text-2xl">
+					<h2 className="text-xl text-secondary-text mt-2 md:text-2xl">
 						{subtitle}
 					</h2>
 				)}

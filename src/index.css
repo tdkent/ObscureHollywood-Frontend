@@ -126,7 +126,7 @@
 
 	/* Page margins within <main> element */
 	.page-margins {
-		@apply pt-30 pb-8 w-full max-w-292.5 sm:pt-40 sm:pb-12 lg:pt-30 lg:border-x xl:pt-32;
+		@apply pt-24 pb-8 w-full max-w-292.5 sm:pt-28 sm:pb-12 lg:border-x xl:pt-32;
 	}
 
 	dl {
