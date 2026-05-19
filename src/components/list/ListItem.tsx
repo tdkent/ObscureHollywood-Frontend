@@ -47,30 +47,24 @@ export default function ListItem({ entity, item }: Props) {
 			break;
 	}
 
-	const showListDetails = entity !== "studios";
-
 	return (
-		<li
-			className={`${showListDetails ? "min-h-20" : ""} border-b transition-colors duration-500 first:border-t hover:bg-bg-accent`}
-		>
+		<li className="border-b first:border-t">
 			<Link to={link}>
-				<div
-					className={`flex justify-between gap-1 px-8 sm:px-24 sm:gap-6 md:flex-row-reverse ${showListDetails ? "py-2 sm:py-4" : "py-5"}`}
-				>
+				<div className="flex justify-between gap-4 px-6 sm:px-12 sm:gap-6 py-2 sm:py-4">
+					<Image
+						altText={item.name}
+						containerStyles="flex shrink-0 items-center justify-center border size-16 sm:size-20 md:size-22 lg:size-36"
+						sizes="64px"
+						slug={item.slug}
+					/>
 					<div className="flex flex-col gap-1 grow">
-						<h2 className="text-base font-semibold sm:text-xl">{item.name}</h2>
-						{showListDetails && (
-							<span className="text-sm sm:text-lg">{subtitle}</span>
-						)}
+						<h2 className="w-fit text-base text-balance sm:text-xl xl:text-2xl">
+							{item.name}
+						</h2>
+						<h3 className="text-secondary-text font-normal text-sm text-balance sm:text-lg xl:text-xl">
+							{subtitle}
+						</h3>
 					</div>
-					{showListDetails && (
-						<Image
-							altText={item.name}
-							containerStyles="flex shrink-0 items-center justify-center border rounded-full size-14 sm:size-20 md:size-22 md:rounded-none lg:size-36"
-							sizes="64px"
-							slug={item.slug}
-						/>
-					)}
 				</div>
 			</Link>
 		</li>

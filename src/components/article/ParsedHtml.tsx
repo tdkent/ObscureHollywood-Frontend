@@ -47,7 +47,7 @@ export default function ParsedHtml({ htmlContent }: Props) {
 				// 		domNode.parent?.parent?.parent?.attribs.class === "link-list");
 
 				return (
-					<Link className="text-link" to={href}>
+					<Link className="content-link" to={href}>
 						{isFilmTitle ? <cite>{text}</cite> : text}
 					</Link>
 				);

@@ -5,11 +5,11 @@ import Header from "@/components/layout/Header";
 export default function RootLayout() {
 	return (
 		<div
-			className="min-h-screen flex flex-col bg-bg text-text font-open-sans"
+			className="min-h-screen flex flex-col bg-body text-primary-text font-open-sans"
 			id="container"
 		>
 			<Header />
-			<main className="flex-1 lg:flex lg:flex-col lg:items-center">
+			<main className="flex-1 flex flex-col items-center">
 				<Outlet />
 			</main>
 			<Footer />

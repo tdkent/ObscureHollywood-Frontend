@@ -15,14 +15,12 @@ import type { PaginatedResponse } from "@/types/paginated-response.interface";
 import type { Entity } from "@/types/ui.interface";
 
 interface Props {
-	heading?: string;
 	reqUrl?: string;
 	routeEntity?: Entity;
 	showFilterControls?: boolean;
 }
 
 export default function Paginated({
-	heading,
 	reqUrl,
 	routeEntity,
 	showFilterControls,
@@ -62,11 +60,8 @@ export default function Paginated({
 	const hasResults = paginatedData.data.length;
 
 	return (
-		<div className="my-6 sm:my-10">
-			{heading && (
-				<h3 className="px-6 pb-4 text-xl sm:px-24 sm:text-2xl">Films:</h3>
-			)}
-			<div className="flex flex-col gap-6 border-y py-4 px-6 text-sm sm:px-24 sm:py-8 sm:text-base">
+		<div className="mt-2 sm:mt-4">
+			<div className="flex flex-col gap-6 py-4 px-6 text-sm sm:px-12 sm:py-8 sm:text-base">
 				<PaginationMetadata
 					hasData={!!hasResults}
 					limitParam={limit}

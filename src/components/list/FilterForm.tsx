@@ -91,7 +91,7 @@ export default function FilterForm({
 												<label className="flex gap-2.5 items-center text-base">
 													<input
 														checked={isChecked}
-														className="radio bg-bg-accent checked:bg-gold"
+														className="radio bg-content-alt checked:bg-gold"
 														disabled={disableInput}
 														name={type}
 														onChange={handleCheck}
@@ -104,7 +104,7 @@ export default function FilterForm({
 												<label className="flex gap-2.5 items-center text-base">
 													<input
 														checked={isChecked}
-														className="checkbox bg-bg-accent checked:bg-gold"
+														className="checkbox bg-content-alt checked:bg-gold"
 														disabled={disableInput}
 														onChange={handleCheck}
 														type="checkbox"

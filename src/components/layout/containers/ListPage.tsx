@@ -15,15 +15,15 @@ export default function ListPage() {
 	const headingText = `${route.slice(0, 1).toUpperCase()}${route.slice(1).toLowerCase()}`;
 
 	return (
-		<div className="page-margins">
-			<div className="px-6 sm:px-12 lg:px-24">
+		<div className="page-margins bg-content">
+			<div className="pt-6 px-6 sm:px-12">
 				{isSearch ? (
 					<>
-						<h1>Search Results</h1>
+						<h1 className="text-3xl md:text-4xl">Search Results</h1>
 						<p className="my-4 text-lg sm:text-xl">"{searchParam}"</p>
 					</>
 				) : (
-					<h1>{headingText}</h1>
+					<h1 className="text-3xl md:text-4xl">{headingText}</h1>
 				)}
 			</div>
 			<Paginated showFilterControls={showFilterControls} />

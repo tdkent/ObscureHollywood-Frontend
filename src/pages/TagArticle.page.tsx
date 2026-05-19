@@ -3,7 +3,7 @@ import DetailPage from "@/components/layout/containers/DetailPage";
 
 export default function TagArticlePage() {
 	return (
-		<DetailPage labelText="Tag">
+		<DetailPage>
 			<TagArticle />
 		</DetailPage>
 	);

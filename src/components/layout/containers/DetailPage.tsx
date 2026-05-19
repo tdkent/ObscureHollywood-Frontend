@@ -1,12 +1,10 @@
 interface Props {
 	children: React.ReactNode;
-	labelText: string;
 }
 
-export default function DetailPage({ children, labelText }: Props) {
+export default function DetailPage({ children }: Props) {
 	return (
-		<div className="page-margins">
-			<span className="px-6 text-text-heading/70 sm:px-12">{labelText}</span>
+		<div className="page-margins bg-content">
 			<article className="flex flex-col gap-8 my-4 sm:gap-12">
 				{children}
 			</article>

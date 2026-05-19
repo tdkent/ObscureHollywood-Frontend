@@ -9,7 +9,9 @@ interface Props {
 export default function RelatedArticles({ relatedArticles }: Props) {
 	return (
 		<section className="border-t flex flex-col gap-6 p-6 sm:p-12">
-			<h3 className="text-2xl">Related Articles</h3>
+			<h3 className="text-xl text-secondary-text md:text-2xl">
+				Related Articles
+			</h3>
 			<ul className="link-list">
 				{relatedArticles.map((relation) => {
 					const {
@@ -19,7 +21,7 @@ export default function RelatedArticles({ relatedArticles }: Props) {
 					return (
 						<li key={id}>
 							<Link
-								className="text-link"
+								className="content-link"
 								to={`/${category === "person" ? "people" : `${category}s`}/${slug}`}
 							>
 								{name}

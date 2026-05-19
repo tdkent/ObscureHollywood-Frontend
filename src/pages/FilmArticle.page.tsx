@@ -3,7 +3,7 @@ import DetailPage from "@/components/layout/containers/DetailPage";
 
 export default function FeatureArticlePage() {
 	return (
-		<DetailPage labelText="Film">
+		<DetailPage>
 			<FilmArticle />
 		</DetailPage>
 	);
