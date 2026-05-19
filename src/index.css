@@ -129,6 +129,18 @@
 		@apply pt-38 pb-8 sm:pt-48 sm:pb-12 w-full max-w-292.5 lg:border-x;
 	}
 
+	dl {
+		@apply flex flex-col gap-4;
+
+		div {
+			@apply flex flex-col gap-0.5;
+
+			dt {
+				@apply uppercase text-xs text-text-heading sm:text-sm;
+			}
+		}
+	}
+
 	article article {
 		@apply flex flex-col gap-4 px-6 mt-4 mb-8 sm:px-12;
 
@@ -145,8 +157,13 @@
 			@apply text-xl mt-4 md:text-2xl;
 		}
 
-		p {
+		p,
+		dd {
 			@apply font-light lg:text-[17px] min-[1170px]:pr-32;
+
+			p {
+				@apply p-0 mb-2 last:mb-0;
+			}
 		}
 	}
 
@@ -173,19 +190,6 @@
 
 			li {
 				@apply py-8 flex flex-col gap-4 first:border-t last:border-b;
-			}
-		}
-	}
-
-	/* Film details in <dl> element */
-	dl {
-		@apply flex flex-col gap-4;
-
-		div {
-			@apply flex flex-col gap-0.5;
-
-			dt {
-				@apply uppercase text-xs text-text-heading sm:text-sm;
 			}
 		}
 	}
