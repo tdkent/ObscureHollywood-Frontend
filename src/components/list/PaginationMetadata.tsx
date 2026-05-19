@@ -54,7 +54,11 @@ export default function PaginationMetadata({
 							return (
 								<li className="flex gap-3 items-center" key={tag}>
 									#{tag}
-									<button onClick={() => handleClick(tag)} type="button">
+									<button
+										onClick={() => handleClick(tag)}
+										type="button"
+										className="cursor-pointer"
+									>
 										<X className="stroke-4 size-4 stroke-gold-dark dark:stroke-gold" />
 									</button>
 								</li>

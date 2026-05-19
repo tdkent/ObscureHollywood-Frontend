@@ -24,11 +24,16 @@ export default function TagArticle() {
 
 	const { description, name, slug: tagSlug, type } = data as TagWithRelations;
 
-	const typeSubtitle = `${type.slice(0, 1).toUpperCase()}${type.slice(1)}`;
+	const tagType = `${type.slice(0, 1).toUpperCase()}${type.slice(1)}`;
+	const subtitle = `#${slug}`;
 
 	return (
 		<>
-			<ArticleHeader name={`${typeSubtitle}: ${name}`} slug={tagSlug}>
+			<ArticleHeader
+				name={`${tagType}: ${name}`}
+				slug={tagSlug}
+				subtitle={subtitle}
+			>
 				<p className="px-6 sm:px-12 md:text-lg">{description}</p>
 			</ArticleHeader>
 			<Paginated reqUrl={`/tags/${slug}/films`} routeEntity="films" />
