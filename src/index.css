@@ -126,7 +126,7 @@
 
 	/* Page margins within <main> element */
 	.page-margins {
-		@apply pt-38 pb-8 sm:pt-48 sm:pb-12 w-full max-w-292.5 lg:border-x;
+		@apply pt-30 pb-8 w-full max-w-292.5 sm:pt-40 sm:pb-12 lg:pt-30 lg:border-x xl:pt-32;
 	}
 
 	dl {
@@ -142,7 +142,7 @@
 	}
 
 	article article {
-		@apply flex flex-col gap-4 px-6 mt-4 mb-8 sm:px-12;
+		@apply flex flex-col gap-4 px-6 mb-4 sm:px-12;
 
 		section {
 			@apply flex flex-col gap-4;
@@ -154,7 +154,7 @@
 		}
 
 		h2 {
-			@apply text-xl mt-4 md:text-2xl;
+			@apply text-xl mt-2.5 md:text-2xl;
 		}
 
 		p,

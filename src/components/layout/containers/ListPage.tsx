@@ -16,7 +16,7 @@ export default function ListPage() {
 
 	return (
 		<div className="page-margins bg-content">
-			<div className="px-6 sm:px-12">
+			<div className="pt-6 px-6 sm:px-12">
 				{isSearch ? (
 					<>
 						<h1 className="text-3xl md:text-4xl">Search Results</h1>

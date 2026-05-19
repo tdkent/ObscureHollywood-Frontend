@@ -18,7 +18,7 @@ export default function ArticleHeader({
 }: Props) {
 	return (
 		<header className="flex flex-col gap-6">
-			<div className="px-6 flex flex-col gap-2 sm:px-12">
+			<div className="px-6 sm:px-12 lg:mt-4">
 				<h1 className="text-3xl font-normal md:text-4xl">{name}</h1>
 				{subtitle && (
 					<h2 className="text-xl text-secondary-text md:text-2xl">
@@ -29,9 +29,10 @@ export default function ArticleHeader({
 			{showImage && (
 				<Image
 					altText={name}
+					imgStyles="lg:object-[0_20%]"
 					isHeader
 					slug={slug}
-					containerStyles="mt-4 w-full aspect-7/5 lg:aspect-video"
+					containerStyles="w-full aspect-7/5 lg:aspect-video lg:object-bottom"
 				/>
 			)}
 			{children}
