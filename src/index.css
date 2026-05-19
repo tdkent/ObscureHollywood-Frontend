@@ -126,7 +126,7 @@
 
 	/* Page margins within <main> element */
 	.page-margins {
-		@apply pt-24 pb-8 w-full max-w-292.5 sm:pt-28 sm:pb-12 lg:border-x xl:pt-32;
+		@apply pt-24 pb-8 w-full max-w-292.5 flex-1 sm:pt-28 sm:pb-12 lg:border-x xl:pt-32;
 	}
 
 	dl {
@@ -159,7 +159,7 @@
 
 		p,
 		dd {
-			@apply font-light lg:text-[17px] min-[1170px]:pr-32;
+			@apply font-light lg:text-[17px] lg:w-3/4;
 
 			p {
 				@apply p-0 mb-2 last:mb-0;

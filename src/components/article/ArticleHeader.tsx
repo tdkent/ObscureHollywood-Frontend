@@ -27,13 +27,14 @@ export default function ArticleHeader({
 				)}
 			</div>
 			{showImage && (
-				<Image
-					altText={name}
-					imgStyles="lg:object-[0_20%]"
-					isHeader
-					slug={slug}
-					containerStyles="w-full aspect-7/5 lg:aspect-video lg:object-bottom"
-				/>
+				<div className="px-6 bg-transparent sm:px-12">
+					<Image
+						altText={name}
+						isHeader
+						slug={slug}
+						containerStyles="border w-full aspect-7/5 lg:object-bottom lg:w-3/4"
+					/>
+				</div>
 			)}
 			{children}
 		</header>

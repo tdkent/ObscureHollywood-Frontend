@@ -9,7 +9,7 @@ export default function RootLayout() {
 			id="container"
 		>
 			<Header />
-			<main className="flex-1 lg:flex lg:flex-col lg:items-center">
+			<main className="flex-1 flex flex-col items-center">
 				<Outlet />
 			</main>
 			<Footer />
