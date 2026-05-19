@@ -33,26 +33,23 @@ export default function Loading({
 	if (variant === "list") {
 		const list = Array.from({ length: limit ?? 10 }, (_, idx) => idx);
 		return (
-			<div className="flex flex-col gap-10 my-6 px-6 sm:px-24 sm:my-10 sm:gap-14">
+			<div className="flex flex-col gap-10 my-6 px-6 sm:px-12 sm:my-10 sm:gap-14">
 				<div className="flex flex-col gap-4">
 					<div className="skeleton h-4 w-40 rounded-sm dark:bg-content-alt sm:h-6"></div>
-					<div className="lg:flex lg:gap-10">
-						<div className="skeleton h-10 w-full dark:bg-content-alt sm:h-12 md:w-80"></div>
-						<div className="skeleton h-10 w-full dark:bg-content-alt sm:h-12 md:w-80"></div>
+					<div className="gap-4 flex flex-col lg:flex-row lg:gap-10">
+						<div className="skeleton h-10 w-full rounded-sm dark:bg-content-alt sm:h-12 md:w-80"></div>
+						<div className="skeleton h-10 w-full rounded-sm dark:bg-content-alt sm:h-12 md:w-80"></div>
 					</div>
 				</div>
 				<div className="flex flex-col gap-4">
 					{list.map((item) => {
 						return (
-							<div
-								key={item}
-								className="flex justify-between gap-10 md:flex-row-reverse"
-							>
+							<div key={item} className="flex justify-between gap-4">
+								<div className="skeleton rounded-none shrink-0 dark:bg-content-alt size-16 sm:size-20 md:size-22 lg:size-36"></div>
 								<div className="flex flex-col gap-2 w-full sm:gap-4">
-									<div className="skeleton h-4 w-1/2 rounded-sm dark:bg-content-alt sm:h-6"></div>
-									<div className="skeleton h-3 w-1/4 rounded-sm dark:bg-content-alt sm:h-5"></div>
+									<div className="skeleton h-4 w-3/4 rounded-sm dark:bg-content-alt sm:h-6"></div>
+									<div className="skeleton h-3 w-1/2 rounded-sm dark:bg-content-alt sm:h-5"></div>
 								</div>
-								<div className="skeleton size-14 shrink-0 rounded-full dark:bg-content-alt sm:size-20 md:rounded-none md:size-22 lg:size-36"></div>
 							</div>
 						);
 					})}
@@ -68,10 +65,10 @@ export default function Loading({
 				<div className="flex flex-col gap-4 px-6 sm:px-12">
 					<div className="skeleton h-12 w-full dark:bg-content-alt sm:w-3/4"></div>
 					<div className="skeleton h-8 w-3/4 dark:bg-content-alt sm:w-1/2"></div>
+					{isFullArticle && (
+						<div className="skeleton aspect-7/5 w-full rounded-none dark:bg-content-alt lg:w-3/4"></div>
+					)}
 				</div>
-				{isFullArticle && (
-					<div className="skeleton aspect-7/5 w-full rounded-none dark:bg-content-alt lg:aspect-video"></div>
-				)}
 				{isFullArticle && (
 					<>
 						{hasDescList && (
@@ -98,7 +95,7 @@ export default function Loading({
 								</div>
 							</div>
 						)}
-						<div className="flex flex-col gap-4 px-6 sm:px-12">
+						<div className="flex flex-col gap-4 px-6 w-full sm:px-12 lg:w-3/4">
 							<div className="skeleton h-8 w-60 rounded-sm dark:bg-content-alt"></div>
 							{list.map((item) => {
 								return (

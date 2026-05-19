@@ -48,7 +48,7 @@ export default function ListItem({ entity, item }: Props) {
 	}
 
 	return (
-		<li className={`border-b first:border-t`}>
+		<li className="border-b first:border-t">
 			<Link to={link}>
 				<div className="flex justify-between gap-4 px-6 sm:px-12 sm:gap-6 py-2 sm:py-4">
 					<Image
