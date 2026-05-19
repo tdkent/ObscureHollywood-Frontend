@@ -8,6 +8,7 @@ import DescriptionList from "@/components/shared/DescriptionList";
 import DisplayError from "@/components/shared/DisplayError";
 import Loading from "@/components/shared/Loading";
 import { getFormattedDateString } from "@/lib/utils/formatPersonDates";
+import type { Film } from "@/types/film.interface";
 import type { PersonWithRelations } from "@/types/person.interface";
 import type {
 	Entity,
@@ -45,6 +46,7 @@ export default function PersonArticle() {
 	const roles = personFilms
 		? Array.from(new Set(personFilms.map((pf) => pf.role)))
 		: null;
+
 	const subtitle = roles
 		? roles
 				.sort()
@@ -52,13 +54,26 @@ export default function PersonArticle() {
 				.join(", ")
 		: null;
 
-	const films = personFilms
-		? personFilms.map(({ film }) => {
-				return {
-					label: film.name,
-					href: `/films/${film.slug}`,
-				};
-			})
+	const filteredFilms: Film[] = [];
+
+	if (personFilms) {
+		for (const { film } of personFilms) {
+			const hasFilm = filteredFilms.find((f) => f.id === film.id);
+			if (!hasFilm) {
+				filteredFilms.push(film);
+			}
+		}
+	}
+
+	const films = filteredFilms.length
+		? filteredFilms
+				.sort((a, b) => a.releaseYear - b.releaseYear)
+				.map((film) => {
+					return {
+						label: film.name,
+						href: `/films/${film.slug}`,
+					};
+				})
 		: null;
 
 	//? Note: some/all person db fields may be null
