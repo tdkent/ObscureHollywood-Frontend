@@ -126,7 +126,7 @@
 
 	/* Page margins within <main> element */
 	.page-margins {
-		@apply pt-38 pb-8 lg:border-x sm:pt-48 sm:pb-12 w-full max-w-292.5;
+		@apply pt-38 pb-8 sm:pt-48 sm:pb-12 w-full max-w-292.5 lg:border-x;
 	}
 
 	article article {
@@ -146,7 +146,7 @@
 		}
 
 		p {
-			@apply font-light;
+			@apply font-light lg:text-[17px] min-[1170px]:pr-32;
 		}
 	}
 
@@ -201,7 +201,7 @@
 
 	/* End of article reference list */
 	.references {
-		@apply text-sm list-disc border-t pt-8 mt-8;
+		@apply text-sm font-light list-disc border-t pt-8 mt-8 lg:text-[15px] min-[1170px]:pr-32;
 
 		h3 {
 			@apply text-xl;
