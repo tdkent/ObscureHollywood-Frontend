@@ -12,7 +12,7 @@ export default function Logo({ isShelf }: Props) {
 		<div className="font-limelight text-2xl sm:text-3xl md:text-4xl lg:text-[40px]">
 			<Link to="/">
 				<span
-					className={`${isHome && !isShelf ? "text-light-text" : "text-text-heading/50 dark:text-text-heading"}`}
+					className={`${isHome && !isShelf ? "text-light-text" : "text-secondary-text/50 dark:text-secondary-text"}`}
 				>
 					Obscure
 				</span>{" "}

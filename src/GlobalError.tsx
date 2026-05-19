@@ -13,7 +13,9 @@ export default function GlobalErrorBoundary({ reset }: Props) {
 				<div className="flex flex-col justify-center px-6 gap-2 h-full sm:px-12 lg:flex-col-reverse lg:gap-3 xl:px-24">
 					<div className="flex justify-between items-center">
 						<div className="font-limelight text-2xl sm:text-3xl md:text-4xl lg:text-[40px]">
-							<span className={`text-text-heading/50 dark:text-text-heading`}>
+							<span
+								className={`text-secondary-text/50 dark:text-secondary-text`}
+							>
 								Obscure
 							</span>{" "}
 							<span

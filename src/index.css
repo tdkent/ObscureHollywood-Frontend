@@ -15,33 +15,19 @@
 
 	/* Borders */
 	--color-border: oklch(0.9205 0.0042 301.42);
+	--color-dark-border: oklch(0.28 0.01 250);
 
 	/* Text */
 	--color-primary-text: oklch(0.21 0 0);
 	--color-secondary-text: oklch(0.45 0 0);
-	--color-disabled: oklch(87.2% 0.01 258.338);
+	--color-light-text: oklch(0.96 0 0);
+	--color-dark-text: oklch(0.21 0 0);
 	--color-error: oklch(57% 0.22 25);
 	--color-link: oklch(0.52 0.14 255);
 	--color-link-hover: oklch(0.45 0.18 255);
-
 	--color-gold: oklch(87.9% 0.169 91.605);
 	--color-gold-dark: oklch(82.8% 0.189 84.429);
 	--color-gold-light: oklch(92.4% 0.12 95.746);
-
-	--color-light-text: oklch(0.96 0 0);
-
-	--color-text: oklch(0.1297 0.0171 298.93);
-	--color-text-heading: oklch(0.5135 0.0296 305.45);
-	--color-text-disabled: oklch(87.2% 0.01 258.338);
-	--color-bg: oklch(0.9821 0 0);
-	--color-bg-accent: oklch(92.8% 0.006 264.531 / 0.4);
-	--color-text-black: oklch(0.1297 0.0171 298.93);
-	--color-dark-border: oklch(0.3113 0.0181 276.38);
-	--color-charcoal-blue: oklch(0.2 0.02 250);
-	--color-charcoal-blue-item: oklch(0.24 0.02 250);
-	--color-slate-blue: oklch(0.55 0.03 245);
-	--color-slate-blue-item: oklch(0.6 0.025 245);
-	--color-white-item: oklch(0.96 0 250);
 
 	/* Fonts */
 	--font-limelight: "Limelight", sans-serif;
@@ -102,24 +88,19 @@
 		/* Text */
 		--color-primary-text: oklch(96% 0 0);
 		--color-secondary-text: oklch(78% 0 0);
-		--color-disabled: oklch(37.3% 0.034 259.733);
 		--color-error: oklch(68% 0.18 25);
 		--color-link: oklch(0.78 0.1 255);
 		--color-link-hover: oklch(0.84 0.12 255);
 
 		/* Borders */
 		--color-border: oklch(0.28 0.01 250);
-
-		--color-text-heading: oklch(0.7137 0.0192 261.32);
-		--color-bg: oklch(0.2063 0.012 277.83);
-		--color-bg-accent: oklch(37.3% 0.034 259.733 / 0.2);
 	}
 }
 
 @layer base {
 	/* Base */
 	* {
-		@apply border-border outline-text;
+		@apply border-border outline-primary-text;
 	}
 
 	/* Layout */
@@ -136,7 +117,7 @@
 			@apply flex flex-col gap-0.5;
 
 			dt {
-				@apply uppercase text-xs text-text-heading sm:text-sm;
+				@apply uppercase text-xs text-secondary-text sm:text-sm;
 			}
 		}
 	}

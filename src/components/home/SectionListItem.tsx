@@ -47,7 +47,7 @@ export default function SectionListItem({
 							<span className="text-secondary-text">{subtitle}</span>
 						</div>
 						<div className="rounded-full p-1 bg-gold-dark sm:p-2 lg:p-1">
-							<ArrowRight className="size-4 stroke-text-black sm:size-5 lg:size-3" />
+							<ArrowRight className="size-4 stroke-dark-text sm:size-5 lg:size-3" />
 						</div>
 					</div>
 				</div>
