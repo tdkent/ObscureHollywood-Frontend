@@ -80,11 +80,7 @@ export function getSearchParams({
 	const searchParam = searchParams.get("q");
 
 	if (searchParam) {
-		if (
-			entity !== "search" ||
-			searchParam.length < 3 ||
-			searchParam.length > 64
-		) {
+		if (entity !== "search") {
 			throw new Error("Invalid search URL param");
 		}
 	}
