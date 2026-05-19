@@ -11,9 +11,7 @@ export default function Search({ isShelf }: Props) {
 	const isHome = pathname === "/";
 
 	function handleSearch(formData: FormData) {
-		const searchString = formData.get("search");
-
-		//! Validate
+		const searchString = formData.get("search")?.toString().trim();
 
 		navigate({
 			pathname: "/search",
