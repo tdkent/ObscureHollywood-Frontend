@@ -6,8 +6,8 @@ import Shelf from "@/components/layout/nav/Shelf";
 
 /** Render trigger button and drawer with nav. */
 export default function MobileNav() {
-	const { pathname } = useLocation();
-	const isHome = pathname === "/";
+	const location = useLocation();
+	const isHome = location.pathname === "/";
 
 	const [showShelf, setShowShelf] = useState(false);
 	const [mounted, setMounted] = useState(false);
@@ -39,6 +39,12 @@ export default function MobileNav() {
 			}
 		}
 	}, [container, showShelf]);
+
+	// Close shelf on location change
+	// biome-ignore lint/correctness/useExhaustiveDependencies: location is required dependency
+	useEffect(() => {
+		setShowShelf(false);
+	}, [location]);
 
 	function handleClick() {
 		setShowShelf((prev) => !prev);
