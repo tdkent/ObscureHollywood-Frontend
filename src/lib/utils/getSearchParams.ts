@@ -24,7 +24,7 @@ export function getSearchParams({
 	 * Get limit param
 	 */
 	const limitParam = searchParams.get("limit");
-	const limitParamNum = Number(limitParam) || 10; // Default = 10
+	const limitParamNum = Number(limitParam) || 25; // Default = 25
 
 	/**
 	 * Get sort param

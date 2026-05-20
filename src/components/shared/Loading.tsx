@@ -1,25 +1,21 @@
 type Props =
 	| {
 			hasDescList?: never;
-			limit: number;
 			isFullArticle?: never;
 			variant: "list";
 	  }
 	| {
 			hasDescList?: boolean;
-			limit?: never;
 			isFullArticle?: boolean;
 			variant: "article";
 	  }
 	| {
 			hasDescList?: never;
-			limit?: never;
 			isFullArticle?: never;
 			variant: "homeSectionItems";
 	  }
 	| {
 			hasDescList?: never;
-			limit?: never;
 			isFullArticle?: never;
 			variant: "filter";
 	  };
@@ -27,11 +23,10 @@ type Props =
 export default function Loading({
 	hasDescList,
 	isFullArticle,
-	limit,
 	variant,
 }: Props) {
 	if (variant === "list") {
-		const list = Array.from({ length: limit ?? 10 }, (_, idx) => idx);
+		const list = Array.from({ length: 10 }, (_, idx) => idx);
 		return (
 			<div className="flex flex-col gap-10 my-6 px-6 sm:px-12 sm:my-10 sm:gap-14">
 				<div className="flex flex-col gap-4">
