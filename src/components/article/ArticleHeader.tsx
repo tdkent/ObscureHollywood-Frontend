@@ -31,8 +31,9 @@ export default function ArticleHeader({
 					<Image
 						altText={name}
 						isHeader
+						sizes="(max-width: 1024px) 100vw, (max-width: 1170px) 75vw, 800px"
 						slug={slug}
-						containerStyles="border w-full aspect-7/5 lg:object-bottom lg:w-3/4"
+						containerStyles="border lg:object-bottom lg:w-3/4 xl:w-200"
 					/>
 				</div>
 			)}
