@@ -1,10 +1,9 @@
 import { useSearchParams } from "react-router";
-import type { SortValue } from "@/types/ui.interface";
 
 interface Props {
 	currLimit: number;
 	searchParam: string | null;
-	sortParam: SortValue;
+	sortParam: string;
 	tagsParamString: string;
 }
 

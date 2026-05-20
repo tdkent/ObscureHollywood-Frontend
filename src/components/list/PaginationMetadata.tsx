@@ -2,14 +2,13 @@ import { X } from "lucide-react";
 import type { Dispatch, SetStateAction } from "react";
 import { useSearchParams } from "react-router";
 import type { PaginatedResponse } from "@/types/paginated-response.interface";
-import type { SortValue } from "@/types/ui.interface";
 
 interface Props {
 	hasData: boolean;
 	limitParam: number;
 	metadata: PaginatedResponse["meta"];
 	setFilters: Dispatch<SetStateAction<string[]>>;
-	sortParam: SortValue;
+	sortParam: string;
 	tags: string[];
 }
 

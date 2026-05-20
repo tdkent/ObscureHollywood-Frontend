@@ -39,20 +39,10 @@ export interface FilteredDlMetadata {
 /**
  * Sort
  */
-export type SortValue =
-	| "firstNameAsc"
-	| "firstNameDesc"
-	| "lastNameAsc"
-	| "lastNameDesc"
-	| "nameAsc"
-	| "nameDesc"
-	| "yearAsc"
-	| "yearDesc";
-
 export interface SelectOption {
 	id: number;
 	label: string;
-	value: SortValue;
+	value: string;
 }
 
 export interface SortOption {
