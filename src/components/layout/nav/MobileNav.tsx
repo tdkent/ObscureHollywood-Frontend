@@ -44,6 +44,7 @@ export default function MobileNav() {
 	// biome-ignore lint/correctness/useExhaustiveDependencies: location is required dependency
 	useEffect(() => {
 		setShowShelf(false);
+		setInstantClose(true);
 	}, [location]);
 
 	function handleClick() {
