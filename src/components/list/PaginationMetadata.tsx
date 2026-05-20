@@ -1,6 +1,6 @@
 import { X } from "lucide-react";
 import type { Dispatch, SetStateAction } from "react";
-import { useLocation, useSearchParams } from "react-router";
+import { Link, useLocation, useSearchParams } from "react-router";
 import type { PaginatedResponse } from "@/types/paginated-response.interface";
 
 interface Props {
@@ -48,14 +48,19 @@ export default function PaginationMetadata({
 				<p>No results found.</p>
 			)}
 
-			{showTags && (
+			{showTags ? (
 				<div className="flex gap-2">
 					Tags:
 					<ul className="flex flex-col gap-2">
 						{tags.map((tag) => {
 							return (
 								<li className="flex gap-3 items-center" key={tag}>
-									#{tag}
+									<Link
+										to={`/tags/${tag}`}
+										className="hover:underline underline-offset-4"
+									>
+										#{tag}
+									</Link>
 									<button
 										onClick={() => handleClick(tag)}
 										type="button"
@@ -68,7 +73,7 @@ export default function PaginationMetadata({
 						})}
 					</ul>
 				</div>
-			)}
+			) : null}
 		</div>
 	);
 }
