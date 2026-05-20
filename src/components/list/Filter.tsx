@@ -5,14 +5,13 @@ import httpRequest from "@/api/httpRequest";
 import FilterForm from "@/components/list/FilterForm";
 import Loading from "@/components/shared/Loading";
 import type { Tag } from "@/types/tag.interface";
-import type { SortValue } from "@/types/ui.interface";
 
 interface Props {
 	filmsPending: boolean;
 	filters: string[];
 	limitParam: number;
 	setFilters: Dispatch<SetStateAction<string[]>>;
-	sortParam: SortValue;
+	sortParam: string;
 	tagParams: string[];
 }
 

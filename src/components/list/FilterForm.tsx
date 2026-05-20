@@ -2,7 +2,6 @@ import type { Dispatch, SetStateAction } from "react";
 import React from "react";
 import { useSearchParams } from "react-router";
 import type { Tag } from "@/types/tag.interface";
-import type { SortValue } from "@/types/ui.interface";
 
 interface Props {
 	filmsPending: boolean;
@@ -10,7 +9,7 @@ interface Props {
 	limitParam: number;
 	setFilters: Dispatch<SetStateAction<string[]>>;
 	setIsOpen: Dispatch<SetStateAction<boolean>>;
-	sortParam: SortValue;
+	sortParam: string;
 	tagParams: string[];
 	tags: Tag[];
 }
