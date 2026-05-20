@@ -15,7 +15,7 @@ export default function PaginationLimit({
 }: Props) {
 	const [_, setSearchParams] = useSearchParams();
 
-	const limitOptions = [10, 25];
+	const limitOptions = [25, 50];
 
 	let params = `&orderBy=${sortParam}`;
 	if (searchParam) params += `&q=${searchParam}`;

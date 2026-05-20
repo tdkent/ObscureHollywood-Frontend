@@ -19,8 +19,8 @@ const mockedPaginationMetadata: Pick<PaginatedResponse, "links" | "meta"> = {
 	meta: {
 		currentPage: 1,
 		firstItemOnPage: 1,
-		itemsPerPage: 10,
-		lastItemOnPage: 10,
+		itemsPerPage: 25,
+		lastItemOnPage: 25,
 		totalItems: 50,
 		totalPages: 5,
 	},
