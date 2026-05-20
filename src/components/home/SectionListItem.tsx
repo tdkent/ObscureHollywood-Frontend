@@ -39,6 +39,7 @@ export default function SectionListItem({
 					<Image
 						altText={name}
 						containerStyles="rounded-lg w-3/10 aspect-[6/5] lg:w-full lg:aspect-7/5"
+						sizes="(max-width: 1024px) 12.5vw, 320px"
 						slug={slug}
 					/>
 					<div className="flex items-center justify-between w-full">

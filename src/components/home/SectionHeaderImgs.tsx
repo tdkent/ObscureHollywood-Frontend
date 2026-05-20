@@ -31,7 +31,11 @@ export default function SectionHeaderImgs({ imgs }: Props) {
 						key={slug}
 						className={`max-sm:even:hidden sm:max-lg:last:hidden ${reduceMotion ? "" : `opacity-0 ${inView ? `animate-fade ${delays[idx]}` : ""}`}`}
 					>
-						<Image altText={name} slug={slug} />
+						<Image
+							altText={name}
+							sizes="(max-width: 640px) 33.3vw, (max-width: 1024px) 25vw, (max-width: 1170px) 20vw, 240px"
+							slug={slug}
+						/>
 					</li>
 				);
 			})}

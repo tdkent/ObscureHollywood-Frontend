@@ -54,7 +54,7 @@ export default function ListItem({ entity, item }: Props) {
 					<Image
 						altText={item.name}
 						containerStyles="flex shrink-0 items-center justify-center border size-16 sm:size-20 md:size-22 lg:size-36"
-						sizes="64px"
+						sizes="(max-width: 640px) 64px, (max-width: 768px) 80px, (max-width: 1024px) 88px, 144px"
 						slug={item.slug}
 					/>
 					<div className="flex flex-col gap-1 grow">
