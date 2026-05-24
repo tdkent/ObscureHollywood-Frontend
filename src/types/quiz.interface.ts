@@ -6,10 +6,10 @@ export interface Quiz {
 	theme: "films" | "genres" | "people";
 }
 
-interface QuizQuestion {
+export interface QuizQuestion {
 	id: number;
 	questionText: string;
-	questingNumber: number;
+	questionNumber: number;
 	answerOptions: string[];
 	correctAnswer: number;
 }

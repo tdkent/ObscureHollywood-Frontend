@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useLocation, useParams } from "react-router";
 import httpRequest from "@/api/httpRequest";
 import ArticleHeader from "@/components/article/ArticleHeader";
+import Question from "@/components/article/quiz/Question";
 import DisplayError from "@/components/shared/DisplayError";
 import Loading from "@/components/shared/Loading";
 import type { Quiz } from "@/types/quiz.interface";
@@ -25,21 +26,14 @@ export default function QuizPage() {
 
 	return (
 		<div className="page-margins bg-content">
-			<ArticleHeader name={name} slug={quizSlug} />
-			<ul>
-				{quizQuestions.map((qq) => {
-					return (
-						<li key={qq.id}>
-							<p>{qq.questionText}</p>
-							<ul>
-								{qq.answerOptions.map((opt) => {
-									return <li key={opt}>{opt}</li>;
-								})}
-							</ul>
-						</li>
-					);
-				})}
-			</ul>
+			<div className="flex flex-col gap-8 my-4 sm:gap-12">
+				<ArticleHeader name={`Quiz: ${name}`} slug={quizSlug} />
+				<form className="px-6 sm:px-12">
+					{quizQuestions.map((qq) => {
+						return <Question key={qq.id} quizQuestion={qq} />;
+					})}
+				</form>
+			</div>
 		</div>
 	);
 }
