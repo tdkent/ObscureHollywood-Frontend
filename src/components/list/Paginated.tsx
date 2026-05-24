@@ -57,22 +57,23 @@ export default function Paginated({
 	if (error) return <DisplayError />;
 
 	const paginatedData = data as PaginatedResponse;
-	const numResults = paginatedData.data.length;
+	const hasResults = paginatedData.data.length;
+	const totalItems = paginatedData.meta.totalItems;
 
 	return (
 		<div className="mt-2 sm:mt-4">
 			<div className="flex flex-col gap-6 py-4 px-6 text-sm sm:px-12 sm:py-8 sm:text-base">
 				<PaginationMetadata
-					hasData={!!numResults}
+					hasData={!!hasResults}
 					limitParam={limit}
 					metadata={paginatedData.meta}
 					setFilters={setFilters}
 					sortParam={sort}
 					tags={tags}
 				/>
-				{numResults ? (
+				{hasResults ? (
 					<div className="flex flex-col gap-6 w-full lg:flex-row lg:gap-16">
-						{numResults >= 25 && (
+						{totalItems >= 25 && (
 							<PaginationLimit
 								currLimit={limit}
 								searchParam={searchParam}
@@ -100,7 +101,7 @@ export default function Paginated({
 					/>
 				)}
 			</div>
-			{numResults ? (
+			{hasResults ? (
 				<>
 					<ul className="my-8 flex flex-col sm:my-12">
 						{paginatedData.data.map((item) => {

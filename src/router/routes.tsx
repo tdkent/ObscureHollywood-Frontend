@@ -9,6 +9,7 @@ import HomePage from "@/pages/Home.page";
 import NotFoundPage from "@/pages/NotFound.page";
 import PeoplePage from "@/pages/People.page";
 import PersonArticlePage from "@/pages/PersonArticle.page";
+import QuizzesPage from "@/pages/Quizzes.page";
 import SearchPage from "@/pages/Search.page";
 import StudioArticlePage from "@/pages/StudioArticle.page";
 import StudiosPage from "@/pages/Studios.page";
@@ -25,6 +26,7 @@ export default function Routes() {
 				<Route element={<FilmArticlePage />} path="/films/:slug" />
 				<Route element={<PeoplePage />} path="/people" />
 				<Route element={<PersonArticlePage />} path="/people/:slug" />
+				<Route element={<QuizzesPage />} path="/quiz" />
 				<Route element={<SearchPage />} path="/search" />
 				<Route element={<StudiosPage />} path="/studios" />
 				<Route element={<StudioArticlePage />} path="/studios/:slug" />

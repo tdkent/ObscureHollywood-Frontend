@@ -15,6 +15,7 @@ export type Entity =
 	| "features"
 	| "films"
 	| "people"
+	| "quiz"
 	| "search"
 	| "studios"
 	| "tags";
