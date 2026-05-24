@@ -74,6 +74,20 @@ describe("App root layer", () => {
 		).toBeInTheDocument();
 	});
 
+	it("renders Quiz page at /quiz", () => {
+		renderWithClient(<App />, ["/quiz"]);
+
+		expect(screen.getByRole("heading", { name: "Quiz" })).toBeInTheDocument();
+	});
+
+	it("renders correct Quiz page at /quiz/at-the-movies", async () => {
+		renderWithClient(<App />, ["/quiz/at-the-movies"]);
+
+		expect(
+			await screen.findByRole("heading", { name: /at the movies/i }),
+		).toBeInTheDocument();
+	});
+
 	it("renders Search page at /search", () => {
 		renderWithClient(<App />, ["/search"]);
 
