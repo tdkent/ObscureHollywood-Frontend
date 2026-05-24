@@ -66,6 +66,10 @@ export const paginatedSortOptions: SortOption[] = [
 		options: [firstNameAsc, firstNameDesc, lastNameAsc, lastNameDesc],
 	},
 	{
+		entity: "quiz",
+		options: [nameAsc, nameDesc],
+	},
+	{
 		entity: "studios",
 		options: [nameAsc, nameDesc],
 	},
