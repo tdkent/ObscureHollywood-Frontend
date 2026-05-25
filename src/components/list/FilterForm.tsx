@@ -132,7 +132,7 @@ export default function FilterForm({
 				</button>
 
 				{/* Close modal and invoke handler function */}
-				<button className="btn btn-neutral" type="button" onClick={handleApply}>
+				<button className="btn btn-primary" type="button" onClick={handleApply}>
 					Apply
 				</button>
 			</div>
