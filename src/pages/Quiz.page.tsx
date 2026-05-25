@@ -24,14 +24,25 @@ export default function QuizPage() {
 
 	const { name, quizQuestions, slug: quizSlug } = data as Quiz;
 
+	function formAction(formData: FormData) {}
+
 	return (
 		<div className="page-margins bg-content">
 			<div className="flex flex-col gap-8 my-4 sm:gap-12">
 				<ArticleHeader name={`Quiz: ${name}`} slug={quizSlug} />
-				<form className="px-6 sm:px-12">
+				<form className="px-6 sm:px-12" action={formAction}>
 					{quizQuestions.map((qq) => {
 						return <Question key={qq.id} quizQuestion={qq} />;
 					})}
+
+					<div className="flex gap-4 my-8">
+						<button className="btn btn-soft" type="reset">
+							Reset
+						</button>
+						<button className="btn btn-primary" type="submit">
+							Submit
+						</button>
+					</div>
 				</form>
 			</div>
 		</div>
