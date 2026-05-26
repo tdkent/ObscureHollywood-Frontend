@@ -55,3 +55,9 @@ export interface SortOption {
 export interface FormInputs {
 	[key: string]: string;
 }
+
+// Http request options
+export interface OptionsInput {
+	method: "POST";
+	body: object;
+}
