@@ -18,7 +18,7 @@ export default function Question({ control, errors, quizQuestion }: Props) {
 	const answer3 = parseHtmlToString(answerOptions[2]);
 	const answer4 = parseHtmlToString(answerOptions[3]);
 
-	const inputName = `q${questionNumber}`;
+	const inputName = `${questionNumber}`;
 
 	return (
 		<div className="py-8 border-b last:border-none">

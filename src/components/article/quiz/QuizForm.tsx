@@ -12,18 +12,19 @@ export default function QuizForm({ questions }: Props) {
 		control,
 		handleSubmit,
 		formState: { errors },
+		reset,
 	} = useForm<FormInputs>({
 		defaultValues: {
-			q1: undefined,
-			q2: undefined,
-			q3: undefined,
-			q4: undefined,
-			q5: undefined,
-			q6: undefined,
-			q7: undefined,
-			q8: undefined,
-			q9: undefined,
-			q10: undefined,
+			1: undefined,
+			2: undefined,
+			3: undefined,
+			4: undefined,
+			5: undefined,
+			6: undefined,
+			7: undefined,
+			8: undefined,
+			9: undefined,
+			10: undefined,
 		},
 	});
 
@@ -44,7 +45,7 @@ export default function QuizForm({ questions }: Props) {
 				);
 			})}
 			<div className="flex gap-4 my-8">
-				<button className="btn btn-soft" type="reset">
+				<button className="btn btn-soft" type="button" onClick={() => reset()}>
 					Reset
 				</button>
 				<button className="btn btn-primary" type="submit">
