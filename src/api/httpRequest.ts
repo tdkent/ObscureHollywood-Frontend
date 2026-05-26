@@ -13,7 +13,7 @@ export default async function httpRequest(
 		options = {
 			method: optionsInput.method,
 			headers: {
-				"Content-Type": "application-json",
+				"Content-Type": "application/json",
 			},
 			body: JSON.stringify(optionsInput.body),
 		};

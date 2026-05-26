@@ -1,13 +1,25 @@
+import { useMutation } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
+import { useLocation } from "react-router";
+import { v4 as uuidv4 } from "uuid";
+import httpRequest from "@/api/httpRequest";
 import Question from "@/components/article/quiz/Question";
 import type { QuizQuestion } from "@/types/quiz.interface";
-import type { FormInputs } from "@/types/ui.interface";
+import type { FormInputs, OptionsInput } from "@/types/ui.interface";
 
 interface Props {
 	questions: QuizQuestion[];
 }
 
 export default function QuizForm({ questions }: Props) {
+	const { pathname } = useLocation();
+
+	const route = `${pathname}/result`;
+
+	const mutation = useMutation({
+		mutationFn: (options: OptionsInput) => httpRequest(route, options),
+	});
+
 	const {
 		control,
 		handleSubmit,
@@ -29,7 +41,25 @@ export default function QuizForm({ questions }: Props) {
 	});
 
 	function onSubmit(data: FormInputs) {
-		console.log(data);
+		let userId = localStorage.getItem("userId");
+
+		if (!userId) {
+			userId = uuidv4();
+			localStorage.setItem("userId", userId);
+		}
+
+		const answers: number[] = new Array(10);
+
+		for (const property in data) {
+			answers[Number(property) - 1] = Number(data[property]);
+		}
+
+		const body = {
+			userId,
+			answers,
+		};
+
+		mutation.mutate({ method: "POST", body });
 	}
 
 	return (
