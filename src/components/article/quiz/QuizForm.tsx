@@ -43,20 +43,16 @@ export default function QuizForm({ questions }: Props) {
 	function onSubmit(data: FormInputs) {
 		let userId = localStorage.getItem("userId");
 
+		console.log(data);
+
 		if (!userId) {
 			userId = uuidv4();
 			localStorage.setItem("userId", userId);
 		}
 
-		const answers: number[] = new Array(10);
-
-		for (const property in data) {
-			answers[Number(property) - 1] = Number(data[property]);
-		}
-
 		const body = {
 			userId,
-			answers,
+			answers: data,
 		};
 
 		mutation.mutate({ method: "POST", body });
