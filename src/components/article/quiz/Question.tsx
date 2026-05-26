@@ -1,11 +1,13 @@
+import type { FieldValues, UseFormRegister } from "react-hook-form";
 import { parseHtmlToString } from "@/lib/utils/parseHtml";
 import type { QuizQuestion } from "@/types/quiz.interface";
 
 interface Props {
 	quizQuestion: QuizQuestion;
+	register: UseFormRegister<FieldValues>;
 }
 
-export default function Question({ quizQuestion }: Props) {
+export default function Question({ quizQuestion, register }: Props) {
 	const { questionText, questionNumber, answerOptions } = quizQuestion;
 
 	const question = parseHtmlToString(questionText);
@@ -24,36 +26,36 @@ export default function Question({ quizQuestion }: Props) {
 					<label className="flex gap-4 items-center text-base">
 						<input
 							className="radio bg-content-alt checked:bg-gold"
-							name={`question-${questionNumber}`}
 							type="radio"
 							value={1}
+							{...register(`${questionNumber}`)}
 						/>
 						{answer1}
 					</label>
 					<label className="flex gap-4 items-center text-base">
 						<input
 							className="radio flex-none bg-content-alt checked:bg-gold"
-							name={`question-${questionNumber}`}
 							type="radio"
 							value={2}
+							{...register(`${questionNumber}`)}
 						/>
 						{answer2}
 					</label>
 					<label className="flex gap-4 items-center text-base">
 						<input
 							className="radio bg-content-alt checked:bg-gold"
-							name={`question-${questionNumber}`}
 							type="radio"
 							value={3}
+							{...register(`${questionNumber}`)}
 						/>
 						{answer3}
 					</label>
 					<label className="flex gap-4 items-center text-base">
 						<input
 							className="radio bg-content-alt checked:bg-gold"
-							name={`question-${questionNumber}`}
 							type="radio"
 							value={4}
+							{...register(`${questionNumber}`)}
 						/>
 						{answer4}
 					</label>
