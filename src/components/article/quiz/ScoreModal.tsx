@@ -1,29 +1,55 @@
+import type { UseFormReset } from "react-hook-form";
 import { createScoreMsg } from "@/lib/utils/createScoreMsg";
+import type { FormInputs } from "@/types/ui.interface";
 
 interface Props {
+	modal: HTMLDialogElement;
 	quizName: string;
+	reset: UseFormReset<FormInputs>;
 	score: number;
 }
 
-export default function ScoreModal({ quizName, score }: Props) {
+export default function ScoreModal({ modal, quizName, reset, score }: Props) {
 	const msg = createScoreMsg(score);
+
+	function handleClick(resetQuiz?: boolean) {
+		modal.close();
+		window.scrollTo({
+			top: 0,
+			behavior: "smooth",
+		});
+
+		if (resetQuiz) {
+			reset();
+		}
+	}
 
 	return (
 		<dialog id="score-modal" className="modal">
 			<div className="modal-box font-bodini-moda">
 				<h3 className="text-xl text-center">Quiz: {quizName}</h3>
 				<div className="flex flex-col my-4 border-y">
-					<p className="py-4 text-center text-lg flex flex-col gap-4">
-						<span className="">Your score is...</span>
-						<span className="text-8xl text-primary">{score}/10</span>
-						<span className="text-xl italic">{msg}</span>
-					</p>
+					<div className="py-4 text-center text-lg flex flex-col gap-4">
+						<p className="">Your score is...</p>
+						<h2 className="text-8xl text-primary">{score}/10</h2>
+						<p className="text-xl italic">{msg}</p>
+					</div>
 				</div>
-				<div className="modal-action">
-					<form method="dialog">
-						{/** biome-ignore lint/a11y/useButtonType: cannot close modal if type is specified */}
-						<button className="btn font-open-sans">Close</button>
-					</form>
+				<div className="modal-action flex flex-col gap-4 font-open-sans">
+					<button
+						className="btn btn-soft btn-lg"
+						onClick={() => handleClick()}
+						type="button"
+					>
+						View Results
+					</button>
+					<button
+						className="btn btn-primary btn-lg"
+						onClick={() => handleClick(true)}
+						type="button"
+					>
+						Try Again
+					</button>
 				</div>
 			</div>
 		</dialog>

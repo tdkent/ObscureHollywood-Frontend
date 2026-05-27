@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useLocation } from "react-router";
 import { v4 as uuidv4 } from "uuid";
@@ -26,6 +26,7 @@ export default function QuizForm({ questions }: Props) {
 		control,
 		handleSubmit,
 		formState: { errors },
+		reset,
 	} = useForm<FormInputs>({
 		defaultValues: {
 			1: undefined,
@@ -41,14 +42,22 @@ export default function QuizForm({ questions }: Props) {
 		},
 	});
 
+	const [modal, setModal] = useState<HTMLDialogElement | null>(null);
+
+	// Get modal element on page load
+	useEffect(() => {
+		const el = document.getElementById("score-modal") as HTMLDialogElement;
+		setModal(el);
+	}, []);
+
 	// Show modal on mutation success
 	useEffect(() => {
-		if (mutation.isSuccess) {
-			const modal = document.getElementById("score-modal") as HTMLDialogElement;
+		if (modal && mutation.isSuccess) {
 			modal.showModal();
 		}
-	}, [mutation.isSuccess]);
+	}, [modal, mutation.isSuccess]);
 
+	// Get/create user id and send mutation request.
 	function onSubmit(data: FormInputs) {
 		let userId = localStorage.getItem("userId");
 
@@ -77,7 +86,9 @@ export default function QuizForm({ questions }: Props) {
 				</div>
 			)}
 			<ScoreModal
+				modal={modal as HTMLDialogElement}
 				quizName={(mutation.data?.quiz?.name as string) ?? ""}
+				reset={reset}
 				score={(mutation.data?.score as number) ?? 0}
 			/>
 			<form className="px-6 sm:px-12" onSubmit={handleSubmit(onSubmit)}>
