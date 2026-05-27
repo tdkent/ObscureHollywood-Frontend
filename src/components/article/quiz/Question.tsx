@@ -6,15 +6,19 @@ import type { FormInputs } from "@/types/ui.interface";
 interface Props {
 	control: Control<FormInputs>;
 	errors: FieldErrors<FormInputs>;
+	isCorrect: boolean;
 	isPending: boolean;
 	quizQuestion: QuizQuestion;
+	showResults: boolean;
 }
 
 export default function Question({
 	control,
 	errors,
+	isCorrect,
 	isPending,
 	quizQuestion,
+	showResults,
 }: Props) {
 	const { questionText, questionNumber, answerOptions } = quizQuestion;
 

@@ -1,3 +1,4 @@
+import type { Dispatch, SetStateAction } from "react";
 import type { UseFormReset } from "react-hook-form";
 import { createScoreMsg } from "@/lib/utils/createScoreMsg";
 import type { FormInputs } from "@/types/ui.interface";
@@ -7,19 +8,29 @@ interface Props {
 	quizName: string;
 	reset: UseFormReset<FormInputs>;
 	score: number;
+	setShowResults: Dispatch<SetStateAction<boolean>>;
 }
 
-export default function ScoreModal({ modal, quizName, reset, score }: Props) {
+export default function ScoreModal({
+	modal,
+	quizName,
+	reset,
+	score,
+	setShowResults,
+}: Props) {
 	const msg = createScoreMsg(score);
 
-	function handleClick(resetQuiz?: boolean) {
+	function handleClick(showResults: boolean) {
 		modal.close();
 		window.scrollTo({
 			top: 0,
 			behavior: "smooth",
 		});
 
-		if (resetQuiz) {
+		if (showResults) {
+			setShowResults(true);
+		} else {
+			setShowResults(false);
 			reset();
 		}
 	}
@@ -38,14 +49,14 @@ export default function ScoreModal({ modal, quizName, reset, score }: Props) {
 				<div className="modal-action flex flex-col gap-4 font-open-sans">
 					<button
 						className="btn btn-soft btn-lg"
-						onClick={() => handleClick()}
+						onClick={() => handleClick(true)}
 						type="button"
 					>
 						View Results
 					</button>
 					<button
 						className="btn btn-primary btn-lg"
-						onClick={() => handleClick(true)}
+						onClick={() => handleClick(false)}
 						type="button"
 					>
 						Try Again

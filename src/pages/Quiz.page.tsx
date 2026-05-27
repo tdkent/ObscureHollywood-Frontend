@@ -28,7 +28,7 @@ export default function QuizPage() {
 		<div className="page-margins bg-content">
 			<div className="flex flex-col gap-8 my-4 sm:gap-12">
 				<ArticleHeader name={`Quiz: ${name}`} slug={quizSlug} />
-				<QuizForm questions={quizQuestions} />
+				<QuizForm questions={quizQuestions} quizName={name} />
 			</div>
 		</div>
 	);
