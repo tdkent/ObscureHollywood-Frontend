@@ -6,10 +6,16 @@ import type { FormInputs } from "@/types/ui.interface";
 interface Props {
 	control: Control<FormInputs>;
 	errors: FieldErrors<FormInputs>;
+	isPending: boolean;
 	quizQuestion: QuizQuestion;
 }
 
-export default function Question({ control, errors, quizQuestion }: Props) {
+export default function Question({
+	control,
+	errors,
+	isPending,
+	quizQuestion,
+}: Props) {
 	const { questionText, questionNumber, answerOptions } = quizQuestion;
 
 	const question = parseHtmlToString(questionText);
@@ -36,6 +42,7 @@ export default function Question({ control, errors, quizQuestion }: Props) {
 								<input
 									checked={field.value === "1"}
 									className="radio bg-content-alt checked:bg-gold"
+									disabled={isPending}
 									type="radio"
 									value={"1"}
 									onChange={() => field.onChange("1")}
@@ -46,6 +53,7 @@ export default function Question({ control, errors, quizQuestion }: Props) {
 								<input
 									checked={field.value === "2"}
 									className="radio bg-content-alt checked:bg-gold"
+									disabled={isPending}
 									type="radio"
 									value={"2"}
 									onChange={() => field.onChange("2")}
@@ -56,6 +64,7 @@ export default function Question({ control, errors, quizQuestion }: Props) {
 								<input
 									checked={field.value === "3"}
 									className="radio bg-content-alt checked:bg-gold"
+									disabled={isPending}
 									type="radio"
 									value={"3"}
 									onChange={() => field.onChange("3")}
@@ -66,6 +75,7 @@ export default function Question({ control, errors, quizQuestion }: Props) {
 								<input
 									checked={field.value === "4"}
 									className="radio bg-content-alt checked:bg-gold"
+									disabled={isPending}
 									type="radio"
 									value={"4"}
 									onChange={() => field.onChange("4")}

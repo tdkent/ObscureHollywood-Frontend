@@ -24,7 +24,6 @@ export default function QuizForm({ questions }: Props) {
 		control,
 		handleSubmit,
 		formState: { errors },
-		reset,
 	} = useForm<FormInputs>({
 		defaultValues: {
 			1: undefined,
@@ -42,8 +41,6 @@ export default function QuizForm({ questions }: Props) {
 
 	function onSubmit(data: FormInputs) {
 		let userId = localStorage.getItem("userId");
-
-		console.log(data);
 
 		if (!userId) {
 			userId = uuidv4();
@@ -64,18 +61,27 @@ export default function QuizForm({ questions }: Props) {
 				return (
 					<Question
 						key={qq.id}
-						quizQuestion={qq}
-						errors={errors}
 						control={control}
+						errors={errors}
+						isPending={mutation.isPending}
+						quizQuestion={qq}
 					/>
 				);
 			})}
-			<div className="flex gap-4 my-8">
-				<button className="btn btn-soft" type="button" onClick={() => reset()}>
-					Reset
-				</button>
-				<button className="btn btn-primary" type="submit">
-					Submit
+			<div className="flex md:justify-center gap-4 my-8">
+				<button
+					className="btn btn-primary btn-lg w-full md:w-100"
+					disabled={mutation.isPending}
+					type="submit"
+				>
+					{mutation.isPending ? (
+						<>
+							<span className="loading loading-spinner"></span>
+							Submitting...
+						</>
+					) : (
+						"Submit"
+					)}
 				</button>
 			</div>
 		</form>
