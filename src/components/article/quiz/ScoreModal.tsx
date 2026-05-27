@@ -4,6 +4,48 @@ interface Props {
 }
 
 export default function ScoreModal({ quizName, score }: Props) {
+	let message = "";
+
+	switch (score) {
+		case 0: {
+			message = "Oh, bother!";
+			break;
+		}
+
+		case 1:
+		case 2:
+		case 3: {
+			message = "Rotten luck!";
+			break;
+		}
+
+		case 4:
+		case 5:
+		case 6: {
+			message = "Not great, not terrible!";
+			break;
+		}
+
+		case 7:
+		case 8: {
+			message = "Very good!";
+			break;
+		}
+
+		case 9: {
+			message = "Outstanding!";
+			break;
+		}
+
+		case 10: {
+			message = "Perfect!!!";
+			break;
+		}
+
+		default:
+			break;
+	}
+
 	return (
 		<dialog id="score-modal" className="modal">
 			<div className="modal-box font-bodini-moda">
@@ -12,7 +54,7 @@ export default function ScoreModal({ quizName, score }: Props) {
 					<p className="py-4 text-center text-lg flex flex-col gap-4">
 						<span className="">Your score is...</span>
 						<span className="text-8xl text-primary">{score}/10</span>
-						<span className="text-xl italic">Great job!</span>
+						<span className="text-xl italic">{message}</span>
 					</p>
 				</div>
 				<div className="modal-action">
