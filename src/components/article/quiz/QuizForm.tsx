@@ -67,7 +67,10 @@ export default function QuizForm({ questions }: Props) {
 
 	return (
 		<>
-			<ScoreModal />
+			<ScoreModal
+				quizName={(mutation.data?.quiz?.name as string) ?? ""}
+				score={(mutation.data?.score as number) ?? 0}
+			/>
 			<form className="px-6 sm:px-12" onSubmit={handleSubmit(onSubmit)}>
 				{questions.map((qq) => {
 					return (
