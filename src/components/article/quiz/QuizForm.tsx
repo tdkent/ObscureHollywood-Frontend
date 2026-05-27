@@ -1,9 +1,11 @@
 import { useMutation } from "@tanstack/react-query";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useLocation } from "react-router";
 import { v4 as uuidv4 } from "uuid";
 import httpRequest from "@/api/httpRequest";
 import Question from "@/components/article/quiz/Question";
+import ScoreModal from "@/components/article/quiz/ScoreModal";
 import type { QuizQuestion } from "@/types/quiz.interface";
 import type { FormInputs, OptionsInput } from "@/types/ui.interface";
 
@@ -13,13 +15,13 @@ interface Props {
 
 export default function QuizForm({ questions }: Props) {
 	const { pathname } = useLocation();
-
 	const route = `${pathname}/result`;
 
 	const mutation = useMutation({
 		mutationFn: (options: OptionsInput) => httpRequest(route, options),
 	});
 
+	// react-hook-form with default form values
 	const {
 		control,
 		handleSubmit,
@@ -39,6 +41,14 @@ export default function QuizForm({ questions }: Props) {
 		},
 	});
 
+	// Show modal on mutation success
+	useEffect(() => {
+		if (mutation.isSuccess) {
+			const modal = document.getElementById("score-modal") as HTMLDialogElement;
+			modal.showModal();
+		}
+	}, [mutation.isSuccess]);
+
 	function onSubmit(data: FormInputs) {
 		let userId = localStorage.getItem("userId");
 
@@ -56,34 +66,37 @@ export default function QuizForm({ questions }: Props) {
 	}
 
 	return (
-		<form className="px-6 sm:px-12" onSubmit={handleSubmit(onSubmit)}>
-			{questions.map((qq) => {
-				return (
-					<Question
-						key={qq.id}
-						control={control}
-						errors={errors}
-						isPending={mutation.isPending}
-						quizQuestion={qq}
-					/>
-				);
-			})}
-			<div className="flex md:justify-center gap-4 my-8">
-				<button
-					className="btn btn-primary btn-lg w-full md:w-100"
-					disabled={mutation.isPending}
-					type="submit"
-				>
-					{mutation.isPending ? (
-						<>
-							<span className="loading loading-spinner"></span>
-							Submitting...
-						</>
-					) : (
-						"Submit"
-					)}
-				</button>
-			</div>
-		</form>
+		<>
+			<ScoreModal />
+			<form className="px-6 sm:px-12" onSubmit={handleSubmit(onSubmit)}>
+				{questions.map((qq) => {
+					return (
+						<Question
+							key={qq.id}
+							control={control}
+							errors={errors}
+							isPending={mutation.isPending}
+							quizQuestion={qq}
+						/>
+					);
+				})}
+				<div className="flex md:justify-center gap-4 my-8">
+					<button
+						className="btn btn-primary btn-lg w-full md:w-100"
+						disabled={mutation.isPending}
+						type="submit"
+					>
+						{mutation.isPending ? (
+							<>
+								<span className="loading loading-spinner"></span>
+								Submitting...
+							</>
+						) : (
+							"Submit"
+						)}
+					</button>
+				</div>
+			</form>
+		</>
 	);
 }
