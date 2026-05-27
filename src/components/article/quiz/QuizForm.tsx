@@ -118,7 +118,7 @@ export default function QuizForm({ questions, quizName }: Props) {
 				<div className="flex md:justify-center gap-4 my-8">
 					<button
 						className="btn btn-primary btn-lg w-full md:w-100"
-						disabled={mutation.isPending}
+						disabled={mutation.isPending || showResults}
 						type="submit"
 					>
 						{mutation.isPending ? (
