@@ -59,7 +59,7 @@ export default function ScoreModal({
 						onClick={() => handleClick(false)}
 						type="button"
 					>
-						Try Again
+						Try Again?
 					</button>
 				</div>
 			</div>

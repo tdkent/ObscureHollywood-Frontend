@@ -78,6 +78,16 @@ export default function QuizForm({ questions, quizName }: Props) {
 		mutation.mutate({ method: "POST", body });
 	}
 
+	// Reset form and scroll to top
+	function handleReset() {
+		reset();
+		setShowResults(false);
+		window.scrollTo({
+			top: 0,
+			behavior: "smooth",
+		});
+	}
+
 	return (
 		<>
 			{mutation.isError && (
@@ -115,7 +125,7 @@ export default function QuizForm({ questions, quizName }: Props) {
 						/>
 					);
 				})}
-				<div className="flex md:justify-center gap-4 my-8">
+				<div className="flex flex-col items-center gap-4 my-8">
 					<button
 						className="btn btn-primary btn-lg w-full md:w-100"
 						disabled={mutation.isPending || showResults}
@@ -130,6 +140,15 @@ export default function QuizForm({ questions, quizName }: Props) {
 							"Submit"
 						)}
 					</button>
+					{showResults && (
+						<button
+							className="btn btn-primary btn-lg w-full md:w-100"
+							onClick={handleReset}
+							type="button"
+						>
+							Try Again?
+						</button>
+					)}
 				</div>
 			</form>
 		</>
