@@ -67,6 +67,15 @@ export default function QuizForm({ questions }: Props) {
 
 	return (
 		<>
+			{mutation.isError && (
+				<div className="toast toast-top toast-end z-50">
+					<div className="alert alert-error">
+						<span>
+							An error occurred while processing your results. Please try again.
+						</span>
+					</div>
+				</div>
+			)}
 			<ScoreModal
 				quizName={(mutation.data?.quiz?.name as string) ?? ""}
 				score={(mutation.data?.score as number) ?? 0}
