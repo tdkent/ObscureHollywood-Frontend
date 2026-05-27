@@ -11,28 +11,15 @@ interface Props {
 	setShowResults: Dispatch<SetStateAction<boolean>>;
 }
 
-export default function ScoreModal({
-	modal,
-	quizName,
-	reset,
-	score,
-	setShowResults,
-}: Props) {
+export default function ScoreModal({ modal, quizName, score }: Props) {
 	const msg = createScoreMsg(score);
 
-	function handleClick(showResults: boolean) {
+	function handleClick() {
 		modal.close();
 		window.scrollTo({
 			top: 0,
 			behavior: "smooth",
 		});
-
-		if (showResults) {
-			setShowResults(true);
-		} else {
-			setShowResults(false);
-			reset();
-		}
 	}
 
 	return (
@@ -49,17 +36,10 @@ export default function ScoreModal({
 				<div className="modal-action flex flex-col gap-4 font-open-sans">
 					<button
 						className="btn btn-soft btn-lg"
-						onClick={() => handleClick(true)}
+						onClick={handleClick}
 						type="button"
 					>
 						View Results
-					</button>
-					<button
-						className="btn btn-primary btn-lg"
-						onClick={() => handleClick(false)}
-						type="button"
-					>
-						Try Again?
 					</button>
 				</div>
 			</div>

@@ -56,6 +56,7 @@ export default function QuizForm({ questions, quizName }: Props) {
 	useEffect(() => {
 		if (modal && mutation.isSuccess) {
 			modal.showModal();
+			setShowResults(true);
 		}
 	}, [modal, mutation.isSuccess]);
 
