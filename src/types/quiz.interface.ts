@@ -13,3 +13,11 @@ export interface QuizQuestion {
 	answerOptions: string[];
 	correctAnswer: number;
 }
+
+export interface QuizResult {
+	id: number;
+	userId: string;
+	score: number;
+	correct: number[];
+	createdAt: string;
+}
