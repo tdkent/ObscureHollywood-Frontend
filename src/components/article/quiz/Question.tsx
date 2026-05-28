@@ -1,6 +1,6 @@
-import { CircleCheck, CircleX } from "lucide-react";
 import { type Control, Controller, type FieldErrors } from "react-hook-form";
 import RadioGroup from "@/components/article/quiz/RadioGroup";
+import ResultAlert from "@/components/article/quiz/ResultAlert";
 import { parseHtmlToString } from "@/lib/utils/parseHtml";
 import type { QuizQuestion } from "@/types/quiz.interface";
 import type { FormInputs } from "@/types/ui.interface";
@@ -53,25 +53,7 @@ export default function Question({
 								);
 							})}
 						</div>
-						{showResults && (
-							<div
-								className={`alert alert-soft mt-4 ${isCorrect ? "alert-success" : "alert-error"}`}
-							>
-								<span className="flex items-center gap-2">
-									{isCorrect ? (
-										<>
-											<CircleCheck className="size-4" />
-											Correct answer!
-										</>
-									) : (
-										<>
-											<CircleX className="size-4" />
-											Incorrect, try again!
-										</>
-									)}
-								</span>
-							</div>
-						)}
+						{showResults && <ResultAlert isCorrect={isCorrect} />}
 					</fieldset>
 				)}
 			/>
