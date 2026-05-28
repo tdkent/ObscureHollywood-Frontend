@@ -4,7 +4,7 @@ import parse from "html-react-parser";
 export function parseHtmlToString(text: string) {
 	const html = DOMPurify.sanitize(text, {
 		USE_PROFILES: { html: true },
-	});
+	}).replaceAll('\\"', '"');
 
 	const parsed = parse(html);
 
