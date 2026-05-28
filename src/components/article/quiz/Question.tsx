@@ -1,5 +1,6 @@
 import { CircleCheck, CircleX } from "lucide-react";
 import { type Control, Controller, type FieldErrors } from "react-hook-form";
+import RadioGroup from "@/components/article/quiz/RadioGroup";
 import { parseHtmlToString } from "@/lib/utils/parseHtml";
 import type { QuizQuestion } from "@/types/quiz.interface";
 import type { FormInputs } from "@/types/ui.interface";
@@ -24,10 +25,6 @@ export default function Question({
 	const { questionText, questionNumber, answerOptions } = quizQuestion;
 
 	const question = parseHtmlToString(questionText);
-	const answer1 = parseHtmlToString(answerOptions[0]);
-	const answer2 = parseHtmlToString(answerOptions[1]);
-	const answer3 = parseHtmlToString(answerOptions[2]);
-	const answer4 = parseHtmlToString(answerOptions[3]);
 
 	const inputName = `${questionNumber}`;
 
@@ -43,50 +40,18 @@ export default function Question({
 							{questionNumber}. {question}
 						</legend>
 						<div className="flex flex-col gap-2.5 mt-4">
-							<label className={`flex gap-4 items-center text-base`}>
-								<input
-									checked={field.value === "1"}
-									className="radio bg-content-alt checked:bg-gold"
-									disabled={isPending || showResults}
-									type="radio"
-									value={"1"}
-									onChange={() => field.onChange("1")}
-								/>
-								{answer1}
-							</label>
-							<label className={`flex gap-4 items-center text-base`}>
-								<input
-									checked={field.value === "2"}
-									className="radio bg-content-alt checked:bg-gold"
-									disabled={isPending || showResults}
-									type="radio"
-									value={"2"}
-									onChange={() => field.onChange("2")}
-								/>
-								{answer2}
-							</label>
-							<label className={`flex gap-4 items-center text-base`}>
-								<input
-									checked={field.value === "3"}
-									className="radio bg-content-alt checked:bg-gold"
-									disabled={isPending || showResults}
-									type="radio"
-									value={"3"}
-									onChange={() => field.onChange("3")}
-								/>
-								{answer3}
-							</label>
-							<label className={`flex gap-4 items-center text-base`}>
-								<input
-									checked={field.value === "4"}
-									className="radio bg-content-alt checked:bg-gold"
-									disabled={isPending || showResults}
-									type="radio"
-									value={"4"}
-									onChange={() => field.onChange("4")}
-								/>
-								{answer4}
-							</label>
+							{answerOptions.map((ans, idx) => {
+								return (
+									<RadioGroup
+										key={ans}
+										answerText={parseHtmlToString(ans)}
+										field={field}
+										idx={idx}
+										isPending={isPending}
+										showResults={showResults}
+									/>
+								);
+							})}
 						</div>
 						{showResults && (
 							<div
