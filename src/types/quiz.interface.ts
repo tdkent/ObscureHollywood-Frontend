@@ -1,7 +1,6 @@
-export interface Quiz {
+interface Quiz {
 	id: number;
 	name: string;
-	quizQuestions: QuizQuestion[];
 	slug: string;
 	theme: "films" | "genres" | "people";
 }
@@ -12,6 +11,10 @@ export interface QuizQuestion {
 	questionNumber: number;
 	answerOptions: string[];
 	correctAnswer: number;
+}
+
+export interface QuizWithRelations extends Quiz {
+	quizQuestions: QuizQuestion[];
 }
 
 export interface QuizResult {

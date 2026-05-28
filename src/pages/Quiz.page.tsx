@@ -5,7 +5,7 @@ import ArticleHeader from "@/components/article/ArticleHeader";
 import QuizForm from "@/components/article/quiz/QuizForm";
 import DisplayError from "@/components/shared/DisplayError";
 import Loading from "@/components/shared/Loading";
-import type { Quiz } from "@/types/quiz.interface";
+import type { QuizWithRelations } from "@/types/quiz.interface";
 import type { Entity } from "@/types/ui.interface";
 
 export default function QuizPage() {
@@ -22,7 +22,7 @@ export default function QuizPage() {
 	if (isPending) return <Loading variant="article" />;
 	if (error) return <DisplayError />;
 
-	const { name, quizQuestions, slug: quizSlug } = data as Quiz;
+	const { name, quizQuestions, slug: quizSlug } = data as QuizWithRelations;
 
 	return (
 		<div className="page-margins bg-content">

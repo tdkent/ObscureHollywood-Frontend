@@ -5,6 +5,7 @@ import type { Feature, FeatureWithRelations } from "@/types/feature.interface";
 import type { Film, FilmWithRelations } from "@/types/film.interface";
 import type { PaginatedResponse } from "@/types/paginated-response.interface";
 import type { Person, PersonWithRelations } from "@/types/person.interface";
+import type { QuizWithRelations } from "@/types/quiz.interface";
 import type { Studio, StudioWithRelations } from "@/types/studio.interface";
 import type { Tag, TagWithRelations } from "@/types/tag.interface";
 
@@ -106,6 +107,31 @@ const mockedPeopleData: Person[] = [
 		age: null,
 	},
 ];
+
+const mockQuiz: QuizWithRelations = {
+	id: 1,
+	name: "At the Movies",
+	slug: "at-the-movies",
+	theme: "films",
+	quizQuestions: [
+		{
+			id: 1,
+			questionText: "",
+			questionNumber: 1,
+			correctAnswer: 1,
+			answerOptions: [""],
+		},
+		{
+			id: 2,
+			questionText: "",
+			questionNumber: 2,
+			correctAnswer: 2,
+			answerOptions: [""],
+		},
+	],
+};
+
+const mockedQuizData: QuizWithRelations[] = [mockQuiz];
 
 const mockedStudioData: Studio[] = [
 	{
@@ -287,6 +313,12 @@ const handlers = [
 	}),
 	http.get(`${BACKEND_URL}/people/recent`, () => {
 		return HttpResponse.json(mockedPeopleData);
+	}),
+	http.get(`${BACKEND_URL}/quiz`, () => {
+		return HttpResponse.json(mockedQuizData);
+	}),
+	http.get(`${BACKEND_URL}/quiz/at-the-movies`, () => {
+		return HttpResponse.json(mockQuiz);
 	}),
 	http.get(`${BACKEND_URL}/people/alma-rubens`, () => {
 		return HttpResponse.json(mockedPersonArticleData);
