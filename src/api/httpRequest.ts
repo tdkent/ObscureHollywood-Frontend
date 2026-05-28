@@ -1,8 +1,31 @@
 import { BACKEND_URL } from "@/constants/api.constants";
+import type { OptionsInput } from "@/types/ui.interface";
 
-export default async function httpRequest(path: string) {
+type ReqOptions = RequestInit | undefined;
+
+function delay(ms: number) {
+	return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+export default async function httpRequest(
+	path: string,
+	optionsInput?: OptionsInput,
+) {
+	let options: ReqOptions;
+
+	if (optionsInput) {
+		options = {
+			method: optionsInput.method,
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(optionsInput.body),
+		};
+	}
+
 	try {
-		const response = await fetch(`${BACKEND_URL}${path}`);
+		await delay(800);
+		const response = await fetch(`${BACKEND_URL}${path}`, options);
 		const data = await response.json();
 
 		if (!response.ok) {

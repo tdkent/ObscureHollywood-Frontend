@@ -50,3 +50,14 @@ export interface SortOption {
 	entity: Entity;
 	options: SelectOption[];
 }
+
+// Quiz form
+export interface FormInputs {
+	[key: string]: string;
+}
+
+// Http request options
+export interface OptionsInput {
+	method: "POST";
+	body: object;
+}
