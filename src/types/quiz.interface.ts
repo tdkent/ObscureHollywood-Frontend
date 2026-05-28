@@ -24,3 +24,9 @@ export interface QuizResult {
 	correct: number[];
 	createdAt: string;
 }
+
+export interface UserSingleQuizResults {
+	count: number;
+	highScore: number;
+	prevScore: number;
+}

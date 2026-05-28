@@ -29,14 +29,13 @@ export default function QuizPage() {
 
 	return (
 		<div className="page-margins bg-content">
-			<div className="flex flex-col gap-8 my-4 sm:gap-12">
+			<div className="flex flex-col my-4 sm:gap-12">
 				<ArticleHeader name={`Quiz: ${name}`} slug={quizSlug}>
-					<div className="flex flex-col gap-1 px-6 sm:px-12">
-						<h3 className="text-lg font-semibold">Your quiz results</h3>
+					<div className="border-y py-4 bg-content-alt px-6 font-light sm:px-12 lg:mt-4">
 						{userId ? (
 							<QuizResults slug={slug as string} userId={userId} />
 						) : (
-							<p className="italic">No attempts yet!</p>
+							<p className="text-sm">You have not attempted this quiz yet.</p>
 						)}
 					</div>
 				</ArticleHeader>
