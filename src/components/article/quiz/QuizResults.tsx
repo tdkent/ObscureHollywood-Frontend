@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router";
 import httpRequest from "@/api/httpRequest";
+import Loading from "@/components/shared/Loading";
 import type { UserSingleQuizResults } from "@/types/quiz.interface";
 
 interface Props {
@@ -14,7 +15,7 @@ export default function QuizResults({ userId }: Props) {
 		queryFn: () => httpRequest(`/users/${userId}/quiz-results/${slug}`),
 	});
 
-	if (isLoading) return "loading";
+	if (isLoading) return <Loading variant="results" />;
 	if (error)
 		return <p className="text-sm text-error">Could not fetch quiz results.</p>;
 

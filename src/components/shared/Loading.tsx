@@ -2,7 +2,7 @@ type Props =
 	| {
 			hasDescList?: never;
 			isFullArticle?: never;
-			variant: "filter" | "homeSectionItems" | "list" | "user";
+			variant: "filter" | "homeSectionItems" | "list" | "results" | "user";
 	  }
 	| {
 			hasDescList?: boolean;
@@ -124,6 +124,16 @@ export default function Loading({
 			<div className="flex items-center gap-2 text-secondary-text">
 				<span className="loading loading-spinner loading-sm"></span>
 				Loading filters
+			</div>
+		);
+	}
+
+	if (variant === "results") {
+		return (
+			<div className="flex flex-col gap-4">
+				<div className="skeleton h-4 w-60 rounded-sm dark:bg-content-alt"></div>
+				<div className="skeleton h-4 w-40 rounded-sm dark:bg-content-alt"></div>
+				<div className="skeleton h-4 w-40 rounded-sm dark:bg-content-alt"></div>
 			</div>
 		);
 	}
