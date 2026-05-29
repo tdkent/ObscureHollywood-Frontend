@@ -10,7 +10,7 @@ interface Props {
 export default function QuizResults({ userId }: Props) {
 	const { slug } = useParams();
 	const { data, error, isLoading } = useQuery({
-		queryKey: ["quiz-results", slug],
+		queryKey: ["result", slug],
 		queryFn: () => httpRequest(`/users/${userId}/quiz-results/${slug}`),
 	});
 
