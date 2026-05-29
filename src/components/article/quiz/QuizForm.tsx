@@ -6,6 +6,7 @@ import { v4 as uuidv4 } from "uuid";
 import httpRequest from "@/api/httpRequest";
 import Question from "@/components/article/quiz/Question";
 import ScoreModal from "@/components/article/quiz/ScoreModal";
+import { getUserId } from "@/lib/utils/getUserId";
 import type { QuizQuestion, QuizResult } from "@/types/quiz.interface";
 import type { FormInputs, OptionsInput } from "@/types/ui.interface";
 
@@ -71,7 +72,7 @@ export default function QuizForm({ questions, quizName }: Props) {
 	function onSubmit(data: FormInputs) {
 		setShowResults(false);
 
-		let userId = localStorage.getItem("userId");
+		let userId = getUserId();
 
 		if (!userId) {
 			userId = uuidv4();

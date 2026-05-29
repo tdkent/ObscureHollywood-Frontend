@@ -6,6 +6,7 @@ import QuizForm from "@/components/article/quiz/QuizForm";
 import QuizResults from "@/components/article/quiz/QuizResults";
 import DisplayError from "@/components/shared/DisplayError";
 import Loading from "@/components/shared/Loading";
+import { getUserId } from "@/lib/utils/getUserId";
 import type { QuizWithRelations } from "@/types/quiz.interface";
 import type { Entity } from "@/types/ui.interface";
 
@@ -25,7 +26,7 @@ export default function QuizPage() {
 
 	const { name, quizQuestions, slug: quizSlug } = data as QuizWithRelations;
 
-	const userId = localStorage.getItem("userId");
+	const userId = getUserId();
 
 	return (
 		<div className="page-margins bg-content">
