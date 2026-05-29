@@ -29,7 +29,10 @@ export default function QuizForm({ questions, quizName }: Props) {
 	const mutation = useMutation({
 		mutationFn: (options: OptionsInput) => httpRequest(route, options),
 		onSuccess: async () => {
-			await queryClient.invalidateQueries({ queryKey: ["result", slug] });
+			await Promise.all([
+				queryClient.invalidateQueries({ queryKey: ["result", slug] }),
+				queryClient.invalidateQueries({ queryKey: ["user"] }),
+			]);
 		},
 	});
 
