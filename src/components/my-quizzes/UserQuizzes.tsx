@@ -29,7 +29,9 @@ export default function UserQuizzes({ userId }: Props) {
 	return (
 		<>
 			<section className="flex flex-col gap-4">
-				<h2 className="text-secondary-text text-xl">Overall Quiz Activity</h2>
+				<h2 className="text-secondary-text text-xl md:text-2xl">
+					Overall Quiz Activity
+				</h2>
 				<dl>
 					<div>
 						<dt>Quizzes Taken</dt>
@@ -52,9 +54,11 @@ export default function UserQuizzes({ userId }: Props) {
 				</dl>
 			</section>
 			<section className="flex flex-col gap-4">
-				<h2 className="text-secondary-text text-xl">Recent Activity</h2>
+				<h2 className="text-secondary-text text-xl md:text-2xl">
+					Recent Activity
+				</h2>
 				{recentActivity.length ? (
-					<RecentActivity />
+					<RecentActivity recentActivity={recentActivity} />
 				) : (
 					<p>You have not completed any quizzes yet.</p>
 				)}
