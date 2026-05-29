@@ -5,7 +5,7 @@ import type { Feature, FeatureWithRelations } from "@/types/feature.interface";
 import type { Film, FilmWithRelations } from "@/types/film.interface";
 import type { PaginatedResponse } from "@/types/paginated-response.interface";
 import type { Person, PersonWithRelations } from "@/types/person.interface";
-import type { QuizWithRelations } from "@/types/quiz.interface";
+import type { Quiz, QuizWithRelations } from "@/types/quiz.interface";
 import type { Studio, StudioWithRelations } from "@/types/studio.interface";
 import type { Tag, TagWithRelations } from "@/types/tag.interface";
 
@@ -108,30 +108,20 @@ const mockedPeopleData: Person[] = [
 	},
 ];
 
-const mockQuiz: QuizWithRelations = {
-	id: 1,
-	name: "At the Movies",
-	slug: "at-the-movies",
-	theme: "films",
-	quizQuestions: [
-		{
-			id: 1,
-			questionText: "",
-			questionNumber: 1,
-			correctAnswer: 1,
-			answerOptions: [""],
-		},
-		{
-			id: 2,
-			questionText: "",
-			questionNumber: 2,
-			correctAnswer: 2,
-			answerOptions: [""],
-		},
-	],
-};
-
-const mockedQuizData: QuizWithRelations[] = [mockQuiz];
+const mockedQuizData: Quiz[] = [
+	{
+		id: 1,
+		slug: "at-the-movies",
+		name: "At the Movies",
+		theme: "films",
+	},
+	{
+		id: 2,
+		slug: "at-the-movies-2",
+		name: "At the Movies 2",
+		theme: "films",
+	},
+];
 
 const mockedStudioData: Studio[] = [
 	{
@@ -193,6 +183,11 @@ const mockedPaginatedPeopleResponse: PaginatedResponse = {
 const mockedPaginatedStudioResponse: PaginatedResponse = {
 	...mockedPaginationMetadata,
 	data: mockedStudioData,
+};
+
+const mockedPaginatedQuizResponse: PaginatedResponse = {
+	...mockedPaginationMetadata,
+	data: mockedQuizData,
 };
 
 const mockedFeatureArticleData: FeatureWithRelations = {
@@ -286,6 +281,29 @@ const mockedTagArticleData: TagWithRelations = {
 	],
 };
 
+const mockedSingleQuizData: QuizWithRelations = {
+	id: 1,
+	name: "At the Movies",
+	slug: "at-the-movies",
+	theme: "films",
+	quizQuestions: [
+		{
+			id: 1,
+			questionText: "",
+			questionNumber: 1,
+			correctAnswer: 1,
+			answerOptions: [""],
+		},
+		{
+			id: 2,
+			questionText: "",
+			questionNumber: 2,
+			correctAnswer: 2,
+			answerOptions: [""],
+		},
+	],
+};
+
 const handlers = [
 	http.get(`${BACKEND_URL}/articles`, () => {
 		return HttpResponse.json(mockedPaginatedFeaturesResponse);
@@ -315,10 +333,10 @@ const handlers = [
 		return HttpResponse.json(mockedPeopleData);
 	}),
 	http.get(`${BACKEND_URL}/quiz`, () => {
-		return HttpResponse.json(mockedQuizData);
+		return HttpResponse.json(mockedPaginatedQuizResponse);
 	}),
 	http.get(`${BACKEND_URL}/quiz/at-the-movies`, () => {
-		return HttpResponse.json(mockQuiz);
+		return HttpResponse.json(mockedSingleQuizData);
 	}),
 	http.get(`${BACKEND_URL}/people/alma-rubens`, () => {
 		return HttpResponse.json(mockedPersonArticleData);

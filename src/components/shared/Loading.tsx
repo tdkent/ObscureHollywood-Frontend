@@ -2,22 +2,18 @@ type Props =
 	| {
 			hasDescList?: never;
 			isFullArticle?: never;
-			variant: "list";
+			variant:
+				| "filter"
+				| "homeSectionItems"
+				| "list"
+				| "results"
+				| "quiz"
+				| "user";
 	  }
 	| {
 			hasDescList?: boolean;
 			isFullArticle?: boolean;
 			variant: "article";
-	  }
-	| {
-			hasDescList?: never;
-			isFullArticle?: never;
-			variant: "homeSectionItems";
-	  }
-	| {
-			hasDescList?: never;
-			isFullArticle?: never;
-			variant: "filter";
 	  };
 
 export default function Loading({
@@ -25,8 +21,9 @@ export default function Loading({
 	isFullArticle,
 	variant,
 }: Props) {
+	const list = Array.from({ length: 10 }, (_, idx) => idx);
+
 	if (variant === "list") {
-		const list = Array.from({ length: 10 }, (_, idx) => idx);
 		return (
 			<div className="flex flex-col gap-10 my-6 px-6 sm:px-12 sm:my-10 sm:gap-14">
 				<div className="flex flex-col gap-4">
@@ -134,6 +131,89 @@ export default function Loading({
 			<div className="flex items-center gap-2 text-secondary-text">
 				<span className="loading loading-spinner loading-sm"></span>
 				Loading filters
+			</div>
+		);
+	}
+
+	if (variant === "results") {
+		return (
+			<div className="flex flex-col gap-4">
+				<div className="skeleton h-4 w-60 rounded-sm dark:bg-content-alt"></div>
+				<div className="skeleton h-4 w-40 rounded-sm dark:bg-content-alt"></div>
+				<div className="skeleton h-4 w-40 rounded-sm dark:bg-content-alt"></div>
+			</div>
+		);
+	}
+
+	if (variant === "quiz") {
+		return (
+			<div className="flex flex-col gap-6 my-6 sm:gap-8">
+				<div className="px-6 sm:px-12">
+					<div className="skeleton h-10 w-full rounded-sm sm:h-12 sm:w-80 dark:bg-content-alt"></div>
+				</div>
+				<div className="skeleton h-22 w-full rounded-sm dark:bg-content-alt"></div>
+				{list.map((item) => {
+					return (
+						<div key={item} className="my-4 px-6 sm:px-12">
+							<div className="skeleton h-6 w-full rounded-sm sm:w-100 dark:bg-content-alt"></div>
+							<div className="flex flex-col gap-2 my-6">
+								<div className="flex items-center gap-4">
+									<div className="skeleton size-7 rounded-full dark:bg-content-alt"></div>
+									<div className="skeleton h-6 w-40 rounded-sm dark:bg-content-alt"></div>
+								</div>
+								<div className="flex items-center gap-4">
+									<div className="skeleton size-7 rounded-full dark:bg-content-alt"></div>
+									<div className="skeleton h-6 w-40 rounded-sm dark:bg-content-alt"></div>
+								</div>
+								<div className="flex items-center gap-4">
+									<div className="skeleton size-7 rounded-full dark:bg-content-alt"></div>
+									<div className="skeleton h-6 w-40 rounded-sm dark:bg-content-alt"></div>
+								</div>
+								<div className="flex items-center gap-4">
+									<div className="skeleton size-7 rounded-full dark:bg-content-alt"></div>
+									<div className="skeleton h-6 w-40 rounded-sm dark:bg-content-alt"></div>
+								</div>
+							</div>
+						</div>
+					);
+				})}
+			</div>
+		);
+	}
+
+	if (variant === "user") {
+		return (
+			<div className="flex flex-col gap-6 px-6 sm:px-12">
+				<div className="skeleton h-6 w-48 rounded-sm lg:h-8 lg:w-52 dark:bg-content-alt"></div>
+				<div className="flex flex-col gap-2">
+					<div className="skeleton h-4 w-20 rounded-sm dark:bg-content-alt"></div>
+					<div className="skeleton h-5 w-40 rounded-sm dark:bg-content-alt"></div>
+				</div>
+				<div className="flex flex-col gap-2">
+					<div className="skeleton h-4 w-20 rounded-sm dark:bg-content-alt"></div>
+					<div className="skeleton h-5 w-40 rounded-sm dark:bg-content-alt"></div>
+				</div>
+				<div className="flex flex-col gap-2">
+					<div className="skeleton h-4 w-20 rounded-sm dark:bg-content-alt"></div>
+					<div className="skeleton h-5 w-40 rounded-sm dark:bg-content-alt"></div>
+				</div>
+				<div className="flex flex-col gap-2">
+					<div className="skeleton h-4 w-20 rounded-sm dark:bg-content-alt"></div>
+					<div className="skeleton h-5 w-40 rounded-sm dark:bg-content-alt"></div>
+				</div>
+				<div className="skeleton h-6 w-48 rounded-sm mt-4 lg:h-8 lg:w-52 dark:bg-content-alt"></div>
+				<div className="flex flex-col gap-4">
+					<div className="skeleton h-10 w-full rounded-sm lg:w-200 dark:bg-content-alt"></div>
+					<div className="skeleton h-10 w-full rounded-sm lg:w-200 dark:bg-content-alt"></div>
+					<div className="skeleton h-10 w-full rounded-sm lg:w-200 dark:bg-content-alt"></div>
+					<div className="skeleton h-10 w-full rounded-sm lg:w-200 dark:bg-content-alt"></div>
+					<div className="skeleton h-10 w-full rounded-sm lg:w-200 dark:bg-content-alt"></div>
+					<div className="skeleton h-10 w-full rounded-sm lg:w-200 dark:bg-content-alt"></div>
+					<div className="skeleton h-10 w-full rounded-sm lg:w-200 dark:bg-content-alt"></div>
+					<div className="skeleton h-10 w-full rounded-sm lg:w-200 dark:bg-content-alt"></div>
+					<div className="skeleton h-10 w-full rounded-sm lg:w-200 dark:bg-content-alt"></div>
+					<div className="skeleton h-10 w-full rounded-sm lg:w-200 dark:bg-content-alt"></div>
+				</div>
 			</div>
 		);
 	}

@@ -3,10 +3,6 @@ import type { OptionsInput } from "@/types/ui.interface";
 
 type ReqOptions = RequestInit | undefined;
 
-function delay(ms: number) {
-	return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
 export default async function httpRequest(
 	path: string,
 	optionsInput?: OptionsInput,
@@ -24,7 +20,6 @@ export default async function httpRequest(
 	}
 
 	try {
-		await delay(800);
 		const response = await fetch(`${BACKEND_URL}${path}`, options);
 		const data = await response.json();
 

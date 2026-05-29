@@ -1,4 +1,8 @@
-interface Quiz {
+/**
+ * Quizzes
+ */
+
+export interface Quiz {
 	id: number;
 	name: string;
 	slug: string;
@@ -17,16 +21,40 @@ export interface QuizWithRelations extends Quiz {
 	quizQuestions: QuizQuestion[];
 }
 
-export interface QuizResult {
+/**
+ * Quiz results
+ */
+
+interface QuizResult {
 	id: number;
 	userId: string;
 	score: number;
-	correct: number[];
 	createdAt: string;
 }
+
+export interface QuizResultWithCorrectAnswers extends QuizResult {
+	correct: number[];
+}
+
+export interface QuizResultWithRelations extends QuizResult {
+	quiz: Quiz;
+}
+
+/**
+ * User quiz results
+ */
 
 export interface UserSingleQuizResults {
 	count: number;
 	highScore: number;
 	prevScore: number;
+}
+
+export interface UserAllQuizResults {
+	totalCount: number;
+	distinctCount: number;
+	avgScore: number;
+	quizCount: number;
+	percentComplete: number;
+	recentActivity: QuizResultWithRelations[];
 }

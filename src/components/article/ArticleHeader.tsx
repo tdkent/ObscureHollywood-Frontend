@@ -4,7 +4,7 @@ interface Props {
 	children?: React.ReactNode;
 	name: string;
 	showImage?: boolean;
-	slug: string;
+	slug?: string;
 	subtitle?: number | string | null;
 }
 
@@ -26,7 +26,7 @@ export default function ArticleHeader({
 					</h2>
 				)}
 			</div>
-			{showImage && (
+			{showImage && slug && (
 				<div className="px-6 bg-transparent sm:px-12">
 					<Image
 						altText={name}

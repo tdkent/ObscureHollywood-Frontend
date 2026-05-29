@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router";
 import httpRequest from "@/api/httpRequest";
+import Loading from "@/components/shared/Loading";
 import type { UserSingleQuizResults } from "@/types/quiz.interface";
 
 interface Props {
@@ -10,11 +11,11 @@ interface Props {
 export default function QuizResults({ userId }: Props) {
 	const { slug } = useParams();
 	const { data, error, isLoading } = useQuery({
-		queryKey: ["quiz-results", slug],
+		queryKey: ["result", slug],
 		queryFn: () => httpRequest(`/users/${userId}/quiz-results/${slug}`),
 	});
 
-	if (isLoading) return "loading";
+	if (isLoading) return <Loading variant="results" />;
 	if (error)
 		return <p className="text-sm text-error">Could not fetch quiz results.</p>;
 
@@ -23,12 +24,12 @@ export default function QuizResults({ userId }: Props) {
 	return count ? (
 		<div className="flex flex-col gap-2">
 			<p>
-				You have attempted this quiz {count} time{count > 1 && "s"}.
+				You've completed this quiz {count} time{count > 1 && "s"}.
 			</p>
-			<p>High score: {highScore}</p>
-			<p>Latest score: {prevScore}</p>
+			<p>Best score: {highScore}</p>
+			<p>Last attempt: {prevScore}</p>
 		</div>
 	) : (
-		<p>You have not attempted this quiz yet.</p>
+		<p>You have not completed this quiz yet.</p>
 	);
 }
