@@ -1,7 +1,7 @@
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { useLocation } from "react-router";
+import { useLocation, useParams } from "react-router";
 import { v4 as uuidv4 } from "uuid";
 import httpRequest from "@/api/httpRequest";
 import Question from "@/components/article/quiz/Question";
@@ -16,10 +16,17 @@ interface Props {
 
 export default function QuizForm({ questions, quizName }: Props) {
 	const { pathname } = useLocation();
+	const { slug } = useParams();
+
 	const route = `${pathname}/result`;
+
+	const queryClient = useQueryClient();
 
 	const mutation = useMutation({
 		mutationFn: (options: OptionsInput) => httpRequest(route, options),
+		onSuccess: async () => {
+			await queryClient.invalidateQueries({ queryKey: ["quiz-results", slug] });
+		},
 	});
 
 	// react-hook-form with default form values

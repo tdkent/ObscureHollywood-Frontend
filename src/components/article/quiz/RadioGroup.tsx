@@ -18,7 +18,9 @@ export default function RadioGroup({
 }: Props) {
 	const inputValue = `${idx + 1}`;
 	return (
-		<label className={`flex gap-4 items-center text-base cursor-pointer w-fit`}>
+		<label
+			className={`flex gap-4 items-center text-base w-fit ${!showResults && "cursor-pointer"}`}
+		>
 			<input
 				checked={field.value === inputValue}
 				className="radio bg-content-alt checked:bg-gold"
