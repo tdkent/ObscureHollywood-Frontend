@@ -88,6 +88,14 @@ describe("App root layer", () => {
 		).toBeInTheDocument();
 	});
 
+	it("renders My Quizzes page at /my-quizzes", () => {
+		renderWithClient(<App />, ["/my-quizzes"]);
+
+		expect(
+			screen.getByRole("heading", { name: /my quizzes/i }),
+		).toBeInTheDocument();
+	});
+
 	it("renders Search page at /search", () => {
 		renderWithClient(<App />, ["/search"]);
 
@@ -243,6 +251,42 @@ describe("Root nav element", () => {
 		).toBeInTheDocument();
 	});
 
+	it("navigates from Quiz index page to home page using mobile nav", async () => {
+		renderWithClient(<App />, ["/quiz"]);
+
+		await user.click(screen.getByTestId("mobile-home-link"));
+
+		expect(
+			screen.getByRole("heading", {
+				name: homeHeading,
+			}),
+		).toBeInTheDocument();
+	});
+
+	it("navigates from At the Movies quiz page to home page using mobile nav", async () => {
+		renderWithClient(<App />, ["/quiz/at-the-movies"]);
+
+		await user.click(screen.getByTestId("mobile-home-link"));
+
+		expect(
+			screen.getByRole("heading", {
+				name: homeHeading,
+			}),
+		).toBeInTheDocument();
+	});
+
+	it("navigates from My Quizzes page to home page using mobile nav", async () => {
+		renderWithClient(<App />, ["/my-quizzes"]);
+
+		await user.click(screen.getByTestId("mobile-home-link"));
+
+		expect(
+			screen.getByRole("heading", {
+				name: homeHeading,
+			}),
+		).toBeInTheDocument();
+	});
+
 	it("navigates from Not Found to home page using mobile nav", async () => {
 		renderWithClient(<App />, ["/bad-route"]);
 
@@ -354,6 +398,42 @@ describe("Root nav element", () => {
 
 	it("navigates from /tags/decade-1930s to home using desktop nav", async () => {
 		renderWithClient(<App />, ["/tags/decade-1930s"]);
+
+		await user.click(screen.getByTestId("home-link"));
+
+		expect(
+			screen.getByRole("heading", {
+				name: homeHeading,
+			}),
+		).toBeInTheDocument();
+	});
+
+	it("navigates from /quiz to home using desktop nav", async () => {
+		renderWithClient(<App />, ["/quiz"]);
+
+		await user.click(screen.getByTestId("home-link"));
+
+		expect(
+			screen.getByRole("heading", {
+				name: homeHeading,
+			}),
+		).toBeInTheDocument();
+	});
+
+	it("navigates from /quiz/at-the-movies to home using desktop nav", async () => {
+		renderWithClient(<App />, ["/quiz/at-the-movies"]);
+
+		await user.click(screen.getByTestId("home-link"));
+
+		expect(
+			screen.getByRole("heading", {
+				name: homeHeading,
+			}),
+		).toBeInTheDocument();
+	});
+
+	it("navigates from /my-quizzes to home using desktop nav", async () => {
+		renderWithClient(<App />, ["/my-quizzes"]);
 
 		await user.click(screen.getByTestId("home-link"));
 
