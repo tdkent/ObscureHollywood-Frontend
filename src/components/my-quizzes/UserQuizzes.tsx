@@ -27,7 +27,7 @@ export default function UserQuizzes({ userId }: Props) {
 	} = data as UserAllQuizResults;
 
 	return (
-		<>
+		<div className="flex flex-col gap-8 px-6 sm:px-12 sm:gap-12">
 			<section className="flex flex-col gap-4">
 				<h2 className="text-secondary-text text-xl md:text-2xl">
 					Overall Quiz Activity
@@ -63,6 +63,6 @@ export default function UserQuizzes({ userId }: Props) {
 					<p>You have not completed any quizzes yet.</p>
 				)}
 			</section>
-		</>
+		</div>
 	);
 }
