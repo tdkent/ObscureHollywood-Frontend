@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import httpRequest from "@/api/httpRequest";
 import RecentActivity from "@/components/my-quizzes/RecentActivity";
 import DisplayError from "@/components/shared/DisplayError";
+import Loading from "@/components/shared/Loading";
 import type { UserAllQuizResults } from "@/types/quiz.interface";
 
 interface Props {
@@ -14,7 +15,7 @@ export default function UserQuizzes({ userId }: Props) {
 		queryFn: () => httpRequest(`/users/${userId}`),
 	});
 
-	if (isPending) return "loading...";
+	if (isPending) return <Loading variant="user" />;
 	if (error) return <DisplayError />;
 
 	const {

@@ -2,22 +2,12 @@ type Props =
 	| {
 			hasDescList?: never;
 			isFullArticle?: never;
-			variant: "list";
+			variant: "filter" | "homeSectionItems" | "list" | "user";
 	  }
 	| {
 			hasDescList?: boolean;
 			isFullArticle?: boolean;
 			variant: "article";
-	  }
-	| {
-			hasDescList?: never;
-			isFullArticle?: never;
-			variant: "homeSectionItems";
-	  }
-	| {
-			hasDescList?: never;
-			isFullArticle?: never;
-			variant: "filter";
 	  };
 
 export default function Loading({
@@ -134,6 +124,43 @@ export default function Loading({
 			<div className="flex items-center gap-2 text-secondary-text">
 				<span className="loading loading-spinner loading-sm"></span>
 				Loading filters
+			</div>
+		);
+	}
+
+	if (variant === "user") {
+		return (
+			<div className="flex flex-col gap-6 px-6 sm:px-12">
+				<div className="skeleton h-6 w-48 rounded-sm lg:h-8 lg:w-52 dark:bg-content-alt"></div>
+				<div className="flex flex-col gap-2">
+					<div className="skeleton h-4 w-20 rounded-sm dark:bg-content-alt"></div>
+					<div className="skeleton h-5 w-40 rounded-sm dark:bg-content-alt"></div>
+				</div>
+				<div className="flex flex-col gap-2">
+					<div className="skeleton h-4 w-20 rounded-sm dark:bg-content-alt"></div>
+					<div className="skeleton h-5 w-40 rounded-sm dark:bg-content-alt"></div>
+				</div>
+				<div className="flex flex-col gap-2">
+					<div className="skeleton h-4 w-20 rounded-sm dark:bg-content-alt"></div>
+					<div className="skeleton h-5 w-40 rounded-sm dark:bg-content-alt"></div>
+				</div>
+				<div className="flex flex-col gap-2">
+					<div className="skeleton h-4 w-20 rounded-sm dark:bg-content-alt"></div>
+					<div className="skeleton h-5 w-40 rounded-sm dark:bg-content-alt"></div>
+				</div>
+				<div className="skeleton h-6 w-48 rounded-sm mt-4 lg:h-8 lg:w-52 dark:bg-content-alt"></div>
+				<div className="flex flex-col gap-4">
+					<div className="skeleton h-10 w-full rounded-sm lg:w-200 dark:bg-content-alt"></div>
+					<div className="skeleton h-10 w-full rounded-sm lg:w-200 dark:bg-content-alt"></div>
+					<div className="skeleton h-10 w-full rounded-sm lg:w-200 dark:bg-content-alt"></div>
+					<div className="skeleton h-10 w-full rounded-sm lg:w-200 dark:bg-content-alt"></div>
+					<div className="skeleton h-10 w-full rounded-sm lg:w-200 dark:bg-content-alt"></div>
+					<div className="skeleton h-10 w-full rounded-sm lg:w-200 dark:bg-content-alt"></div>
+					<div className="skeleton h-10 w-full rounded-sm lg:w-200 dark:bg-content-alt"></div>
+					<div className="skeleton h-10 w-full rounded-sm lg:w-200 dark:bg-content-alt"></div>
+					<div className="skeleton h-10 w-full rounded-sm lg:w-200 dark:bg-content-alt"></div>
+					<div className="skeleton h-10 w-full rounded-sm lg:w-200 dark:bg-content-alt"></div>
+				</div>
 			</div>
 		);
 	}
