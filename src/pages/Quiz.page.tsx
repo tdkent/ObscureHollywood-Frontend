@@ -36,7 +36,7 @@ export default function QuizPage() {
 						{userId ? (
 							<QuizResults userId={userId} />
 						) : (
-							<p>You have not attempted this quiz yet.</p>
+							<p>You have not completed this quiz yet.</p>
 						)}
 						<Link className="content-link" to="/my-quizzes">
 							View your quiz history

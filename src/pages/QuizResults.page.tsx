@@ -12,7 +12,7 @@ export default function QuizResultsPage() {
 					{userId ? (
 						<UserQuizzes userId={userId} />
 					) : (
-						<p>You have no quiz data to show.</p>
+						<p>You have not completed any quizzes yet.</p>
 					)}
 				</div>
 			</div>

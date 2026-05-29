@@ -37,4 +37,5 @@ export interface UserAllQuizResults {
 	avgScore: number;
 	quizCount: number;
 	percentComplete: number;
+	recentActivity: (QuizResult & { quiz: Quiz })[];
 }

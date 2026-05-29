@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import httpRequest from "@/api/httpRequest";
+import RecentActivity from "@/components/my-quizzes/RecentActivity";
 import DisplayError from "@/components/shared/DisplayError";
 import type { UserAllQuizResults } from "@/types/quiz.interface";
 
@@ -16,8 +17,14 @@ export default function UserQuizzes({ userId }: Props) {
 	if (isPending) return "loading...";
 	if (error) return <DisplayError />;
 
-	const { totalCount, distinctCount, avgScore, quizCount, percentComplete } =
-		data as UserAllQuizResults;
+	const {
+		totalCount,
+		distinctCount,
+		avgScore,
+		quizCount,
+		percentComplete,
+		recentActivity,
+	} = data as UserAllQuizResults;
 
 	return (
 		<>
@@ -29,7 +36,7 @@ export default function UserQuizzes({ userId }: Props) {
 						<dd>{totalCount}</dd>
 					</div>
 					<div>
-						<dt>Unique Quizzes Attempted</dt>
+						<dt>Unique Quizzes Completed</dt>
 						<dd>
 							{distinctCount} of {quizCount}
 						</dd>
@@ -46,6 +53,11 @@ export default function UserQuizzes({ userId }: Props) {
 			</section>
 			<section className="flex flex-col gap-4">
 				<h2 className="text-secondary-text text-xl">Recent Activity</h2>
+				{recentActivity.length ? (
+					<RecentActivity />
+				) : (
+					<p>You have not completed any quizzes yet.</p>
+				)}
 			</section>
 		</>
 	);

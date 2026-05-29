@@ -23,12 +23,12 @@ export default function QuizResults({ userId }: Props) {
 	return count ? (
 		<div className="flex flex-col gap-2">
 			<p>
-				You've attempted this quiz {count} time{count > 1 && "s"}.
+				You've completed this quiz {count} time{count > 1 && "s"}.
 			</p>
 			<p>Best score: {highScore}</p>
 			<p>Last attempt: {prevScore}</p>
 		</div>
 	) : (
-		<p>You have not attempted this quiz yet.</p>
+		<p>You have not completed this quiz yet.</p>
 	);
 }
