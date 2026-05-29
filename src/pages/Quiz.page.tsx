@@ -33,9 +33,9 @@ export default function QuizPage() {
 				<ArticleHeader name={`Quiz: ${name}`} slug={quizSlug}>
 					<div className="border-y py-4 bg-content-alt px-6 font-light sm:px-12 lg:mt-4">
 						{userId ? (
-							<QuizResults slug={slug as string} userId={userId} />
+							<QuizResults userId={userId} />
 						) : (
-							<p className="text-sm">You have not attempted this quiz yet.</p>
+							<p>You have not attempted this quiz yet.</p>
 						)}
 					</div>
 				</ArticleHeader>
