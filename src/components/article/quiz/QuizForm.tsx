@@ -7,7 +7,10 @@ import httpRequest from "@/api/httpRequest";
 import Question from "@/components/article/quiz/Question";
 import ScoreModal from "@/components/article/quiz/ScoreModal";
 import { getUserId } from "@/lib/utils/getUserId";
-import type { QuizQuestion, QuizResult } from "@/types/quiz.interface";
+import type {
+	QuizQuestion,
+	QuizResultWithCorrectAnswers,
+} from "@/types/quiz.interface";
 import type { FormInputs, OptionsInput } from "@/types/ui.interface";
 
 interface Props {
@@ -113,15 +116,15 @@ export default function QuizForm({ questions, quizName }: Props) {
 				modal={modal as HTMLDialogElement}
 				quizName={quizName}
 				reset={reset}
-				score={(mutation.data as QuizResult)?.score as number}
+				score={(mutation.data as QuizResultWithCorrectAnswers)?.score as number}
 				setShowResults={setShowResults}
 			/>
 
 			<form className="px-6 sm:px-12" onSubmit={handleSubmit(onSubmit)}>
 				{questions.map((qq) => {
-					const isCorrect = (mutation.data as QuizResult)?.correct.includes(
-						qq.questionNumber,
-					);
+					const isCorrect = (
+						mutation.data as QuizResultWithCorrectAnswers
+					)?.correct.includes(qq.questionNumber);
 					return (
 						<Question
 							key={qq.id}
