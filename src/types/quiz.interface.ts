@@ -30,3 +30,11 @@ export interface UserSingleQuizResults {
 	highScore: number;
 	prevScore: number;
 }
+
+export interface UserAllQuizResults {
+	totalCount: number;
+	distinctCount: number;
+	avgScore: number;
+	quizCount: number;
+	percentComplete: number;
+}
