@@ -32,7 +32,7 @@ export default function Quiz() {
 
 	const userId = getUserId();
 	return (
-		<div className="flex flex-col my-4 sm:gap-12">
+		<div className="flex flex-col my-4 sm:gap-12 lg:mt-0">
 			<ArticleHeader name={`Quiz: ${name}`} slug={quizSlug}>
 				<div className="flex flex-col gap-2 border-y py-4 bg-content-alt px-6 font-light sm:px-12 lg:mt-4">
 					{userId ? (
