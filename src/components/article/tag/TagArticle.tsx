@@ -5,6 +5,7 @@ import ArticleHeader from "@/components/article/ArticleHeader";
 import Paginated from "@/components/list/Paginated";
 import DisplayError from "@/components/shared/DisplayError";
 import Loading from "@/components/shared/Loading";
+import NotFound from "@/components/shared/NotFound";
 import type { TagWithRelations } from "@/types/tag.interface";
 import type { Entity } from "@/types/ui.interface";
 
@@ -20,7 +21,10 @@ export default function TagArticle() {
 	});
 
 	if (isPending) return <Loading variant="article" />;
-	if (error) return <DisplayError />;
+	if (error) {
+		if (error.message === "Resource not found") return <NotFound />;
+		return <DisplayError />;
+	}
 
 	const { description, name, slug: tagSlug, type } = data as TagWithRelations;
 

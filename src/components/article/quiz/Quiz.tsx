@@ -6,6 +6,7 @@ import QuizForm from "@/components/article/quiz/QuizForm";
 import QuizResults from "@/components/article/quiz/QuizResults";
 import DisplayError from "@/components/shared/DisplayError";
 import Loading from "@/components/shared/Loading";
+import NotFound from "@/components/shared/NotFound";
 import { getUserId } from "@/lib/utils/getUserId";
 import type { QuizWithRelations } from "@/types/quiz.interface";
 import type { Entity } from "@/types/ui.interface";
@@ -22,7 +23,10 @@ export default function Quiz() {
 	});
 
 	if (isPending) return <Loading variant="quiz" />;
-	if (error) return <DisplayError />;
+	if (error) {
+		if (error.message === "Resource not found") return <NotFound />;
+		return <DisplayError />;
+	}
 
 	const { name, quizQuestions, slug: quizSlug } = data as QuizWithRelations;
 
