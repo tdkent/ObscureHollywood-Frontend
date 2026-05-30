@@ -6,6 +6,7 @@ import ParsedHtml from "@/components/article/ParsedHtml";
 import RelatedArticles from "@/components/article/RelatedArticles";
 import DisplayError from "@/components/shared/DisplayError";
 import Loading from "@/components/shared/Loading";
+import NotFound from "@/components/shared/NotFound";
 import type { FeatureWithRelations } from "@/types/feature.interface";
 import type { Entity } from "@/types/ui.interface";
 
@@ -21,7 +22,10 @@ export default function FeatureArticle() {
 	});
 
 	if (isPending) return <Loading isFullArticle variant="article" />;
-	if (error) return <DisplayError />;
+	if (error) {
+		if (error.message === "Resource not found") return <NotFound />;
+		return <DisplayError />;
+	}
 
 	const {
 		article: { htmlContent, incomingRelations },

@@ -7,6 +7,7 @@ import RelatedArticles from "@/components/article/RelatedArticles";
 import DescriptionList from "@/components/shared/DescriptionList";
 import DisplayError from "@/components/shared/DisplayError";
 import Loading from "@/components/shared/Loading";
+import NotFound from "@/components/shared/NotFound";
 import { getFormattedDateString } from "@/lib/utils/formatPersonDates";
 import type { Film } from "@/types/film.interface";
 import type { PersonWithRelations } from "@/types/person.interface";
@@ -29,7 +30,10 @@ export default function PersonArticle() {
 	});
 
 	if (isPending) return <Loading hasDescList isFullArticle variant="article" />;
-	if (error) return <DisplayError />;
+	if (error) {
+		if (error.message === "Resource not found") return <NotFound />;
+		return <DisplayError />;
+	}
 
 	const {
 		age,
