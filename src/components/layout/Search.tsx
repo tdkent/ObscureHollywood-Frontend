@@ -20,11 +20,13 @@ export default function Search({ isShelf }: Props) {
 	}
 
 	return (
-		<search className="w-full flex justify-end">
+		<div className="w-full flex justify-end">
+			{/** biome-ignore lint/a11y/useSemanticElements: search element is not full supported in React/JSDOM */}
 			<form
 				action={handleSearch}
 				className={`border rounded-lg flex h-10 overflow-hidden w-full sm:h-11 lg:w-105 xl:w-120 ${isHome && !isShelf ? "border-dark-border" : ""}`}
 				id="search"
+				role="search"
 			>
 				<input
 					className={`grow h-full outline-none px-3 sm:font-normal lg:font-light lg:text-base ${isHome && !isShelf ? "bg-black/30 text-light-text" : ""}`}
@@ -41,6 +43,6 @@ export default function Search({ isShelf }: Props) {
 					/>
 				</button>
 			</form>
-		</search>
+		</div>
 	);
 }
