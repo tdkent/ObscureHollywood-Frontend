@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { CircleQuestionMark } from "lucide-react";
 import httpRequest from "@/api/httpRequest";
 import RecentActivity from "@/components/my-quizzes/RecentActivity";
 import DisplayError from "@/components/shared/DisplayError";
@@ -64,6 +65,17 @@ export default function UserQuizzes({ userId }: Props) {
 					<p>You have not completed any quizzes yet.</p>
 				)}
 			</section>
+			<details className="collapse">
+				<summary className="collapse-title font-semibold flex items-center gap-2 px-0 text-link">
+					<CircleQuestionMark className="size-4" />
+					How your data is stored
+				</summary>
+				<div className="collapse-content text-sm lg:w-200">
+					Your quiz results are stored locally on your device and are not linked
+					to personal information. They are only available in this browser.
+					Clearing browser storage may permanently remove your saved quiz data.
+				</div>
+			</details>
 		</div>
 	);
 }
