@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import { CircleQuestionMark } from "lucide-react";
-import httpRequest from "@/api/httpRequest";
 import RecentActivity from "@/components/my-quizzes/RecentActivity";
 import DisplayError from "@/components/shared/DisplayError";
 import Loading from "@/components/shared/Loading";
 import type { UserAllQuizResults } from "@/types/quiz.interface";
+import httpRequest from "@/util/httpRequest";
 
 interface Props {
 	userId: string;

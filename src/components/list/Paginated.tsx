@@ -1,7 +1,6 @@
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { useLocation, useSearchParams } from "react-router";
-import httpRequest from "@/api/httpRequest";
 import Filter from "@/components/list/Filter";
 import ListItem from "@/components/list/ListItem";
 import PaginationLimit from "@/components/list/PaginationLimit";
@@ -13,6 +12,7 @@ import Loading from "@/components/shared/Loading";
 import { getSearchParams } from "@/lib/utils/getSearchParams";
 import type { PaginatedResponse } from "@/types/paginated-response.interface";
 import type { Entity } from "@/types/ui.interface";
+import httpRequest from "@/util/httpRequest";
 
 interface Props {
 	reqUrl?: string;

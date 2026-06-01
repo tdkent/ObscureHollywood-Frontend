@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
 import { useLocation, useParams } from "react-router";
-import httpRequest from "@/api/httpRequest";
 import ArticleHeader from "@/components/article/ArticleHeader";
 import ParsedHtml from "@/components/article/ParsedHtml";
 import RelatedArticles from "@/components/article/RelatedArticles";
@@ -9,6 +8,7 @@ import Loading from "@/components/shared/Loading";
 import NotFound from "@/components/shared/NotFound";
 import type { FeatureWithRelations } from "@/types/feature.interface";
 import type { Entity } from "@/types/ui.interface";
+import httpRequest from "@/util/httpRequest";
 
 export default function FeatureArticle() {
 	const { slug } = useParams();

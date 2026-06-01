@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useLocation, useParams } from "react-router";
 import { v4 as uuidv4 } from "uuid";
-import httpRequest from "@/api/httpRequest";
 import Question from "@/components/article/quiz/Question";
 import ScoreModal from "@/components/article/quiz/ScoreModal";
 import { getUserId } from "@/lib/utils/getUserId";
@@ -12,6 +11,7 @@ import type {
 	QuizResultWithCorrectAnswers,
 } from "@/types/quiz.interface";
 import type { FormInputs, OptionsInput } from "@/types/ui.interface";
+import httpRequest from "@/util/httpRequest";
 
 interface Props {
 	questions: QuizQuestion[];

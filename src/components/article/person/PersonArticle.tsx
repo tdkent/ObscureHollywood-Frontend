@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
 import { useLocation, useParams } from "react-router";
-import httpRequest from "@/api/httpRequest";
 import ArticleHeader from "@/components/article/ArticleHeader";
 import ParsedHtml from "@/components/article/ParsedHtml";
 import RelatedArticles from "@/components/article/RelatedArticles";
@@ -16,6 +15,7 @@ import type {
 	FilteredDlMetadata,
 	UnfilteredDlMetadata,
 } from "@/types/ui.interface";
+import httpRequest from "@/util/httpRequest";
 
 /** Render header and parsed HTML of Person article. */
 export default function PersonArticle() {

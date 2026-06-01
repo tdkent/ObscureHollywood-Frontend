@@ -31,7 +31,9 @@ export default function Section({
 				<p className="font-thin px-6 sm:px-20 sm:text-xl lg:px-60">{text}</p>
 				<div className="flex flex-col gap-4 sm:gap-8">
 					<h3 className="font-thin text-2xl sm:text-3xl">{listHeading}:</h3>
-					<SectionListItems route={route} />
+					<ClientOnly>
+						<SectionListItems route={route} />
+					</ClientOnly>
 				</div>
 			</div>
 		</section>

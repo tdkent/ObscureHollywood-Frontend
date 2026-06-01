@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
 import { useLocation, useParams } from "react-router";
-import httpRequest from "@/api/httpRequest";
 import ArticleHeader from "@/components/article/ArticleHeader";
 import Paginated from "@/components/list/Paginated";
 import DisplayError from "@/components/shared/DisplayError";
@@ -8,6 +7,7 @@ import Loading from "@/components/shared/Loading";
 import NotFound from "@/components/shared/NotFound";
 import type { TagWithRelations } from "@/types/tag.interface";
 import type { Entity } from "@/types/ui.interface";
+import httpRequest from "@/util/httpRequest";
 
 export default function TagArticle() {
 	const { slug } = useParams();

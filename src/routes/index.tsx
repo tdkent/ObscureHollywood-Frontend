@@ -3,6 +3,8 @@ import Section from "@/components/home/Section";
 import Splash from "@/components/home/Splash";
 
 export const Route = createFileRoute("/")({
+	//? Cannot use SSR route loader because fetch is prop-dependent
+	//? Route loader cannot access component props
 	component: Home,
 });
 

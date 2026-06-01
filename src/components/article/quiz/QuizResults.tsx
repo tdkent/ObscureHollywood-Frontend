@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router";
-import httpRequest from "@/api/httpRequest";
 import Loading from "@/components/shared/Loading";
 import type { UserSingleQuizResults } from "@/types/quiz.interface";
+import httpRequest from "@/util/httpRequest";
 
 interface Props {
 	userId: string;

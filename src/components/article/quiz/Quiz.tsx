@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link, useLocation, useParams } from "react-router";
-import httpRequest from "@/api/httpRequest";
 import ArticleHeader from "@/components/article/ArticleHeader";
 import QuizForm from "@/components/article/quiz/QuizForm";
 import QuizResults from "@/components/article/quiz/QuizResults";
@@ -10,6 +9,7 @@ import NotFound from "@/components/shared/NotFound";
 import { getUserId } from "@/lib/utils/getUserId";
 import type { QuizWithRelations } from "@/types/quiz.interface";
 import type { Entity } from "@/types/ui.interface";
+import httpRequest from "@/util/httpRequest";
 
 export default function Quiz() {
 	const { slug } = useParams();
