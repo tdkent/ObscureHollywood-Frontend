@@ -23,6 +23,8 @@
     "@tailwindcss/vite": "^4.2.2",
     "@tanstack/react-query": "^5.99.0",
     "@tanstack/react-query-devtools": "^5.99.0",
+    "@tanstack/react-router": "^1.170.10",
+    "@tanstack/react-start": "^1.168.18",
     "daisyui": "^5.5.19",
     "dompurify": "^3.4.2",
     "html-react-parser": "^6.0.1",
