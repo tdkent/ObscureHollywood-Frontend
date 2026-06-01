@@ -8,6 +8,7 @@ import {
 } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 import RootLayout from "@/layouts/RootLayout";
+import appCss from "../styles/app.css?url";
 
 export const Route = createRootRoute({
 	head: () => ({
@@ -23,6 +24,7 @@ export const Route = createRootRoute({
 				title: "Obscure Hollywood",
 			},
 		],
+		links: [{ rel: "stylesheet", href: appCss }],
 	}),
 	component: RootComponent,
 });
