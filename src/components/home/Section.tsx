@@ -1,3 +1,4 @@
+import { ClientOnly } from "@tanstack/react-router";
 import SectionHeaderImgs from "@/components/home/SectionHeaderImgs";
 import SectionListItems from "@/components/home/SectionListItems";
 
@@ -20,7 +21,9 @@ export default function Section({
 }: Props) {
 	return (
 		<section className={`py-8 sm:py-12 ${isAlt ? "section-alt" : "section"}`}>
-			<SectionHeaderImgs imgs={imgs} />
+			<ClientOnly>
+				<SectionHeaderImgs imgs={imgs} />
+			</ClientOnly>
 			<div className="flex flex-col text-center gap-4 py-6 sm:gap-8 sm:py-10">
 				<h2 className="text-3xl font-bold px-6 text-gold-dark sm:text-5xl sm:px-20">
 					{title}
