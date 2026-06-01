@@ -7,6 +7,7 @@ import {
 	Scripts,
 } from "@tanstack/react-router";
 import type { ReactNode } from "react";
+import RootLayout from "@/layouts/RootLayout";
 
 export const Route = createRootRoute({
 	head: () => ({
@@ -19,7 +20,7 @@ export const Route = createRootRoute({
 				content: "width=device-width, initial-scale=1",
 			},
 			{
-				title: "TanStack Start Starter",
+				title: "Obscure Hollywood",
 			},
 		],
 	}),
@@ -41,7 +42,7 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
 				<HeadContent />
 			</head>
 			<body>
-				{children}
+				<RootLayout>{children}</RootLayout>
 				<Scripts />
 			</body>
 		</html>

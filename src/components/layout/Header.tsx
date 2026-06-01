@@ -1,7 +1,8 @@
-import { useLocation } from "react-router";
+// import { useLocation } from "react-router";
+import { useLocation } from "@tanstack/react-router";
 import Logo from "@/components/layout/Logo";
-import Navigation from "@/components/layout/Navigation";
-import Search from "@/components/layout/Search";
+// import Navigation from "@/components/layout/Navigation";
+// import Search from "@/components/layout/Search";
 
 export default function Header() {
 	const { pathname } = useLocation();
@@ -13,9 +14,9 @@ export default function Header() {
 			<div className="flex flex-col justify-center px-6 gap-2 h-full sm:px-12 lg:flex-col-reverse lg:gap-3 xl:px-24">
 				<div className="flex justify-between items-center">
 					<Logo />
-					<Navigation />
+					{/* <Navigation /> */}
 				</div>
-				<Search />
+				{/* <Search /> */}
 			</div>
 		</header>
 	);
