@@ -2,10 +2,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { ErrorBoundary } from "react-error-boundary";
 import { BrowserRouter } from "react-router";
 import App from "@/App";
-import GlobalErrorBoundary from "@/GlobalError";
 
 const root = document.getElementById("root");
 
@@ -23,17 +21,11 @@ const queryClient = new QueryClient({
 
 createRoot(root).render(
 	<StrictMode>
-		<ErrorBoundary
-			fallbackRender={({ error, resetErrorBoundary }) => (
-				<GlobalErrorBoundary error={error} reset={resetErrorBoundary} />
-			)}
-		>
-			<BrowserRouter>
-				<QueryClientProvider client={queryClient}>
-					<App />
-					<ReactQueryDevtools initialIsOpen={false} />
-				</QueryClientProvider>
-			</BrowserRouter>
-		</ErrorBoundary>
+		<BrowserRouter>
+			<QueryClientProvider client={queryClient}>
+				<App />
+				<ReactQueryDevtools initialIsOpen={false} />
+			</QueryClientProvider>
+		</BrowserRouter>
 	</StrictMode>,
 );
