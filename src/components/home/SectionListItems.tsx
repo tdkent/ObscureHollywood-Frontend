@@ -7,7 +7,7 @@ import type { Feature } from "@/types/feature.interface";
 import type { Film } from "@/types/film.interface";
 import type { PartialListItem } from "@/types/paginated-response.interface";
 import type { Person } from "@/types/person.interface";
-import { sectionListItemQueryOptions } from "@/util/query";
+import httpRequest from "@/util/httpRequest";
 
 interface Props {
 	route: "features" | "films" | "people";
@@ -15,9 +15,10 @@ interface Props {
 
 export default function SectionListItems({ route }: Props) {
 	//? Do not use SuspenseQuery to allow local loading/error UI handling
-	const { data, error, isPending } = useQuery(
-		sectionListItemQueryOptions(route),
-	);
+	const { data, error, isPending } = useQuery({
+		queryKey: [route, "recent"],
+		queryFn: () => httpRequest(`/${route}/recent`),
+	});
 
 	if (isPending) return <Loading variant="homeSectionItems" />;
 	if (error) return <DisplayError />;
