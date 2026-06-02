@@ -9,14 +9,32 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as StudiosRouteImport } from './routes/studios'
 import { Route as SearchRouteImport } from './routes/search'
+import { Route as PeopleRouteImport } from './routes/people'
+import { Route as FilmsRouteImport } from './routes/films'
 import { Route as FeaturesRouteImport } from './routes/features'
 import { Route as DisclaimerRouteImport } from './routes/disclaimer'
 import { Route as IndexRouteImport } from './routes/index'
 
+const StudiosRoute = StudiosRouteImport.update({
+  id: '/studios',
+  path: '/studios',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SearchRoute = SearchRouteImport.update({
   id: '/search',
   path: '/search',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PeopleRoute = PeopleRouteImport.update({
+  id: '/people',
+  path: '/people',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FilmsRoute = FilmsRouteImport.update({
+  id: '/films',
+  path: '/films',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FeaturesRoute = FeaturesRouteImport.update({
@@ -39,43 +57,98 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/disclaimer': typeof DisclaimerRoute
   '/features': typeof FeaturesRoute
+  '/films': typeof FilmsRoute
+  '/people': typeof PeopleRoute
   '/search': typeof SearchRoute
+  '/studios': typeof StudiosRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/disclaimer': typeof DisclaimerRoute
   '/features': typeof FeaturesRoute
+  '/films': typeof FilmsRoute
+  '/people': typeof PeopleRoute
   '/search': typeof SearchRoute
+  '/studios': typeof StudiosRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/disclaimer': typeof DisclaimerRoute
   '/features': typeof FeaturesRoute
+  '/films': typeof FilmsRoute
+  '/people': typeof PeopleRoute
   '/search': typeof SearchRoute
+  '/studios': typeof StudiosRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/disclaimer' | '/features' | '/search'
+  fullPaths:
+    | '/'
+    | '/disclaimer'
+    | '/features'
+    | '/films'
+    | '/people'
+    | '/search'
+    | '/studios'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/disclaimer' | '/features' | '/search'
-  id: '__root__' | '/' | '/disclaimer' | '/features' | '/search'
+  to:
+    | '/'
+    | '/disclaimer'
+    | '/features'
+    | '/films'
+    | '/people'
+    | '/search'
+    | '/studios'
+  id:
+    | '__root__'
+    | '/'
+    | '/disclaimer'
+    | '/features'
+    | '/films'
+    | '/people'
+    | '/search'
+    | '/studios'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DisclaimerRoute: typeof DisclaimerRoute
   FeaturesRoute: typeof FeaturesRoute
+  FilmsRoute: typeof FilmsRoute
+  PeopleRoute: typeof PeopleRoute
   SearchRoute: typeof SearchRoute
+  StudiosRoute: typeof StudiosRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/studios': {
+      id: '/studios'
+      path: '/studios'
+      fullPath: '/studios'
+      preLoaderRoute: typeof StudiosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/search': {
       id: '/search'
       path: '/search'
       fullPath: '/search'
       preLoaderRoute: typeof SearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/people': {
+      id: '/people'
+      path: '/people'
+      fullPath: '/people'
+      preLoaderRoute: typeof PeopleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/films': {
+      id: '/films'
+      path: '/films'
+      fullPath: '/films'
+      preLoaderRoute: typeof FilmsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/features': {
@@ -106,7 +179,10 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DisclaimerRoute: DisclaimerRoute,
   FeaturesRoute: FeaturesRoute,
+  FilmsRoute: FilmsRoute,
+  PeopleRoute: PeopleRoute,
   SearchRoute: SearchRoute,
+  StudiosRoute: StudiosRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
