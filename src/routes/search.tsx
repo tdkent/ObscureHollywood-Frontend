@@ -16,7 +16,7 @@ function RouteComponent() {
 			limit={limit}
 			orderBy={orderBy}
 			page={page}
-			q={q}
+			searchParam={q}
 			route="search"
 		/>
 	);

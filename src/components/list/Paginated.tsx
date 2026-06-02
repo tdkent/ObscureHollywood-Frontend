@@ -9,37 +9,38 @@ import PaginationMetadata from "@/components/list/PaginationMetadata";
 import SortItems from "@/components/list/SortItems";
 import DisplayError from "@/components/shared/DisplayError";
 import Loading from "@/components/shared/Loading";
-import { getSearchParams } from "@/lib/utils/getSearchParams";
 import type { PaginatedResponse } from "@/types/paginated-response.interface";
 import type { Entity } from "@/types/ui.interface";
 import { createHttpRequestUrl } from "@/util/createHttpRequestUrl";
 import { createQueryKey } from "@/util/createQueryKey";
 import httpRequest from "@/util/httpRequest";
+import { parseSearchParams } from "@/util/parseSearchParams";
 
 interface Props {
 	limit: string | undefined;
 	page: string | undefined;
 	orderBy: string | undefined;
-	q?: string;
+	searchParam?: string;
 	route: Entity;
 	showFilterControls?: boolean;
+	tags?: string[];
 }
 
 export default function Paginated({
 	limit,
 	page,
 	orderBy,
-	q,
+	searchParam,
 	route,
 	// showFilterControls,
+	tags,
 }: Props) {
 	// const { search } = useLocation();
 
-	const { pageParam, limitParam, searchParam, sortParam } = getSearchParams({
+	const { pageParam, limitParam, sortParam } = parseSearchParams({
 		limit,
 		orderBy,
 		page,
-		q,
 		route,
 	});
 
@@ -51,6 +52,7 @@ export default function Paginated({
 		route,
 		searchParam,
 		sortParam,
+		tags,
 	});
 
 	const queryKey = createQueryKey({
@@ -59,6 +61,7 @@ export default function Paginated({
 		route,
 		searchParam,
 		sortParam,
+		tags,
 	});
 
 	const { data, error, isPending } = useQuery({

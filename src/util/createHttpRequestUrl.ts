@@ -6,6 +6,7 @@ interface Inputs {
 	route: Entity;
 	searchParam?: string;
 	sortParam: string;
+	tagsParam?: string[];
 }
 
 export function createHttpRequestUrl({
@@ -14,6 +15,7 @@ export function createHttpRequestUrl({
 	route,
 	searchParam,
 	sortParam,
+	tagsParam,
 }: Inputs) {
 	const mainReqRoute = route === "search" ? "/articles" : `/${route}`;
 
@@ -24,6 +26,10 @@ export function createHttpRequestUrl({
 	urlSearchParams += `&orderBy=${sortParam}`;
 
 	if (searchParam) urlSearchParams += `&q=${searchParam}`;
+
+	if (tagsParam?.length) {
+		urlSearchParams += tagsParam.map((tag) => `&tag=${tag}`).join("");
+	}
 
 	return `${mainReqRoute}${urlSearchParams}`;
 }

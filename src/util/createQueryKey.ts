@@ -6,6 +6,11 @@ interface Inputs {
 	route: Entity;
 	searchParam?: string;
 	sortParam: string;
+	tagsParam?: string[];
+}
+
+interface ParamsObj {
+	[key: string]: number | string | string[];
 }
 
 export function createQueryKey({
@@ -14,10 +19,19 @@ export function createQueryKey({
 	route,
 	searchParam,
 	sortParam,
+	tagsParam,
 }: Inputs) {
-	const queryKey = [route, pageParam, limitParam, sortParam];
+	const paramsObj: ParamsObj = {
+		page: pageParam,
+		limit: limitParam,
+		orderBy: sortParam,
+	};
 
-	if (searchParam) queryKey.push(searchParam);
+	if (searchParam) paramsObj.search = searchParam;
+
+	if (tagsParam?.length) paramsObj.tagsParam = tagsParam;
+
+	const queryKey = [route, paramsObj];
 
 	return queryKey;
 }

@@ -9,4 +9,5 @@ export interface UrlSearchParams {
 	orderBy?: string;
 	page?: string;
 	q?: string;
+	tag?: string[];
 }

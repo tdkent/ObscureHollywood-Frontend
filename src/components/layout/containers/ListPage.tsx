@@ -6,18 +6,26 @@ interface Props {
 	limit: string | undefined;
 	page: string | undefined;
 	orderBy: string | undefined;
-	q?: string;
+	searchParam?: string;
 	route: Entity;
+	tags?: string[];
 }
 
-export default function ListPage({ limit, page, orderBy, q, route }: Props) {
+export default function ListPage({
+	limit,
+	page,
+	orderBy,
+	searchParam,
+	route,
+	tags,
+}: Props) {
 	return (
 		<div className="page-margins bg-content">
 			<div className="my-4 px-6 sm:px-12">
 				{route === "search" ? (
 					<>
 						<h1 className="text-3xl md:text-4xl">Search Results</h1>
-						<p className="my-4 text-lg sm:text-xl">"{q}"</p>
+						<p className="my-4 text-lg sm:text-xl">"{searchParam}"</p>
 					</>
 				) : (
 					<h1 className="text-3xl md:text-4xl">
@@ -29,9 +37,10 @@ export default function ListPage({ limit, page, orderBy, q, route }: Props) {
 				limit={limit}
 				page={page}
 				orderBy={orderBy}
-				q={q}
+				searchParam={searchParam}
 				route={route}
 				showFilterControls={route === "films"}
+				tags={tags}
 			/>
 		</div>
 	);
