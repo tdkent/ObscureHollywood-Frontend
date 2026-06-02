@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import { Link } from "@tanstack/react-router";
 import Image from "@/components/shared/Image";
 import { getPersonLifespanString } from "@/lib/utils/formatPersonDates";
 import type { Feature } from "@/types/feature.interface";

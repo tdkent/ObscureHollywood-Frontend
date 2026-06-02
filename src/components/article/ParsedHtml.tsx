@@ -1,6 +1,6 @@
+import { Link } from "@tanstack/react-router";
 import DOMPurify from "dompurify";
 import parse, { type HTMLReactParserOptions } from "html-react-parser";
-import { Link } from "react-router";
 import Image from "@/components/shared/Image";
 
 interface Props {

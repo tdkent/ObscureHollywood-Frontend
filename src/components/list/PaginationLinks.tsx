@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import { Link } from "@tanstack/react-router";
 import type { PaginatedResponse } from "@/types/paginated-response.interface";
 
 interface Props {
