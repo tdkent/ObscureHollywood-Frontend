@@ -1,7 +1,7 @@
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
-import { useState } from "react";
-import { useLocation, useSearchParams } from "react-router";
-import Filter from "@/components/list/Filter";
+// import { useLocation } from "@tanstack/react-router";
+// import { useState } from "react";
+// import Filter from "@/components/list/Filter";
 import ListItem from "@/components/list/ListItem";
 import PaginationLimit from "@/components/list/PaginationLimit";
 import PaginationLinks from "@/components/list/PaginationLinks";
@@ -15,40 +15,51 @@ import type { Entity } from "@/types/ui.interface";
 import httpRequest from "@/util/httpRequest";
 
 interface Props {
+	limit: string | undefined;
+	page: string | undefined;
+	orderBy: string | undefined;
+	q?: string;
 	reqUrl?: string;
-	routeEntity?: Entity;
+	route: Entity;
 	showFilterControls?: boolean;
 }
 
 export default function Paginated({
+	limit,
+	page,
+	orderBy,
+	q,
 	reqUrl,
-	routeEntity,
-	showFilterControls,
+	route,
+	// showFilterControls,
 }: Props) {
-	const { pathname, search } = useLocation();
-	const [searchParams] = useSearchParams();
+	// const { search } = useLocation();
 
-	// Use entity if provided in props
-	const entity = routeEntity ?? (pathname.slice(1) as Entity);
+	const { pageParam, limitParam, searchParam, sortParam } = getSearchParams({
+		limit,
+		orderBy,
+		page,
+		q,
+		route,
+	});
 
-	const { limit, page, searchParam, sort, tags, tagsParamString } =
-		getSearchParams({
-			entity,
-			searchParams,
-			search,
-		});
-
-	const [filters, setFilters] = useState<string[]>(tags);
+	// const [filters, setFilters] = useState<string[]>(tags);
 
 	// Convert /search to /articles
-	const requestPath = pathname === "/search" ? "/articles" : pathname;
+	const requestPath = route === "search" ? "/articles" : `/${route}`;
 
 	// Use request url from props if provided
-	const requestUrl = `${reqUrl ?? requestPath}${search}`;
+	const urlSearchParams = `?page=${pageParam}&limit=${limitParam}&orderBy=${sortParam}${searchParam && `&q=${searchParam}`}`;
+	const requestUrl = `${reqUrl ?? requestPath}${urlSearchParams}`;
+
+	// const { data, error, isPending } = useQuery({
+	// 	queryKey: [route, page, limit, sort, searchParam, ...tags],
+	// 	queryFn: () => httpRequest(requestUrl),
+	// 	placeholderData: keepPreviousData,
+	// });
 
 	const { data, error, isPending } = useQuery({
-		// Use route and search params as query key
-		queryKey: [pathname, page, limit, sort, searchParam, ...tags],
+		queryKey: [route, pageParam, limitParam, sortParam, searchParam],
 		queryFn: () => httpRequest(requestUrl),
 		placeholderData: keepPreviousData,
 	});
@@ -65,32 +76,33 @@ export default function Paginated({
 			<div className="flex flex-col gap-6 py-4 px-6 text-sm sm:px-12 sm:py-8 sm:text-base">
 				<PaginationMetadata
 					hasData={!!hasResults}
-					limitParam={limit}
+					limitParam={limitParam}
 					metadata={paginatedData.meta}
-					setFilters={setFilters}
-					sortParam={sort}
-					tags={tags}
+					// setFilters={setFilters}
+					setFilters={() => {}}
+					sortParam={sortParam}
+					// tags={tags}
 				/>
 				{hasResults ? (
 					<div className="flex flex-col gap-6 w-full lg:flex-row lg:gap-16">
 						{totalItems >= 25 && (
 							<PaginationLimit
-								currLimit={limit}
+								currLimit={limitParam}
 								searchParam={searchParam}
-								sortParam={sort}
-								tagsParamString={tagsParamString}
+								sortParam={sortParam}
+								// tagsParamString={tagsParamString}
 							/>
 						)}
 						<SortItems
-							entity={entity}
-							limit={limit}
+							entity={route}
+							limit={limitParam}
 							searchParam={searchParam}
-							sort={sort}
-							tagsParamString={tagsParamString}
+							sort={sortParam}
+							// tagsParamString={tagsParamString}
 						/>
 					</div>
 				) : null}
-				{showFilterControls && (
+				{/* {showFilterControls && (
 					<Filter
 						filmsPending={isPending}
 						filters={filters}
@@ -99,17 +111,17 @@ export default function Paginated({
 						sortParam={sort}
 						tagParams={tags}
 					/>
-				)}
+				)} */}
 			</div>
 			{hasResults ? (
 				<>
 					<ul className="my-8 flex flex-col sm:my-12">
 						{paginatedData.data.map((item) => {
-							return <ListItem key={item.id} entity={entity} item={item} />;
+							return <ListItem key={item.id} entity={route} item={item} />;
 						})}
 					</ul>
 					<PaginationLinks
-						currentPage={page}
+						currentPage={pageParam}
 						lastPage={paginatedData.meta.totalPages}
 						links={paginatedData.links}
 					/>

@@ -1,25 +1,23 @@
-import { useSearchParams } from "react-router";
-
 interface Props {
 	currLimit: number;
-	searchParam: string | null;
+	searchParam: string | undefined;
 	sortParam: string;
-	tagsParamString: string;
+	// tagsParamString: string;
 }
 
 export default function PaginationLimit({
 	currLimit,
-	searchParam,
-	sortParam,
-	tagsParamString,
+	// searchParam,
+	// sortParam,
+	// tagsParamString,
 }: Props) {
-	const [_, setSearchParams] = useSearchParams();
+	// const [_, setSearchParams] = useSearchParams();
 
 	const limitOptions = [25, 50];
 
-	let params = `&orderBy=${sortParam}`;
-	if (searchParam) params += `&q=${searchParam}`;
-	if (tagsParamString) params += tagsParamString;
+	// let params = `&orderBy=${sortParam}`;
+	// if (searchParam) params += `&q=${searchParam}`;
+	// if (tagsParamString) params += tagsParamString;
 
 	return (
 		<div className="flex justify-between items-center md:justify-start">
@@ -33,9 +31,9 @@ export default function PaginationLimit({
 							key={option}
 							type="button"
 							disabled={selected}
-							onClick={() =>
-								setSearchParams(`?page=1&limit=${option}${params}`)
-							}
+							// onClick={() =>
+							// 	setSearchParams(`?page=1&limit=${option}${params}`)
+							// }
 						>
 							{option}
 						</button>

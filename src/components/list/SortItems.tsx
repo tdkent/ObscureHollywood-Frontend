@@ -1,13 +1,12 @@
-import { useSearchParams } from "react-router";
 import { paginatedSortOptions } from "@/lib/paginatedSortOptions";
 import type { Entity } from "@/types/ui.interface";
 
 interface Props {
 	entity: Entity;
 	limit: number;
-	searchParam: string | null;
+	searchParam: string | undefined;
 	sort: string;
-	tagsParamString: string;
+	// tagsParamString: string;
 }
 
 export default function SortItems({
@@ -15,23 +14,21 @@ export default function SortItems({
 	limit,
 	searchParam,
 	sort,
-	tagsParamString,
+	// tagsParamString,
 }: Props) {
-	const [_, setSearchParams] = useSearchParams();
-
 	const sortOption = paginatedSortOptions.find(
 		(sortOption) => sortOption.entity === entity,
 	);
 
 	let params = "";
 	if (searchParam) params += `&q=${searchParam}`;
-	if (tagsParamString) params += tagsParamString;
+	// if (tagsParamString) params += tagsParamString;
 
 	function handleSelect(
 		e: React.ChangeEvent<HTMLSelectElement, HTMLSelectElement>,
 	) {
 		const newSearchString = `?page=1&limit=${limit}&orderBy=${e.currentTarget.value}${params}`;
-		setSearchParams(newSearchString);
+		// setSearchParams(newSearchString);
 	}
 
 	const defaultValue = sortOption?.options.find(
