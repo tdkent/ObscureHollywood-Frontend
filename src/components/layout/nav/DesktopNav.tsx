@@ -1,4 +1,4 @@
-import { NavLink, useLocation } from "react-router";
+import { Link, useLocation } from "@tanstack/react-router";
 import { navLinks } from "@/lib/navLinks";
 
 /** Render list of navigation links. */
@@ -13,13 +13,13 @@ export default function DesktopNav() {
 				{navLinks.map((link) => {
 					return (
 						<li key={link.label}>
-							<NavLink
+							<Link
 								to={link.href}
 								data-testid={`${link.testId}`}
 								className={`text-lg font-bodini-moda xl:text-xl ${isHome ? "text-shadow-[1px_1px_0_rgb(0,0,0)]" : ""}`}
 							>
 								{link.label}
-							</NavLink>
+							</Link>
 						</li>
 					);
 				})}
