@@ -9,33 +9,20 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as StudiosRouteImport } from './routes/studios'
 import { Route as SearchRouteImport } from './routes/search'
-import { Route as PeopleRouteImport } from './routes/people'
-import { Route as FilmsRouteImport } from './routes/films'
 import { Route as DisclaimerRouteImport } from './routes/disclaimer'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as StudiosIndexRouteImport } from './routes/studios.index'
+import { Route as PeopleIndexRouteImport } from './routes/people.index'
+import { Route as FilmsIndexRouteImport } from './routes/films.index'
 import { Route as FeaturesIndexRouteImport } from './routes/features.index'
+import { Route as PeopleSlugRouteImport } from './routes/people/$slug'
+import { Route as FilmsSlugRouteImport } from './routes/films/$slug'
 import { Route as FeaturesSlugRouteImport } from './routes/features/$slug'
 
-const StudiosRoute = StudiosRouteImport.update({
-  id: '/studios',
-  path: '/studios',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const SearchRoute = SearchRouteImport.update({
   id: '/search',
   path: '/search',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PeopleRoute = PeopleRouteImport.update({
-  id: '/people',
-  path: '/people',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const FilmsRoute = FilmsRouteImport.update({
-  id: '/films',
-  path: '/films',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DisclaimerRoute = DisclaimerRouteImport.update({
@@ -48,9 +35,34 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const StudiosIndexRoute = StudiosIndexRouteImport.update({
+  id: '/studios/',
+  path: '/studios/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PeopleIndexRoute = PeopleIndexRouteImport.update({
+  id: '/people/',
+  path: '/people/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FilmsIndexRoute = FilmsIndexRouteImport.update({
+  id: '/films/',
+  path: '/films/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const FeaturesIndexRoute = FeaturesIndexRouteImport.update({
   id: '/features/',
   path: '/features/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PeopleSlugRoute = PeopleSlugRouteImport.update({
+  id: '/people/$slug',
+  path: '/people/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FilmsSlugRoute = FilmsSlugRouteImport.update({
+  id: '/films/$slug',
+  path: '/films/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FeaturesSlugRoute = FeaturesSlugRouteImport.update({
@@ -62,106 +74,99 @@ const FeaturesSlugRoute = FeaturesSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/disclaimer': typeof DisclaimerRoute
-  '/films': typeof FilmsRoute
-  '/people': typeof PeopleRoute
   '/search': typeof SearchRoute
-  '/studios': typeof StudiosRoute
   '/features/$slug': typeof FeaturesSlugRoute
+  '/films/$slug': typeof FilmsSlugRoute
+  '/people/$slug': typeof PeopleSlugRoute
   '/features/': typeof FeaturesIndexRoute
+  '/films/': typeof FilmsIndexRoute
+  '/people/': typeof PeopleIndexRoute
+  '/studios/': typeof StudiosIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/disclaimer': typeof DisclaimerRoute
-  '/films': typeof FilmsRoute
-  '/people': typeof PeopleRoute
   '/search': typeof SearchRoute
-  '/studios': typeof StudiosRoute
   '/features/$slug': typeof FeaturesSlugRoute
+  '/films/$slug': typeof FilmsSlugRoute
+  '/people/$slug': typeof PeopleSlugRoute
   '/features': typeof FeaturesIndexRoute
+  '/films': typeof FilmsIndexRoute
+  '/people': typeof PeopleIndexRoute
+  '/studios': typeof StudiosIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/disclaimer': typeof DisclaimerRoute
-  '/films': typeof FilmsRoute
-  '/people': typeof PeopleRoute
   '/search': typeof SearchRoute
-  '/studios': typeof StudiosRoute
   '/features/$slug': typeof FeaturesSlugRoute
+  '/films/$slug': typeof FilmsSlugRoute
+  '/people/$slug': typeof PeopleSlugRoute
   '/features/': typeof FeaturesIndexRoute
+  '/films/': typeof FilmsIndexRoute
+  '/people/': typeof PeopleIndexRoute
+  '/studios/': typeof StudiosIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/disclaimer'
-    | '/films'
-    | '/people'
     | '/search'
-    | '/studios'
     | '/features/$slug'
+    | '/films/$slug'
+    | '/people/$slug'
     | '/features/'
+    | '/films/'
+    | '/people/'
+    | '/studios/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/disclaimer'
+    | '/search'
+    | '/features/$slug'
+    | '/films/$slug'
+    | '/people/$slug'
+    | '/features'
     | '/films'
     | '/people'
-    | '/search'
     | '/studios'
-    | '/features/$slug'
-    | '/features'
   id:
     | '__root__'
     | '/'
     | '/disclaimer'
-    | '/films'
-    | '/people'
     | '/search'
-    | '/studios'
     | '/features/$slug'
+    | '/films/$slug'
+    | '/people/$slug'
     | '/features/'
+    | '/films/'
+    | '/people/'
+    | '/studios/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DisclaimerRoute: typeof DisclaimerRoute
-  FilmsRoute: typeof FilmsRoute
-  PeopleRoute: typeof PeopleRoute
   SearchRoute: typeof SearchRoute
-  StudiosRoute: typeof StudiosRoute
   FeaturesSlugRoute: typeof FeaturesSlugRoute
+  FilmsSlugRoute: typeof FilmsSlugRoute
+  PeopleSlugRoute: typeof PeopleSlugRoute
   FeaturesIndexRoute: typeof FeaturesIndexRoute
+  FilmsIndexRoute: typeof FilmsIndexRoute
+  PeopleIndexRoute: typeof PeopleIndexRoute
+  StudiosIndexRoute: typeof StudiosIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/studios': {
-      id: '/studios'
-      path: '/studios'
-      fullPath: '/studios'
-      preLoaderRoute: typeof StudiosRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/search': {
       id: '/search'
       path: '/search'
       fullPath: '/search'
       preLoaderRoute: typeof SearchRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/people': {
-      id: '/people'
-      path: '/people'
-      fullPath: '/people'
-      preLoaderRoute: typeof PeopleRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/films': {
-      id: '/films'
-      path: '/films'
-      fullPath: '/films'
-      preLoaderRoute: typeof FilmsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/disclaimer': {
@@ -178,11 +183,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/studios/': {
+      id: '/studios/'
+      path: '/studios'
+      fullPath: '/studios/'
+      preLoaderRoute: typeof StudiosIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/people/': {
+      id: '/people/'
+      path: '/people'
+      fullPath: '/people/'
+      preLoaderRoute: typeof PeopleIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/films/': {
+      id: '/films/'
+      path: '/films'
+      fullPath: '/films/'
+      preLoaderRoute: typeof FilmsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/features/': {
       id: '/features/'
       path: '/features'
       fullPath: '/features/'
       preLoaderRoute: typeof FeaturesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/people/$slug': {
+      id: '/people/$slug'
+      path: '/people/$slug'
+      fullPath: '/people/$slug'
+      preLoaderRoute: typeof PeopleSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/films/$slug': {
+      id: '/films/$slug'
+      path: '/films/$slug'
+      fullPath: '/films/$slug'
+      preLoaderRoute: typeof FilmsSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/features/$slug': {
@@ -198,12 +238,14 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DisclaimerRoute: DisclaimerRoute,
-  FilmsRoute: FilmsRoute,
-  PeopleRoute: PeopleRoute,
   SearchRoute: SearchRoute,
-  StudiosRoute: StudiosRoute,
   FeaturesSlugRoute: FeaturesSlugRoute,
+  FilmsSlugRoute: FilmsSlugRoute,
+  PeopleSlugRoute: PeopleSlugRoute,
   FeaturesIndexRoute: FeaturesIndexRoute,
+  FilmsIndexRoute: FilmsIndexRoute,
+  PeopleIndexRoute: PeopleIndexRoute,
+  StudiosIndexRoute: StudiosIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

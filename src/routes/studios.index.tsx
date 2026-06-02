@@ -2,22 +2,16 @@ import { createFileRoute, useSearch } from "@tanstack/react-router";
 import ListPage from "@/components/layout/containers/ListPage";
 import type { UrlSearchParams } from "@/types/api.interface";
 
-export const Route = createFileRoute("/films")({
+export const Route = createFileRoute("/studios/")({
 	component: RouteComponent,
 });
 
 function RouteComponent() {
-	const { limit, orderBy, page, tag }: UrlSearchParams = useSearch({
-		from: "/films",
+	const { limit, orderBy, page }: UrlSearchParams = useSearch({
+		from: "/studios/",
 	});
 
 	return (
-		<ListPage
-			limit={limit}
-			orderBy={orderBy}
-			page={page}
-			route="films"
-			tags={tag}
-		/>
+		<ListPage limit={limit} orderBy={orderBy} page={page} route="studios" />
 	);
 }
