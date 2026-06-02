@@ -15,7 +15,7 @@ export default function Search({ isShelf }: Props) {
 
 		navigate({
 			to: "/search",
-			search: { searchString },
+			search: { q: searchString },
 		});
 	}
 
