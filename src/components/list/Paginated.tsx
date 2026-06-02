@@ -12,6 +12,8 @@ import Loading from "@/components/shared/Loading";
 import { getSearchParams } from "@/lib/utils/getSearchParams";
 import type { PaginatedResponse } from "@/types/paginated-response.interface";
 import type { Entity } from "@/types/ui.interface";
+import { createHttpRequestUrl } from "@/util/createHttpRequestUrl";
+import { createQueryKey } from "@/util/createQueryKey";
 import httpRequest from "@/util/httpRequest";
 
 interface Props {
@@ -19,7 +21,6 @@ interface Props {
 	page: string | undefined;
 	orderBy: string | undefined;
 	q?: string;
-	reqUrl?: string;
 	route: Entity;
 	showFilterControls?: boolean;
 }
@@ -29,7 +30,6 @@ export default function Paginated({
 	page,
 	orderBy,
 	q,
-	reqUrl,
 	route,
 	// showFilterControls,
 }: Props) {
@@ -45,22 +45,25 @@ export default function Paginated({
 
 	// const [filters, setFilters] = useState<string[]>(tags);
 
-	// Convert /search to /articles
-	const requestPath = route === "search" ? "/articles" : `/${route}`;
+	const reqUrl = createHttpRequestUrl({
+		limitParam,
+		pageParam,
+		route,
+		searchParam,
+		sortParam,
+	});
 
-	// Use request url from props if provided
-	const urlSearchParams = `?page=${pageParam}&limit=${limitParam}&orderBy=${sortParam}${searchParam && `&q=${searchParam}`}`;
-	const requestUrl = `${reqUrl ?? requestPath}${urlSearchParams}`;
-
-	// const { data, error, isPending } = useQuery({
-	// 	queryKey: [route, page, limit, sort, searchParam, ...tags],
-	// 	queryFn: () => httpRequest(requestUrl),
-	// 	placeholderData: keepPreviousData,
-	// });
+	const queryKey = createQueryKey({
+		limitParam,
+		pageParam,
+		route,
+		searchParam,
+		sortParam,
+	});
 
 	const { data, error, isPending } = useQuery({
-		queryKey: [route, pageParam, limitParam, sortParam, searchParam],
-		queryFn: () => httpRequest(requestUrl),
+		queryKey,
+		queryFn: () => httpRequest(reqUrl),
 		placeholderData: keepPreviousData,
 	});
 
