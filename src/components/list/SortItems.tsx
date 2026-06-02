@@ -1,38 +1,30 @@
+import { useNavigate } from "@tanstack/react-router";
 import { paginatedSortOptions } from "@/lib/paginatedSortOptions";
 import type { Entity } from "@/types/ui.interface";
 
 interface Props {
-	entity: Entity;
-	limit: number;
+	limitParam: number;
+	route: Entity;
 	searchParam: string | undefined;
-	sort: string;
-	// tagsParamString: string;
+	sortParam: string;
+	tagsParam: string[] | undefined;
 }
 
 export default function SortItems({
-	entity,
-	limit,
+	limitParam,
+	route,
 	searchParam,
-	sort,
-	// tagsParamString,
+	sortParam,
+	tagsParam,
 }: Props) {
+	const navigate = useNavigate({ from: `/${route}` });
+
 	const sortOption = paginatedSortOptions.find(
-		(sortOption) => sortOption.entity === entity,
+		(sortOption) => sortOption.entity === route,
 	);
 
-	let params = "";
-	if (searchParam) params += `&q=${searchParam}`;
-	// if (tagsParamString) params += tagsParamString;
-
-	function handleSelect(
-		e: React.ChangeEvent<HTMLSelectElement, HTMLSelectElement>,
-	) {
-		const newSearchString = `?page=1&limit=${limit}&orderBy=${e.currentTarget.value}${params}`;
-		// setSearchParams(newSearchString);
-	}
-
 	const defaultValue = sortOption?.options.find(
-		(opt) => opt.value === sort,
+		(opt) => opt.value === sortParam,
 	)?.value;
 
 	return (
@@ -42,7 +34,18 @@ export default function SortItems({
 				className="select w-3/5 sm:w-2/5 md:w-50"
 				defaultValue={defaultValue}
 				id="sort-items"
-				onChange={handleSelect}
+				onChange={(e) => {
+					navigate({
+						to: `/${route}`,
+						search: {
+							page: 1,
+							limit: limitParam,
+							orderBy: e.currentTarget.value,
+							q: searchParam,
+							tag: tagsParam,
+						},
+					});
+				}}
 			>
 				{sortOption
 					? sortOption.options

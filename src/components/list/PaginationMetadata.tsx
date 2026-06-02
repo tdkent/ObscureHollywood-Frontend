@@ -1,6 +1,6 @@
-// import { X } from "lucide-react";
+import { Link, useNavigate } from "@tanstack/react-router";
+import { X } from "lucide-react";
 import type { Dispatch, SetStateAction } from "react";
-// import { Link, useLocation, useSearchParams } from "react-router";
 import type { PaginatedResponse } from "@/types/paginated-response.interface";
 
 interface Props {
@@ -8,35 +8,39 @@ interface Props {
 	limitParam: number;
 	metadata: PaginatedResponse["meta"];
 	setFilters: Dispatch<SetStateAction<string[]>>;
+	showFilterControls: boolean;
 	sortParam: string;
-	// tags: string[];
+	tagsParam: string[] | undefined;
 }
 
 export default function PaginationMetadata({
 	hasData,
-	// limitParam,
+	limitParam,
 	metadata,
-	// setFilters,
-	// sortParam,
-	// tags,
+	setFilters,
+	showFilterControls,
+	sortParam,
+	tagsParam,
 }: Props) {
-	// const [_, setSearchParams] = useSearchParams();
-	// const { pathname } = useLocation();
-
-	// const showTags = pathname === "/films" && tags.length;
+	const navigate = useNavigate({ from: "/films" });
 
 	/** Remove selected tag and reconstruct search url. */
-	// function handleClick(selected: string) {
-	// 	const removeSelected = tags.filter((tag) => tag !== selected).sort();
-	// 	setFilters(removeSelected);
+	function handleClick(selected: string) {
+		if (!tagsParam?.length) return;
 
-	// 	const params = `?page=1&limit=${limitParam}&orderBy=${sortParam}`;
-	// 	const tagParams = removeSelected.length
-	// 		? `&tag=${removeSelected.join("&tag=")}`
-	// 		: "";
+		const removeSelected = tagsParam.filter((tag) => tag !== selected).sort();
+		setFilters(removeSelected);
 
-	// 	setSearchParams(`${params}${tagParams}`);
-	// }
+		navigate({
+			to: "/films",
+			search: {
+				page: 1,
+				limit: limitParam,
+				orderBy: sortParam,
+				tag: removeSelected,
+			},
+		});
+	}
 	return (
 		<div className="flex flex-col gap-6">
 			{hasData ? (
@@ -48,11 +52,11 @@ export default function PaginationMetadata({
 				<p>No results found.</p>
 			)}
 
-			{/* {showTags ? (
+			{showFilterControls && tagsParam?.length ? (
 				<div className="flex gap-2">
 					Tags:
 					<ul className="flex flex-col gap-2">
-						{tags.map((tag) => {
+						{tagsParam.map((tag) => {
 							return (
 								<li className="flex gap-3 items-center" key={tag}>
 									<Link
@@ -73,7 +77,7 @@ export default function PaginationMetadata({
 						})}
 					</ul>
 				</div>
-			) : null} */}
+			) : null}
 		</div>
 	);
 }

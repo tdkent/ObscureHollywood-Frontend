@@ -40,7 +40,7 @@ export default function ListPage({
 				searchParam={searchParam}
 				route={route}
 				showFilterControls={route === "films"}
-				tags={tags}
+				tagsParam={tags}
 			/>
 		</div>
 	);

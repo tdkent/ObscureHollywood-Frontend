@@ -12,7 +12,6 @@ interface Props {
 	limitParam: number;
 	setFilters: Dispatch<SetStateAction<string[]>>;
 	sortParam: string;
-	tagParams: string[];
 }
 
 export default function Filter({
@@ -21,7 +20,6 @@ export default function Filter({
 	limitParam,
 	setFilters,
 	sortParam,
-	tagParams,
 }: Props) {
 	const [isOpen, setIsOpen] = useState(false);
 
@@ -95,7 +93,6 @@ export default function Filter({
 						setFilters={setFilters}
 						setIsOpen={setIsOpen}
 						sortParam={sortParam}
-						tagParams={tagParams}
 						tags={tags}
 					/>
 				</div>

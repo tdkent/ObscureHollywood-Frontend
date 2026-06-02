@@ -1,7 +1,6 @@
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
-// import { useLocation } from "@tanstack/react-router";
-// import { useState } from "react";
-// import Filter from "@/components/list/Filter";
+import { useState } from "react";
+import Filter from "@/components/list/Filter";
 import ListItem from "@/components/list/ListItem";
 import PaginationLimit from "@/components/list/PaginationLimit";
 import PaginationLinks from "@/components/list/PaginationLinks";
@@ -23,7 +22,7 @@ interface Props {
 	searchParam?: string;
 	route: Entity;
 	showFilterControls?: boolean;
-	tags?: string[];
+	tagsParam?: string[];
 }
 
 export default function Paginated({
@@ -32,11 +31,9 @@ export default function Paginated({
 	orderBy,
 	searchParam,
 	route,
-	// showFilterControls,
-	tags,
+	showFilterControls,
+	tagsParam,
 }: Props) {
-	// const { search } = useLocation();
-
 	const { pageParam, limitParam, sortParam } = parseSearchParams({
 		limit,
 		orderBy,
@@ -44,7 +41,7 @@ export default function Paginated({
 		route,
 	});
 
-	// const [filters, setFilters] = useState<string[]>(tags);
+	const [filters, setFilters] = useState<string[]>(tagsParam ?? []);
 
 	const reqUrl = createHttpRequestUrl({
 		limitParam,
@@ -52,7 +49,7 @@ export default function Paginated({
 		route,
 		searchParam,
 		sortParam,
-		tags,
+		tagsParam,
 	});
 
 	const queryKey = createQueryKey({
@@ -61,7 +58,7 @@ export default function Paginated({
 		route,
 		searchParam,
 		sortParam,
-		tags,
+		tagsParam,
 	});
 
 	const { data, error, isPending } = useQuery({
@@ -84,40 +81,40 @@ export default function Paginated({
 					hasData={!!hasResults}
 					limitParam={limitParam}
 					metadata={paginatedData.meta}
-					// setFilters={setFilters}
-					setFilters={() => {}}
+					setFilters={setFilters}
+					showFilterControls={!!showFilterControls}
 					sortParam={sortParam}
-					// tags={tags}
+					tagsParam={tagsParam}
 				/>
 				{hasResults ? (
 					<div className="flex flex-col gap-6 w-full lg:flex-row lg:gap-16">
 						{totalItems >= 25 && (
 							<PaginationLimit
 								currLimit={limitParam}
+								route={route}
 								searchParam={searchParam}
 								sortParam={sortParam}
-								// tagsParamString={tagsParamString}
+								tagsParam={tagsParam}
 							/>
 						)}
 						<SortItems
-							entity={route}
-							limit={limitParam}
+							limitParam={limitParam}
+							route={route}
 							searchParam={searchParam}
-							sort={sortParam}
-							// tagsParamString={tagsParamString}
+							sortParam={sortParam}
+							tagsParam={tagsParam}
 						/>
 					</div>
 				) : null}
-				{/* {showFilterControls && (
+				{showFilterControls && (
 					<Filter
 						filmsPending={isPending}
 						filters={filters}
-						limitParam={limit}
+						limitParam={limitParam}
 						setFilters={setFilters}
-						sortParam={sort}
-						tagParams={tags}
+						sortParam={sortParam}
 					/>
-				)} */}
+				)}
 			</div>
 			{hasResults ? (
 				<>

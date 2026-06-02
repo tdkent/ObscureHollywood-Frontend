@@ -1,6 +1,6 @@
+import { useNavigate } from "@tanstack/react-router";
 import type { Dispatch, SetStateAction } from "react";
 import React from "react";
-import { useSearchParams } from "react-router";
 import type { Tag } from "@/types/tag.interface";
 
 interface Props {
@@ -10,7 +10,6 @@ interface Props {
 	setFilters: Dispatch<SetStateAction<string[]>>;
 	setIsOpen: Dispatch<SetStateAction<boolean>>;
 	sortParam: string;
-	tagParams: string[];
 	tags: Tag[];
 }
 
@@ -23,9 +22,7 @@ export default function FilterForm({
 	sortParam,
 	tags,
 }: Props) {
-	// const [filters, setFilters] = useState<string[]>(tagParams);
-	const [_, setSearchParams] = useSearchParams();
-
+	const navigate = useNavigate({ from: `/films` });
 	const types: Tag["type"][] = ["decade", "genre", "production", "theme"];
 
 	function handleCheck(
@@ -62,9 +59,16 @@ export default function FilterForm({
 
 	function handleApply() {
 		setIsOpen(false);
-		const params = `?page=1&limit=${limitParam}&orderBy=${sortParam}`;
-		const tagParams = filters.length ? `&tag=${filters.join("&tag=")}` : "";
-		setSearchParams(`${params}${tagParams}`);
+
+		navigate({
+			to: "/films",
+			search: {
+				page: 1,
+				limit: limitParam,
+				orderBy: sortParam,
+				tag: filters.length ? filters : undefined,
+			},
+		});
 	}
 
 	return (
