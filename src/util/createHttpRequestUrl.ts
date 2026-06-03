@@ -1,9 +1,7 @@
-import type { Entity } from "@/types/ui.interface";
-
 interface Inputs {
 	limitParam: number;
 	pageParam: number;
-	route: Entity;
+	route: string;
 	searchParam?: string;
 	sortParam: string;
 	tagsParam?: string[];

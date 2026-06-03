@@ -19,8 +19,9 @@ interface Props {
 	limit: string | undefined;
 	page: string | undefined;
 	orderBy: string | undefined;
-	searchParam?: string;
+	queryUrl?: string;
 	route: Entity;
+	searchParam?: string;
 	showFilterControls?: boolean;
 	tagsParam?: string[];
 }
@@ -29,6 +30,7 @@ export default function Paginated({
 	limit,
 	page,
 	orderBy,
+	queryUrl,
 	searchParam,
 	route,
 	showFilterControls,
@@ -46,7 +48,7 @@ export default function Paginated({
 	const reqUrl = createHttpRequestUrl({
 		limitParam,
 		pageParam,
-		route,
+		route: queryUrl ?? route,
 		searchParam,
 		sortParam,
 		tagsParam,
