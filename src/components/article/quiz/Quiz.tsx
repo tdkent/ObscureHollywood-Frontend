@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { Link, useLocation, useParams } from "react-router";
+import { Link, useParams } from "@tanstack/react-router";
 import ArticleHeader from "@/components/article/ArticleHeader";
 import QuizForm from "@/components/article/quiz/QuizForm";
 import QuizResults from "@/components/article/quiz/QuizResults";
@@ -8,18 +8,14 @@ import Loading from "@/components/shared/Loading";
 import NotFound from "@/components/shared/NotFound";
 import { getUserId } from "@/lib/utils/getUserId";
 import type { QuizWithRelations } from "@/types/quiz.interface";
-import type { Entity } from "@/types/ui.interface";
 import httpRequest from "@/util/httpRequest";
 
 export default function Quiz() {
-	const { slug } = useParams();
-	const { pathname } = useLocation();
-
-	const entity: Entity = "quiz";
+	const { slug } = useParams({ from: "/quiz/$slug" });
 
 	const { data, error, isPending } = useQuery({
-		queryKey: [entity, slug],
-		queryFn: () => httpRequest(pathname),
+		queryKey: ["quiz", slug],
+		queryFn: () => httpRequest(`/quiz/${slug}`),
 	});
 
 	if (isPending) return <Loading variant="quiz" />;

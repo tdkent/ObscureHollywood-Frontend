@@ -11,3 +11,13 @@ export interface UrlSearchParams {
 	q?: string;
 	tag?: string[];
 }
+
+/**
+ * HTTP Request
+ */
+
+// Mutation options
+export interface OptionsInput {
+	method: "POST";
+	body: object;
+}

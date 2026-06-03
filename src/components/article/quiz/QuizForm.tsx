@@ -1,16 +1,17 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useParams } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { useLocation, useParams } from "react-router";
 import { v4 as uuidv4 } from "uuid";
 import Question from "@/components/article/quiz/Question";
 import ScoreModal from "@/components/article/quiz/ScoreModal";
 import { getUserId } from "@/lib/utils/getUserId";
+import type { OptionsInput } from "@/types/api.interface";
 import type {
 	QuizQuestion,
 	QuizResultWithCorrectAnswers,
 } from "@/types/quiz.interface";
-import type { FormInputs, OptionsInput } from "@/types/ui.interface";
+import type { FormInputs } from "@/types/ui.interface";
 import httpRequest from "@/util/httpRequest";
 
 interface Props {
@@ -19,15 +20,13 @@ interface Props {
 }
 
 export default function QuizForm({ questions, quizName }: Props) {
-	const { pathname } = useLocation();
-	const { slug } = useParams();
-
-	const route = `${pathname}/result`;
+	const { slug } = useParams({ from: "/quiz/$slug" });
 
 	const queryClient = useQueryClient();
 
 	const mutation = useMutation({
-		mutationFn: (options: OptionsInput) => httpRequest(route, options),
+		mutationFn: (options: OptionsInput) =>
+			httpRequest(`/quiz/${slug}/result`, options),
 		onSuccess: async () => {
 			await Promise.all([
 				queryClient.invalidateQueries({ queryKey: ["result", slug] }),

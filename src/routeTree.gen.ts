@@ -10,14 +10,17 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SearchRouteImport } from './routes/search'
+import { Route as MyQuizzesRouteImport } from './routes/my-quizzes'
 import { Route as DisclaimerRouteImport } from './routes/disclaimer'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as StudiosIndexRouteImport } from './routes/studios.index'
+import { Route as QuizIndexRouteImport } from './routes/quiz.index'
 import { Route as PeopleIndexRouteImport } from './routes/people.index'
 import { Route as FilmsIndexRouteImport } from './routes/films.index'
 import { Route as FeaturesIndexRouteImport } from './routes/features.index'
 import { Route as TagsSlugRouteImport } from './routes/tags/$slug'
 import { Route as StudiosSlugRouteImport } from './routes/studios/$slug'
+import { Route as QuizSlugRouteImport } from './routes/quiz/$slug'
 import { Route as PeopleSlugRouteImport } from './routes/people/$slug'
 import { Route as FilmsSlugRouteImport } from './routes/films/$slug'
 import { Route as FeaturesSlugRouteImport } from './routes/features/$slug'
@@ -25,6 +28,11 @@ import { Route as FeaturesSlugRouteImport } from './routes/features/$slug'
 const SearchRoute = SearchRouteImport.update({
   id: '/search',
   path: '/search',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MyQuizzesRoute = MyQuizzesRouteImport.update({
+  id: '/my-quizzes',
+  path: '/my-quizzes',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DisclaimerRoute = DisclaimerRouteImport.update({
@@ -40,6 +48,11 @@ const IndexRoute = IndexRouteImport.update({
 const StudiosIndexRoute = StudiosIndexRouteImport.update({
   id: '/studios/',
   path: '/studios/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QuizIndexRoute = QuizIndexRouteImport.update({
+  id: '/quiz/',
+  path: '/quiz/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PeopleIndexRoute = PeopleIndexRouteImport.update({
@@ -67,6 +80,11 @@ const StudiosSlugRoute = StudiosSlugRouteImport.update({
   path: '/studios/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const QuizSlugRoute = QuizSlugRouteImport.update({
+  id: '/quiz/$slug',
+  path: '/quiz/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PeopleSlugRoute = PeopleSlugRouteImport.update({
   id: '/people/$slug',
   path: '/people/$slug',
@@ -86,44 +104,53 @@ const FeaturesSlugRoute = FeaturesSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/disclaimer': typeof DisclaimerRoute
+  '/my-quizzes': typeof MyQuizzesRoute
   '/search': typeof SearchRoute
   '/features/$slug': typeof FeaturesSlugRoute
   '/films/$slug': typeof FilmsSlugRoute
   '/people/$slug': typeof PeopleSlugRoute
+  '/quiz/$slug': typeof QuizSlugRoute
   '/studios/$slug': typeof StudiosSlugRoute
   '/tags/$slug': typeof TagsSlugRoute
   '/features/': typeof FeaturesIndexRoute
   '/films/': typeof FilmsIndexRoute
   '/people/': typeof PeopleIndexRoute
+  '/quiz/': typeof QuizIndexRoute
   '/studios/': typeof StudiosIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/disclaimer': typeof DisclaimerRoute
+  '/my-quizzes': typeof MyQuizzesRoute
   '/search': typeof SearchRoute
   '/features/$slug': typeof FeaturesSlugRoute
   '/films/$slug': typeof FilmsSlugRoute
   '/people/$slug': typeof PeopleSlugRoute
+  '/quiz/$slug': typeof QuizSlugRoute
   '/studios/$slug': typeof StudiosSlugRoute
   '/tags/$slug': typeof TagsSlugRoute
   '/features': typeof FeaturesIndexRoute
   '/films': typeof FilmsIndexRoute
   '/people': typeof PeopleIndexRoute
+  '/quiz': typeof QuizIndexRoute
   '/studios': typeof StudiosIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/disclaimer': typeof DisclaimerRoute
+  '/my-quizzes': typeof MyQuizzesRoute
   '/search': typeof SearchRoute
   '/features/$slug': typeof FeaturesSlugRoute
   '/films/$slug': typeof FilmsSlugRoute
   '/people/$slug': typeof PeopleSlugRoute
+  '/quiz/$slug': typeof QuizSlugRoute
   '/studios/$slug': typeof StudiosSlugRoute
   '/tags/$slug': typeof TagsSlugRoute
   '/features/': typeof FeaturesIndexRoute
   '/films/': typeof FilmsIndexRoute
   '/people/': typeof PeopleIndexRoute
+  '/quiz/': typeof QuizIndexRoute
   '/studios/': typeof StudiosIndexRoute
 }
 export interface FileRouteTypes {
@@ -131,58 +158,70 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/disclaimer'
+    | '/my-quizzes'
     | '/search'
     | '/features/$slug'
     | '/films/$slug'
     | '/people/$slug'
+    | '/quiz/$slug'
     | '/studios/$slug'
     | '/tags/$slug'
     | '/features/'
     | '/films/'
     | '/people/'
+    | '/quiz/'
     | '/studios/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/disclaimer'
+    | '/my-quizzes'
     | '/search'
     | '/features/$slug'
     | '/films/$slug'
     | '/people/$slug'
+    | '/quiz/$slug'
     | '/studios/$slug'
     | '/tags/$slug'
     | '/features'
     | '/films'
     | '/people'
+    | '/quiz'
     | '/studios'
   id:
     | '__root__'
     | '/'
     | '/disclaimer'
+    | '/my-quizzes'
     | '/search'
     | '/features/$slug'
     | '/films/$slug'
     | '/people/$slug'
+    | '/quiz/$slug'
     | '/studios/$slug'
     | '/tags/$slug'
     | '/features/'
     | '/films/'
     | '/people/'
+    | '/quiz/'
     | '/studios/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DisclaimerRoute: typeof DisclaimerRoute
+  MyQuizzesRoute: typeof MyQuizzesRoute
   SearchRoute: typeof SearchRoute
   FeaturesSlugRoute: typeof FeaturesSlugRoute
   FilmsSlugRoute: typeof FilmsSlugRoute
   PeopleSlugRoute: typeof PeopleSlugRoute
+  QuizSlugRoute: typeof QuizSlugRoute
   StudiosSlugRoute: typeof StudiosSlugRoute
   TagsSlugRoute: typeof TagsSlugRoute
   FeaturesIndexRoute: typeof FeaturesIndexRoute
   FilmsIndexRoute: typeof FilmsIndexRoute
   PeopleIndexRoute: typeof PeopleIndexRoute
+  QuizIndexRoute: typeof QuizIndexRoute
   StudiosIndexRoute: typeof StudiosIndexRoute
 }
 
@@ -193,6 +232,13 @@ declare module '@tanstack/react-router' {
       path: '/search'
       fullPath: '/search'
       preLoaderRoute: typeof SearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/my-quizzes': {
+      id: '/my-quizzes'
+      path: '/my-quizzes'
+      fullPath: '/my-quizzes'
+      preLoaderRoute: typeof MyQuizzesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/disclaimer': {
@@ -214,6 +260,13 @@ declare module '@tanstack/react-router' {
       path: '/studios'
       fullPath: '/studios/'
       preLoaderRoute: typeof StudiosIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/quiz/': {
+      id: '/quiz/'
+      path: '/quiz'
+      fullPath: '/quiz/'
+      preLoaderRoute: typeof QuizIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/people/': {
@@ -251,6 +304,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof StudiosSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/quiz/$slug': {
+      id: '/quiz/$slug'
+      path: '/quiz/$slug'
+      fullPath: '/quiz/$slug'
+      preLoaderRoute: typeof QuizSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/people/$slug': {
       id: '/people/$slug'
       path: '/people/$slug'
@@ -278,15 +338,18 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DisclaimerRoute: DisclaimerRoute,
+  MyQuizzesRoute: MyQuizzesRoute,
   SearchRoute: SearchRoute,
   FeaturesSlugRoute: FeaturesSlugRoute,
   FilmsSlugRoute: FilmsSlugRoute,
   PeopleSlugRoute: PeopleSlugRoute,
+  QuizSlugRoute: QuizSlugRoute,
   StudiosSlugRoute: StudiosSlugRoute,
   TagsSlugRoute: TagsSlugRoute,
   FeaturesIndexRoute: FeaturesIndexRoute,
   FilmsIndexRoute: FilmsIndexRoute,
   PeopleIndexRoute: PeopleIndexRoute,
+  QuizIndexRoute: QuizIndexRoute,
   StudiosIndexRoute: StudiosIndexRoute,
 }
 export const routeTree = rootRouteImport
