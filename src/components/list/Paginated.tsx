@@ -57,7 +57,7 @@ export default function Paginated({
 	const queryKey = createQueryKey({
 		limitParam,
 		pageParam,
-		route,
+		route: queryUrl ?? route,
 		searchParam,
 		sortParam,
 		tagsParam,

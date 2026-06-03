@@ -16,8 +16,7 @@ export type Entity =
 	| "people"
 	| "quiz"
 	| "search"
-	| "studios"
-	| "tags";
+	| "studios";
 
 /**
  * Data presentation
