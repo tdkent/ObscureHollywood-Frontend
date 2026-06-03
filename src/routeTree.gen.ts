@@ -16,6 +16,7 @@ import { Route as StudiosIndexRouteImport } from './routes/studios.index'
 import { Route as PeopleIndexRouteImport } from './routes/people.index'
 import { Route as FilmsIndexRouteImport } from './routes/films.index'
 import { Route as FeaturesIndexRouteImport } from './routes/features.index'
+import { Route as TagsSlugRouteImport } from './routes/tags/$slug'
 import { Route as StudiosSlugRouteImport } from './routes/studios/$slug'
 import { Route as PeopleSlugRouteImport } from './routes/people/$slug'
 import { Route as FilmsSlugRouteImport } from './routes/films/$slug'
@@ -56,6 +57,11 @@ const FeaturesIndexRoute = FeaturesIndexRouteImport.update({
   path: '/features/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TagsSlugRoute = TagsSlugRouteImport.update({
+  id: '/tags/$slug',
+  path: '/tags/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const StudiosSlugRoute = StudiosSlugRouteImport.update({
   id: '/studios/$slug',
   path: '/studios/$slug',
@@ -85,6 +91,7 @@ export interface FileRoutesByFullPath {
   '/films/$slug': typeof FilmsSlugRoute
   '/people/$slug': typeof PeopleSlugRoute
   '/studios/$slug': typeof StudiosSlugRoute
+  '/tags/$slug': typeof TagsSlugRoute
   '/features/': typeof FeaturesIndexRoute
   '/films/': typeof FilmsIndexRoute
   '/people/': typeof PeopleIndexRoute
@@ -98,6 +105,7 @@ export interface FileRoutesByTo {
   '/films/$slug': typeof FilmsSlugRoute
   '/people/$slug': typeof PeopleSlugRoute
   '/studios/$slug': typeof StudiosSlugRoute
+  '/tags/$slug': typeof TagsSlugRoute
   '/features': typeof FeaturesIndexRoute
   '/films': typeof FilmsIndexRoute
   '/people': typeof PeopleIndexRoute
@@ -112,6 +120,7 @@ export interface FileRoutesById {
   '/films/$slug': typeof FilmsSlugRoute
   '/people/$slug': typeof PeopleSlugRoute
   '/studios/$slug': typeof StudiosSlugRoute
+  '/tags/$slug': typeof TagsSlugRoute
   '/features/': typeof FeaturesIndexRoute
   '/films/': typeof FilmsIndexRoute
   '/people/': typeof PeopleIndexRoute
@@ -127,6 +136,7 @@ export interface FileRouteTypes {
     | '/films/$slug'
     | '/people/$slug'
     | '/studios/$slug'
+    | '/tags/$slug'
     | '/features/'
     | '/films/'
     | '/people/'
@@ -140,6 +150,7 @@ export interface FileRouteTypes {
     | '/films/$slug'
     | '/people/$slug'
     | '/studios/$slug'
+    | '/tags/$slug'
     | '/features'
     | '/films'
     | '/people'
@@ -153,6 +164,7 @@ export interface FileRouteTypes {
     | '/films/$slug'
     | '/people/$slug'
     | '/studios/$slug'
+    | '/tags/$slug'
     | '/features/'
     | '/films/'
     | '/people/'
@@ -167,6 +179,7 @@ export interface RootRouteChildren {
   FilmsSlugRoute: typeof FilmsSlugRoute
   PeopleSlugRoute: typeof PeopleSlugRoute
   StudiosSlugRoute: typeof StudiosSlugRoute
+  TagsSlugRoute: typeof TagsSlugRoute
   FeaturesIndexRoute: typeof FeaturesIndexRoute
   FilmsIndexRoute: typeof FilmsIndexRoute
   PeopleIndexRoute: typeof PeopleIndexRoute
@@ -224,6 +237,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FeaturesIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tags/$slug': {
+      id: '/tags/$slug'
+      path: '/tags/$slug'
+      fullPath: '/tags/$slug'
+      preLoaderRoute: typeof TagsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/studios/$slug': {
       id: '/studios/$slug'
       path: '/studios/$slug'
@@ -263,6 +283,7 @@ const rootRouteChildren: RootRouteChildren = {
   FilmsSlugRoute: FilmsSlugRoute,
   PeopleSlugRoute: PeopleSlugRoute,
   StudiosSlugRoute: StudiosSlugRoute,
+  TagsSlugRoute: TagsSlugRoute,
   FeaturesIndexRoute: FeaturesIndexRoute,
   FilmsIndexRoute: FilmsIndexRoute,
   PeopleIndexRoute: PeopleIndexRoute,
