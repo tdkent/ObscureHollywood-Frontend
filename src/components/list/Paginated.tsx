@@ -101,6 +101,7 @@ export default function Paginated({
 						)}
 						<SortItems
 							limitParam={limitParam}
+							queryUrl={queryUrl}
 							route={route}
 							searchParam={searchParam}
 							sortParam={sortParam}

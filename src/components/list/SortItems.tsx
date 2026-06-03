@@ -1,9 +1,10 @@
-import { useNavigate } from "@tanstack/react-router";
+import { useLocation, useNavigate } from "@tanstack/react-router";
 import { paginatedSortOptions } from "@/lib/paginatedSortOptions";
 import type { Entity } from "@/types/ui.interface";
 
 interface Props {
 	limitParam: number;
+	queryUrl?: string;
 	route: Entity;
 	searchParam: string | undefined;
 	sortParam: string;
@@ -17,7 +18,8 @@ export default function SortItems({
 	sortParam,
 	tagsParam,
 }: Props) {
-	const navigate = useNavigate({ from: `/${route}` });
+	const { pathname } = useLocation();
+	const navigate = useNavigate();
 
 	const sortOption = paginatedSortOptions.find(
 		(sortOption) => sortOption.entity === route,
@@ -36,7 +38,7 @@ export default function SortItems({
 				id="sort-items"
 				onChange={(e) => {
 					navigate({
-						to: `/${route}`,
+						to: pathname,
 						search: {
 							page: 1,
 							limit: limitParam,
