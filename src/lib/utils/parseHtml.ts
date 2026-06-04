@@ -1,12 +1,7 @@
-import DOMPurify from "dompurify";
 import parse from "html-react-parser";
 
 export function parseHtmlToString(text: string) {
-	const html = DOMPurify.sanitize(text, {
-		USE_PROFILES: { html: true },
-	}).replaceAll('\\"', '"');
-
-	const parsed = parse(html);
+	const parsed = parse(text.replaceAll(`\\"`, `"`));
 
 	return parsed as string;
 }

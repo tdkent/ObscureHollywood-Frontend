@@ -1,5 +1,4 @@
 import { Link } from "@tanstack/react-router";
-import DOMPurify from "dompurify";
 import parse, { type HTMLReactParserOptions } from "html-react-parser";
 import Image from "@/components/shared/Image";
 
@@ -8,11 +7,7 @@ interface Props {
 }
 
 export default function ParsedHtml({ htmlContent }: Props) {
-	const html = DOMPurify.sanitize(htmlContent, {
-		USE_PROFILES: { html: true },
-	})
-		// Filter out escapes
-		.replaceAll(`\\"`, `"`);
+	const html = htmlContent.replaceAll(`\\"`, `"`);
 
 	const options: HTMLReactParserOptions = {
 		replace(domNode) {
@@ -38,13 +33,6 @@ export default function ParsedHtml({ htmlContent }: Props) {
 				}
 				// Fallback text
 				else text = "UNKNOWN TEXT";
-
-				// Check if link is member of 'link-list' class element
-				// const isLinkList =
-				// 	(domNode.parent?.parent?.type === "tag" &&
-				// 		domNode.parent?.parent?.attribs.class === "link-list") ||
-				// 	(domNode.parent?.parent?.parent?.type === "tag" &&
-				// 		domNode.parent?.parent?.parent?.attribs.class === "link-list");
 
 				return (
 					<Link className="content-link" to={href}>
