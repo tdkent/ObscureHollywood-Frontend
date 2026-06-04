@@ -6,7 +6,7 @@ import RelatedArticles from "@/components/article/RelatedArticles";
 import DescriptionList from "@/components/shared/DescriptionList";
 import type { FilmWithRelations } from "@/types/film.interface";
 import type { FilteredDlMetadata } from "@/types/ui.interface";
-import { articleQueryOptions } from "@/util/query/articleQueryOptions";
+import { articleQueryOptions } from "@/util/articleQueryOptions";
 
 export default function FilmArticle() {
 	const { slug } = useParams({ from: "/films/$slug" });

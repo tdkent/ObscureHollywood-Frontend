@@ -6,8 +6,8 @@ import QuizResults from "@/components/article/quiz/QuizResults";
 import DisplayError from "@/components/shared/DisplayError";
 import Loading from "@/components/shared/Loading";
 import NotFound from "@/components/shared/NotFound";
-import { getUserId } from "@/lib/utils/getUserId";
 import type { QuizWithRelations } from "@/types/quiz.interface";
+import { getUserId } from "@/util/getUserId";
 import httpRequest from "@/util/httpRequest";
 
 export default function Quiz() {

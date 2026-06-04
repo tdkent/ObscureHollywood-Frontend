@@ -4,14 +4,14 @@ import ArticleHeader from "@/components/article/ArticleHeader";
 import ParsedHtml from "@/components/article/ParsedHtml";
 import RelatedArticles from "@/components/article/RelatedArticles";
 import DescriptionList from "@/components/shared/DescriptionList";
-import { getFormattedDateString } from "@/lib/utils/formatPersonDates";
 import type { Film } from "@/types/film.interface";
 import type { PersonWithRelations } from "@/types/person.interface";
 import type {
 	FilteredDlMetadata,
 	UnfilteredDlMetadata,
 } from "@/types/ui.interface";
-import { articleQueryOptions } from "@/util/query/articleQueryOptions";
+import { articleQueryOptions } from "@/util/articleQueryOptions";
+import { getFormattedDateString } from "@/util/formatPersonDates";
 
 /** Render header and parsed HTML of Person article. */
 export default function PersonArticle() {

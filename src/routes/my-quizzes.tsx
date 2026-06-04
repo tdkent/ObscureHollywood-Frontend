@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import ArticleHeader from "@/components/article/ArticleHeader";
 import UserQuizzes from "@/components/my-quizzes/UserQuizzes";
-import { getUserId } from "@/lib/utils/getUserId";
+import { getUserId } from "@/util/getUserId";
 
 export const Route = createFileRoute("/my-quizzes")({
 	component: RouteComponent,

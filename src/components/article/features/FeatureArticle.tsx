@@ -4,7 +4,7 @@ import ArticleHeader from "@/components/article/ArticleHeader";
 import ParsedHtml from "@/components/article/ParsedHtml";
 import RelatedArticles from "@/components/article/RelatedArticles";
 import type { FeatureWithRelations } from "@/types/feature.interface";
-import { articleQueryOptions } from "@/util/query/articleQueryOptions";
+import { articleQueryOptions } from "@/util/articleQueryOptions";
 
 export default function FeatureArticle() {
 	const { slug } = useParams({ from: "/features/$slug" });

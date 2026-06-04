@@ -2,11 +2,11 @@ import { useQuery } from "@tanstack/react-query";
 import SectionListItem from "@/components/home/SectionListItem";
 import DisplayError from "@/components/shared/DisplayError";
 import Loading from "@/components/shared/Loading";
-import { getPersonLifespanString } from "@/lib/utils/formatPersonDates";
 import type { Feature } from "@/types/feature.interface";
 import type { Film } from "@/types/film.interface";
 import type { PartialListItem } from "@/types/paginated-response.interface";
 import type { Person } from "@/types/person.interface";
+import { getPersonLifespanString } from "@/util/formatPersonDates";
 import httpRequest from "@/util/httpRequest";
 
 interface Props {

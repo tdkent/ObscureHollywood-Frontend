@@ -1,12 +1,12 @@
 import { Link } from "@tanstack/react-router";
 import Image from "@/components/shared/Image";
-import { getPersonLifespanString } from "@/lib/utils/formatPersonDates";
 import type { Feature } from "@/types/feature.interface";
 import type { Film } from "@/types/film.interface";
 import type { PartialListItem } from "@/types/paginated-response.interface";
 import type { Person } from "@/types/person.interface";
 import type { Search } from "@/types/search.interface";
 import type { Entity } from "@/types/ui.interface";
+import { getPersonLifespanString } from "@/util/formatPersonDates";
 
 interface Props {
 	entity: Entity;

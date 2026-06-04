@@ -3,7 +3,7 @@ import { Suspense } from "react";
 import FilmArticle from "@/components/article/film/FilmArticle";
 import DetailPage from "@/components/layout/containers/DetailPage";
 import Loading from "@/components/shared/Loading";
-import { articleQueryOptions } from "@/util/query/articleQueryOptions";
+import { articleQueryOptions } from "@/util/articleQueryOptions";
 
 export const Route = createFileRoute("/films/$slug")({
 	loader: async ({ context, params }) => {

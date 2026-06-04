@@ -5,13 +5,13 @@ import { useForm } from "react-hook-form";
 import { v4 as uuidv4 } from "uuid";
 import Question from "@/components/article/quiz/Question";
 import ScoreModal from "@/components/article/quiz/ScoreModal";
-import { getUserId } from "@/lib/utils/getUserId";
 import type { OptionsInput } from "@/types/api.interface";
 import type {
 	QuizQuestion,
 	QuizResultWithCorrectAnswers,
 } from "@/types/quiz.interface";
 import type { FormInputs } from "@/types/ui.interface";
+import { getUserId } from "@/util/getUserId";
 import httpRequest from "@/util/httpRequest";
 
 interface Props {
