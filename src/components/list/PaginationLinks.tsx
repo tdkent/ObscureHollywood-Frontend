@@ -1,19 +1,27 @@
-import { Link } from "react-router";
-import type { PaginatedResponse } from "@/types/paginated-response.interface";
+import { Link, useLocation } from "@tanstack/react-router";
 
 interface Props {
-	currentPage: number;
-	lastPage: number;
-	links: PaginatedResponse["links"];
+	limit: number;
+	orderBy: string;
+	page: number;
+	searchParam?: string;
+	tagsParam?: string[];
+	totalPages: number;
 }
 
 export default function PaginationLinks({
-	currentPage,
-	lastPage,
-	links,
+	limit,
+	orderBy,
+	page,
+	searchParam,
+	tagsParam,
+	totalPages,
 }: Props) {
-	const isFirstPage = currentPage === 1;
-	const isLastPage = !lastPage || currentPage === lastPage;
+	const { pathname } = useLocation();
+
+	const isFirstPage = page <= 1;
+	const isLastPage = !totalPages || page >= totalPages;
+
 	return (
 		<nav aria-label="Pagination" className="flex justify-center mt-12">
 			<ul className="join">
@@ -26,7 +34,14 @@ export default function PaginationLinks({
 						<Link
 							aria-label="Previous page"
 							className="w-full h-full px-4 flex items-center sm:text-lg sm:px-6"
-							to={`?${links.previous}`}
+							to={pathname}
+							search={{
+								page: page <= 1 ? 1 : page - 1,
+								limit,
+								orderBy,
+								search: searchParam,
+								tag: tagsParam,
+							}}
 						>
 							Back
 						</Link>
@@ -41,14 +56,21 @@ export default function PaginationLinks({
 						<Link
 							aria-label="Page 1"
 							className="w-full h-full px-4 flex items-center sm:text-lg sm:px-6"
-							to={`?${links.first}`}
+							to={pathname}
+							search={{
+								page: 1,
+								limit,
+								orderBy,
+								search: searchParam,
+								tag: tagsParam,
+							}}
 						>
 							1
 						</Link>
 					)}
 				</li>
 				<li className="join-item btn btn-active cursor-default sm:text-lg sm:px-6">
-					<span aria-current>{currentPage}</span>
+					<span aria-current>{isFirstPage ? 1 : page}</span>
 				</li>
 				<li className={`join-item btn p-0 ${isLastPage && "btn-disabled"}`}>
 					{isLastPage ? (
@@ -59,7 +81,14 @@ export default function PaginationLinks({
 						<Link
 							aria-label="Next page"
 							className="w-full h-full px-4 flex items-center sm:text-lg sm:px-6"
-							to={`?${links.next}`}
+							to={pathname}
+							search={{
+								page: isFirstPage ? 2 : page + 1,
+								limit,
+								orderBy,
+								search: searchParam,
+								tag: tagsParam,
+							}}
 						>
 							Next
 						</Link>
@@ -72,9 +101,16 @@ export default function PaginationLinks({
 						</span>
 					) : (
 						<Link
-							aria-label={`Page ${lastPage || 1}`}
+							aria-label={`Page ${totalPages || 1}`}
 							className="w-full h-full px-4 flex items-center sm:text-lg sm:px-6"
-							to={`?${links.last}`}
+							to={pathname}
+							search={{
+								page: totalPages,
+								limit,
+								orderBy,
+								search: searchParam,
+								tag: tagsParam,
+							}}
 						>
 							Last
 						</Link>

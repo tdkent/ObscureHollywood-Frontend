@@ -1,39 +1,28 @@
-import { useQuery } from "@tanstack/react-query";
-import { useLocation, useParams } from "react-router";
-import httpRequest from "@/api/httpRequest";
+import { useSuspenseQuery } from "@tanstack/react-query";
+import { useParams } from "@tanstack/react-router";
 import ArticleHeader from "@/components/article/ArticleHeader";
 import ParsedHtml from "@/components/article/ParsedHtml";
 import RelatedArticles from "@/components/article/RelatedArticles";
 import DescriptionList from "@/components/shared/DescriptionList";
-import DisplayError from "@/components/shared/DisplayError";
-import Loading from "@/components/shared/Loading";
-import NotFound from "@/components/shared/NotFound";
-import { getFormattedDateString } from "@/lib/utils/formatPersonDates";
 import type { Film } from "@/types/film.interface";
 import type { PersonWithRelations } from "@/types/person.interface";
 import type {
-	Entity,
 	FilteredDlMetadata,
 	UnfilteredDlMetadata,
 } from "@/types/ui.interface";
+import { articleQueryOptions } from "@/util/articleQueryOptions";
+import { getFormattedDateString } from "@/util/formatPersonDates";
 
 /** Render header and parsed HTML of Person article. */
 export default function PersonArticle() {
-	const { slug } = useParams();
-	const { pathname } = useLocation();
+	const { slug } = useParams({ from: "/people/$slug" });
 
-	const entity: Entity = "people";
-
-	const { data, error, isPending } = useQuery({
-		queryKey: [entity, slug],
-		queryFn: () => httpRequest(pathname),
-	});
-
-	if (isPending) return <Loading hasDescList isFullArticle variant="article" />;
-	if (error) {
-		if (error.message === "Resource not found") return <NotFound />;
-		return <DisplayError />;
-	}
+	const personQuery = useSuspenseQuery(
+		articleQueryOptions({
+			route: "people",
+			slug,
+		}),
+	);
 
 	const {
 		age,
@@ -45,7 +34,7 @@ export default function PersonArticle() {
 		name,
 		personFilms,
 		slug: personSlug,
-	} = data as PersonWithRelations;
+	} = personQuery.data as PersonWithRelations;
 
 	const roles = personFilms
 		? Array.from(new Set(personFilms.map((pf) => pf.role)))

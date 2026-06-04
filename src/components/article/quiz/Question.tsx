@@ -1,9 +1,9 @@
 import { type Control, Controller, type FieldErrors } from "react-hook-form";
 import RadioGroup from "@/components/article/quiz/RadioGroup";
 import ResultAlert from "@/components/article/quiz/ResultAlert";
-import { parseHtmlToString } from "@/lib/utils/parseHtml";
 import type { QuizQuestion } from "@/types/quiz.interface";
 import type { FormInputs } from "@/types/ui.interface";
+import { parseHtmlToString } from "@/util/parseHtml";
 
 interface Props {
 	control: Control<FormInputs>;

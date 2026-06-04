@@ -1,5 +1,5 @@
 import { BACKEND_URL } from "@/constants/api.constants";
-import type { OptionsInput } from "@/types/ui.interface";
+import type { OptionsInput } from "@/types/api.interface";
 
 type ReqOptions = RequestInit | undefined;
 

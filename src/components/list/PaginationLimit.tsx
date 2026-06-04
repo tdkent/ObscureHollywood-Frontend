@@ -1,31 +1,30 @@
-import { useSearchParams } from "react-router";
+import { useNavigate } from "@tanstack/react-router";
+import type { Entity } from "@/types/ui.interface";
 
 interface Props {
 	currLimit: number;
-	searchParam: string | null;
+	route: Entity;
+	searchParam: string | undefined;
 	sortParam: string;
-	tagsParamString: string;
+	tagsParam: string[] | undefined;
 }
 
 export default function PaginationLimit({
 	currLimit,
+	route,
 	searchParam,
 	sortParam,
-	tagsParamString,
+	tagsParam,
 }: Props) {
-	const [_, setSearchParams] = useSearchParams();
+	const navigate = useNavigate();
 
-	const limitOptions = [25, 50];
-
-	let params = `&orderBy=${sortParam}`;
-	if (searchParam) params += `&q=${searchParam}`;
-	if (tagsParamString) params += tagsParamString;
+	const LIMIT_OPTIONS = [25, 50];
 
 	return (
 		<div className="flex justify-between items-center md:justify-start">
 			<span className="md:w-30 lg:w-24">Per page:</span>
 			<div className="flex gap-4 w-3/5 sm:w-2/5 md:w-50">
-				{limitOptions.map((option) => {
+				{LIMIT_OPTIONS.map((option) => {
 					const selected = option === currLimit;
 					return (
 						<button
@@ -33,9 +32,18 @@ export default function PaginationLimit({
 							key={option}
 							type="button"
 							disabled={selected}
-							onClick={() =>
-								setSearchParams(`?page=1&limit=${option}${params}`)
-							}
+							onClick={() => {
+								navigate({
+									to: `/${route}`,
+									search: {
+										page: 1,
+										limit: option,
+										orderBy: sortParam,
+										q: searchParam,
+										tag: tagsParam,
+									},
+								});
+							}}
 						>
 							{option}
 						</button>

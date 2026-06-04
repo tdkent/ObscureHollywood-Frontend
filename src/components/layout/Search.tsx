@@ -1,5 +1,5 @@
+import { useLocation, useNavigate } from "@tanstack/react-router";
 import { Search as SearchIcon } from "lucide-react";
-import { useLocation, useNavigate } from "react-router";
 
 interface Props {
 	isShelf?: boolean;
@@ -14,8 +14,8 @@ export default function Search({ isShelf }: Props) {
 		const searchString = formData.get("search")?.toString().trim();
 
 		navigate({
-			pathname: "/search",
-			search: `?q=${searchString}`,
+			to: "/search",
+			search: { q: searchString },
 		});
 	}
 

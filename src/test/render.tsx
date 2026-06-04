@@ -1,17 +1,47 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import {
+	createMemoryHistory,
+	createRouter,
+	RouterProvider,
+} from "@tanstack/react-router";
 import { render } from "@testing-library/react";
-import { MemoryRouter } from "react-router";
 
-export function renderWithClient(ui: React.ReactNode, routes: string[]) {
+import { routeTree } from "@/routeTree.gen";
+
+export async function renderWithRouter(initialPath = "/") {
 	const queryClient = new QueryClient({
 		defaultOptions: {
-			queries: { retry: false },
+			queries: {
+				retry: false,
+				gcTime: 0,
+			},
 		},
 	});
 
-	return render(
+	const history = createMemoryHistory({
+		initialEntries: [initialPath],
+	});
+
+	const router = createRouter({
+		routeTree,
+		history,
+		context: {
+			queryClient,
+		},
+	});
+
+	const renderResult = render(
 		<QueryClientProvider client={queryClient}>
-			<MemoryRouter initialEntries={routes}>{ui}</MemoryRouter>
+			<RouterProvider router={router} />
 		</QueryClientProvider>,
 	);
+
+	// Ensure initial route has finished loading
+	await router.load();
+
+	return {
+		...renderResult,
+		router,
+		queryClient,
+	};
 }

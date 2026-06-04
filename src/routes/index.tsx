@@ -1,7 +1,14 @@
+import { createFileRoute } from "@tanstack/react-router";
 import Section from "@/components/home/Section";
 import Splash from "@/components/home/Splash";
 
-export default function HomePage() {
+export const Route = createFileRoute("/")({
+	//? Cannot use SSR route loader because fetch is prop-dependent
+	//? Route loader cannot access component props
+	component: Home,
+});
+
+function Home() {
 	const featureImgs: { name: string; slug: string }[] = [
 		{
 			name: "Douglas Fairbanks",
@@ -81,7 +88,7 @@ export default function HomePage() {
 					route="features"
 					title="Feature articles"
 					text="In-depth articles about a diverse range of topics including early
-						film history, lost silents, and much more."
+							film history, lost silents, and much more."
 				/>
 				<Section
 					imgs={filmImgs}
@@ -90,7 +97,7 @@ export default function HomePage() {
 					route="films"
 					title="Film discussions"
 					text="Synopses and discussions of nearly 200 obscure and classic Hollywood
-						films from the silent, pre-Code, and classic eras."
+							films from the silent, pre-Code, and classic eras."
 				/>
 				<Section
 					imgs={peopleImgs}
@@ -98,7 +105,7 @@ export default function HomePage() {
 					route="people"
 					title="Actor & director biographies"
 					text="Explore detailed biographies of dozens of actors, directors, and
-						screenwriters."
+							screenwriters."
 				/>
 			</div>
 		</>

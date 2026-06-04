@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import { Link } from "@tanstack/react-router";
 import { navLinks } from "@/lib/navLinks";
 
 export default function Footer() {

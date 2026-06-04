@@ -1,5 +1,4 @@
-// import { ChevronRight } from "lucide-react";
-import { Link } from "react-router";
+import { Link } from "@tanstack/react-router";
 import type { ArticleWithRelations } from "@/types/article.interface";
 
 interface Props {
@@ -20,12 +19,15 @@ export default function RelatedArticles({ relatedArticles }: Props) {
 					} = relation;
 					return (
 						<li key={id}>
-							<Link
-								className="content-link"
-								to={`/${category === "person" ? "people" : `${category}s`}/${slug}`}
-							>
-								{name}
-							</Link>
+							{category === "person" ? (
+								<Link to="/people/$slug" params={{ slug }}>
+									{name}
+								</Link>
+							) : (
+								<Link to={`/${category}s/$slug`} params={{ slug }}>
+									{name}
+								</Link>
+							)}
 						</li>
 					);
 				})}

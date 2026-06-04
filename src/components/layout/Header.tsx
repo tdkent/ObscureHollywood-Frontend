@@ -1,4 +1,4 @@
-import { useLocation } from "react-router";
+import { useLocation } from "@tanstack/react-router";
 import Logo from "@/components/layout/Logo";
 import Navigation from "@/components/layout/Navigation";
 import Search from "@/components/layout/Search";

@@ -1,15 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
-import { useParams } from "react-router";
-import httpRequest from "@/api/httpRequest";
+import { useParams } from "@tanstack/react-router";
 import Loading from "@/components/shared/Loading";
 import type { UserSingleQuizResults } from "@/types/quiz.interface";
+import httpRequest from "@/util/httpRequest";
 
 interface Props {
 	userId: string;
 }
 
 export default function QuizResults({ userId }: Props) {
-	const { slug } = useParams();
+	const { slug } = useParams({ from: "/quiz/$slug" });
+
 	const { data, error, isLoading } = useQuery({
 		queryKey: ["result", slug],
 		queryFn: () => httpRequest(`/users/${userId}/quiz-results/${slug}`),

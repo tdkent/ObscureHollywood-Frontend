@@ -1,7 +1,7 @@
 import type { Dispatch, SetStateAction } from "react";
 import type { UseFormReset } from "react-hook-form";
-import { createScoreMsg } from "@/lib/utils/createScoreMsg";
 import type { FormInputs } from "@/types/ui.interface";
+import { createScoreMsg } from "@/util/createScoreMsg";
 
 interface Props {
 	modal: HTMLDialogElement;

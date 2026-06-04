@@ -1,45 +1,50 @@
 /**
- * Navigation
+ * Routes
  */
+
+// Navigation
 export interface NavLink {
 	href: string;
 	label: string;
 	testId: string;
 }
 
-/**
- * Data Entities
- */
-
+// Page routes
 export type Entity =
 	| "features"
 	| "films"
 	| "people"
 	| "quiz"
 	| "search"
-	| "studios"
-	| "tags";
+	| "studios";
 
+/**
+ * Data presentation
+ */
+
+// Description lists
 interface DlDescription {
 	label: number | string | null;
 	href?: string;
 }
 
-//Use if some/all db entries may be null
+//? Use if some/all db entries may be null
 export interface UnfilteredDlMetadata {
 	title: string | null;
 	description: DlDescription | DlDescription[] | null;
 }
 
-// Use after data has been filtered for null entries
+//? Use after data has been filtered for null entries
 export interface FilteredDlMetadata {
 	title: string;
 	description: DlDescription | DlDescription[];
 }
 
 /**
- * Sort
+ * Forms
  */
+
+// Sort select
 export interface SelectOption {
 	id: number;
 	label: string;
@@ -54,10 +59,4 @@ export interface SortOption {
 // Quiz form
 export interface FormInputs {
 	[key: string]: string;
-}
-
-// Http request options
-export interface OptionsInput {
-	method: "POST";
-	body: object;
 }

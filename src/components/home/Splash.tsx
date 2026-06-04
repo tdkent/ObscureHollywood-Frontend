@@ -17,7 +17,6 @@ export default function Splash() {
 								The obscure revisited.
 							</span>
 						</h1>
-						{/* <div className="grow"></div> */}
 						<div className="h-full w-full flex">
 							<div className="bg-black/50 px-6 py-4 self-end flex items-center justify-center motion-safe:animate-fade-move-up motion-safe:[animation-delay:900ms] sm:px-12 sm:py-8 xl:px-24">
 								<p className="text-light-text text-balance font-thin text-lg leading-8 motion-safe:animate-fade motion-safe:[animation-delay:1200ms] sm:text-xl lg:text-2xl lg:py-10 xl:pr-40">

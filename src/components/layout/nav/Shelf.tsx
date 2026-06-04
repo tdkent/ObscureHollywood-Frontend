@@ -1,6 +1,6 @@
+import { Link } from "@tanstack/react-router";
 import { ChevronRightIcon, Minus } from "lucide-react";
 import type { Dispatch, SetStateAction } from "react";
-import { NavLink } from "react-router";
 import Logo from "@/components/layout/Logo";
 import Search from "@/components/layout/Search";
 import { navLinks } from "@/lib/navLinks";
@@ -54,18 +54,17 @@ export default function Shelf({
 						{navLinks.map((link) => {
 							return (
 								<li key={link.label} className="px-2 py-4 text-3xl sm:text-4xl">
-									<NavLink
+									<Link
 										to={link.href}
 										className="w-full"
 										onClick={handleClick}
 										data-testid={`mobile-${link.testId}`}
-										end
 									>
 										<div className="flex items-center justify-between font-bodini-moda italic">
 											{link.label.toLowerCase()}
 											<ChevronRightIcon className="size-4 stroke-1 stroke-gold-dark sm:size-6" />
 										</div>
-									</NavLink>
+									</Link>
 								</li>
 							);
 						})}

@@ -1,23 +1,24 @@
 import { useQuery } from "@tanstack/react-query";
-import { useLocation, useParams } from "react-router";
-import httpRequest from "@/api/httpRequest";
+import { useParams, useSearch } from "@tanstack/react-router";
 import ArticleHeader from "@/components/article/ArticleHeader";
 import Paginated from "@/components/list/Paginated";
 import DisplayError from "@/components/shared/DisplayError";
 import Loading from "@/components/shared/Loading";
 import NotFound from "@/components/shared/NotFound";
+import type { UrlSearchParams } from "@/types/api.interface";
 import type { TagWithRelations } from "@/types/tag.interface";
-import type { Entity } from "@/types/ui.interface";
+import httpRequest from "@/util/httpRequest";
 
 export default function TagArticle() {
-	const { slug } = useParams();
-	const { pathname } = useLocation();
+	const { slug } = useParams({ from: "/tags/$slug" });
 
-	const entity: Entity = "tags";
+	const { limit, orderBy, page }: UrlSearchParams = useSearch({
+		from: "/tags/$slug",
+	});
 
 	const { data, error, isPending } = useQuery({
-		queryKey: [entity, slug],
-		queryFn: () => httpRequest(pathname),
+		queryKey: ["tags", slug],
+		queryFn: () => httpRequest(`/tags/${slug}`),
 	});
 
 	if (isPending) return <Loading variant="article" />;
@@ -40,7 +41,13 @@ export default function TagArticle() {
 			>
 				<p className="px-6 sm:px-12 md:text-lg">{description}</p>
 			</ArticleHeader>
-			<Paginated reqUrl={`/tags/${slug}/films`} routeEntity="films" />
+			<Paginated
+				limit={limit}
+				orderBy={orderBy}
+				page={page}
+				queryUrl={`tags/${slug}/films`}
+				route="films"
+			/>
 		</>
 	);
 }

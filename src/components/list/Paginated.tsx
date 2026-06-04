@@ -1,7 +1,5 @@
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { useState } from "react";
-import { useLocation, useSearchParams } from "react-router";
-import httpRequest from "@/api/httpRequest";
 import Filter from "@/components/list/Filter";
 import ListItem from "@/components/list/ListItem";
 import PaginationLimit from "@/components/list/PaginationLimit";
@@ -10,46 +8,64 @@ import PaginationMetadata from "@/components/list/PaginationMetadata";
 import SortItems from "@/components/list/SortItems";
 import DisplayError from "@/components/shared/DisplayError";
 import Loading from "@/components/shared/Loading";
-import { getSearchParams } from "@/lib/utils/getSearchParams";
 import type { PaginatedResponse } from "@/types/paginated-response.interface";
 import type { Entity } from "@/types/ui.interface";
+import { createHttpRequestUrl } from "@/util/createHttpRequestUrl";
+import { createQueryKey } from "@/util/createQueryKey";
+import httpRequest from "@/util/httpRequest";
+import { parseSearchParams } from "@/util/parseSearchParams";
 
 interface Props {
-	reqUrl?: string;
-	routeEntity?: Entity;
+	limit: string | undefined;
+	page: string | undefined;
+	orderBy: string | undefined;
+	queryUrl?: string;
+	route: Entity;
+	searchParam?: string;
 	showFilterControls?: boolean;
+	tagsParam?: string[];
 }
 
 export default function Paginated({
-	reqUrl,
-	routeEntity,
+	limit,
+	page,
+	orderBy,
+	queryUrl,
+	searchParam,
+	route,
 	showFilterControls,
+	tagsParam,
 }: Props) {
-	const { pathname, search } = useLocation();
-	const [searchParams] = useSearchParams();
+	const { pageParam, limitParam, sortParam } = parseSearchParams({
+		limit,
+		orderBy,
+		page,
+		route,
+	});
 
-	// Use entity if provided in props
-	const entity = routeEntity ?? (pathname.slice(1) as Entity);
+	const [filters, setFilters] = useState<string[]>(tagsParam ?? []);
 
-	const { limit, page, searchParam, sort, tags, tagsParamString } =
-		getSearchParams({
-			entity,
-			searchParams,
-			search,
-		});
+	const reqUrl = createHttpRequestUrl({
+		limitParam,
+		pageParam,
+		route: queryUrl ?? route,
+		searchParam,
+		sortParam,
+		tagsParam,
+	});
 
-	const [filters, setFilters] = useState<string[]>(tags);
-
-	// Convert /search to /articles
-	const requestPath = pathname === "/search" ? "/articles" : pathname;
-
-	// Use request url from props if provided
-	const requestUrl = `${reqUrl ?? requestPath}${search}`;
+	const queryKey = createQueryKey({
+		limitParam,
+		pageParam,
+		route: queryUrl ?? route,
+		searchParam,
+		sortParam,
+		tagsParam,
+	});
 
 	const { data, error, isPending } = useQuery({
-		// Use route and search params as query key
-		queryKey: [pathname, page, limit, sort, searchParam, ...tags],
-		queryFn: () => httpRequest(requestUrl),
+		queryKey,
+		queryFn: () => httpRequest(reqUrl),
 		placeholderData: keepPreviousData,
 	});
 
@@ -65,28 +81,31 @@ export default function Paginated({
 			<div className="flex flex-col gap-6 py-4 px-6 text-sm sm:px-12 sm:py-8 sm:text-base">
 				<PaginationMetadata
 					hasData={!!hasResults}
-					limitParam={limit}
+					limitParam={limitParam}
 					metadata={paginatedData.meta}
 					setFilters={setFilters}
-					sortParam={sort}
-					tags={tags}
+					showFilterControls={!!showFilterControls}
+					sortParam={sortParam}
+					tagsParam={tagsParam}
 				/>
 				{hasResults ? (
 					<div className="flex flex-col gap-6 w-full lg:flex-row lg:gap-16">
 						{totalItems >= 25 && (
 							<PaginationLimit
-								currLimit={limit}
+								currLimit={limitParam}
+								route={route}
 								searchParam={searchParam}
-								sortParam={sort}
-								tagsParamString={tagsParamString}
+								sortParam={sortParam}
+								tagsParam={tagsParam}
 							/>
 						)}
 						<SortItems
-							entity={entity}
-							limit={limit}
+							limitParam={limitParam}
+							queryUrl={queryUrl}
+							route={route}
 							searchParam={searchParam}
-							sort={sort}
-							tagsParamString={tagsParamString}
+							sortParam={sortParam}
+							tagsParam={tagsParam}
 						/>
 					</div>
 				) : null}
@@ -94,10 +113,9 @@ export default function Paginated({
 					<Filter
 						filmsPending={isPending}
 						filters={filters}
-						limitParam={limit}
+						limitParam={limitParam}
 						setFilters={setFilters}
-						sortParam={sort}
-						tagParams={tags}
+						sortParam={sortParam}
 					/>
 				)}
 			</div>
@@ -105,13 +123,16 @@ export default function Paginated({
 				<>
 					<ul className="my-8 flex flex-col sm:my-12">
 						{paginatedData.data.map((item) => {
-							return <ListItem key={item.id} entity={entity} item={item} />;
+							return <ListItem key={item.id} entity={route} item={item} />;
 						})}
 					</ul>
 					<PaginationLinks
-						currentPage={page}
-						lastPage={paginatedData.meta.totalPages}
-						links={paginatedData.links}
+						limit={limitParam}
+						orderBy={sortParam}
+						page={pageParam}
+						searchParam={searchParam}
+						tagsParam={tagsParam}
+						totalPages={paginatedData.meta.totalPages}
 					/>
 				</>
 			) : null}
