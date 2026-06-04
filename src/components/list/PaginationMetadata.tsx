@@ -22,7 +22,7 @@ export default function PaginationMetadata({
 	sortParam,
 	tagsParam,
 }: Props) {
-	const navigate = useNavigate({ from: "/films" });
+	const navigate = useNavigate({ from: "/films/" });
 
 	/** Remove selected tag and reconstruct search url. */
 	function handleClick(selected: string) {
@@ -60,7 +60,8 @@ export default function PaginationMetadata({
 							return (
 								<li className="flex gap-3 items-center" key={tag}>
 									<Link
-										to={`/tags/${tag}`}
+										to="/tags/$slug"
+										params={{ slug: tag }}
 										className="hover:underline underline-offset-4"
 									>
 										#{tag}

@@ -16,7 +16,8 @@ export default function PaginationLimit({
 	sortParam,
 	tagsParam,
 }: Props) {
-	const navigate = useNavigate({ from: `/${route}` });
+	const navigate = useNavigate();
+
 	const LIMIT_OPTIONS = [25, 50];
 
 	return (

@@ -22,7 +22,7 @@ export default function FilterForm({
 	sortParam,
 	tags,
 }: Props) {
-	const navigate = useNavigate({ from: `/films` });
+	const navigate = useNavigate({ from: `/films/` });
 	const types: Tag["type"][] = ["decade", "genre", "production", "theme"];
 
 	function handleCheck(

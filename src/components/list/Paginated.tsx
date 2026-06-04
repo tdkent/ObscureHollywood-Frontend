@@ -127,9 +127,12 @@ export default function Paginated({
 						})}
 					</ul>
 					<PaginationLinks
-						currentPage={pageParam}
 						lastPage={paginatedData.meta.totalPages}
-						links={paginatedData.links}
+						limit={limitParam}
+						orderBy={sortParam}
+						page={pageParam}
+						searchParam={searchParam}
+						tagsParam={tagsParam}
 					/>
 				</>
 			) : null}

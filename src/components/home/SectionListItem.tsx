@@ -34,7 +34,7 @@ export default function SectionListItem({
 			className={`rounded-2xl overflow-hidden border ${reduceMotion ? "" : `opacity-0 ${inView ? `animate-fade-move-up-more ${delays[idx]}` : ""}`}`}
 			ref={ref}
 		>
-			<Link to={`/${route}/${slug}`}>
+			<Link to={`/${route}/$slug`} params={{ slug }}>
 				<div className="p-2 flex items-center flex-nowrap gap-2.5 sm:gap-4 sm:px-4 sm:p-3 lg:flex-col">
 					<Image
 						altText={name}
