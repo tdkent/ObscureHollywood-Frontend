@@ -1,26 +1,26 @@
 import { Link, useLocation } from "@tanstack/react-router";
 
 interface Props {
-	lastPage: number;
 	limit: number;
 	orderBy: string;
 	page: number;
 	searchParam?: string;
 	tagsParam?: string[];
+	totalPages: number;
 }
 
 export default function PaginationLinks({
-	lastPage,
 	limit,
 	orderBy,
 	page,
 	searchParam,
 	tagsParam,
+	totalPages,
 }: Props) {
 	const { pathname } = useLocation();
 
 	const isFirstPage = page <= 1;
-	const isLastPage = !lastPage || page === lastPage;
+	const isLastPage = !totalPages || page >= totalPages;
 
 	return (
 		<nav aria-label="Pagination" className="flex justify-center mt-12">
@@ -83,7 +83,7 @@ export default function PaginationLinks({
 							className="w-full h-full px-4 flex items-center sm:text-lg sm:px-6"
 							to={pathname}
 							search={{
-								page: page + 1,
+								page: isFirstPage ? 2 : page + 1,
 								limit,
 								orderBy,
 								search: searchParam,
@@ -101,11 +101,11 @@ export default function PaginationLinks({
 						</span>
 					) : (
 						<Link
-							aria-label={`Page ${lastPage || 1}`}
+							aria-label={`Page ${totalPages || 1}`}
 							className="w-full h-full px-4 flex items-center sm:text-lg sm:px-6"
 							to={pathname}
 							search={{
-								page: lastPage,
+								page: totalPages,
 								limit,
 								orderBy,
 								search: searchParam,
