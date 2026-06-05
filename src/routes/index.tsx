@@ -6,6 +6,9 @@ export const Route = createFileRoute("/")({
 	//? Cannot use SSR route loader because fetch is prop-dependent
 	//? Route loader cannot access component props
 	component: Home,
+	head: () => ({
+		meta: [{ title: "Home - Obscure Hollywood" }],
+	}),
 });
 
 function Home() {
