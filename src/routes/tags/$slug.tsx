@@ -15,15 +15,20 @@ export const Route = createFileRoute("/tags/$slug")({
 			}),
 		)) as TagWithRelations;
 
-		return { tag };
+		const title = `${tag.type.slice(0, 1).toUpperCase()}${tag.type.slice(1)}: ${tag.name} - Obscure Hollywood`;
+		const description = `Description and list films matching the tag ${tag.name}.`;
+
+		return { tag, title, description };
 	},
 	component: RouteComponent,
 	head: ({ loaderData }) => ({
 		meta: [
 			{
-				title: loaderData
-					? `${loaderData.tag.type.slice(0, 1).toUpperCase()}${loaderData.tag.type.slice(1)}: ${loaderData.tag.name} - Obscure Hollywood`
-					: "Not Found - Obscure Hollywood",
+				title: loaderData ? loaderData.title : "Not Found - Obscure Hollywood",
+			},
+			{
+				name: "description",
+				content: loaderData ? loaderData.description : "Page not found",
 			},
 		],
 	}),
