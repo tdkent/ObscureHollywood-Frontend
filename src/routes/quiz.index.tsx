@@ -4,6 +4,9 @@ import type { UrlSearchParams } from "@/types/api.interface";
 
 export const Route = createFileRoute("/quiz/")({
 	component: RouteComponent,
+	head: () => ({
+		meta: [{ title: "Quizzes - Obscure Hollywood" }],
+	}),
 });
 
 function RouteComponent() {
