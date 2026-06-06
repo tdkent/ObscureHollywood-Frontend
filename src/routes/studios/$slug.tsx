@@ -15,7 +15,9 @@ export const Route = createFileRoute("/studios/$slug")({
 			}),
 		)) as StudioWithRelations;
 
-		return { studio };
+		const description = `Overview and partial filmography of film studio ${studio.name}.`;
+
+		return { studio, description };
 	},
 	component: RouteComponent,
 	head: ({ loaderData }) => ({
@@ -24,6 +26,10 @@ export const Route = createFileRoute("/studios/$slug")({
 				title: loaderData
 					? `${loaderData.studio.name} Film Studio - Obscure Hollywood`
 					: "Not Found - Obscure Hollywood",
+			},
+			{
+				name: "description",
+				content: loaderData ? loaderData.description : "Page not found",
 			},
 		],
 	}),

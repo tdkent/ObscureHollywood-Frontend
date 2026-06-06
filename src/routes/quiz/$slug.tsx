@@ -14,7 +14,9 @@ export const Route = createFileRoute("/quiz/$slug")({
 			}),
 		)) as QuizWithRelations;
 
-		return { quiz };
+		const description = `Test your knowledge with this fun 10-question quiz!`;
+
+		return { quiz, description };
 	},
 	component: RouteComponent,
 	head: ({ loaderData }) => ({
@@ -23,6 +25,10 @@ export const Route = createFileRoute("/quiz/$slug")({
 				title: loaderData
 					? `Quiz: ${loaderData.quiz.name} - Obscure Hollywood`
 					: "Not Found - Obscure Hollywood",
+			},
+			{
+				name: "description",
+				content: loaderData?.description,
 			},
 		],
 	}),
