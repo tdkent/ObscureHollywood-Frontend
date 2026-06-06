@@ -1,30 +1,27 @@
-import { useQuery } from "@tanstack/react-query";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import { Link, useParams } from "@tanstack/react-router";
 import ArticleHeader from "@/components/article/ArticleHeader";
 import QuizForm from "@/components/article/quiz/QuizForm";
 import QuizResults from "@/components/article/quiz/QuizResults";
-import DisplayError from "@/components/shared/DisplayError";
-import Loading from "@/components/shared/Loading";
-import NotFound from "@/components/shared/NotFound";
 import type { QuizWithRelations } from "@/types/quiz.interface";
+import { articleQueryOptions } from "@/util/articleQueryOptions";
 import { getUserId } from "@/util/getUserId";
-import httpRequest from "@/util/httpRequest";
 
 export default function Quiz() {
 	const { slug } = useParams({ from: "/quiz/$slug" });
 
-	const { data, error, isPending } = useQuery({
-		queryKey: ["quiz", slug],
-		queryFn: () => httpRequest(`/quiz/${slug}`),
-	});
+	const quizQuery = useSuspenseQuery(
+		articleQueryOptions({
+			route: "quiz",
+			slug,
+		}),
+	);
 
-	if (isPending) return <Loading variant="quiz" />;
-	if (error) {
-		if (error.message === "Resource not found") return <NotFound />;
-		return <DisplayError />;
-	}
-
-	const { name, quizQuestions, slug: quizSlug } = data as QuizWithRelations;
+	const {
+		name,
+		quizQuestions,
+		slug: quizSlug,
+	} = quizQuery.data as QuizWithRelations;
 
 	const userId = getUserId();
 	return (
