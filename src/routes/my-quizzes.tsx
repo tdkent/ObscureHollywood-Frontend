@@ -6,7 +6,10 @@ import { getUserId } from "@/util/getUserId";
 export const Route = createFileRoute("/my-quizzes")({
 	component: RouteComponent,
 	head: () => ({
-		meta: [{ title: "My Quizzes - Obscure Hollywood" }],
+		meta: [
+			{ title: "My Quizzes - Obscure Hollywood" },
+			{ name: "description", content: "Quiz results page" },
+		],
 	}),
 });
 

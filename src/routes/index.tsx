@@ -12,6 +12,11 @@ export const Route = createFileRoute("/")({
 				title:
 					"Reviews and commentary about obscure films and artists - Obscure Hollywood",
 			},
+			{
+				name: "description",
+				content:
+					"Obscure Hollywood features reviews, research and commentary about little-known Hollywood films and artists, particularly of the silent and early sound eras, that are worth revisiting.",
+			},
 		],
 	}),
 });

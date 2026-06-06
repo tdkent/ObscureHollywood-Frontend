@@ -15,15 +15,20 @@ export const Route = createFileRoute("/features/$slug")({
 			}),
 		)) as FeatureWithRelations;
 
-		return { feature };
+		const title = `${feature.name} - Obscure Hollywood`;
+		const description = `In-depth feature article about ${feature.name}, ${feature.subtitle}.`;
+
+		return { feature, title, description };
 	},
 	component: RouteComponent,
 	head: ({ loaderData }) => ({
 		meta: [
 			{
-				title: loaderData
-					? `${loaderData.feature.name} - Obscure Hollywood`
-					: "Not Found - Obscure Hollywood",
+				title: loaderData ? loaderData.title : "Not Found - Obscure Hollywood",
+			},
+			{
+				name: "description",
+				content: loaderData ? loaderData.description : "Page not found",
 			},
 		],
 	}),

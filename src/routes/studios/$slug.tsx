@@ -15,15 +15,20 @@ export const Route = createFileRoute("/studios/$slug")({
 			}),
 		)) as StudioWithRelations;
 
-		return { studio };
+		const title = `${studio.name} Film Studio - Obscure Hollywood`;
+		const description = `Overview and partial filmography of film studio ${studio.name}.`;
+
+		return { studio, title, description };
 	},
 	component: RouteComponent,
 	head: ({ loaderData }) => ({
 		meta: [
 			{
-				title: loaderData
-					? `${loaderData.studio.name} Film Studio - Obscure Hollywood`
-					: "Not Found - Obscure Hollywood",
+				title: loaderData ? loaderData.title : "Not Found - Obscure Hollywood",
+			},
+			{
+				name: "description",
+				content: loaderData ? loaderData.description : "Page not found",
 			},
 		],
 	}),

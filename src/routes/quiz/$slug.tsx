@@ -14,15 +14,20 @@ export const Route = createFileRoute("/quiz/$slug")({
 			}),
 		)) as QuizWithRelations;
 
-		return { quiz };
+		const title = `Quiz: ${quiz.name} - Obscure Hollywood`;
+		const description = `Test your knowledge with this fun 10-question quiz!`;
+
+		return { quiz, title, description };
 	},
 	component: RouteComponent,
 	head: ({ loaderData }) => ({
 		meta: [
 			{
-				title: loaderData
-					? `Quiz: ${loaderData.quiz.name} - Obscure Hollywood`
-					: "Not Found - Obscure Hollywood",
+				title: loaderData ? loaderData.title : "Not Found - Obscure Hollywood",
+			},
+			{
+				name: "description",
+				content: loaderData ? loaderData.description : "Page not found",
 			},
 		],
 	}),
