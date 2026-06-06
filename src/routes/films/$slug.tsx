@@ -15,15 +15,31 @@ export const Route = createFileRoute("/films/$slug")({
 			}),
 		)) as FilmWithRelations;
 
-		return { film };
+		const directorsStr = film.personFilms
+			.filter((person) => person.role === "director")
+			.map((person) => person.person.name)
+			.join(", ");
+
+		const actorsStr = film.personFilms
+			.filter((person) => person.role === "actor")
+			.sort((a, b) => a.castPosition - b.castPosition)
+			.map((person) => person.person.name)
+			.join(", ");
+
+		const title = `${film.name} (${film.releaseYear}) Film Synopsis & Discussion - Obscure Hollywood`;
+		const description = `Synopsis and discussion of the film ${film.name}, released in ${film.releaseYear} by ${film.studio.name}. The film stars ${actorsStr}, and is directed by ${directorsStr}.`;
+
+		return { film, title, description };
 	},
 	component: RouteComponent,
 	head: ({ loaderData }) => ({
 		meta: [
 			{
-				title: loaderData
-					? `${loaderData.film.name} (${loaderData.film.releaseYear}) Film Synopsis & Discussion - Obscure Hollywood`
-					: "Not Found - Obscure Hollywood",
+				title: loaderData ? loaderData.title : "Not Found - Obscure Hollywood",
+			},
+			{
+				name: "description",
+				content: loaderData ? loaderData.description : "Page Not Found",
 			},
 		],
 	}),
