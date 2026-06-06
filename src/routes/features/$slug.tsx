@@ -15,7 +15,9 @@ export const Route = createFileRoute("/features/$slug")({
 			}),
 		)) as FeatureWithRelations;
 
-		return { feature };
+		const description = `In-depth feature article about ${feature.name}, ${feature.subtitle}.`;
+
+		return { feature, description };
 	},
 	component: RouteComponent,
 	head: ({ loaderData }) => ({
@@ -24,6 +26,10 @@ export const Route = createFileRoute("/features/$slug")({
 				title: loaderData
 					? `${loaderData.feature.name} - Obscure Hollywood`
 					: "Not Found - Obscure Hollywood",
+			},
+			{
+				name: "description",
+				content: loaderData?.description,
 			},
 		],
 	}),
