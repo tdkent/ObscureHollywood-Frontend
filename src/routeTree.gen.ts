@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as SearchRouteImport } from './routes/search'
 import { Route as MyQuizzesRouteImport } from './routes/my-quizzes'
 import { Route as DisclaimerRouteImport } from './routes/disclaimer'
+import { Route as SplatRouteImport } from './routes/$'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as StudiosIndexRouteImport } from './routes/studios.index'
 import { Route as QuizIndexRouteImport } from './routes/quiz.index'
@@ -38,6 +39,11 @@ const MyQuizzesRoute = MyQuizzesRouteImport.update({
 const DisclaimerRoute = DisclaimerRouteImport.update({
   id: '/disclaimer',
   path: '/disclaimer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SplatRoute = SplatRouteImport.update({
+  id: '/$',
+  path: '/$',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -103,6 +109,7 @@ const FeaturesSlugRoute = FeaturesSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/$': typeof SplatRoute
   '/disclaimer': typeof DisclaimerRoute
   '/my-quizzes': typeof MyQuizzesRoute
   '/search': typeof SearchRoute
@@ -120,6 +127,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/$': typeof SplatRoute
   '/disclaimer': typeof DisclaimerRoute
   '/my-quizzes': typeof MyQuizzesRoute
   '/search': typeof SearchRoute
@@ -138,6 +146,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/$': typeof SplatRoute
   '/disclaimer': typeof DisclaimerRoute
   '/my-quizzes': typeof MyQuizzesRoute
   '/search': typeof SearchRoute
@@ -157,6 +166,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/$'
     | '/disclaimer'
     | '/my-quizzes'
     | '/search'
@@ -174,6 +184,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/$'
     | '/disclaimer'
     | '/my-quizzes'
     | '/search'
@@ -191,6 +202,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/$'
     | '/disclaimer'
     | '/my-quizzes'
     | '/search'
@@ -209,6 +221,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  SplatRoute: typeof SplatRoute
   DisclaimerRoute: typeof DisclaimerRoute
   MyQuizzesRoute: typeof MyQuizzesRoute
   SearchRoute: typeof SearchRoute
@@ -246,6 +259,13 @@ declare module '@tanstack/react-router' {
       path: '/disclaimer'
       fullPath: '/disclaimer'
       preLoaderRoute: typeof DisclaimerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/$': {
+      id: '/$'
+      path: '/$'
+      fullPath: '/$'
+      preLoaderRoute: typeof SplatRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -337,6 +357,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  SplatRoute: SplatRoute,
   DisclaimerRoute: DisclaimerRoute,
   MyQuizzesRoute: MyQuizzesRoute,
   SearchRoute: SearchRoute,
