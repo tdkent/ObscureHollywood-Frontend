@@ -32,15 +32,21 @@ export const Route = createFileRoute("/people/$slug")({
 					.join(", ")
 			: null;
 
-		return { person, lifespanStr, rolesStr };
+		const title = `${person.name} ${lifespanStr ? `(${lifespanStr})` : ""} ${rolesStr ? `Film ${rolesStr}` : ""} - Obscure Hollywood`;
+
+		const description = `${person.article ? "Biography, career overview, and discussion" : "Overview"} of ${rolesStr ? `film ${rolesStr.toLowerCase()}` : ""} ${person.name}${lifespanStr ? ` (${lifespanStr})` : ""}.`;
+
+		return { person, title, description };
 	},
 	component: RouteComponent,
 	head: ({ loaderData }) => ({
 		meta: [
 			{
-				title: loaderData
-					? `${loaderData.person.name} ${loaderData.lifespanStr ? `(${loaderData.lifespanStr})` : ""} ${loaderData.rolesStr ? `Film ${loaderData.rolesStr}` : ""} - Obscure Hollywood`
-					: "Not Found - Obscure Hollywood",
+				title: loaderData?.title,
+			},
+			{
+				name: "description",
+				content: loaderData?.description,
 			},
 		],
 	}),
