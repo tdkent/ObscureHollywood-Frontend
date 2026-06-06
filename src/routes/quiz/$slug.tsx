@@ -21,7 +21,7 @@ export const Route = createFileRoute("/quiz/$slug")({
 		meta: [
 			{
 				title: loaderData
-					? `${loaderData.quiz.name} Quiz - Obscure Hollywood`
+					? `Quiz: ${loaderData.quiz.name} - Obscure Hollywood`
 					: "Not Found - Obscure Hollywood",
 			},
 		],

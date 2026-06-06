@@ -22,7 +22,7 @@ export const Route = createFileRoute("/studios/$slug")({
 		meta: [
 			{
 				title: loaderData
-					? `${loaderData.studio.name} - Obscure Hollywood`
+					? `${loaderData.studio.name} Film Studio - Obscure Hollywood`
 					: "Not Found - Obscure Hollywood",
 			},
 		],

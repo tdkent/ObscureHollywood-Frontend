@@ -7,7 +7,12 @@ export const Route = createFileRoute("/")({
 	//? Route loader cannot access component props
 	component: Home,
 	head: () => ({
-		meta: [{ title: "Home - Obscure Hollywood" }],
+		meta: [
+			{
+				title:
+					"Reviews and commentary about obscure films and artists - Obscure Hollywood",
+			},
+		],
 	}),
 });
 
