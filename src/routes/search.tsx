@@ -5,7 +5,10 @@ import type { UrlSearchParams } from "@/types/api.interface";
 export const Route = createFileRoute("/search")({
 	component: RouteComponent,
 	head: () => ({
-		meta: [{ title: "Search - Obscure Hollywood" }],
+		meta: [
+			{ title: "Search - Obscure Hollywood" },
+			{ name: "description", content: "Search results" },
+		],
 	}),
 });
 
