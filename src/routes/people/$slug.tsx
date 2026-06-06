@@ -42,11 +42,11 @@ export const Route = createFileRoute("/people/$slug")({
 	head: ({ loaderData }) => ({
 		meta: [
 			{
-				title: loaderData?.title,
+				title: loaderData ? loaderData.title : "Not Found - Obscure Hollywood",
 			},
 			{
 				name: "description",
-				content: loaderData?.description,
+				content: loaderData ? loaderData.description : "Page not found",
 			},
 		],
 	}),

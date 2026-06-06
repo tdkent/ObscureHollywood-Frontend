@@ -39,7 +39,7 @@ export const Route = createFileRoute("/films/$slug")({
 			},
 			{
 				name: "description",
-				content: loaderData ? loaderData.description : "Page Not Found",
+				content: loaderData ? loaderData.description : "Page not found",
 			},
 		],
 	}),
