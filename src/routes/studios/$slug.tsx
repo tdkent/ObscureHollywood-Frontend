@@ -3,6 +3,7 @@ import { Suspense } from "react";
 import StudioArticle from "@/components/article/studio/StudioArticle";
 import DetailPage from "@/components/layout/containers/DetailPage";
 import Loading from "@/components/shared/Loading";
+import SlugPageError from "@/components/shared/SlugPageError";
 import type { StudioWithRelations } from "@/types/studio.interface";
 import { articleQueryOptions } from "@/util/articleQueryOptions";
 
@@ -21,14 +22,17 @@ export const Route = createFileRoute("/studios/$slug")({
 		return { studio, title, description };
 	},
 	component: RouteComponent,
+	errorComponent: ({ error }) => <SlugPageError error={error} />,
 	head: ({ loaderData }) => ({
 		meta: [
 			{
-				title: loaderData ? loaderData.title : "Not Found - Obscure Hollywood",
+				title: loaderData
+					? loaderData.title
+					: "Studio Article - Obscure Hollywood",
 			},
 			{
 				name: "description",
-				content: loaderData ? loaderData.description : "Page not found",
+				content: loaderData ? loaderData.description : "Studio article",
 			},
 		],
 	}),
