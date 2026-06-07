@@ -146,6 +146,16 @@
 				@apply p-0 mb-2 last:mb-0;
 			}
 		}
+
+		blockquote,
+		p.film-quote {
+			@apply px-6 pt-4 italic text-base sm:pl-8 sm:pr-16 lg:pl-16 lg:pr-36;
+		}
+
+		blockquote + p,
+		p.film-quote + p {
+			@apply pt-4;
+		}
 	}
 
 	.section {
