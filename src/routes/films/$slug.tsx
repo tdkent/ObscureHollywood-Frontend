@@ -3,6 +3,7 @@ import { Suspense } from "react";
 import FilmArticle from "@/components/article/film/FilmArticle";
 import DetailPage from "@/components/layout/containers/DetailPage";
 import Loading from "@/components/shared/Loading";
+import SlugPageError from "@/components/shared/SlugPageError";
 import type { FilmWithRelations } from "@/types/film.interface";
 import { articleQueryOptions } from "@/util/articleQueryOptions";
 
@@ -32,14 +33,17 @@ export const Route = createFileRoute("/films/$slug")({
 		return { film, title, description };
 	},
 	component: RouteComponent,
+	errorComponent: ({ error }) => <SlugPageError error={error} />,
 	head: ({ loaderData }) => ({
 		meta: [
 			{
-				title: loaderData ? loaderData.title : "Not Found - Obscure Hollywood",
+				title: loaderData
+					? loaderData.title
+					: "Film Article - Obscure Hollywood",
 			},
 			{
 				name: "description",
-				content: loaderData ? loaderData.description : "Page not found",
+				content: loaderData ? loaderData.description : "Film article",
 			},
 		],
 	}),

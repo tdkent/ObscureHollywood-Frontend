@@ -3,6 +3,7 @@ import { Suspense } from "react";
 import TagArticle from "@/components/article/tag/TagArticle";
 import DetailPage from "@/components/layout/containers/DetailPage";
 import Loading from "@/components/shared/Loading";
+import SlugPageError from "@/components/shared/SlugPageError";
 import type { TagWithRelations } from "@/types/tag.interface";
 import { articleQueryOptions } from "@/util/articleQueryOptions";
 
@@ -21,14 +22,17 @@ export const Route = createFileRoute("/tags/$slug")({
 		return { tag, title, description };
 	},
 	component: RouteComponent,
+	errorComponent: ({ error }) => <SlugPageError error={error} />,
 	head: ({ loaderData }) => ({
 		meta: [
 			{
-				title: loaderData ? loaderData.title : "Not Found - Obscure Hollywood",
+				title: loaderData
+					? loaderData.title
+					: "Tag Article - Obscure Hollywood",
 			},
 			{
 				name: "description",
-				content: loaderData ? loaderData.description : "Page not found",
+				content: loaderData ? loaderData.description : "Tag article",
 			},
 		],
 	}),

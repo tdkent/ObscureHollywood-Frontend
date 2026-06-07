@@ -3,6 +3,7 @@ import { Suspense } from "react";
 import PersonArticle from "@/components/article/person/PersonArticle";
 import DetailPage from "@/components/layout/containers/DetailPage";
 import Loading from "@/components/shared/Loading";
+import SlugPageError from "@/components/shared/SlugPageError";
 import type { PersonWithRelations } from "@/types/person.interface";
 import { articleQueryOptions } from "@/util/articleQueryOptions";
 import { getPersonLifespanString } from "@/util/formatPersonDates";
@@ -39,14 +40,17 @@ export const Route = createFileRoute("/people/$slug")({
 		return { person, title, description };
 	},
 	component: RouteComponent,
+	errorComponent: ({ error }) => <SlugPageError error={error} />,
 	head: ({ loaderData }) => ({
 		meta: [
 			{
-				title: loaderData ? loaderData.title : "Not Found - Obscure Hollywood",
+				title: loaderData
+					? loaderData.title
+					: "Person Article - Obscure Hollywood",
 			},
 			{
 				name: "description",
-				content: loaderData ? loaderData.description : "Page not found",
+				content: loaderData ? loaderData.description : "Person article",
 			},
 		],
 	}),

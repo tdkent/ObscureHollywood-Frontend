@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Suspense } from "react";
 import Quiz from "@/components/article/quiz/Quiz";
 import Loading from "@/components/shared/Loading";
+import SlugPageError from "@/components/shared/SlugPageError";
 import type { QuizWithRelations } from "@/types/quiz.interface";
 import { articleQueryOptions } from "@/util/articleQueryOptions";
 
@@ -20,14 +21,15 @@ export const Route = createFileRoute("/quiz/$slug")({
 		return { quiz, title, description };
 	},
 	component: RouteComponent,
+	errorComponent: ({ error }) => <SlugPageError error={error} />,
 	head: ({ loaderData }) => ({
 		meta: [
 			{
-				title: loaderData ? loaderData.title : "Not Found - Obscure Hollywood",
+				title: loaderData ? loaderData.title : "Quiz - Obscure Hollywood",
 			},
 			{
 				name: "description",
-				content: loaderData ? loaderData.description : "Page not found",
+				content: loaderData ? loaderData.description : "Quiz",
 			},
 		],
 	}),
