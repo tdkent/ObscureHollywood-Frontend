@@ -1,8 +1,24 @@
-# Index
+# Main Routes
 
 [[redirects]]
   from = "/index.html"
   to = "/"
+
+[[redirects]]
+  from = "/feature-articles.html"
+  to = "/features"
+
+[[redirects]]
+  from = "/films.html"
+  to = "/films"
+
+[[redirects]]
+  from = "/actors-directors.html"
+  to = "/people"
+
+[[redirects]]
+  from = "/quizzes.html"
+  to = "/quiz"
 
 # Features
 
@@ -945,3 +961,201 @@
 [[redirects]]
   from = "/zulu-1964.html"
   to = "/films/zulu-1964"
+
+# Quiz
+
+[[redirects]]
+  from = "/quiz/quiz-dorothy-arzner-1.html"
+  to = "/quiz/dorothy-arzner"
+
+[[redirects]]
+  from = "/quiz/quiz-dorothy-arzner-2.html"
+  to = "/quiz/dorothy-arzner-2"
+
+[[redirects]]
+  from = "/quiz/quiz-harry-carey-1.html"
+  to = "/quiz/harry-carey"
+
+[[redirects]]
+  from = "/quiz/quiz-harry-carey-2.html"
+  to = "/quiz/harry-carey-2"
+
+[[redirects]]
+  from = "/quiz/quiz-marion-davies-1.html"
+  to = "/quiz/marion-davies"
+
+[[redirects]]
+  from = "/quiz/quiz-marion-davies-2.html"
+  to = "/quiz/marion-davies-2"
+
+[[redirects]]
+  from = "/quiz/quiz-marion-davies-3.html"
+  to = "/quiz/marion-davies-3"
+
+[[redirects]]
+  from = "/quiz/quiz-john-gilbert-1.html"
+  to = "/quiz/john-gilbert"
+
+[[redirects]]
+  from = "/quiz/quiz-john-gilbert-2.html"
+  to = "/quiz/john-gilbert-2"
+
+[[redirects]]
+  from = "/quiz/quiz-ginger-rogers-1.html"
+  to = "/quiz/ginger-rogers"
+
+[[redirects]]
+  from = "/quiz/quiz-ginger-rogers-2.html"
+  to = "/quiz/ginger-rogers-2"
+
+[[redirects]]
+  from = "/quiz/quiz-1930s-dramas.html"
+  to = "/quiz/dramas-of-the-1930s"
+
+[[redirects]]
+  from = "/quiz/quiz-1940s-dramas.html"
+  to = "/quiz/dramas-of-the-1940s"
+
+[[redirects]]
+  from = "/quiz/quiz-foolish-wives.html"
+  to = "/quiz/foolish-wives"
+
+[[redirects]]
+  from = "/quiz/quiz-at-the-movies-1.html"
+  to = "/quiz/at-the-movies"
+
+[[redirects]]
+  from = "/quiz/quiz-at-the-movies-2.html"
+  to = "/quiz/at-the-movies-2"
+
+[[redirects]]
+  from = "/quiz/quiz-at-the-movies-3.html"
+  to = "/quiz/at-the-movies-3"
+
+[[redirects]]
+  from = "/quiz/quiz-at-the-movies-4.html"
+  to = "/quiz/at-the-movies-4"
+
+[[redirects]]
+  from = "/quiz/quiz-at-the-movies-5.html"
+  to = "/quiz/at-the-movies-5"
+
+[[redirects]]
+  from = "/quiz/quiz-at-the-movies-6.html"
+  to = "/quiz/at-the-movies-6"
+
+[[redirects]]
+  from = "/quiz/quiz-trouble-in-paradise-to-be-or-not-to-be.html"
+  to = "/quiz/two-films"
+
+[[redirects]]
+  from = "/quiz/quiz-blind-husbands.html"
+  to = "/quiz/blind-husbands"
+
+[[redirects]]
+  from = "/quiz/quiz-actors-1.html"
+  to = "/quiz/actors"
+
+[[redirects]]
+  from = "/quiz/quiz-actors-2.html"
+  to = "/quiz/actors-2"
+
+[[redirects]]
+  from = "/quiz/quiz-supporting-actors-1.html"
+  to = "/quiz/supporting-actors"
+
+[[redirects]]
+  from = "/quiz/quiz-silent-actors-1.html"
+  to = "/quiz/silent-actors"
+
+[[redirects]]
+  from = "/quiz/quiz-silent-actors-2.html"
+  to = "/quiz/silent-actors-2"
+
+[[redirects]]
+  from = "/quiz/quiz-silent-actors-3.html"
+  to = "/quiz/silent-actors-3"
+
+[[redirects]]
+  from = "/quiz/quiz-silent-actors-4.html"
+  to = "/quiz/silent-actors-4"
+
+[[redirects]]
+  from = "/quiz/quiz-directors-1.html"
+  to = "/quiz/directors"
+
+[[redirects]]
+  from = "/quiz/quiz-western-actors-1.html"
+  to = "/quiz/western-actors"
+
+[[redirects]]
+  from = "/quiz/quiz-cecil-b-demille-1.html"
+  to = "/quiz/cecil-b-demille"
+
+[[redirects]]
+  from = "/quiz/quiz-king-vidor-1.html"
+  to = "/quiz/king-vidor"
+
+[[redirects]]
+  from = "/quiz/quiz-king-vidor-2.html"
+  to = "/quiz/king-vidor-2"
+
+[[redirects]]
+  from = "/quiz/quiz-king-vidor-3.html"
+  to = "/quiz/king-vidor-3"
+
+[[redirects]]
+  from = "/quiz/quiz-detectives-1.html"
+  to = "/quiz/detectives"
+
+[[redirects]]
+  from = "/quiz/quiz-detectives-2.html"
+  to = "/quiz/detectives-2"
+
+[[redirects]]
+  from = "/quiz/quiz-detectives-3.html"
+  to = "/quiz/detectives-3"
+
+[[redirects]]
+  from = "/quiz/quiz-detectives-4.html"
+  to = "/quiz/detectives-4"
+
+[[redirects]]
+  from = "/quiz/quiz-musicals-1.html"
+  to = "/quiz/musicals"
+
+[[redirects]]
+  from = "/quiz/quiz-actors-and-their-roles-1.html"
+  to = "/quiz/actors-and-their-roles"
+
+[[redirects]]
+  from = "/quiz/quiz-wc-fields-1.html"
+  to = "/quiz/wc-fields"
+
+[[redirects]]
+  from = "/quiz/quiz-greta-garbo-1.html"
+  to = "/quiz/greta-garbo"
+
+[[redirects]]
+  from = "/quiz/quiz-laurel-and-hardy-1.html"
+  to = "/quiz/laurel-and-hardy"
+
+[[redirects]]
+  from = "/quiz/quiz-james-stewart-1.html"
+  to = "/quiz/james-stewart"
+
+[[redirects]]
+  from = "/quiz/quiz-lost-continent-1.html"
+  to = "/quiz/lost-continent"
+
+[[redirects]]
+  from = "/quiz/quiz-men-named-harry-morgan-1.html"
+  to = "/quiz/men-named-harry-morgan"
+
+[[redirects]]
+  from = "/quiz/quiz-mouse-that-roared-1.html"
+  to = "/quiz/mice-roaring-and-mooning"
+
+[[redirects]]
+  from = "/quiz/red-dust-the-man-who-came-to-dinner-1.html"
+  to = "/quiz/two-films-2"
