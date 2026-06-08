@@ -29,7 +29,9 @@ export const Route = createFileRoute("/films/$slug")({
 			.join(", ");
 
 		const title = `${film.name} (${film.releaseYear}) Film Synopsis & Discussion - Obscure Hollywood`;
+
 		const description = `Synopsis and discussion of the film ${film.name}, released in ${film.releaseYear} by ${film.studio.name}. The film stars ${actorsStr}, and is directed by ${directorsStr}.`;
+
 		const canonicalUrl = `${DOMAIN_URL}films/${params.slug}`;
 
 		return { film, title, description, canonicalUrl };
@@ -43,7 +45,7 @@ export const Route = createFileRoute("/films/$slug")({
 			},
 			{
 				name: "description",
-				content: loaderData ? loaderData.description : "",
+				content: loaderData?.description,
 			},
 			// Open Graph
 			{ property: "og:site_name", content: "Obscure Hollywood" },

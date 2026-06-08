@@ -18,7 +18,9 @@ export const Route = createFileRoute("/features/$slug")({
 		)) as FeatureWithRelations;
 
 		const title = `${feature.name} - Obscure Hollywood`;
+
 		const description = `In-depth feature article about ${feature.name}, ${feature.subtitle}.`;
+
 		const canonicalUrl = `${DOMAIN_URL}features/${params.slug}`;
 
 		return { feature, title, description, canonicalUrl };
@@ -32,7 +34,7 @@ export const Route = createFileRoute("/features/$slug")({
 			},
 			{
 				name: "description",
-				content: loaderData ? loaderData.description : "",
+				content: loaderData?.description,
 			},
 			// Open Graph
 			{ property: "og:site_name", content: "Obscure Hollywood" },
