@@ -3,12 +3,26 @@ import ArticleHeader from "@/components/article/ArticleHeader";
 import UserQuizzes from "@/components/my-quizzes/UserQuizzes";
 import { getUserId } from "@/util/getUserId";
 
+const description = "Quiz results page";
+
 export const Route = createFileRoute("/my-quizzes")({
 	component: RouteComponent,
 	head: () => ({
 		meta: [
 			{ title: "My Quizzes - Obscure Hollywood" },
-			{ name: "description", content: "Quiz results page" },
+			{ name: "description", content: description },
+			// Open Graph
+			{ property: "og:site_name", content: "Obscure Hollywood" },
+			{ property: "og:type", content: "article" },
+			{ property: "og:title", content: "My Quizzes" },
+			{
+				property: "og:description",
+				content: description,
+			},
+			{
+				property: "og:url",
+				content: "https://obscurehollywood.net/my-quizzes",
+			},
 		],
 	}),
 });
