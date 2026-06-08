@@ -4,6 +4,7 @@ import FilmArticle from "@/components/article/film/FilmArticle";
 import DetailPage from "@/components/layout/containers/DetailPage";
 import Loading from "@/components/shared/Loading";
 import SlugPageError from "@/components/shared/SlugPageError";
+import { DOMAIN_URL } from "@/constants/api.constants";
 import type { FilmWithRelations } from "@/types/film.interface";
 import { articleQueryOptions } from "@/util/articleQueryOptions";
 
@@ -29,22 +30,33 @@ export const Route = createFileRoute("/films/$slug")({
 
 		const title = `${film.name} (${film.releaseYear}) Film Synopsis & Discussion - Obscure Hollywood`;
 		const description = `Synopsis and discussion of the film ${film.name}, released in ${film.releaseYear} by ${film.studio.name}. The film stars ${actorsStr}, and is directed by ${directorsStr}.`;
+		const canonicalUrl = `${DOMAIN_URL}films/${params.slug}`;
 
-		return { film, title, description };
+		return { film, title, description, canonicalUrl };
 	},
 	component: RouteComponent,
 	errorComponent: ({ error }) => <SlugPageError error={error} />,
 	head: ({ loaderData }) => ({
 		meta: [
 			{
-				title: loaderData
-					? loaderData.title
-					: "Film Article - Obscure Hollywood",
+				title: loaderData ? loaderData.title : "Obscure Hollywood",
 			},
 			{
 				name: "description",
-				content: loaderData ? loaderData.description : "Film article",
+				content: loaderData ? loaderData.description : "",
 			},
+			// Open Graph
+			{ property: "og:site_name", content: "Obscure Hollywood" },
+			{ property: "og:type", content: "article" },
+			{
+				property: "og:title",
+				content: loaderData?.film.name,
+			},
+			{
+				property: "og:description",
+				content: loaderData?.description,
+			},
+			{ property: "og:url", content: loaderData?.canonicalUrl },
 		],
 	}),
 });
