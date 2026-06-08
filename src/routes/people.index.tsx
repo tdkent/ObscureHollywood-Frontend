@@ -1,8 +1,10 @@
 import { createFileRoute, useSearch } from "@tanstack/react-router";
 import ListPage from "@/components/layout/containers/ListPage";
+import { DOMAIN_URL } from "@/constants/api.constants";
 import type { UrlSearchParams } from "@/types/api.interface";
 
 const description = "List of all people articles.";
+const canonicalUrl = `${DOMAIN_URL}people`;
 
 export const Route = createFileRoute("/people/")({
 	component: RouteComponent,
@@ -20,7 +22,7 @@ export const Route = createFileRoute("/people/")({
 			},
 			{
 				property: "og:url",
-				content: "https://obscurehollywood.net/people",
+				content: canonicalUrl,
 			},
 		],
 	}),

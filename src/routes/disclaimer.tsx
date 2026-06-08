@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { DOMAIN_URL } from "@/constants/api.constants";
 
 const description = "Privacy and terms";
+const canonicalUrl = `${DOMAIN_URL}disclaimer`;
 
 export const Route = createFileRoute("/disclaimer")({
 	component: RouteComponent,
@@ -18,7 +20,7 @@ export const Route = createFileRoute("/disclaimer")({
 			},
 			{
 				property: "og:url",
-				content: "https://obscurehollywood.net/disclaimer",
+				content: canonicalUrl,
 			},
 		],
 	}),

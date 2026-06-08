@@ -1,8 +1,10 @@
 import { createFileRoute, useSearch } from "@tanstack/react-router";
 import ListPage from "@/components/layout/containers/ListPage";
+import { DOMAIN_URL } from "@/constants/api.constants";
 import type { UrlSearchParams } from "@/types/api.interface";
 
 const description = "Search results";
+const canonicalUrl = `${DOMAIN_URL}search`;
 
 export const Route = createFileRoute("/search")({
 	component: RouteComponent,
@@ -20,7 +22,7 @@ export const Route = createFileRoute("/search")({
 			},
 			{
 				property: "og:url",
-				content: "https://obscurehollywood.net/search",
+				content: canonicalUrl,
 			},
 		],
 	}),

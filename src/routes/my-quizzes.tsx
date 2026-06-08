@@ -1,9 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import ArticleHeader from "@/components/article/ArticleHeader";
 import UserQuizzes from "@/components/my-quizzes/UserQuizzes";
+import { DOMAIN_URL } from "@/constants/api.constants";
 import { getUserId } from "@/util/getUserId";
 
 const description = "Quiz results page";
+const canonicalUrl = `${DOMAIN_URL}my-quizzes`;
 
 export const Route = createFileRoute("/my-quizzes")({
 	component: RouteComponent,
@@ -21,7 +23,7 @@ export const Route = createFileRoute("/my-quizzes")({
 			},
 			{
 				property: "og:url",
-				content: "https://obscurehollywood.net/my-quizzes",
+				content: canonicalUrl,
 			},
 		],
 	}),
