@@ -1,8 +1,7 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { ClientOnly, createFileRoute } from "@tanstack/react-router";
 import ArticleHeader from "@/components/article/ArticleHeader";
-import UserQuizzes from "@/components/my-quizzes/UserQuizzes";
+import DisplayUserQuizzes from "@/components/my-quizzes/DisplayUserQuizzes";
 import { DOMAIN_URL } from "@/constants/api.constants";
-import { getUserId } from "@/util/getUserId";
 
 const description = "Quiz results page";
 const canonicalUrl = `${DOMAIN_URL}my-quizzes`;
@@ -38,19 +37,13 @@ export const Route = createFileRoute("/my-quizzes")({
 });
 
 function RouteComponent() {
-	const userId = getUserId();
-
 	return (
 		<div className="page-margins bg-content">
 			<div className="flex flex-col my-4 gap-6 sm:gap-12">
 				<ArticleHeader name="My Quizzes" />
-				{userId ? (
-					<UserQuizzes userId={userId} />
-				) : (
-					<p className="px-6 sm:px-12">
-						You have not completed any quizzes yet.
-					</p>
-				)}
+				<ClientOnly>
+					<DisplayUserQuizzes />
+				</ClientOnly>
 			</div>
 		</div>
 	);
