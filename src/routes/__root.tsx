@@ -33,6 +33,12 @@ export const Route = createRootRouteWithContext<{
 			{ rel: "icon", type: "image/png", sizes: "16x16", href: "/icon@16.png" },
 			{ rel: "icon", type: "image/png", sizes: "32x32", href: "/icon@32.png" },
 			{ rel: "icon", type: "image/png", sizes: "64x64", href: "/icon@64.png" },
+			{
+				rel: "icon",
+				type: "image/png",
+				sizes: "192x192",
+				href: "/icon@192.png",
+			},
 			{ rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
 		],
 	}),
