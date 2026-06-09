@@ -18,6 +18,15 @@ export default defineConfig({
 	},
 	ssr: {
 		//? Force Vite to bundle for SSR
-		noExternal: ["html-react-parser"],
+		noExternal: [
+			"html-react-parser",
+			"html-dom-parser",
+			"domhandler",
+			"htmlparser2",
+			"react-property",
+			"style-to-js",
+			"style-to-object",
+			"inline-style-parser",
+		],
 	},
 });
