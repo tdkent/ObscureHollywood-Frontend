@@ -4,6 +4,7 @@ import TagArticle from "@/components/article/tag/TagArticle";
 import DetailPage from "@/components/layout/containers/DetailPage";
 import Loading from "@/components/shared/Loading";
 import SlugPageError from "@/components/shared/SlugPageError";
+import { DOMAIN_URL } from "@/constants/api.constants";
 import type { TagWithRelations } from "@/types/tag.interface";
 import { articleQueryOptions } from "@/util/articleQueryOptions";
 
@@ -17,23 +18,35 @@ export const Route = createFileRoute("/tags/$slug")({
 		)) as TagWithRelations;
 
 		const title = `${tag.type.slice(0, 1).toUpperCase()}${tag.type.slice(1)}: ${tag.name} - Obscure Hollywood`;
-		const description = `Description and list films matching the tag ${tag.name}.`;
+		const description = `Description and list of films matching the tag ${tag.name}.`;
 
-		return { tag, title, description };
+		const canonicalUrl = `${DOMAIN_URL}tags/${params.slug}`;
+
+		return { tag, title, description, canonicalUrl };
 	},
 	component: RouteComponent,
 	errorComponent: ({ error }) => <SlugPageError error={error} />,
 	head: ({ loaderData }) => ({
 		meta: [
 			{
-				title: loaderData
-					? loaderData.title
-					: "Tag Article - Obscure Hollywood",
+				title: loaderData ? loaderData.title : "Obscure Hollywood",
 			},
 			{
 				name: "description",
-				content: loaderData ? loaderData.description : "Tag article",
+				content: loaderData?.description,
 			},
+			// Open Graph
+			{ property: "og:site_name", content: "Obscure Hollywood" },
+			{ property: "og:type", content: "article" },
+			{
+				property: "og:title",
+				content: loaderData?.tag.name,
+			},
+			{
+				property: "og:description",
+				content: loaderData?.description,
+			},
+			{ property: "og:url", content: loaderData?.canonicalUrl },
 		],
 	}),
 });

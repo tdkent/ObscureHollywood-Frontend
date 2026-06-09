@@ -1,6 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 import Section from "@/components/home/Section";
 import Splash from "@/components/home/Splash";
+import { DOMAIN_URL } from "@/constants/api.constants";
+
+const description =
+	"Obscure Hollywood features reviews, research and commentary about little-known Hollywood films and artists, particularly of the silent and early sound eras, that are worth revisiting.";
+
+const canonicalUrl = `${DOMAIN_URL}`;
 
 export const Route = createFileRoute("/")({
 	//? Cannot use SSR route loader because fetch is prop-dependent
@@ -14,9 +20,17 @@ export const Route = createFileRoute("/")({
 			},
 			{
 				name: "description",
-				content:
-					"Obscure Hollywood features reviews, research and commentary about little-known Hollywood films and artists, particularly of the silent and early sound eras, that are worth revisiting.",
+				content: description,
 			},
+			// Open Graph
+			{ property: "og:site_name", content: "Obscure Hollywood" },
+			{ property: "og:type", content: "website" },
+			{ property: "og:title", content: "Home" },
+			{
+				property: "og:description",
+				content: description,
+			},
+			{ property: "og:url", content: canonicalUrl },
 		],
 	}),
 });

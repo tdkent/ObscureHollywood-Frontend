@@ -6,11 +6,11 @@ export const Route = createFileRoute("/$")({
 	head: () => ({
 		meta: [
 			{
-				title: "Not Found - Obscure Hollywood",
+				title: "Page Not Found - Obscure Hollywood",
 			},
 			{
 				name: "description",
-				content: "Page not found",
+				content: "The page you requested could not be found.",
 			},
 		],
 	}),

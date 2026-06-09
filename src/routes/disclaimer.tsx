@@ -1,11 +1,27 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { DOMAIN_URL } from "@/constants/api.constants";
+
+const description = "Privacy and terms";
+const canonicalUrl = `${DOMAIN_URL}disclaimer`;
 
 export const Route = createFileRoute("/disclaimer")({
 	component: RouteComponent,
 	head: () => ({
 		meta: [
 			{ title: "Disclaimer - Obscure Hollywood" },
-			{ name: "description", content: "Privacy and terms" },
+			{ name: "description", content: description },
+			// Open Graph
+			{ property: "og:site_name", content: "Obscure Hollywood" },
+			{ property: "og:type", content: "article" },
+			{ property: "og:title", content: "Privacy and Terms" },
+			{
+				property: "og:description",
+				content: description,
+			},
+			{
+				property: "og:url",
+				content: canonicalUrl,
+			},
 		],
 	}),
 });
