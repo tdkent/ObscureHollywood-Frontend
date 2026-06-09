@@ -4,7 +4,7 @@ import PersonArticle from "@/components/article/person/PersonArticle";
 import DetailPage from "@/components/layout/containers/DetailPage";
 import Loading from "@/components/shared/Loading";
 import SlugPageError from "@/components/shared/SlugPageError";
-import { DOMAIN_URL } from "@/constants/api.constants";
+import { DOMAIN_URL, IMG_ASSETS_URL } from "@/constants/api.constants";
 import type { PersonWithRelations } from "@/types/person.interface";
 import { articleQueryOptions } from "@/util/articleQueryOptions";
 import { getPersonLifespanString } from "@/util/formatPersonDates";
@@ -38,9 +38,11 @@ export const Route = createFileRoute("/people/$slug")({
 
 		const description = `${person.article ? "Biography, career overview, and discussion" : "Overview"} of ${rolesStr ? `film ${rolesStr.toLowerCase()}` : ""} ${person.name}${lifespanStr ? ` (${lifespanStr})` : ""}.`;
 
+		const imgUrl = `${IMG_ASSETS_URL}/${params.slug}@1024.jpeg`;
+
 		const canonicalUrl = `${DOMAIN_URL}people/${params.slug}`;
 
-		return { person, title, description, canonicalUrl };
+		return { person, title, description, canonicalUrl, imgUrl };
 	},
 	component: RouteComponent,
 	errorComponent: ({ error }) => <SlugPageError error={error} />,
@@ -65,6 +67,10 @@ export const Route = createFileRoute("/people/$slug")({
 				content: loaderData?.description,
 			},
 			{ property: "og:url", content: loaderData?.canonicalUrl },
+			{ property: "og:image", content: loaderData?.imgUrl },
+			{ property: "og:image:type", content: "image/jpeg" },
+			{ property: "og:image:width", content: "1024" },
+			{ property: "og:image:height", content: "731" },
 		],
 	}),
 });

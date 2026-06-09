@@ -4,7 +4,7 @@ import FilmArticle from "@/components/article/film/FilmArticle";
 import DetailPage from "@/components/layout/containers/DetailPage";
 import Loading from "@/components/shared/Loading";
 import SlugPageError from "@/components/shared/SlugPageError";
-import { DOMAIN_URL } from "@/constants/api.constants";
+import { DOMAIN_URL, IMG_ASSETS_URL } from "@/constants/api.constants";
 import type { FilmWithRelations } from "@/types/film.interface";
 import { articleQueryOptions } from "@/util/articleQueryOptions";
 
@@ -32,9 +32,11 @@ export const Route = createFileRoute("/films/$slug")({
 
 		const description = `Synopsis and discussion of the film ${film.name}, released in ${film.releaseYear} by ${film.studio.name}. The film stars ${actorsStr}, and is directed by ${directorsStr}.`;
 
+		const imgUrl = `${IMG_ASSETS_URL}/${params.slug}@1024.jpeg`;
+
 		const canonicalUrl = `${DOMAIN_URL}films/${params.slug}`;
 
-		return { film, title, description, canonicalUrl };
+		return { film, title, description, canonicalUrl, imgUrl };
 	},
 	component: RouteComponent,
 	errorComponent: ({ error }) => <SlugPageError error={error} />,
@@ -59,6 +61,10 @@ export const Route = createFileRoute("/films/$slug")({
 				content: loaderData?.description,
 			},
 			{ property: "og:url", content: loaderData?.canonicalUrl },
+			{ property: "og:image", content: loaderData?.imgUrl },
+			{ property: "og:image:type", content: "image/jpeg" },
+			{ property: "og:image:width", content: "1024" },
+			{ property: "og:image:height", content: "731" },
 		],
 	}),
 });

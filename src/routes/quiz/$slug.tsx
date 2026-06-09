@@ -3,7 +3,7 @@ import { Suspense } from "react";
 import Quiz from "@/components/article/quiz/Quiz";
 import Loading from "@/components/shared/Loading";
 import SlugPageError from "@/components/shared/SlugPageError";
-import { DOMAIN_URL } from "@/constants/api.constants";
+import { DOMAIN_URL, IMG_ASSETS_URL } from "@/constants/api.constants";
 import type { QuizWithRelations } from "@/types/quiz.interface";
 import { articleQueryOptions } from "@/util/articleQueryOptions";
 
@@ -20,9 +20,11 @@ export const Route = createFileRoute("/quiz/$slug")({
 
 		const description = `Test your knowledge with this fun 10-question quiz!`;
 
+		const imgUrl = `${IMG_ASSETS_URL}/${params.slug}@1024.jpeg`;
+
 		const canonicalUrl = `${DOMAIN_URL}quiz/${params.slug}`;
 
-		return { quiz, title, description, canonicalUrl };
+		return { quiz, title, description, canonicalUrl, imgUrl };
 	},
 	component: RouteComponent,
 	errorComponent: ({ error }) => <SlugPageError error={error} />,
@@ -47,6 +49,10 @@ export const Route = createFileRoute("/quiz/$slug")({
 				content: loaderData?.description,
 			},
 			{ property: "og:url", content: loaderData?.canonicalUrl },
+			{ property: "og:image", content: loaderData?.imgUrl },
+			{ property: "og:image:type", content: "image/jpeg" },
+			{ property: "og:image:width", content: "1024" },
+			{ property: "og:image:height", content: "731" },
 		],
 	}),
 });
