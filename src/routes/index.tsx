@@ -31,6 +31,14 @@ export const Route = createFileRoute("/")({
 				content: description,
 			},
 			{ property: "og:url", content: canonicalUrl },
+			//? Temp disable robots
+			{ name: "robots", content: "noindex,nofollow" },
+		],
+		links: [
+			{
+				rel: "canonical",
+				href: canonicalUrl,
+			},
 		],
 	}),
 });

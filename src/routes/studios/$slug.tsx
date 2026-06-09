@@ -47,6 +47,14 @@ export const Route = createFileRoute("/studios/$slug")({
 				content: loaderData?.description,
 			},
 			{ property: "og:url", content: loaderData?.canonicalUrl },
+			//? Temp disable robots
+			{ name: "robots", content: "noindex,nofollow" },
+		],
+		links: [
+			{
+				rel: "canonical",
+				href: loaderData?.canonicalUrl,
+			},
 		],
 	}),
 });
