@@ -27,7 +27,12 @@ export const Route = createRootRouteWithContext<{
 				content: "width=device-width, initial-scale=1",
 			},
 		],
-		links: [{ rel: "stylesheet", href: appCss }],
+		links: [
+			{ rel: "stylesheet", href: appCss },
+			{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+			{ rel: "icon", type: "image/png", sizes: "16x16", href: "/icon@16.png" },
+			{ rel: "icon", type: "image/png", sizes: "32x32", href: "/icon@32.png" },
+		],
 	}),
 	errorComponent: (props) => {
 		return (
