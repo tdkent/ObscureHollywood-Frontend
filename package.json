@@ -8,8 +8,6 @@
   "scripts": {
     "build": "tsc -b && vite build",
     "check": "tsc --noEmit",
-    "deploy:prev": "npx netlify deploy",
-    "deploy:prod": "npx netlify deploy --prod",
     "dev": "vite --host",
     "knip": "knip",
     "lint": "biome check --verbose",
