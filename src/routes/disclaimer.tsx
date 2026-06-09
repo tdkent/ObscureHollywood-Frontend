@@ -22,6 +22,14 @@ export const Route = createFileRoute("/disclaimer")({
 				property: "og:url",
 				content: canonicalUrl,
 			},
+			//? Temp disable robots
+			{ name: "robots", content: "noindex,nofollow" },
+		],
+		links: [
+			{
+				rel: "canonical",
+				href: canonicalUrl,
+			},
 		],
 	}),
 });
