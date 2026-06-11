@@ -49,10 +49,10 @@ export default function ListItem({ entity, item, useCardTheme }: Props) {
 	}
 
 	return (
-		<li className={useCardTheme ? "" : "border-b first:border-t"}>
+		<li className={useCardTheme ? "sm:basis-1/2" : "border-b first:border-t"}>
 			<Link to={link}>
 				<div
-					className={`flex justify-between ${useCardTheme ? "overflow-hidden flex-col mx-6 border rounded-xl" : "flex-row py-2 px-6 gap-4 sm:py-4 sm:gap-6 sm:px-12"}`}
+					className={`flex justify-between ${useCardTheme ? "overflow-hidden flex-col mx-6 border rounded-xl sm:mx-0" : "flex-row py-2 px-6 gap-4 sm:py-4 sm:gap-6 sm:px-12"}`}
 				>
 					<Image
 						altText={item.name}
