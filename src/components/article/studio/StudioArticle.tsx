@@ -9,7 +9,7 @@ import { articleQueryOptions } from "@/util/articleQueryOptions";
 export default function StudioArticle() {
 	const { slug } = useParams({ from: "/studios/$slug" });
 
-	const { limit, orderBy, page }: UrlSearchParams = useSearch({
+	const { orderBy, page }: UrlSearchParams = useSearch({
 		from: "/studios/$slug",
 	});
 

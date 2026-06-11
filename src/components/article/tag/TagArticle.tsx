@@ -9,7 +9,7 @@ import { articleQueryOptions } from "@/util/articleQueryOptions";
 export default function TagArticle() {
 	const { slug } = useParams({ from: "/tags/$slug" });
 
-	const { limit, orderBy, page }: UrlSearchParams = useSearch({
+	const { orderBy, page }: UrlSearchParams = useSearch({
 		from: "/tags/$slug",
 	});
 

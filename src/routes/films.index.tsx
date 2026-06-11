@@ -34,7 +34,7 @@ export const Route = createFileRoute("/films/")({
 });
 
 function RouteComponent() {
-	const { limit, orderBy, page, tag }: UrlSearchParams = useSearch({
+	const { orderBy, page, tag }: UrlSearchParams = useSearch({
 		from: "/films/",
 	});
 

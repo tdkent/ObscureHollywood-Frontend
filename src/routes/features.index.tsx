@@ -34,7 +34,7 @@ export const Route = createFileRoute("/features/")({
 });
 
 function RouteComponent() {
-	const { limit, orderBy, page }: UrlSearchParams = useSearch({
+	const { orderBy, page }: UrlSearchParams = useSearch({
 		from: "/features/",
 	});
 
