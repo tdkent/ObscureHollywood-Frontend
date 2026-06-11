@@ -17,7 +17,6 @@ import httpRequest from "@/util/httpRequest";
 import { parseSearchParams } from "@/util/parseSearchParams";
 
 interface Props {
-	limit: string | undefined;
 	page: string | undefined;
 	orderBy: string | undefined;
 	queryUrl?: string;
@@ -28,7 +27,6 @@ interface Props {
 }
 
 export default function Paginated({
-	limit,
 	page,
 	orderBy,
 	queryUrl,
@@ -37,8 +35,7 @@ export default function Paginated({
 	showFilterControls,
 	tagsParam,
 }: Props) {
-	const { pageParam, limitParam, sortParam } = parseSearchParams({
-		limit,
+	const { pageParam, sortParam } = parseSearchParams({
 		orderBy,
 		page,
 		route,
@@ -47,7 +44,6 @@ export default function Paginated({
 	const [filters, setFilters] = useState<string[]>(tagsParam ?? []);
 
 	const reqUrl = createHttpRequestUrl({
-		limitParam,
 		pageParam,
 		route: queryUrl ?? route,
 		searchParam,
@@ -56,7 +52,6 @@ export default function Paginated({
 	});
 
 	const queryKey = createQueryKey({
-		limitParam,
 		pageParam,
 		route: queryUrl ?? route,
 		searchParam,

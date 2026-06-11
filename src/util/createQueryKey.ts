@@ -1,5 +1,4 @@
 interface Inputs {
-	limitParam: number;
 	pageParam: number;
 	route: string;
 	searchParam?: string;
@@ -12,7 +11,6 @@ interface ParamsObj {
 }
 
 export function createQueryKey({
-	limitParam,
 	pageParam,
 	route,
 	searchParam,
@@ -21,7 +19,6 @@ export function createQueryKey({
 }: Inputs) {
 	const paramsObj: ParamsObj = {
 		page: pageParam,
-		limit: limitParam,
 		orderBy: sortParam,
 	};
 
