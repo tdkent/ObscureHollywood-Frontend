@@ -1,8 +1,10 @@
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
+import { ClientOnly } from "@tanstack/react-router";
 import { useState } from "react";
 import DisplayListItems from "@/components/list/DisplayListItems";
 import Filter from "@/components/list/Filter";
 import PaginationLimit from "@/components/list/PaginationLimit";
+import PaginationLinks from "@/components/list/PaginationLinks";
 import PaginationMetadata from "@/components/list/PaginationMetadata";
 import SortItems from "@/components/list/SortItems";
 import DisplayError from "@/components/shared/DisplayError";
@@ -119,15 +121,19 @@ export default function Paginated({
 				)}
 			</div>
 			{hasResults ? (
-				<DisplayListItems
-					limitParam={limitParam}
-					sortParam={sortParam}
-					pageParam={pageParam}
-					paginatedData={paginatedData}
-					route={route}
-					searchParam={searchParam}
-					tagsParam={tagsParam}
-				/>
+				<div className="flex flex-col gap-4 my-6">
+					<ClientOnly>
+						<DisplayListItems paginatedData={paginatedData} route={route} />
+					</ClientOnly>
+					<PaginationLinks
+						limit={limitParam}
+						orderBy={sortParam}
+						page={pageParam}
+						searchParam={searchParam}
+						tagsParam={tagsParam}
+						totalPages={paginatedData.meta.totalPages}
+					/>
+				</div>
 			) : null}
 		</div>
 	);
