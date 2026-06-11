@@ -6,6 +6,7 @@ import PaginationLimit from "@/components/list/PaginationLimit";
 import PaginationLinks from "@/components/list/PaginationLinks";
 import PaginationMetadata from "@/components/list/PaginationMetadata";
 import SortItems from "@/components/list/SortItems";
+import ThemeToggle from "@/components/list/ThemeToggle";
 import DisplayError from "@/components/shared/DisplayError";
 import Loading from "@/components/shared/Loading";
 import type { PaginatedResponse } from "@/types/paginated-response.interface";
@@ -120,8 +121,9 @@ export default function Paginated({
 				)}
 			</div>
 			{hasResults ? (
-				<>
-					<ul className="my-8 flex flex-col sm:my-12">
+				<div className="flex flex-col gap-4 my-6">
+					<ThemeToggle />
+					<ul className="flex flex-col sm:my-12">
 						{paginatedData.data.map((item) => {
 							return <ListItem key={item.id} entity={route} item={item} />;
 						})}
@@ -134,7 +136,7 @@ export default function Paginated({
 						tagsParam={tagsParam}
 						totalPages={paginatedData.meta.totalPages}
 					/>
-				</>
+				</div>
 			) : null}
 		</div>
 	);
