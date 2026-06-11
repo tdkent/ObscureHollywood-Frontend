@@ -9,7 +9,7 @@ import { articleQueryOptions } from "@/util/articleQueryOptions";
 export default function TagArticle() {
 	const { slug } = useParams({ from: "/tags/$slug" });
 
-	const { limit, orderBy, page }: UrlSearchParams = useSearch({
+	const { orderBy, page }: UrlSearchParams = useSearch({
 		from: "/tags/$slug",
 	});
 
@@ -40,7 +40,6 @@ export default function TagArticle() {
 				<p className="px-6 sm:px-12 md:text-lg">{description}</p>
 			</ArticleHeader>
 			<Paginated
-				limit={limit}
 				orderBy={orderBy}
 				page={page}
 				queryUrl={`tags/${slug}/films`}

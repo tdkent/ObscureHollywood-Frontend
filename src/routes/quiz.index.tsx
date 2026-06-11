@@ -37,9 +37,9 @@ export const Route = createFileRoute("/quiz/")({
 });
 
 function RouteComponent() {
-	const { limit, orderBy, page }: UrlSearchParams = useSearch({
+	const { orderBy, page }: UrlSearchParams = useSearch({
 		from: "/quiz/",
 	});
 
-	return <ListPage limit={limit} orderBy={orderBy} page={page} route="quiz" />;
+	return <ListPage orderBy={orderBy} page={page} route="quiz" />;
 }

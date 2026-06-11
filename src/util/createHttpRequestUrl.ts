@@ -1,5 +1,4 @@
 interface Inputs {
-	limitParam: number;
 	pageParam: number;
 	route: string;
 	searchParam?: string;
@@ -8,7 +7,6 @@ interface Inputs {
 }
 
 export function createHttpRequestUrl({
-	limitParam,
 	pageParam,
 	route,
 	searchParam,
@@ -20,7 +18,6 @@ export function createHttpRequestUrl({
 	let urlSearchParams = "";
 
 	urlSearchParams += `?page=${pageParam}`;
-	urlSearchParams += `&limit=${limitParam}`;
 	urlSearchParams += `&orderBy=${sortParam}`;
 
 	if (searchParam) urlSearchParams += `&q=${searchParam}`;

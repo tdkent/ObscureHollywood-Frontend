@@ -37,11 +37,9 @@ export const Route = createFileRoute("/people/")({
 });
 
 function RouteComponent() {
-	const { limit, orderBy, page }: UrlSearchParams = useSearch({
+	const { orderBy, page }: UrlSearchParams = useSearch({
 		from: "/people/",
 	});
 
-	return (
-		<ListPage limit={limit} orderBy={orderBy} page={page} route="people" />
-	);
+	return <ListPage orderBy={orderBy} page={page} route="people" />;
 }

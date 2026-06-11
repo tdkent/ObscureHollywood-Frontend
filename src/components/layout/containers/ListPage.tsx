@@ -3,7 +3,6 @@ import type { Entity } from "@/types/ui.interface";
 
 //? All search params must be provided from URL but may be undefined
 interface Props {
-	limit: string | undefined;
 	page: string | undefined;
 	orderBy: string | undefined;
 	searchParam?: string;
@@ -12,7 +11,6 @@ interface Props {
 }
 
 export default function ListPage({
-	limit,
 	page,
 	orderBy,
 	searchParam,
@@ -34,7 +32,6 @@ export default function ListPage({
 				)}
 			</div>
 			<Paginated
-				limit={limit}
 				page={page}
 				orderBy={orderBy}
 				searchParam={searchParam}

@@ -3,7 +3,6 @@ import { paginatedSortOptions } from "@/lib/paginatedSortOptions";
 import type { Entity } from "@/types/ui.interface";
 
 interface Props {
-	limitParam: number;
 	queryUrl?: string;
 	route: Entity;
 	searchParam: string | undefined;
@@ -12,7 +11,6 @@ interface Props {
 }
 
 export default function SortItems({
-	limitParam,
 	route,
 	searchParam,
 	sortParam,
@@ -41,7 +39,6 @@ export default function SortItems({
 						to: pathname,
 						search: {
 							page: 1,
-							limit: limitParam,
 							orderBy: e.currentTarget.value,
 							q: searchParam,
 							tag: tagsParam,
