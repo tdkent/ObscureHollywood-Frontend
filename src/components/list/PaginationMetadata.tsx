@@ -5,7 +5,6 @@ import type { PaginatedResponse } from "@/types/paginated-response.interface";
 
 interface Props {
 	hasData: boolean;
-	limitParam: number;
 	metadata: PaginatedResponse["meta"];
 	setFilters: Dispatch<SetStateAction<string[]>>;
 	showFilterControls: boolean;
@@ -15,7 +14,6 @@ interface Props {
 
 export default function PaginationMetadata({
 	hasData,
-	limitParam,
 	metadata,
 	setFilters,
 	showFilterControls,
@@ -35,7 +33,6 @@ export default function PaginationMetadata({
 			to: "/films",
 			search: {
 				page: 1,
-				limit: limitParam,
 				orderBy: sortParam,
 				tag: removeSelected,
 			},

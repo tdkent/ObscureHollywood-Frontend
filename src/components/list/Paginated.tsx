@@ -3,7 +3,6 @@ import { ClientOnly } from "@tanstack/react-router";
 import { useState } from "react";
 import DisplayListItems from "@/components/list/DisplayListItems";
 import Filter from "@/components/list/Filter";
-import PaginationLimit from "@/components/list/PaginationLimit";
 import PaginationLinks from "@/components/list/PaginationLinks";
 import PaginationMetadata from "@/components/list/PaginationMetadata";
 import SortItems from "@/components/list/SortItems";
@@ -70,14 +69,12 @@ export default function Paginated({
 
 	const paginatedData = data as PaginatedResponse;
 	const hasResults = paginatedData.data.length;
-	const totalItems = paginatedData.meta.totalItems;
 
 	return (
 		<div className="mt-2 sm:mt-4">
 			<div className="flex flex-col gap-6 py-4 px-6 text-sm sm:px-12 sm:py-8 sm:text-base">
 				<PaginationMetadata
 					hasData={!!hasResults}
-					limitParam={limitParam}
 					metadata={paginatedData.meta}
 					setFilters={setFilters}
 					showFilterControls={!!showFilterControls}
@@ -86,17 +83,7 @@ export default function Paginated({
 				/>
 				{hasResults ? (
 					<div className="flex flex-col gap-6 w-full lg:flex-row lg:gap-16">
-						{totalItems >= 25 && (
-							<PaginationLimit
-								currLimit={limitParam}
-								route={route}
-								searchParam={searchParam}
-								sortParam={sortParam}
-								tagsParam={tagsParam}
-							/>
-						)}
 						<SortItems
-							limitParam={limitParam}
 							queryUrl={queryUrl}
 							route={route}
 							searchParam={searchParam}
@@ -109,7 +96,6 @@ export default function Paginated({
 					<Filter
 						filmsPending={isPending}
 						filters={filters}
-						limitParam={limitParam}
 						setFilters={setFilters}
 						sortParam={sortParam}
 					/>
@@ -121,7 +107,6 @@ export default function Paginated({
 						<DisplayListItems paginatedData={paginatedData} route={route} />
 					</ClientOnly>
 					<PaginationLinks
-						limit={limitParam}
 						orderBy={sortParam}
 						page={pageParam}
 						searchParam={searchParam}

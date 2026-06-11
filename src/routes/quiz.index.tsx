@@ -41,5 +41,5 @@ function RouteComponent() {
 		from: "/quiz/",
 	});
 
-	return <ListPage limit={limit} orderBy={orderBy} page={page} route="quiz" />;
+	return <ListPage orderBy={orderBy} page={page} route="quiz" />;
 }

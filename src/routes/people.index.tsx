@@ -41,7 +41,5 @@ function RouteComponent() {
 		from: "/people/",
 	});
 
-	return (
-		<ListPage limit={limit} orderBy={orderBy} page={page} route="people" />
-	);
+	return <ListPage orderBy={orderBy} page={page} route="people" />;
 }

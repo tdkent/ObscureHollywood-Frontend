@@ -1,7 +1,6 @@
 import { Link, useLocation } from "@tanstack/react-router";
 
 interface Props {
-	limit: number;
 	orderBy: string;
 	page: number;
 	searchParam?: string;
@@ -10,7 +9,6 @@ interface Props {
 }
 
 export default function PaginationLinks({
-	limit,
 	orderBy,
 	page,
 	searchParam,
@@ -37,7 +35,6 @@ export default function PaginationLinks({
 							to={pathname}
 							search={{
 								page: page <= 1 ? 1 : page - 1,
-								limit,
 								orderBy,
 								search: searchParam,
 								tag: tagsParam,
@@ -59,7 +56,6 @@ export default function PaginationLinks({
 							to={pathname}
 							search={{
 								page: 1,
-								limit,
 								orderBy,
 								search: searchParam,
 								tag: tagsParam,
@@ -84,7 +80,6 @@ export default function PaginationLinks({
 							to={pathname}
 							search={{
 								page: isFirstPage ? 2 : page + 1,
-								limit,
 								orderBy,
 								search: searchParam,
 								tag: tagsParam,
@@ -106,7 +101,6 @@ export default function PaginationLinks({
 							to={pathname}
 							search={{
 								page: totalPages,
-								limit,
 								orderBy,
 								search: searchParam,
 								tag: tagsParam,

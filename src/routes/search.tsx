@@ -42,12 +42,6 @@ function RouteComponent() {
 	});
 
 	return (
-		<ListPage
-			limit={limit}
-			orderBy={orderBy}
-			page={page}
-			searchParam={q}
-			route="search"
-		/>
+		<ListPage orderBy={orderBy} page={page} searchParam={q} route="search" />
 	);
 }

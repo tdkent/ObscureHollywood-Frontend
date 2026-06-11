@@ -38,7 +38,5 @@ function RouteComponent() {
 		from: "/features/",
 	});
 
-	return (
-		<ListPage limit={limit} orderBy={orderBy} page={page} route="features" />
-	);
+	return <ListPage orderBy={orderBy} page={page} route="features" />;
 }

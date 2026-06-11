@@ -40,7 +40,6 @@ export default function TagArticle() {
 				<p className="px-6 sm:px-12 md:text-lg">{description}</p>
 			</ArticleHeader>
 			<Paginated
-				limit={limit}
 				orderBy={orderBy}
 				page={page}
 				queryUrl={`tags/${slug}/films`}

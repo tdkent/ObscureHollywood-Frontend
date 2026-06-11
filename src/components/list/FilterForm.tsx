@@ -6,7 +6,6 @@ import type { Tag } from "@/types/tag.interface";
 interface Props {
 	filmsPending: boolean;
 	filters: string[];
-	limitParam: number;
 	setFilters: Dispatch<SetStateAction<string[]>>;
 	setIsOpen: Dispatch<SetStateAction<boolean>>;
 	sortParam: string;
@@ -16,7 +15,6 @@ interface Props {
 export default function FilterForm({
 	filmsPending,
 	filters,
-	limitParam,
 	setFilters,
 	setIsOpen,
 	sortParam,
@@ -64,7 +62,6 @@ export default function FilterForm({
 			to: "/films",
 			search: {
 				page: 1,
-				limit: limitParam,
 				orderBy: sortParam,
 				tag: filters.length ? filters : undefined,
 			},

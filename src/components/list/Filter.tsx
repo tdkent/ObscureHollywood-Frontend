@@ -9,7 +9,6 @@ import httpRequest from "@/util/httpRequest";
 interface Props {
 	filmsPending: boolean;
 	filters: string[];
-	limitParam: number;
 	setFilters: Dispatch<SetStateAction<string[]>>;
 	sortParam: string;
 }
@@ -17,7 +16,6 @@ interface Props {
 export default function Filter({
 	filmsPending,
 	filters,
-	limitParam,
 	setFilters,
 	sortParam,
 }: Props) {
@@ -89,7 +87,6 @@ export default function Filter({
 					<FilterForm
 						filmsPending={filmsPending}
 						filters={filters}
-						limitParam={limitParam}
 						setFilters={setFilters}
 						setIsOpen={setIsOpen}
 						sortParam={sortParam}

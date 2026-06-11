@@ -26,7 +26,6 @@ export default function StudioArticle() {
 		<>
 			<ArticleHeader name={name} slug={studioSlug} />
 			<Paginated
-				limit={limit}
 				orderBy={orderBy}
 				page={page}
 				queryUrl={`studios/${slug}/films`}
