@@ -1,7 +1,8 @@
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
+import { ClientOnly } from "@tanstack/react-router";
 import { useState } from "react";
+import DisplayListItems from "@/components/list/DisplayListItems";
 import Filter from "@/components/list/Filter";
-import ListItem from "@/components/list/ListItem";
 import PaginationLimit from "@/components/list/PaginationLimit";
 import PaginationLinks from "@/components/list/PaginationLinks";
 import PaginationMetadata from "@/components/list/PaginationMetadata";
@@ -120,12 +121,10 @@ export default function Paginated({
 				)}
 			</div>
 			{hasResults ? (
-				<>
-					<ul className="my-8 flex flex-col sm:my-12">
-						{paginatedData.data.map((item) => {
-							return <ListItem key={item.id} entity={route} item={item} />;
-						})}
-					</ul>
+				<div className="flex flex-col gap-4 my-6">
+					<ClientOnly>
+						<DisplayListItems paginatedData={paginatedData} route={route} />
+					</ClientOnly>
 					<PaginationLinks
 						limit={limitParam}
 						orderBy={sortParam}
@@ -134,7 +133,7 @@ export default function Paginated({
 						tagsParam={tagsParam}
 						totalPages={paginatedData.meta.totalPages}
 					/>
-				</>
+				</div>
 			) : null}
 		</div>
 	);
