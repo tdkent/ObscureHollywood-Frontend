@@ -1,12 +1,10 @@
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { useState } from "react";
+import DisplayListItems from "@/components/list/DisplayListItems";
 import Filter from "@/components/list/Filter";
-import ListItem from "@/components/list/ListItem";
 import PaginationLimit from "@/components/list/PaginationLimit";
-import PaginationLinks from "@/components/list/PaginationLinks";
 import PaginationMetadata from "@/components/list/PaginationMetadata";
 import SortItems from "@/components/list/SortItems";
-import ThemeToggle from "@/components/list/ThemeToggle";
 import DisplayError from "@/components/shared/DisplayError";
 import Loading from "@/components/shared/Loading";
 import type { PaginatedResponse } from "@/types/paginated-response.interface";
@@ -121,22 +119,15 @@ export default function Paginated({
 				)}
 			</div>
 			{hasResults ? (
-				<div className="flex flex-col gap-4 my-6">
-					<ThemeToggle />
-					<ul className="flex flex-col sm:my-12">
-						{paginatedData.data.map((item) => {
-							return <ListItem key={item.id} entity={route} item={item} />;
-						})}
-					</ul>
-					<PaginationLinks
-						limit={limitParam}
-						orderBy={sortParam}
-						page={pageParam}
-						searchParam={searchParam}
-						tagsParam={tagsParam}
-						totalPages={paginatedData.meta.totalPages}
-					/>
-				</div>
+				<DisplayListItems
+					limitParam={limitParam}
+					sortParam={sortParam}
+					pageParam={pageParam}
+					paginatedData={paginatedData}
+					route={route}
+					searchParam={searchParam}
+					tagsParam={tagsParam}
+				/>
 			) : null}
 		</div>
 	);
