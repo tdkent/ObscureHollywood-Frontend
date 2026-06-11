@@ -23,9 +23,16 @@ export default function DisplayListItems({ paginatedData, route }: Props) {
 				useCardTheme={useCardTheme}
 				setUseCardTheme={setUseCardTheme}
 			/>
-			<ul className="flex flex-col sm:my-12">
+			<ul className={`flex flex-col sm:my-12 ${useCardTheme ? "gap-6" : ""}`}>
 				{paginatedData.data.map((item) => {
-					return <ListItem key={item.id} entity={route} item={item} />;
+					return (
+						<ListItem
+							key={item.id}
+							entity={route}
+							item={item}
+							useCardTheme={useCardTheme}
+						/>
+					);
 				})}
 			</ul>
 		</>
