@@ -1,11 +1,12 @@
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { ClientOnly } from "@tanstack/react-router";
 import { useState } from "react";
-import DisplayListItems from "@/components/list/DisplayListItems";
 import Filter from "@/components/list/Filter";
+import ListItems from "@/components/list/ListItems";
 import PaginationLinks from "@/components/list/PaginationLinks";
 import PaginationMetadata from "@/components/list/PaginationMetadata";
 import SortItems from "@/components/list/SortItems";
+import ThemeToggle from "@/components/list/ThemeToggle";
 import DisplayError from "@/components/shared/DisplayError";
 import Loading from "@/components/shared/Loading";
 import { PAGINATION_TAKE_COUNT } from "@/constants/api.constants";
@@ -42,6 +43,13 @@ export default function Paginated({
 	});
 
 	const [filters, setFilters] = useState<string[]>(tagsParam ?? []);
+
+	/**
+	 * Set list visual theme
+	 */
+	const [useCardTheme, setUseCardTheme] = useState<boolean>(
+		!!localStorage.getItem("useCardTheme"),
+	);
 
 	const reqUrl = createHttpRequestUrl({
 		pageParam,
@@ -98,6 +106,10 @@ export default function Paginated({
 									sortParam={sortParam}
 								/>
 							)}
+							<ThemeToggle
+								useCardTheme={useCardTheme}
+								setUseCardTheme={setUseCardTheme}
+							/>
 						</>
 					) : (
 						<p>No results found.</p>
@@ -105,7 +117,11 @@ export default function Paginated({
 				</div>
 				{hasResults ? (
 					<div className="flex flex-col gap-4 my-6">
-						<DisplayListItems paginatedData={paginatedData} route={route} />
+						<ListItems
+							paginatedData={paginatedData}
+							route={route}
+							useCardTheme={useCardTheme}
+						/>
 						<div className="flex flex-col items-center gap-4 mt-4 sm:mt-0">
 							<PaginationMetadata
 								metadata={paginatedData.meta}
