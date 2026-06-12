@@ -87,7 +87,7 @@ export default function Paginated({
 	return (
 		<ClientOnly>
 			<div className="mt-2 sm:mt-4 lg:mt-0">
-				<div>
+				<div className="flex flex-col gap-6 px-6 py-4 sm:px-12 sm:py-8 lg:py-4">
 					{!!showFilterControls && tagsParam?.length ? (
 						<DisplaySelectedFilters
 							setFilters={setFilters}
@@ -95,33 +95,33 @@ export default function Paginated({
 							tagsParam={tagsParam}
 						/>
 					) : null}
-				</div>
-				<div className="flex flex-col gap-6 py-4 px-6 text-sm sm:px-12 sm:py-8 sm:text-base lg:flex-row lg:text-sm lg:py-4 lg:items-center lg:justify-end">
-					{hasResults ? (
-						<>
-							<SortItems
-								queryUrl={queryUrl}
-								route={route}
-								searchParam={searchParam}
-								sortParam={sortParam}
-								tagsParam={tagsParam}
-							/>
-							{showFilterControls && (
-								<Filter
-									filmsPending={isPending}
-									filters={filters}
-									setFilters={setFilters}
+					<div className="flex flex-col gap-6 text-sm sm:text-base lg:text-sm lg:flex-row lg:items-center lg:justify-end">
+						{hasResults ? (
+							<>
+								<SortItems
+									queryUrl={queryUrl}
+									route={route}
+									searchParam={searchParam}
 									sortParam={sortParam}
+									tagsParam={tagsParam}
 								/>
-							)}
-							<ThemeToggle
-								useCardTheme={useCardTheme}
-								setUseCardTheme={setUseCardTheme}
-							/>
-						</>
-					) : (
-						<p>No results found.</p>
-					)}
+								{showFilterControls && (
+									<Filter
+										filmsPending={isPending}
+										filters={filters}
+										setFilters={setFilters}
+										sortParam={sortParam}
+									/>
+								)}
+								<ThemeToggle
+									useCardTheme={useCardTheme}
+									setUseCardTheme={setUseCardTheme}
+								/>
+							</>
+						) : (
+							<p>No results found.</p>
+						)}
+					</div>
 				</div>
 				{hasResults ? (
 					<div className="flex flex-col gap-4 my-2">

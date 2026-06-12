@@ -33,8 +33,7 @@ export default function DisplaySelectedFilters({
 	}
 	return (
 		<div className="flex gap-2">
-			Tags:
-			<ul className="flex flex-col gap-2">
+			<ul className="flex flex-col gap-2 text-base lg:text-lg">
 				{tagsParam.map((tag) => {
 					return (
 						<li className="flex gap-3 items-center" key={tag}>
