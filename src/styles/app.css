@@ -117,7 +117,7 @@
 			@apply flex flex-col gap-0.5;
 
 			dt {
-				@apply uppercase text-xs text-secondary-text sm:text-sm;
+				@apply uppercase text-sm text-secondary-text;
 			}
 		}
 	}
@@ -138,9 +138,13 @@
 			@apply text-xl mt-2.5 md:text-2xl;
 		}
 
+		h3 {
+			@apply mt-2.5 text-lg md:text-xl;
+		}
+
 		p,
 		dd {
-			@apply font-light lg:text-[17px] lg:w-3/4;
+			@apply font-light text-[17px] lg:w-3/4;
 
 			p {
 				@apply p-0 mb-2 last:mb-0;
@@ -149,7 +153,7 @@
 
 		blockquote,
 		p.film-quote {
-			@apply px-6 pt-4 italic text-base sm:pl-8 sm:pr-16 lg:pl-16 lg:pr-36;
+			@apply px-6 pt-4 italic text-[17px] sm:pl-8 sm:pr-16 lg:pl-16 lg:pr-36;
 		}
 
 		blockquote + p,
