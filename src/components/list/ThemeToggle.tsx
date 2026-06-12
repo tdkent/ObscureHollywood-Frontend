@@ -19,8 +19,8 @@ export default function ThemeToggle({ useCardTheme, setUseCardTheme }: Props) {
 	}
 
 	return (
-		<div className="mt-2">
-			<label className="flex cursor-pointer gap-2 text-sm sm:text-base">
+		<div className="mt-2 lg:mt-0">
+			<label className="flex cursor-pointer gap-2">
 				<span className="label-text">List</span>
 				<input
 					type="checkbox"
