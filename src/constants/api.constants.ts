@@ -6,4 +6,4 @@ export const IMG_ASSETS_URL = import.meta.env.VITE_IMG_ASSETS_URL;
 export const DOMAIN_URL = "https://obscurehollywood.net/";
 
 // Pagination
-export const PAGINATION_TAKE_COUNT = 48;
+export const PAGINATION_TAKE_COUNT = 60;
