@@ -1,6 +1,7 @@
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { ClientOnly } from "@tanstack/react-router";
 import { useState } from "react";
+import DisplaySelectedFilters from "@/components/list/DisplaySelectedFilters";
 import Filter from "@/components/list/Filter";
 import ListItems from "@/components/list/ListItems";
 import PaginationLinks from "@/components/list/PaginationLinks";
@@ -86,6 +87,15 @@ export default function Paginated({
 	return (
 		<ClientOnly>
 			<div className="mt-2 sm:mt-4 lg:mt-0">
+				<div>
+					{!!showFilterControls && tagsParam?.length ? (
+						<DisplaySelectedFilters
+							setFilters={setFilters}
+							sortParam={sortParam}
+							tagsParam={tagsParam}
+						/>
+					) : null}
+				</div>
 				<div className="flex flex-col gap-6 py-4 px-6 text-sm sm:px-12 sm:py-8 sm:text-base lg:flex-row lg:text-sm lg:py-4 lg:items-center lg:justify-end">
 					{hasResults ? (
 						<>
@@ -123,10 +133,7 @@ export default function Paginated({
 						<div className="flex flex-col items-center gap-4 mt-4 sm:mt-0">
 							<PaginationMetadata
 								metadata={paginatedData.meta}
-								setFilters={setFilters}
 								showFilterControls={!!showFilterControls}
-								sortParam={sortParam}
-								tagsParam={tagsParam}
 							/>
 							{showPaginationLinks && (
 								<PaginationLinks
