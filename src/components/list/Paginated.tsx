@@ -79,23 +79,27 @@ export default function Paginated({
 		<div className="mt-2 sm:mt-4">
 			<div className="flex flex-col gap-6 py-4 px-6 text-sm sm:px-12 sm:py-8 sm:text-base">
 				{hasResults ? (
-					<div className="flex flex-col gap-6 w-full lg:flex-row lg:gap-16">
-						<SortItems
-							queryUrl={queryUrl}
-							route={route}
-							searchParam={searchParam}
-							sortParam={sortParam}
-							tagsParam={tagsParam}
-						/>
-					</div>
-				) : null}
-				{showFilterControls && (
-					<Filter
-						filmsPending={isPending}
-						filters={filters}
-						setFilters={setFilters}
-						sortParam={sortParam}
-					/>
+					<>
+						<div className="flex flex-col gap-6 w-full lg:flex-row lg:gap-16">
+							<SortItems
+								queryUrl={queryUrl}
+								route={route}
+								searchParam={searchParam}
+								sortParam={sortParam}
+								tagsParam={tagsParam}
+							/>
+						</div>
+						{showFilterControls && (
+							<Filter
+								filmsPending={isPending}
+								filters={filters}
+								setFilters={setFilters}
+								sortParam={sortParam}
+							/>
+						)}
+					</>
+				) : (
+					<p>No results found.</p>
 				)}
 			</div>
 			{hasResults ? (
@@ -105,7 +109,6 @@ export default function Paginated({
 					</ClientOnly>
 					<div className="flex flex-col items-center gap-4 mt-4 sm:mt-0">
 						<PaginationMetadata
-							hasData={!!hasResults}
 							metadata={paginatedData.meta}
 							setFilters={setFilters}
 							showFilterControls={!!showFilterControls}

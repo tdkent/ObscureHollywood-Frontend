@@ -4,7 +4,6 @@ import type { Dispatch, SetStateAction } from "react";
 import type { PaginatedResponse } from "@/types/paginated-response.interface";
 
 interface Props {
-	hasData: boolean;
 	metadata: PaginatedResponse["meta"];
 	setFilters: Dispatch<SetStateAction<string[]>>;
 	showFilterControls: boolean;
@@ -13,7 +12,6 @@ interface Props {
 }
 
 export default function PaginationMetadata({
-	hasData,
 	metadata,
 	setFilters,
 	showFilterControls,
@@ -40,14 +38,10 @@ export default function PaginationMetadata({
 	}
 	return (
 		<div className="flex flex-col gap-6 text-base sm:text-lg">
-			{hasData ? (
-				<p>
-					Showing items {metadata.firstItemOnPage} – {metadata.lastItemOnPage}{" "}
-					of {metadata.totalItems}
-				</p>
-			) : (
-				<p>No results found.</p>
-			)}
+			<p>
+				Showing items {metadata.firstItemOnPage} – {metadata.lastItemOnPage} of{" "}
+				{metadata.totalItems}
+			</p>
 
 			{showFilterControls && tagsParam?.length ? (
 				<div className="flex gap-2">
