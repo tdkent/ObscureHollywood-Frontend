@@ -39,11 +39,11 @@ export default function PaginationMetadata({
 		});
 	}
 	return (
-		<div className="flex flex-col gap-6">
+		<div className="flex flex-col gap-6 text-base sm:text-lg">
 			{hasData ? (
 				<p>
-					{metadata.firstItemOnPage} – {metadata.lastItemOnPage} of{" "}
-					{metadata.totalItems} results
+					Showing items {metadata.firstItemOnPage} – {metadata.lastItemOnPage}{" "}
+					of {metadata.totalItems}
 				</p>
 			) : (
 				<p>No results found.</p>

@@ -21,7 +21,7 @@ export default function PaginationLinks({
 	const isLastPage = !totalPages || page >= totalPages;
 
 	return (
-		<nav aria-label="Pagination" className="flex justify-center mt-12">
+		<nav aria-label="Pagination" className="">
 			<ul className="join">
 				<li className={`join-item btn p-0 ${isFirstPage && "btn-disabled"}`}>
 					{isFirstPage ? (
