@@ -116,7 +116,7 @@ export default function Paginated({
 					)}
 				</div>
 				{hasResults ? (
-					<div className="flex flex-col gap-4 my-6">
+					<div className="flex flex-col gap-4 my-2">
 						<ListItems
 							paginatedData={paginatedData}
 							route={route}

@@ -15,7 +15,7 @@ export default function ListItems({
 }: Props) {
 	return (
 		<ul
-			className={`flex flex-col ${useCardTheme ? "gap-6 sm:flex-row sm:flex-wrap sm:gap-0 sm:px-12 sm:my-2" : "sm:my-12"}`}
+			className={`flex flex-col ${useCardTheme ? "border-t sm:flex-row sm:flex-wrap sm:gap-0 sm:px-12" : ""}`}
 		>
 			{paginatedData.data.map((item) => {
 				return (

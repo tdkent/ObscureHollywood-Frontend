@@ -52,7 +52,7 @@ export default function ListItem({ entity, item, useCardTheme }: Props) {
 		<li
 			className={
 				useCardTheme
-					? "sm:basis-1/2 sm:px-2 sm:py-4 md:basis-1/3 lg:basis-1/4"
+					? "px-2 py-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4"
 					: "border-b first:border-t"
 			}
 		>

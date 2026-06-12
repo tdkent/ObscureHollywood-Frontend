@@ -19,7 +19,7 @@ export default function ThemeToggle({ useCardTheme, setUseCardTheme }: Props) {
 	}
 
 	return (
-		<div className="px-6 sm:px-12">
+		<div className="mt-2">
 			<label className="flex cursor-pointer gap-2 text-sm sm:text-base">
 				<span className="label-text">List</span>
 				<input
