@@ -28,10 +28,10 @@ export default function SortItems({
 	)?.value;
 
 	return (
-		<div className="flex items-center justify-between md:justify-start">
-			<span className="md:w-30 lg:w-24">Sort by:</span>
+		<div className="flex items-center justify-between grow md:justify-start">
+			<span className="md:w-30 lg:w-20">Sort by:</span>
 			<select
-				className="select w-3/5 sm:w-2/5 md:w-50"
+				className="select w-3/5 sm:w-2/5 md:w-50 lg:w-40"
 				defaultValue={defaultValue}
 				id="sort-items"
 				onChange={(e) => {

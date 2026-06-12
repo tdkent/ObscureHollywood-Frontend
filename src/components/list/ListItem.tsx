@@ -52,32 +52,32 @@ export default function ListItem({ entity, item, useCardTheme }: Props) {
 		<li
 			className={
 				useCardTheme
-					? "sm:basis-1/2 sm:px-2 sm:py-4 md:basis-1/3 lg:basis-1/4"
+					? "px-2 py-4 md:py-6 sm:basis-1/2 lg:basis-1/3"
 					: "border-b first:border-t"
 			}
 		>
 			<Link to={link}>
 				<div
-					className={`flex justify-between ${useCardTheme ? "overflow-hidden flex-col mx-6 border rounded-xl sm:mx-0 sm:min-h-72 md:min-h-60" : "flex-row py-2 px-6 gap-4 sm:py-4 sm:gap-6 sm:px-12"}`}
+					className={`flex justify-between ${useCardTheme ? "overflow-hidden flex-col mx-6 sm:mx-0" : "flex-row py-3 px-6 gap-4 sm:py-4 sm:gap-6 sm:px-12"}`}
 				>
 					<Image
 						altText={item.name}
-						containerStyles={`flex shrink-0 items-center justify-center ${useCardTheme ? "rounded-t-xl aspect-8/5 md:aspect-7/5" : "border size-16 sm:size-20 md:size-22 lg:size-36"}`}
+						containerStyles={`flex shrink-0 items-center justify-center ${useCardTheme ? "rounded-sm aspect-video lg:aspect-8/5" : "border size-18 sm:size-20 md:size-22 lg:size-36"}`}
 						sizes="(max-width: 640px) 64px, (max-width: 768px) 80px, (max-width: 1024px) 88px, 144px"
 						slug={item.slug}
 					/>
 					<div
 						className={`flex flex-col grow
-							${useCardTheme ? "py-3 px-2 text-center justify-center sm:py-2" : "gap-1"}
+							${useCardTheme ? "py-3 px-2 text-center lg:py-4" : "gap-1"}
 						`}
 					>
 						<h2
-							className={`text-base text-pretty ${useCardTheme ? "" : "w-fit sm:text-xl xl:text-2xl"}`}
+							className={`text-lg text-pretty ${useCardTheme ? "" : "w-fit sm:text-xl xl:text-2xl"}`}
 						>
 							{item.name}
 						</h2>
 						<h3
-							className={`text-secondary-text font-normal text-sm text-pretty ${useCardTheme ? "" : "sm:text-lg xl:text-xl"}`}
+							className={`text-secondary-text font-normal text-base text-pretty ${useCardTheme ? "" : "sm:text-lg xl:text-xl"}`}
 						>
 							{subtitle}
 						</h3>

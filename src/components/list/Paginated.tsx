@@ -1,13 +1,16 @@
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { ClientOnly } from "@tanstack/react-router";
 import { useState } from "react";
-import DisplayListItems from "@/components/list/DisplayListItems";
+import DisplaySelectedFilters from "@/components/list/DisplaySelectedFilters";
 import Filter from "@/components/list/Filter";
+import ListItems from "@/components/list/ListItems";
 import PaginationLinks from "@/components/list/PaginationLinks";
 import PaginationMetadata from "@/components/list/PaginationMetadata";
 import SortItems from "@/components/list/SortItems";
+import ThemeToggle from "@/components/list/ThemeToggle";
 import DisplayError from "@/components/shared/DisplayError";
 import Loading from "@/components/shared/Loading";
+import { PAGINATION_TAKE_COUNT } from "@/constants/api.constants";
 import type { PaginatedResponse } from "@/types/paginated-response.interface";
 import type { Entity } from "@/types/ui.interface";
 import { createHttpRequestUrl } from "@/util/createHttpRequestUrl";
@@ -42,6 +45,13 @@ export default function Paginated({
 
 	const [filters, setFilters] = useState<string[]>(tagsParam ?? []);
 
+	/**
+	 * Set list visual theme
+	 */
+	const [useCardTheme, setUseCardTheme] = useState<boolean>(
+		!!localStorage.getItem("useCardTheme"),
+	);
+
 	const reqUrl = createHttpRequestUrl({
 		pageParam,
 		route: queryUrl ?? route,
@@ -70,51 +80,74 @@ export default function Paginated({
 	const paginatedData = data as PaginatedResponse;
 	const hasResults = paginatedData.data.length;
 
+	// Do not show links if there is only 1 page
+	const showPaginationLinks =
+		paginatedData.meta.totalItems > PAGINATION_TAKE_COUNT;
+
 	return (
-		<div className="mt-2 sm:mt-4">
-			<div className="flex flex-col gap-6 py-4 px-6 text-sm sm:px-12 sm:py-8 sm:text-base">
-				<PaginationMetadata
-					hasData={!!hasResults}
-					metadata={paginatedData.meta}
-					setFilters={setFilters}
-					showFilterControls={!!showFilterControls}
-					sortParam={sortParam}
-					tagsParam={tagsParam}
-				/>
-				{hasResults ? (
-					<div className="flex flex-col gap-6 w-full lg:flex-row lg:gap-16">
-						<SortItems
-							queryUrl={queryUrl}
-							route={route}
-							searchParam={searchParam}
+		<ClientOnly>
+			<div className="mt-2 sm:mt-4 lg:mt-0">
+				<div className="flex flex-col gap-6 px-6 py-4 sm:px-12 sm:py-8 lg:py-4">
+					{!!showFilterControls && tagsParam?.length ? (
+						<DisplaySelectedFilters
+							setFilters={setFilters}
 							sortParam={sortParam}
 							tagsParam={tagsParam}
 						/>
+					) : null}
+					<div className="flex flex-col gap-6 text-sm sm:text-base lg:text-sm lg:flex-row lg:items-center lg:justify-end">
+						{hasResults ? (
+							<>
+								<SortItems
+									queryUrl={queryUrl}
+									route={route}
+									searchParam={searchParam}
+									sortParam={sortParam}
+									tagsParam={tagsParam}
+								/>
+								{showFilterControls && (
+									<Filter
+										filmsPending={isPending}
+										filters={filters}
+										setFilters={setFilters}
+										sortParam={sortParam}
+									/>
+								)}
+								<ThemeToggle
+									useCardTheme={useCardTheme}
+									setUseCardTheme={setUseCardTheme}
+								/>
+							</>
+						) : (
+							<p>No results found.</p>
+						)}
+					</div>
+				</div>
+				{hasResults ? (
+					<div className="flex flex-col gap-4 my-2">
+						<ListItems
+							paginatedData={paginatedData}
+							route={route}
+							useCardTheme={useCardTheme}
+						/>
+						<div className="flex flex-col items-center gap-4 mt-4 sm:mt-0">
+							<PaginationMetadata
+								metadata={paginatedData.meta}
+								showFilterControls={!!showFilterControls}
+							/>
+							{showPaginationLinks && (
+								<PaginationLinks
+									orderBy={sortParam}
+									page={pageParam}
+									searchParam={searchParam}
+									tagsParam={tagsParam}
+									totalPages={paginatedData.meta.totalPages}
+								/>
+							)}
+						</div>
 					</div>
 				) : null}
-				{showFilterControls && (
-					<Filter
-						filmsPending={isPending}
-						filters={filters}
-						setFilters={setFilters}
-						sortParam={sortParam}
-					/>
-				)}
 			</div>
-			{hasResults ? (
-				<div className="flex flex-col gap-4 my-6">
-					<ClientOnly>
-						<DisplayListItems paginatedData={paginatedData} route={route} />
-					</ClientOnly>
-					<PaginationLinks
-						orderBy={sortParam}
-						page={pageParam}
-						searchParam={searchParam}
-						tagsParam={tagsParam}
-						totalPages={paginatedData.meta.totalPages}
-					/>
-				</div>
-			) : null}
-		</div>
+		</ClientOnly>
 	);
 }

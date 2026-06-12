@@ -45,9 +45,9 @@ export default function Filter({
 
 			{/* Button opens shelf */}
 			<div className="drawer-content flex items-center justify-between md:justify-start">
-				<span className="md:w-30 lg:w-24">Filter by:</span>
+				<span className="md:w-30 lg:w-20">Filter by:</span>
 				<button
-					className="btn btn-soft w-3/5 sm:w-2/5 md:w-50"
+					className="btn btn-soft w-3/5 sm:w-2/5 md:w-50 lg:w-40"
 					type="button"
 					onClick={() => setIsOpen(true)}
 				>
