@@ -24,8 +24,6 @@ export const Route = createFileRoute("/studios/")({
 				property: "og:url",
 				content: canonicalUrl,
 			},
-			//? Temp disable robots
-			{ name: "robots", content: "noindex,nofollow" },
 		],
 		links: [
 			{

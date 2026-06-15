@@ -65,8 +65,6 @@ export const Route = createFileRoute("/films/$slug")({
 			{ property: "og:image:type", content: "image/jpeg" },
 			{ property: "og:image:width", content: "1024" },
 			{ property: "og:image:height", content: "731" },
-			//? Temp disable robots
-			{ name: "robots", content: "noindex,nofollow" },
 		],
 		links: [
 			{
