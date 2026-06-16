@@ -17,13 +17,14 @@ export default function ListItems({
 		<ul
 			className={`flex flex-col ${useCardTheme ? "border-y sm:flex-row sm:flex-wrap sm:gap-0 sm:px-12" : ""}`}
 		>
-			{paginatedData.data.map((item) => {
+			{paginatedData.data.map((item, idx) => {
 				return (
 					<ListItem
 						key={item.id}
 						entity={route}
 						item={item}
 						useCardTheme={useCardTheme}
+						idx={idx}
 					/>
 				);
 			})}
