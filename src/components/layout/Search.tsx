@@ -28,12 +28,12 @@ export default function Search({ isShelf }: Props) {
 				id="search"
 				role="search"
 			>
-				<label htmlFor="search" className="sr-only">
+				<label htmlFor="search-input" className="sr-only">
 					Search
 				</label>
 				<input
 					className={`grow h-full outline-none px-3 sm:font-normal lg:font-light lg:text-base ${isHome && !isShelf ? "bg-black/30 text-light-text" : ""}`}
-					id="search"
+					id="search-input"
 					name="search"
 					type="search"
 				/>
