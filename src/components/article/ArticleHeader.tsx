@@ -34,6 +34,8 @@ export default function ArticleHeader({
 						sizes="(max-width: 1024px) 100vw, (max-width: 1170px) 75vw, 800px"
 						slug={slug}
 						containerStyles="border lg:object-bottom lg:w-3/4 xl:w-200"
+						fetchPriority="high"
+						lazyLoading="eager"
 					/>
 				</div>
 			)}
