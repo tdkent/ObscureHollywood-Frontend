@@ -28,10 +28,14 @@ export default function Search({ isShelf }: Props) {
 				id="search"
 				role="search"
 			>
+				<label htmlFor="search-input" className="sr-only">
+					Search
+				</label>
 				<input
 					className={`grow h-full outline-none px-3 sm:font-normal lg:font-light lg:text-base ${isHome && !isShelf ? "bg-black/30 text-light-text" : ""}`}
-					type="search"
+					id="search-input"
 					name="search"
+					type="search"
 				/>
 				<button
 					className={`h-full flex items-center border-l  px-3 ${isHome && !isShelf ? "bg-black/10 border-dark-border" : ""}`}

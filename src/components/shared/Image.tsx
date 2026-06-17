@@ -53,7 +53,7 @@ export default function Image({
 				<source srcSet={webp} sizes={sizes} type="image/webp" />
 				<img
 					alt={altText}
-					className={`object-cover w-full h-full ${imgStyles}`}
+					className={`object-cover w-full h-full ${imgStyles ?? ""}`}
 					fetchPriority={fetchPriority}
 					loading={lazyLoading}
 					onError={() => {
