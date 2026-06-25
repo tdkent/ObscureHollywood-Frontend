@@ -198,6 +198,15 @@
 		}
 	}
 
+	/* Audio files */
+	figure.audio-player {
+		@apply text-sm border-y py-4 my-4 flex flex-col gap-4 items-center w-full lg:w-3/4;
+
+		figcaption {
+			@apply text-balance;
+		}
+	}
+
 	/* End of article reference list */
 	.references {
 		@apply text-sm font-light list-disc border-t pt-8 mt-8 lg:text-[15px] min-[1170px]:pr-32;
