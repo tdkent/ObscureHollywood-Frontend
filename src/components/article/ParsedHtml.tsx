@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import parse, { type HTMLReactParserOptions } from "html-react-parser";
+import Audio from "@/components/shared/Audio";
 import Image from "@/components/shared/Image";
 
 interface Props {
@@ -41,6 +42,7 @@ export default function ParsedHtml({ htmlContent }: Props) {
 				);
 			}
 
+			// Parse <img> to Image component
 			if (domNode.type === "tag" && domNode.name === "img") {
 				const slug = domNode.attribs?.src;
 
@@ -52,6 +54,13 @@ export default function ParsedHtml({ htmlContent }: Props) {
 						slug={slug}
 					/>
 				);
+			}
+
+			// Parse <audio> to Audio component
+			if (domNode.type === "tag" && domNode.name === "audio") {
+				const slug = domNode.attribs?.src;
+
+				return <Audio slug={slug} />;
 			}
 		},
 	};
