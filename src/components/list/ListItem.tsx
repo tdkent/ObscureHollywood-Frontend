@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import Image from "@/components/shared/Image";
+import Image from "@/components/image/Image";
 import type { Feature } from "@/types/feature.interface";
 import type { Film } from "@/types/film.interface";
 import type { PartialListItem } from "@/types/paginated-response.interface";

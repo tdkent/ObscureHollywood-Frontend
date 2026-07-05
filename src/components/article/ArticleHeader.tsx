@@ -1,4 +1,4 @@
-import Image from "@/components/shared/Image";
+import Image from "@/components/image/Image";
 
 interface Props {
 	children?: React.ReactNode;

@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { useInView } from "react-intersection-observer";
-import Image from "@/components/shared/Image";
+import Image from "@/components/image/Image";
 
 interface Props {
 	idx: number;

@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import parse, { type HTMLReactParserOptions } from "html-react-parser";
+import Image from "@/components/image/Image";
 import Audio from "@/components/shared/Audio";
-import Image from "@/components/shared/Image";
 
 interface Props {
 	htmlContent: string;
