@@ -1,5 +1,6 @@
-import { CircleAlert, Image as ImageIcon, ImageOff } from "lucide-react";
+import { Image as ImageIcon } from "lucide-react";
 import { useState } from "react";
+import ImageFallback from "@/components/image/ImageFallback";
 import imgSrcSets from "@/lib/imgSrcSets";
 
 interface Props {
@@ -39,16 +40,7 @@ export default function Image({
 				</div>
 			)}
 			{error && (
-				<div className="flex items-center justify-center gap-2 text-sm p-4 h-full">
-					{isHeader ? (
-						<>
-							<CircleAlert className="stroke-1" />
-							<span>No image available!</span>
-						</>
-					) : (
-						<ImageOff className="stroke-1 stroke-text/50" />
-					)}
-				</div>
+				<ImageFallback isHeader={isHeader} personGender={personGender} />
 			)}
 			<picture className={`w-full h-full ${error ? "hidden" : ""}`}>
 				<source srcSet={avif} sizes={sizes} type="image/avif" />
