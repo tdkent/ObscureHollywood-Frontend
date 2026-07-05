@@ -68,6 +68,7 @@ export default function ListItem({ entity, idx, item, useCardTheme }: Props) {
 						containerStyles={`flex shrink-0 items-center justify-center ${useCardTheme ? "rounded-sm aspect-video lg:aspect-8/5" : "border size-18 sm:size-20 md:size-22 lg:size-36"}`}
 						fetchPriority={isLCP ? "high" : "low"}
 						lazyLoading={isLCP ? "eager" : "lazy"}
+						personGender={item?.gender}
 						sizes="(max-width: 640px) 72px, (max-width: 768px) 80px, (max-width: 1024px) 88px, 144px"
 						slug={item.slug}
 					/>
