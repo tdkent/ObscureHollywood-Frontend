@@ -1,5 +1,6 @@
 export interface PartialListItem {
 	id: number;
+	gender?: string | null;
 	name: string;
 	slug: string;
 }
