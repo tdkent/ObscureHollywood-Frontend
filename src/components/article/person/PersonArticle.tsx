@@ -31,6 +31,7 @@ export default function PersonArticle() {
 		birthPlace,
 		deathDate,
 		deathPlace,
+		gender,
 		name,
 		personFilms,
 		slug: personSlug,
@@ -110,6 +111,7 @@ export default function PersonArticle() {
 		<>
 			<ArticleHeader
 				name={name}
+				personGender={gender}
 				showImage
 				slug={personSlug}
 				subtitle={subtitle}

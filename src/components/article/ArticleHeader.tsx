@@ -1,8 +1,9 @@
-import Image from "@/components/shared/Image";
+import Image from "@/components/image/Image";
 
 interface Props {
 	children?: React.ReactNode;
 	name: string;
+	personGender?: string | null;
 	showImage?: boolean;
 	slug?: string;
 	subtitle?: number | string | null;
@@ -12,6 +13,7 @@ interface Props {
 export default function ArticleHeader({
 	children,
 	name,
+	personGender,
 	showImage,
 	slug,
 	subtitle,
@@ -30,12 +32,13 @@ export default function ArticleHeader({
 				<div className="px-6 bg-transparent sm:px-12">
 					<Image
 						altText={name}
-						isHeader
-						sizes="(max-width: 1024px) 100vw, (max-width: 1170px) 75vw, 800px"
-						slug={slug}
 						containerStyles="border lg:object-bottom lg:w-3/4 xl:w-200"
 						fetchPriority="high"
+						isHeader
 						lazyLoading="eager"
+						personGender={personGender}
+						sizes="(max-width: 1024px) 100vw, (max-width: 1170px) 75vw, 800px"
+						slug={slug}
 					/>
 				</div>
 			)}

@@ -8,6 +8,7 @@ export interface Person {
 	deathDate: string | null;
 	deathPlace: string | null;
 	firstName: string;
+	gender: string | null;
 	id: number;
 	lastName: string;
 	name: string;
