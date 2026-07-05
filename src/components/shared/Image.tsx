@@ -9,6 +9,7 @@ interface Props {
 	imgStyles?: string;
 	isHeader?: boolean;
 	lazyLoading?: "eager" | "lazy";
+	personGender?: string | null;
 	sizes?: string;
 	slug: string;
 }
@@ -21,6 +22,7 @@ export default function Image({
 	imgStyles,
 	isHeader,
 	lazyLoading = "lazy",
+	personGender,
 	sizes = "100vw",
 	slug,
 }: Props) {
