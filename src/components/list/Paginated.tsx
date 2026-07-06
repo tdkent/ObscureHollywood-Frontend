@@ -95,33 +95,31 @@ export default function Paginated({
 							tagsParam={tagsParam}
 						/>
 					) : null}
-					<div className="flex flex-col gap-6 text-sm sm:text-base lg:text-sm lg:flex-row lg:items-center lg:justify-end">
-						{hasResults ? (
-							<>
-								<SortItems
-									queryUrl={queryUrl}
-									route={route}
-									searchParam={searchParam}
+					{hasResults ? (
+						<div className="flex flex-col gap-6 text-sm sm:text-base lg:text-sm lg:flex-row lg:items-center lg:justify-end">
+							<SortItems
+								queryUrl={queryUrl}
+								route={route}
+								searchParam={searchParam}
+								sortParam={sortParam}
+								tagsParam={tagsParam}
+							/>
+							{showFilterControls && (
+								<Filter
+									filmsPending={isPending}
+									filters={filters}
+									setFilters={setFilters}
 									sortParam={sortParam}
-									tagsParam={tagsParam}
 								/>
-								{showFilterControls && (
-									<Filter
-										filmsPending={isPending}
-										filters={filters}
-										setFilters={setFilters}
-										sortParam={sortParam}
-									/>
-								)}
-								<ThemeToggle
-									useCardTheme={useCardTheme}
-									setUseCardTheme={setUseCardTheme}
-								/>
-							</>
-						) : (
-							<p>No results found.</p>
-						)}
-					</div>
+							)}
+							<ThemeToggle
+								useCardTheme={useCardTheme}
+								setUseCardTheme={setUseCardTheme}
+							/>
+						</div>
+					) : (
+						<p className="text-left">No results found.</p>
+					)}
 				</div>
 				{hasResults ? (
 					<div className="flex flex-col gap-4 my-2">
