@@ -129,6 +129,10 @@
   to = "/people/johnny-mack-brown"
 
 [[redirects]]
+  from = "/orville-caldwell.html"
+  to = "/people/orville-caldwell"
+
+[[redirects]]
   from = "/harry-carey.html"
   to = "/people/harry-carey"
 
