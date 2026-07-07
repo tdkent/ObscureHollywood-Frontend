@@ -27,12 +27,14 @@ export default function Loading({
 }: Props) {
 	if (variant === "list") {
 		return (
-			<div className="flex flex-col gap-10 my-6 px-6 sm:px-12 sm:my-10 sm:gap-14">
-				<div className="flex flex-col gap-4">
-					<div className="skeleton h-4 w-40 rounded-sm dark:bg-content-alt sm:h-6"></div>
-					<div className="gap-4 flex flex-col lg:flex-row lg:gap-10">
-						<div className="skeleton h-10 w-full rounded-sm dark:bg-content-alt sm:h-12 md:w-80"></div>
-						<div className="skeleton h-10 w-full rounded-sm dark:bg-content-alt sm:h-12 md:w-80"></div>
+			<div className="flex flex-col gap-8 my-10 px-6 sm:px-12 sm:my-12 sm:gap-10">
+				<div className="flex flex-col gap-6">
+					<div className="flex flex-col gap-4 md:gap-6 lg:flex-row lg:items-center lg:justify-between">
+						<div className="gap-4 flex flex-col md:gap-6 lg:flex-row lg:items-center">
+							<div className="skeleton h-10 w-full rounded-sm dark:bg-content-alt sm:h-12 md:w-80 lg:w-60"></div>
+							<div className="skeleton h-10 w-full rounded-sm dark:bg-content-alt sm:h-12 md:w-80 lg:w-60"></div>
+						</div>
+						<div className="skeleton h-8 w-2/5 rounded-sm dark:bg-content-alt md:w-40"></div>
 					</div>
 				</div>
 				<ClientOnly>
