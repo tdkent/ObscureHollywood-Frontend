@@ -1,6 +1,9 @@
+import { createEmptyList } from "@/util/createEmptyList";
+
 export default function ListLoading() {
-	const list = Array.from({ length: 10 }, (_, idx) => idx);
+	const list = createEmptyList(10);
 	const useCard = localStorage.getItem("useCardTheme");
+
 	return (
 		<div className="flex flex-col gap-4">
 			{list.map((item) => {

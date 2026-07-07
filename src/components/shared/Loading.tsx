@@ -1,3 +1,7 @@
+import { ClientOnly } from "@tanstack/react-router";
+import ListLoading from "@/components/shared/ListLoading";
+import { createEmptyList } from "@/util/createEmptyList";
+
 type Props =
 	| {
 			hasDescList?: never;
@@ -21,8 +25,6 @@ export default function Loading({
 	isFullArticle,
 	variant,
 }: Props) {
-	const list = Array.from({ length: 10 }, (_, idx) => idx);
-
 	if (variant === "list") {
 		return (
 			<div className="flex flex-col gap-10 my-6 px-6 sm:px-12 sm:my-10 sm:gap-14">
@@ -33,25 +35,15 @@ export default function Loading({
 						<div className="skeleton h-10 w-full rounded-sm dark:bg-content-alt sm:h-12 md:w-80"></div>
 					</div>
 				</div>
-				<div className="flex flex-col gap-4">
-					{list.map((item) => {
-						return (
-							<div key={item} className="flex justify-between gap-4">
-								<div className="skeleton rounded-none shrink-0 dark:bg-content-alt size-16 sm:size-20 md:size-22 lg:size-36"></div>
-								<div className="flex flex-col gap-2 w-full sm:gap-4">
-									<div className="skeleton h-4 w-3/4 rounded-sm dark:bg-content-alt sm:h-6"></div>
-									<div className="skeleton h-3 w-1/2 rounded-sm dark:bg-content-alt sm:h-5"></div>
-								</div>
-							</div>
-						);
-					})}
-				</div>
+				<ClientOnly>
+					<ListLoading />
+				</ClientOnly>
 			</div>
 		);
 	}
 
 	if (variant === "article") {
-		const list = Array.from({ length: 16 }, (_, idx) => idx);
+		const list = createEmptyList(16);
 		return (
 			<div className="flex flex-col gap-10 my-4">
 				<div className="flex flex-col gap-4 px-6 sm:px-12">
@@ -146,6 +138,7 @@ export default function Loading({
 	}
 
 	if (variant === "quiz") {
+		const list = createEmptyList(10);
 		return (
 			<div className="flex flex-col gap-6 my-6 sm:gap-8">
 				<div className="px-6 sm:px-12">
