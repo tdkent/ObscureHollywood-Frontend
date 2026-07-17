@@ -12,7 +12,7 @@ import {
 	type UnfilteredDlMetadata,
 } from "@/types/ui.interface";
 import { articleQueryOptions } from "@/util/articleQueryOptions";
-import { getFormattedDateString } from "@/util/formatPersonDates";
+import { getFormattedDateString } from "@/util/formatDates";
 
 /** Render header and parsed HTML of Person article. */
 export default function PersonArticle() {
