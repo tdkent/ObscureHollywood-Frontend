@@ -26,3 +26,20 @@ export function getPersonLifespanString({
 
 	return `${birthYear} - ${deathYear}`;
 }
+
+/** Return age in years, rounded down, or null. */
+export function getStudioAge(
+	yearFounded: number | null,
+	yearClosed: number | null,
+) {
+	if (!yearFounded) return null;
+
+	const start = DateTime.fromISO(`${yearFounded}-01-01`);
+	const end = yearClosed
+		? DateTime.fromISO(`${yearClosed}-01-01`)
+		: DateTime.now();
+
+	const ageInYears = end.diff(start, "years").toObject() as { years: number };
+
+	return Math.floor(ageInYears.years);
+}
