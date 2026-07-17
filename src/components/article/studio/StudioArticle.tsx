@@ -11,6 +11,7 @@ import {
 	type UnfilteredDlMetadata,
 } from "@/types/ui.interface";
 import { articleQueryOptions } from "@/util/articleQueryOptions";
+import { getStudioAge } from "@/util/formatDates";
 
 export default function StudioArticle() {
 	const { slug } = useParams({ from: "/studios/$slug" });
@@ -44,17 +45,24 @@ export default function StudioArticle() {
 			})
 		: null;
 
+	const age = getStudioAge(yearFounded, yearClosed);
+
 	const metadata: UnfilteredDlMetadata[] = [
 		{
 			title: "Founded",
 			description: {
-				label: yearFounded ?? dlText.UNKNOWN,
+				label:
+					yearFounded && !yearClosed
+						? `${yearFounded} (${age} years)`
+						: yearFounded && yearClosed
+							? yearFounded
+							: "Unknown",
 			},
 		},
 		{
-			title: "Closed",
+			title: yearClosed || !yearFounded ? "Closed" : null,
 			description: {
-				label: yearClosed ?? dlText.UNKNOWN,
+				label: yearClosed ? `${yearClosed} (${age} years)` : "Unknown",
 			},
 		},
 		{
