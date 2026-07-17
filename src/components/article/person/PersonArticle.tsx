@@ -6,10 +6,7 @@ import RelatedArticles from "@/components/article/RelatedArticles";
 import DescriptionList from "@/components/shared/DescriptionList";
 import type { Film } from "@/types/film.interface";
 import type { PersonWithRelations } from "@/types/person.interface";
-import type {
-	FilteredDlMetadata,
-	UnfilteredDlMetadata,
-} from "@/types/ui.interface";
+import { dlText, type FilteredDlMetadata } from "@/types/ui.interface";
 import { articleQueryOptions } from "@/util/articleQueryOptions";
 import { getFormattedDateString } from "@/util/formatPersonDates";
 
@@ -71,36 +68,36 @@ export default function PersonArticle() {
 		: null;
 
 	//? Note: some/all person db fields may be null
-	const metadata: UnfilteredDlMetadata[] = [
+	const metadata: FilteredDlMetadata[] = [
 		{
-			title: birthDate ? "Born" : null,
+			title: "Born",
 			description: {
-				label: birthDate ? getFormattedDateString(birthDate) : null,
+				label: birthDate ? getFormattedDateString(birthDate) : dlText.UNKNOWN,
 			},
 		},
 		{
-			title: birthPlace ? "Born In" : null,
+			title: "Born In",
 			description: {
-				label: birthPlace,
+				label: birthPlace ?? dlText.UNKNOWN,
 			},
 		},
 		{
-			title: deathDate ? "Died" : null,
+			title: "Died",
 			description: {
 				label: deathDate
 					? `${getFormattedDateString(deathDate)}${age ? ` (aged ${age})` : ""}`
-					: null,
+					: dlText.UNKNOWN,
 			},
 		},
 		{
-			title: deathPlace ? "Died In" : null,
+			title: "Died In",
 			description: {
-				label: deathPlace,
+				label: deathPlace ?? dlText.UNKNOWN,
 			},
 		},
 		{
-			title: personFilms?.length ? "Partial Filmography" : null,
-			description: films,
+			title: "Partial Filmography",
+			description: films ?? { label: dlText.NA },
 		},
 	];
 

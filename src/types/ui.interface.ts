@@ -29,17 +29,16 @@ interface DlDescription {
 	href?: string;
 }
 
-//? Use if some/all db entries may be null
-export interface UnfilteredDlMetadata {
-	title: string | null;
-	description: DlDescription | DlDescription[] | null;
-}
-
 //? Use after data has been filtered for null entries
 export interface FilteredDlMetadata {
 	title: string;
 	description: DlDescription | DlDescription[];
 }
+
+export const dlText = {
+	NA: "N/A",
+	UNKNOWN: "Unknown",
+};
 
 /**
  * Forms
