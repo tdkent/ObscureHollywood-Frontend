@@ -6,7 +6,11 @@ import RelatedArticles from "@/components/article/RelatedArticles";
 import DescriptionList from "@/components/shared/DescriptionList";
 import type { Film } from "@/types/film.interface";
 import type { PersonWithRelations } from "@/types/person.interface";
-import { dlText, type FilteredDlMetadata } from "@/types/ui.interface";
+import {
+	dlText,
+	type FilteredDlMetadata,
+	type UnfilteredDlMetadata,
+} from "@/types/ui.interface";
 import { articleQueryOptions } from "@/util/articleQueryOptions";
 import { getFormattedDateString } from "@/util/formatPersonDates";
 
@@ -68,7 +72,7 @@ export default function PersonArticle() {
 		: null;
 
 	//? Note: some/all person db fields may be null
-	const metadata: FilteredDlMetadata[] = [
+	const metadata: UnfilteredDlMetadata[] = [
 		{
 			title: "Born",
 			description: {
@@ -96,8 +100,8 @@ export default function PersonArticle() {
 			},
 		},
 		{
-			title: "Partial Filmography",
-			description: films ?? { label: dlText.NA },
+			title: personFilms?.length ? "Partial Filmography" : null,
+			description: films,
 		},
 	];
 
