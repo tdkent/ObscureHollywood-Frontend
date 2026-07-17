@@ -20,7 +20,15 @@ export default function StudioArticle() {
 		}),
 	);
 
-	const { name, slug: studioSlug } = studioQuery.data as StudioWithRelations;
+	const {
+		name,
+		slug: studioSlug,
+		yearFounded,
+		yearClosed,
+		country,
+		otherNames,
+		description,
+	} = studioQuery.data as StudioWithRelations;
 
 	return (
 		<>
