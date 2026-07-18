@@ -6,7 +6,7 @@ import type { PartialListItem } from "@/types/paginated-response.interface";
 import type { Person } from "@/types/person.interface";
 import type { Search } from "@/types/search.interface";
 import type { Entity } from "@/types/ui.interface";
-import { getPersonLifespanString } from "@/util/formatPersonDates";
+import { getPersonLifespanString } from "@/util/formatDates";
 
 interface Props {
 	entity: Entity;

@@ -6,7 +6,7 @@ import type { Feature } from "@/types/feature.interface";
 import type { Film } from "@/types/film.interface";
 import type { PartialListItem } from "@/types/paginated-response.interface";
 import type { Person } from "@/types/person.interface";
-import { getPersonLifespanString } from "@/util/formatPersonDates";
+import { getPersonLifespanString } from "@/util/formatDates";
 import httpRequest from "@/util/httpRequest";
 
 interface Props {

@@ -7,7 +7,7 @@ import SlugPageError from "@/components/shared/SlugPageError";
 import { DOMAIN_URL, IMG_ASSETS_URL } from "@/constants/api.constants";
 import type { PersonWithRelations } from "@/types/person.interface";
 import { articleQueryOptions } from "@/util/articleQueryOptions";
-import { getPersonLifespanString } from "@/util/formatPersonDates";
+import { getPersonLifespanString } from "@/util/formatDates";
 
 export const Route = createFileRoute("/people/$slug")({
 	loader: async ({ context, params }) => {
