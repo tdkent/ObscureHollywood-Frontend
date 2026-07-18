@@ -78,7 +78,7 @@ export default function StudioArticle() {
 		{
 			title: comments ? "Comments" : null,
 			description: {
-				label: comments,
+				label: comments ? comments.replaceAll(`\\"`, `"`) : null,
 			},
 		},
 	];
