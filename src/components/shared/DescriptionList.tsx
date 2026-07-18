@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import type { FilteredDlMetadata } from "@/types/ui.interface";
+import { dlText, type FilteredDlMetadata } from "@/types/ui.interface";
 
 interface Props {
 	metadata: FilteredDlMetadata[];
@@ -31,6 +31,7 @@ function DescriptionDetails({
 
 	if (!isArray) {
 		const { href, label } = description;
+		const isUnknown = typeof label === "string" && label === dlText.UNKNOWN;
 		return (
 			<dd className="sm:w-2/3">
 				{href ? (
@@ -38,7 +39,7 @@ function DescriptionDetails({
 						{label}
 					</Link>
 				) : (
-					label
+					<span className={`${isUnknown && `italic font-light`}`}>{label}</span>
 				)}
 			</dd>
 		);
@@ -47,7 +48,6 @@ function DescriptionDetails({
 	return (
 		<dd className="flex flex-col gap-1 sm:w-2/3">
 			{description.map(({ href, label }) => {
-				console.log(href, label);
 				return href ? (
 					<Link key={label} className="content-link" to={href}>
 						{label}
