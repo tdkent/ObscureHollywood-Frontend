@@ -35,6 +35,7 @@ export default function StudioArticle() {
 		country,
 		otherNames,
 		description: comments,
+		incomingRelations,
 	} = studioQuery.data as StudioWithRelations;
 
 	const names = otherNames?.length
@@ -46,6 +47,13 @@ export default function StudioArticle() {
 		: null;
 
 	const age = getStudioAge(yearFounded, yearClosed);
+
+	const relatedStudios = incomingRelations.map(({ studio }) => {
+		return {
+			label: studio.name,
+			href: `/studios/${studio.slug}`,
+		};
+	});
 
 	const metadata: UnfilteredDlMetadata[] = [
 		{
@@ -80,6 +88,10 @@ export default function StudioArticle() {
 			description: {
 				label: comments ? comments.replaceAll(`\\"`, `"`) : null,
 			},
+		},
+		{
+			title: relatedStudios.length ? "Related Studios" : null,
+			description: relatedStudios,
 		},
 	];
 

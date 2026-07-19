@@ -13,4 +13,8 @@ export interface Studio {
 
 export interface StudioWithRelations extends Studio {
 	films: Film[];
+	incomingRelations: {
+		id: number;
+		studio: Studio;
+	}[];
 }

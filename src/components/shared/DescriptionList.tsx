@@ -33,7 +33,7 @@ function DescriptionDetails({
 		const { href, label } = description;
 		const isUnknown = typeof label === "string" && label === dlText.UNKNOWN;
 		return (
-			<dd className="sm:w-2/3">
+			<dd className="sm:w-2/3 lg:pr-24">
 				{href ? (
 					<Link className="content-link" to={href}>
 						{label}
