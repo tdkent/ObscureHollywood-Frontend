@@ -24,6 +24,8 @@ export default function ImageFallback({
 			<span>No image available!</span>
 		</div>
 	) : (
-		<ImageOff className="stroke-1 stroke-text/50" />
+		<div className="w-full aspect-7/5 flex items-center justify-center">
+			<ImageOff className="stroke-1 stroke-text/50 size-8" />
+		</div>
 	);
 }
