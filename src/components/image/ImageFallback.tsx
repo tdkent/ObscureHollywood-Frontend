@@ -1,6 +1,7 @@
 import { CircleAlert, ImageOff } from "lucide-react";
 
 interface ImageFallback {
+	category?: "feature" | "film" | "person" | "studio";
 	isHeader?: boolean;
 	personGender?: string | null;
 }
@@ -9,6 +10,7 @@ interface ImageFallback {
  * Conditionally display person fallback or generic missing image display.
  */
 export default function ImageFallback({
+	category,
 	isHeader,
 	personGender,
 }: ImageFallback) {

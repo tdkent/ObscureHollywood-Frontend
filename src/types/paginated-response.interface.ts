@@ -1,5 +1,6 @@
 export interface PartialListItem {
 	id: number;
+	category?: "feature" | "film" | "person" | "studio";
 	gender?: string | null;
 	name: string;
 	slug: string;
