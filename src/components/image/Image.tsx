@@ -5,6 +5,7 @@ import imgSrcSets from "@/lib/imgSrcSets";
 
 interface Props {
 	altText: string;
+	category?: "feature" | "film" | "person" | "studio";
 	containerStyles?: string;
 	fetchPriority?: "high" | "low";
 	imgStyles?: string;
@@ -18,6 +19,7 @@ interface Props {
 /** Responsive picture element loads images based on display/device. */
 export default function Image({
 	altText,
+	category,
 	containerStyles = "w-full aspect-[7/5]",
 	fetchPriority,
 	imgStyles,
@@ -40,7 +42,11 @@ export default function Image({
 				</div>
 			)}
 			{error && (
-				<ImageFallback isHeader={isHeader} personGender={personGender} />
+				<ImageFallback
+					category={category}
+					isHeader={isHeader}
+					personGender={personGender}
+				/>
 			)}
 			<picture className={`w-full h-full ${error ? "hidden" : ""}`}>
 				<source srcSet={avif} sizes={sizes} type="image/avif" />
