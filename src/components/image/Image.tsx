@@ -1,4 +1,3 @@
-import { Image as ImageIcon } from "lucide-react";
 import { useState } from "react";
 import ImageFallback from "@/components/image/ImageFallback";
 import imgSrcSets from "@/lib/imgSrcSets";
@@ -29,25 +28,19 @@ export default function Image({
 	sizes = "100vw",
 	slug,
 }: Props) {
-	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(false);
 
 	const { avif, jpeg, webp } = imgSrcSets(slug);
 
 	return (
-		<div className={`overflow-hidden bg-content-alt ${containerStyles}`}>
-			{loading ? (
-				<div className="flex items-center justify-center gap-2 text-sm p-4 h-full">
-					<ImageIcon className="stroke-1 stroke-text/50" />
-				</div>
-			) : null}
-			{error ? (
+		<div className={`overflow-hidden bg-content-alt border ${containerStyles}`}>
+			{error && (
 				<ImageFallback
 					category={category}
 					isHeader={isHeader}
 					personGender={personGender}
 				/>
-			) : null}
+			)}
 			<picture className={`w-full h-full ${error ? "hidden" : ""}`}>
 				<source srcSet={avif} sizes={sizes} type="image/avif" />
 				<source srcSet={webp} sizes={sizes} type="image/webp" />
@@ -57,10 +50,8 @@ export default function Image({
 					fetchPriority={fetchPriority}
 					loading={lazyLoading}
 					onError={() => {
-						setLoading(false);
 						setError(true);
 					}}
-					onLoad={() => setLoading(false)}
 					sizes={sizes}
 					srcSet={jpeg}
 				/>
