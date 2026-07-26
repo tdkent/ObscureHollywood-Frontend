@@ -29,7 +29,7 @@ export default function RadioGroup({
 				value={inputValue}
 				onChange={() => field.onChange(inputValue)}
 			/>
-			{answerText}
+			<div>{answerText}</div>
 		</label>
 	);
 }
