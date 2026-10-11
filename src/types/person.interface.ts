@@ -10,6 +10,7 @@ export interface Person {
 	firstName: string;
 	gender: string | null;
 	id: number;
+	isAlive: boolean;
 	lastName: string;
 	name: string;
 	slug: string;
