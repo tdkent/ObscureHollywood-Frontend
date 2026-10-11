@@ -6,15 +6,15 @@
 
 ### Description
 
-`obscurehollywood.com` is a content-driven website that features reviews, research and commentary about little-known Hollywood films and artists, particularly of the silent and early sound eras, that are worth revisiting.
+`obscurehollywood.net` is a content-driven website that features reviews, research and commentary about little-known Hollywood films and artists, particularly of the silent and early sound eras, that are worth revisiting.
 
 ### Features Overview
 
-- Image assets served via AWS CloudFront CDN for high performance and low latency.
+- Fully responsive and accessible UI with light and dark mode color schemes.
 - Fetched data is cached to prevent redundant requests and load pages instantly.
-- Fully responsive, accessible UI.
-- Images rendered in efficient preprocessed AVIF and WebP formats.
+- Images rendered in efficient preprocessed AVIF and WebP formats and delivered via AWS CloudFront CDN for high performance and low latency.
 - Integration and unit tests ensure reliability.
+- Improved search engine optimization (SEO) via server-side rendering (SSR) and enhanced metadata.
 
 ### Testing
 
@@ -58,12 +58,26 @@ Images are cached and served via a CloudFront CDN.
 
 "Lazy loading" of images, a process that delays loading images until they are actually in the user's display, is utilized to improve performance and load times.
 
+## SEO
+
+Search engine optimization for `hlosf.com` is managed using:
+
+- Server-side rendering (SSR) to ensure that search engines can crawl content-rich webpages after they have been compiled on the server and fetched by the browser.
+  - Components with user interaction, effects, or state values are client-side rendered (CSR).
+- Metadata tags including programmatically-created `<title>`, `<meta>`, and canonical URL `<link>` tags.
+  - Open Graph (OG) and Twitter `<meta>` tags improve social media sharing.
+- Icons, including Favicon and Apple Touch files that boost visibility and branding on mobile devices, take advantage of Next.js file-naming conventions to automatically generate `<link>` tags in the document `<head>`. 
+
+### Accessibility
+
+Semantic HTML and element attributes, including `type`, `role`, and ARIA-specific attributes, are applied where applicable to help make the website accessible to screen readers.
+
 ## Additional Information
 
 ### Links
 
 - [Backend repository](https://github.com/tdkent/ObscureHollywood-Backend)
-- [Visit obscurehollywood.net](https://obscurehollywood.net)
+- [Visit Obscure Hollywood (obscurehollywood.net)](https://obscurehollywood.net)
 
 ### Local Development
 
