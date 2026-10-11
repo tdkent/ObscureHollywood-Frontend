@@ -12,10 +12,7 @@ import {
 	type UnfilteredDlMetadata,
 } from "@/types/ui.interface";
 import { articleQueryOptions } from "@/util/articleQueryOptions";
-import {
-	getBirthDeathLabelText,
-	getFormattedDateString,
-} from "@/util/formatDates";
+import { getBirthDeathLabelText } from "@/util/formatDates";
 
 /** Render header and parsed HTML of Person article. */
 export default function PersonArticle() {
@@ -75,8 +72,6 @@ export default function PersonArticle() {
 				})
 		: null;
 
-	//! Create birth and date date labels with single function
-
 	const { birthDateLabel, deathDateLabel } = getBirthDeathLabelText({
 		age,
 		birthDate,
@@ -99,13 +94,13 @@ export default function PersonArticle() {
 			},
 		},
 		{
-			title: "Died",
+			title: deathDateLabel ? "Died" : null,
 			description: {
 				label: deathDateLabel,
 			},
 		},
 		{
-			title: "Died In",
+			title: isAlive ? null : "Died In",
 			description: {
 				label: isAlive ? null : (deathPlace ?? dlText.UNKNOWN),
 			},
