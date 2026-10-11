@@ -12,7 +12,10 @@ import {
 	type UnfilteredDlMetadata,
 } from "@/types/ui.interface";
 import { articleQueryOptions } from "@/util/articleQueryOptions";
-import { getFormattedDateString } from "@/util/formatDates";
+import {
+	getBirthDeathLabelText,
+	getFormattedDateString,
+} from "@/util/formatDates";
 
 /** Render header and parsed HTML of Person article. */
 export default function PersonArticle() {
@@ -33,6 +36,7 @@ export default function PersonArticle() {
 		deathDate,
 		deathPlace,
 		gender,
+		isAlive,
 		name,
 		personFilms,
 		slug: personSlug,
@@ -71,12 +75,21 @@ export default function PersonArticle() {
 				})
 		: null;
 
+	//! Create birth and date date labels with single function
+
+	const { birthDateLabel, deathDateLabel } = getBirthDeathLabelText({
+		age,
+		birthDate,
+		deathDate,
+		isAlive,
+	});
+
 	//? Note: some/all person db fields may be null
 	const metadata: UnfilteredDlMetadata[] = [
 		{
 			title: "Born",
 			description: {
-				label: birthDate ? getFormattedDateString(birthDate) : dlText.UNKNOWN,
+				label: birthDateLabel,
 			},
 		},
 		{
@@ -88,15 +101,13 @@ export default function PersonArticle() {
 		{
 			title: "Died",
 			description: {
-				label: deathDate
-					? `${getFormattedDateString(deathDate)}${age ? ` (aged ${age})` : ""}`
-					: dlText.UNKNOWN,
+				label: deathDateLabel,
 			},
 		},
 		{
 			title: "Died In",
 			description: {
-				label: deathPlace ?? dlText.UNKNOWN,
+				label: isAlive ? null : (deathPlace ?? dlText.UNKNOWN),
 			},
 		},
 		{
