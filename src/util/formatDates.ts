@@ -1,27 +1,37 @@
 import { DateTime } from "luxon";
+import type { Person } from "@/types/person.interface";
 import { dlText } from "@/types/ui.interface";
 
 /** Return birth and death label text. */
 export function getBirthDeathLabelText({
 	age,
+	ageRange,
 	birthDate,
 	deathDate,
 	isAlive,
-}: {
-	age: number | null;
-	birthDate: string | null;
-	deathDate: string | null;
-	isAlive: boolean;
-}) {
-	const birthDateString = birthDate
-		? getFormattedDateString(birthDate)
-		: dlText.UNKNOWN;
+	partialBirthDate,
+	partialDeathDate,
+}: Pick<
+	Person,
+	| "age"
+	| "ageRange"
+	| "birthDate"
+	| "deathDate"
+	| "isAlive"
+	| "partialBirthDate"
+	| "partialDeathDate"
+>) {
+	let birthDateString: string,
+		deathDateString: string,
+		personAge: number | null;
 
-	const deathDateString: string | null = deathDate
-		? getFormattedDateString(deathDate)
-		: dlText.UNKNOWN;
+	if (partialBirthDate) birthDateString = partialBirthDate;
+	else if (birthDate) birthDateString = getFormattedDateString(birthDate);
+	else birthDateString = dlText.UNKNOWN;
 
-	let personAge: number | null;
+	if (partialDeathDate) deathDateString = partialDeathDate;
+	else if (deathDate) deathDateString = getFormattedDateString(deathDate);
+	else deathDateString = dlText.UNKNOWN;
 
 	if (isAlive) {
 		const start = DateTime.fromISO(birthDate as string);
