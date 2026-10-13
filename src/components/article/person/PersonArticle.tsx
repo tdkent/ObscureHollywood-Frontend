@@ -27,6 +27,7 @@ export default function PersonArticle() {
 
 	const {
 		age,
+		ageRange,
 		article,
 		birthDate,
 		birthPlace,
@@ -35,6 +36,8 @@ export default function PersonArticle() {
 		gender,
 		isAlive,
 		name,
+		partialBirthDate,
+		partialDeathDate,
 		personFilms,
 		slug: personSlug,
 	} = personQuery.data as PersonWithRelations;
@@ -74,9 +77,12 @@ export default function PersonArticle() {
 
 	const { birthDateLabel, deathDateLabel } = getBirthDeathLabelText({
 		age,
+		ageRange,
 		birthDate,
 		deathDate,
 		isAlive,
+		partialBirthDate,
+		partialDeathDate,
 	});
 
 	//? Note: some/all person db fields may be null

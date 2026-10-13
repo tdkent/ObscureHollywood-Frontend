@@ -70,7 +70,9 @@ export default function StudioArticle() {
 		{
 			title: yearClosed || !yearFounded ? "Closed" : null,
 			description: {
-				label: yearClosed ? `${yearClosed} (${age} years)` : "Unknown",
+				label: yearClosed
+					? `${yearClosed}${age ? ` (${age} years)` : ""}`
+					: "Unknown",
 			},
 		},
 		{

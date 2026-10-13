@@ -3,6 +3,7 @@ import type { PersonFilmWithFilm } from "@/types/join-table.interface";
 
 export interface Person {
 	age: number | null;
+	ageRange: string | null;
 	birthDate: string | null;
 	birthPlace: string | null;
 	deathDate: string | null;
@@ -13,6 +14,8 @@ export interface Person {
 	isAlive: boolean;
 	lastName: string;
 	name: string;
+	partialBirthDate: string | null;
+	partialDeathDate: string | null;
 	slug: string;
 }
 
