@@ -82,6 +82,10 @@ const mockedPeopleData: Person[] = [
 		birthPlace: null,
 		deathPlace: null,
 		age: null,
+		partialBirthDate: null,
+		partialDeathDate: null,
+		ageRange: null,
+		isAlive: false,
 	},
 	{
 		id: 604,
@@ -95,6 +99,10 @@ const mockedPeopleData: Person[] = [
 		birthPlace: null,
 		deathPlace: null,
 		age: null,
+		partialBirthDate: null,
+		partialDeathDate: null,
+		ageRange: null,
+		isAlive: false,
 	},
 	{
 		id: 632,
@@ -108,6 +116,10 @@ const mockedPeopleData: Person[] = [
 		birthPlace: null,
 		deathPlace: null,
 		age: null,
+		partialBirthDate: null,
+		partialDeathDate: null,
+		ageRange: null,
+		isAlive: false,
 	},
 ];
 
@@ -262,6 +274,10 @@ const mockedPersonArticleData: Omit<PersonWithRelations, "personFilms"> = {
 	birthPlace: null,
 	deathPlace: null,
 	age: null,
+	partialBirthDate: null,
+	partialDeathDate: null,
+	ageRange: null,
+	isAlive: false,
 	article: {
 		id: 6,
 		slug: "alma-rubens",
