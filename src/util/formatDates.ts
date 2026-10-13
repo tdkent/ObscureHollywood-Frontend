@@ -23,7 +23,7 @@ export function getBirthDeathLabelText({
 >) {
 	let birthDateString: string,
 		deathDateString: string,
-		personAge: number | null;
+		personAge: string | null;
 
 	if (partialBirthDate) birthDateString = partialBirthDate;
 	else if (birthDate) birthDateString = getFormattedDateString(birthDate);
@@ -37,15 +37,17 @@ export function getBirthDeathLabelText({
 		const start = DateTime.fromISO(birthDate as string);
 		const curr = DateTime.now();
 		const diff = curr.diff(start, "years").toObject();
-		personAge = Math.floor(diff.years as number);
+		personAge = Math.floor(diff.years as number).toString();
+	} else if (ageRange) {
+		personAge = ageRange;
 	} else {
-		personAge = age;
+		personAge = age ? age.toString() : null;
 	}
 
 	const birthDateLabel = `${birthDateString}${isAlive ? ` (age ${personAge})` : ""}`;
 	const deathDateLabel = isAlive
 		? null
-		: `${deathDateString}${age ? ` (age ${personAge})` : ""}`;
+		: `${deathDateString}${personAge ? ` (age ${personAge})` : ""}`;
 
 	return { birthDateLabel, deathDateLabel };
 }
