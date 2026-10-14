@@ -54,7 +54,9 @@ export function getBirthDeathLabelText({
 
 /** Return ISO date in long-form locale string format. */
 function getFormattedDateString(date: string): string {
-	return DateTime.fromISO(date).toLocaleString({
+	//? Use UTC time zone to avoid offsets of old dates.
+	//? More info: https://github.com/moment/luxon/issues/1506
+	return DateTime.fromISO(date, { zone: "utc" }).toLocaleString({
 		month: "long",
 		day: "numeric",
 		year: "numeric",
