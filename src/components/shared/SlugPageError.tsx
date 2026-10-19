@@ -2,11 +2,11 @@ import DisplayError from "@/components/shared/DisplayError";
 import NotFound from "@/components/shared/NotFound";
 
 interface Props {
-	error: Error;
+	error: unknown;
 }
 
 export default function ({ error }: Props) {
-	if (error.message === "Resource not found") {
+	if (error instanceof Error && error.message === "Resource not found") {
 		return <NotFound />;
 	}
 	return (
