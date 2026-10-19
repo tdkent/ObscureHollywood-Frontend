@@ -9,36 +9,26 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as SearchRouteImport } from './routes/search'
-import { Route as MyQuizzesRouteImport } from './routes/my-quizzes'
-import { Route as DisclaimerRouteImport } from './routes/disclaimer'
-import { Route as SplatRouteImport } from './routes/$'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as StudiosIndexRouteImport } from './routes/studios.index'
-import { Route as QuizIndexRouteImport } from './routes/quiz.index'
-import { Route as PeopleIndexRouteImport } from './routes/people.index'
-import { Route as FilmsIndexRouteImport } from './routes/films.index'
+import { Route as SplatRouteImport } from './routes/$'
+import { Route as DisclaimerRouteImport } from './routes/disclaimer'
+import { Route as MyQuizzesRouteImport } from './routes/my-quizzes'
+import { Route as SearchRouteImport } from './routes/search'
 import { Route as FeaturesIndexRouteImport } from './routes/features.index'
-import { Route as TagsSlugRouteImport } from './routes/tags/$slug'
-import { Route as StudiosSlugRouteImport } from './routes/studios/$slug'
-import { Route as QuizSlugRouteImport } from './routes/quiz/$slug'
-import { Route as PeopleSlugRouteImport } from './routes/people/$slug'
-import { Route as FilmsSlugRouteImport } from './routes/films/$slug'
 import { Route as FeaturesSlugRouteImport } from './routes/features/$slug'
+import { Route as FilmsIndexRouteImport } from './routes/films.index'
+import { Route as FilmsSlugRouteImport } from './routes/films/$slug'
+import { Route as PeopleIndexRouteImport } from './routes/people.index'
+import { Route as PeopleSlugRouteImport } from './routes/people/$slug'
+import { Route as QuizIndexRouteImport } from './routes/quiz.index'
+import { Route as QuizSlugRouteImport } from './routes/quiz/$slug'
+import { Route as StudiosIndexRouteImport } from './routes/studios.index'
+import { Route as StudiosSlugRouteImport } from './routes/studios/$slug'
+import { Route as TagsSlugRouteImport } from './routes/tags/$slug'
 
-const SearchRoute = SearchRouteImport.update({
-  id: '/search',
-  path: '/search',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MyQuizzesRoute = MyQuizzesRouteImport.update({
-  id: '/my-quizzes',
-  path: '/my-quizzes',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DisclaimerRoute = DisclaimerRouteImport.update({
-  id: '/disclaimer',
-  path: '/disclaimer',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SplatRoute = SplatRouteImport.update({
@@ -46,29 +36,19 @@ const SplatRoute = SplatRouteImport.update({
   path: '/$',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const DisclaimerRoute = DisclaimerRouteImport.update({
+  id: '/disclaimer',
+  path: '/disclaimer',
   getParentRoute: () => rootRouteImport,
 } as any)
-const StudiosIndexRoute = StudiosIndexRouteImport.update({
-  id: '/studios/',
-  path: '/studios/',
+const MyQuizzesRoute = MyQuizzesRouteImport.update({
+  id: '/my-quizzes',
+  path: '/my-quizzes',
   getParentRoute: () => rootRouteImport,
 } as any)
-const QuizIndexRoute = QuizIndexRouteImport.update({
-  id: '/quiz/',
-  path: '/quiz/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PeopleIndexRoute = PeopleIndexRouteImport.update({
-  id: '/people/',
-  path: '/people/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const FilmsIndexRoute = FilmsIndexRouteImport.update({
-  id: '/films/',
-  path: '/films/',
+const SearchRoute = SearchRouteImport.update({
+  id: '/search',
+  path: '/search',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FeaturesIndexRoute = FeaturesIndexRouteImport.update({
@@ -76,24 +56,14 @@ const FeaturesIndexRoute = FeaturesIndexRouteImport.update({
   path: '/features/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const TagsSlugRoute = TagsSlugRouteImport.update({
-  id: '/tags/$slug',
-  path: '/tags/$slug',
+const FeaturesSlugRoute = FeaturesSlugRouteImport.update({
+  id: '/features/$slug',
+  path: '/features/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
-const StudiosSlugRoute = StudiosSlugRouteImport.update({
-  id: '/studios/$slug',
-  path: '/studios/$slug',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const QuizSlugRoute = QuizSlugRouteImport.update({
-  id: '/quiz/$slug',
-  path: '/quiz/$slug',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PeopleSlugRoute = PeopleSlugRouteImport.update({
-  id: '/people/$slug',
-  path: '/people/$slug',
+const FilmsIndexRoute = FilmsIndexRouteImport.update({
+  id: '/films/',
+  path: '/films/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FilmsSlugRoute = FilmsSlugRouteImport.update({
@@ -101,9 +71,39 @@ const FilmsSlugRoute = FilmsSlugRouteImport.update({
   path: '/films/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
-const FeaturesSlugRoute = FeaturesSlugRouteImport.update({
-  id: '/features/$slug',
-  path: '/features/$slug',
+const PeopleIndexRoute = PeopleIndexRouteImport.update({
+  id: '/people/',
+  path: '/people/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PeopleSlugRoute = PeopleSlugRouteImport.update({
+  id: '/people/$slug',
+  path: '/people/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QuizIndexRoute = QuizIndexRouteImport.update({
+  id: '/quiz/',
+  path: '/quiz/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QuizSlugRoute = QuizSlugRouteImport.update({
+  id: '/quiz/$slug',
+  path: '/quiz/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StudiosIndexRoute = StudiosIndexRouteImport.update({
+  id: '/studios/',
+  path: '/studios/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StudiosSlugRoute = StudiosSlugRouteImport.update({
+  id: '/studios/$slug',
+  path: '/studios/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TagsSlugRoute = TagsSlugRouteImport.update({
+  id: '/tags/$slug',
+  path: '/tags/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -240,25 +240,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/search': {
-      id: '/search'
-      path: '/search'
-      fullPath: '/search'
-      preLoaderRoute: typeof SearchRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/my-quizzes': {
-      id: '/my-quizzes'
-      path: '/my-quizzes'
-      fullPath: '/my-quizzes'
-      preLoaderRoute: typeof MyQuizzesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/disclaimer': {
-      id: '/disclaimer'
-      path: '/disclaimer'
-      fullPath: '/disclaimer'
-      preLoaderRoute: typeof DisclaimerRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/$': {
@@ -268,39 +254,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SplatRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/disclaimer': {
+      id: '/disclaimer'
+      path: '/disclaimer'
+      fullPath: '/disclaimer'
+      preLoaderRoute: typeof DisclaimerRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/studios/': {
-      id: '/studios/'
-      path: '/studios'
-      fullPath: '/studios/'
-      preLoaderRoute: typeof StudiosIndexRouteImport
+    '/my-quizzes': {
+      id: '/my-quizzes'
+      path: '/my-quizzes'
+      fullPath: '/my-quizzes'
+      preLoaderRoute: typeof MyQuizzesRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/quiz/': {
-      id: '/quiz/'
-      path: '/quiz'
-      fullPath: '/quiz/'
-      preLoaderRoute: typeof QuizIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/people/': {
-      id: '/people/'
-      path: '/people'
-      fullPath: '/people/'
-      preLoaderRoute: typeof PeopleIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/films/': {
-      id: '/films/'
-      path: '/films'
-      fullPath: '/films/'
-      preLoaderRoute: typeof FilmsIndexRouteImport
+    '/search': {
+      id: '/search'
+      path: '/search'
+      fullPath: '/search'
+      preLoaderRoute: typeof SearchRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/features/': {
@@ -310,32 +282,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FeaturesIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/tags/$slug': {
-      id: '/tags/$slug'
-      path: '/tags/$slug'
-      fullPath: '/tags/$slug'
-      preLoaderRoute: typeof TagsSlugRouteImport
+    '/features/$slug': {
+      id: '/features/$slug'
+      path: '/features/$slug'
+      fullPath: '/features/$slug'
+      preLoaderRoute: typeof FeaturesSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/studios/$slug': {
-      id: '/studios/$slug'
-      path: '/studios/$slug'
-      fullPath: '/studios/$slug'
-      preLoaderRoute: typeof StudiosSlugRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/quiz/$slug': {
-      id: '/quiz/$slug'
-      path: '/quiz/$slug'
-      fullPath: '/quiz/$slug'
-      preLoaderRoute: typeof QuizSlugRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/people/$slug': {
-      id: '/people/$slug'
-      path: '/people/$slug'
-      fullPath: '/people/$slug'
-      preLoaderRoute: typeof PeopleSlugRouteImport
+    '/films/': {
+      id: '/films/'
+      path: '/films'
+      fullPath: '/films/'
+      preLoaderRoute: typeof FilmsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/films/$slug': {
@@ -345,11 +303,53 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FilmsSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/features/$slug': {
-      id: '/features/$slug'
-      path: '/features/$slug'
-      fullPath: '/features/$slug'
-      preLoaderRoute: typeof FeaturesSlugRouteImport
+    '/people/': {
+      id: '/people/'
+      path: '/people'
+      fullPath: '/people/'
+      preLoaderRoute: typeof PeopleIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/people/$slug': {
+      id: '/people/$slug'
+      path: '/people/$slug'
+      fullPath: '/people/$slug'
+      preLoaderRoute: typeof PeopleSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/quiz/': {
+      id: '/quiz/'
+      path: '/quiz'
+      fullPath: '/quiz/'
+      preLoaderRoute: typeof QuizIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/quiz/$slug': {
+      id: '/quiz/$slug'
+      path: '/quiz/$slug'
+      fullPath: '/quiz/$slug'
+      preLoaderRoute: typeof QuizSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/studios/': {
+      id: '/studios/'
+      path: '/studios'
+      fullPath: '/studios/'
+      preLoaderRoute: typeof StudiosIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/studios/$slug': {
+      id: '/studios/$slug'
+      path: '/studios/$slug'
+      fullPath: '/studios/$slug'
+      preLoaderRoute: typeof StudiosSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tags/$slug': {
+      id: '/tags/$slug'
+      path: '/tags/$slug'
+      fullPath: '/tags/$slug'
+      preLoaderRoute: typeof TagsSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
