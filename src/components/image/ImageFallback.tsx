@@ -1,3 +1,4 @@
+import { useLocation } from "@tanstack/react-router";
 import { CircleAlert, ImageOff } from "lucide-react";
 
 interface ImageFallback {
@@ -14,8 +15,9 @@ export default function ImageFallback({
 	isHeader,
 	personGender,
 }: ImageFallback) {
+	const { pathname } = useLocation();
 	// Studio fallback image
-	if (category && category === "studio") {
+	if (pathname === "/studios" || (category && category === "studio")) {
 		return (
 			<img
 				src={`/img/fallback-studio.jpg`}
